@@ -2,7 +2,7 @@
 
 ---
 
-**PRZEDMIOTY ZIMA:**
+**PRZEDMIOTY ZIMA:** ❄️
   - Rachunek Prawdopodobieństwa 2R
   - Algebra homologiczna
   - Charakterystyka Eulera
@@ -11,7 +11,7 @@
 
 ---
 
-**PRZEDMIOTY LATO:**
+**PRZEDMIOTY LATO:** 🌞
   - Topologia Algebraiczna 1
   - Funkcje analityczne R
   - Bazy danych
