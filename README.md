@@ -7,11 +7,8 @@
 **PRZEDMIOTY ZIMA:**
 
     - Rachunek Prawdopodobieństwa 2R
-
     - Algebra homologiczna
-
     - Charakterystyka Eulera
-
     - Programowanie Funkcyjne
     - w-f, zespołowy projekt specjalnościowy
 
