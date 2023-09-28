@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.9)  27 SEP 2023 21:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.9)  28 SEP 2023 21:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -559,6 +559,21 @@ File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
 \ESO@tempdima=\dimen277
 \ESO@tempdimb=\dimen278
+) (/usr/share/texmf-dist/tex/latex/phaistos/phaistos.sty
+File: phaistos.sty 2004/04/23 v1.0 Package `phaistos.sty'
+Now handling font encoding LPH ...
+... no UTF-8 mapping file for font encoding LPH
+) (/usr/share/texmf-dist/tex/latex/sectsty/sectsty.sty
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading styles
+
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
 ))
 LaTeX Font Info:    Trying to load font information for T1+SourceSansPro-TLF on input line 9.
  (/usr/share/texmf-dist/tex/latex/sourcesanspro/T1SourceSansPro-TLF.fd
@@ -590,6 +605,8 @@ LaTeX Font Info:    Trying to load font information for LY1+ptm on input line 9.
  (/usr/share/texmf-dist/tex/latex/ly1/ly1ptm.fd
 File: ly1ptm.fd 2001/02/01 font definitions for LY1/ptm using Berry names.
 )
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for LPH/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 
 *geometry* driver: auto-detecting
@@ -661,7 +678,28 @@ Package microtype Info: Loading generic protrusion settings for font family
 \everyMPtoPDFconversion=\toks42
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+ (/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (/usr/share/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+ (/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)) (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+ (/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)) (/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
@@ -693,41 +731,51 @@ LaTeX Font Info:    Trying to load font information for U+wasy on input line 10.
  (/usr/share/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
+(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 12.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
+(Font)              scaled to size 17.28003pt on input line 12.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
+(Font)              `T1/SourceSansPro-TLF/bold/n' on input line 12.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/bold/n' will be
+(Font)              scaled to size 17.28003pt on input line 12.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
+(Font)              `T1/SourceSansPro-TLF/bold/n' on input line 13.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/bold/n' will be
+(Font)              scaled to size 14.39996pt on input line 13.
+LaTeX Font Info:    Trying to load font information for LPH+SourceSansPro-TLF on input line 18.
+LaTeX Font Info:    No file LPHSourceSansPro-TLF.fd. on input line 18.
 
-./main.tex:14: Package pgfkeys Error: I do not know the key '/tikz/iiner sep', to which you passed '0pt', and I am going to ignore it. Perhaps you misspelled it.
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \end{document}
-                   
-This error message was generated by an \errmessage
-command, so I can't give any explicit help.
-Pretend that you're Hercule Poirot: Examine all clues,
-and deduce the truth by order and method.
+LaTeX Font Warning: Font shape `LPH/SourceSansPro-TLF/m/n' undefined
+(Font)              using `LPH/cmr/m/n' instead
+(Font)              for symbol `PHtunny' on input line 18.
 
 </home/marudka/uni-stuff/2023-2024/fajne_tlo.png, id=4, 597.432pt x 845.0772pt>
 File: /home/marudka/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
 <use /home/marudka/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: /home/marudka/uni-stuff/2023-2024/fajne_tlo.png  used on input line 14.
+Package pdftex.def Info: /home/marudka/uni-stuff/2023-2024/fajne_tlo.png  used on input line 23.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc} </home/marudka/uni-stuff/2023-2024/fajne_tlo.png>] (./main.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc} </home/marudka/uni-stuff/2023-2024/fajne_tlo.png>] (./main.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
 Here is how much of TeX's memory you used:
- 17998 strings out of 476025
- 347726 string characters out of 5796533
- 1852388 words of memory out of 5000000
- 38077 multiletter control sequences out of 15000+600000
- 549374 words of font info for 77 fonts, out of 8000000 for 9000
+ 18856 strings out of 476025
+ 363768 string characters out of 5796533
+ 1854388 words of memory out of 5000000
+ 38872 multiletter control sequences out of 15000+600000
+ 579854 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,12n,118p,1001b,678s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb>
-Output written on main.pdf (1 page, 282141 bytes).
+ 117i,12n,118p,1001b,673s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Bold.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb>
+Output written on main.pdf (1 page, 349199 bytes).
 PDF statistics:
- 20 PDF objects out of 1000 (max. 8388607)
- 12 compressed objects within 1 object stream
+ 30 PDF objects out of 1000 (max. 8388607)
+ 18 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 18450 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 28690 words of extra memory for PDF output out of 29859 (max. 10000000)
 

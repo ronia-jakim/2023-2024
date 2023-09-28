@@ -29,22 +29,38 @@
 
 \RequirePackage{eso-pic}
 
-\AddToShipoutPictureBG{%
-\begin{tikzpicture}[remember picture, overlay]
-
-  \node[iiner sep=0pt] at (current page.center) {\includegraphics{/home/marudka/uni-stuff/2023-2024/fajne_tlo.png}};
-
-%\node[opacity=.7, inner sep=0pt, xshift=-2.5cm, yshift=-2.5cm] at (current page.north east) {\includegraphics[width=3cm]{/home/marudka/uni-stuff/2023-2024/duck.png}};
-
-%\node[opacity=.7, inner sep=0pt, xshift=3cm, yshift=3.8cm] at (current page.south west) {\includegraphics[width=3.5cm]{/home/marudka/uni-stuff/2023-2024/alpaca.png}};
-
-%\node[opacity=.7, innder sep=0pt, xshift=-3cm, yshift=3.5cm] at (current page.south east) {\scalebox{-1}[1]{\includegraphics[width=7cm]{/home/marudka/uni-stuff/2023-2024/llama.png}}};
-
-%\node[opacity=.7, inner sep-0pt, yshift=-2.5cm, xshift=2.5cm] at (current page.north west) {\rotatebox{-90}{\includegraphics[width=4cm]{/home/marudka/uni-stuff/2023-2024/monstera.png}}};
-
-\end{tikzpicture}%
-}
-
 \pagestyle{empty}
+
+\RequirePackage{phaistos}
+
+\renewcommand\labelitemi{\scalebox{0.9}{\color{green}\PHtunny}}
+
+%%================================================================%%
+%% KOLORKI
+%%================================================================%%
+
+\RequirePackage{xcolor}
+
+\definecolor{red}{HTML}{CB7876}
+\definecolor{green}{HTML}{8BA47C}
+\definecolor{yellow}{HTML}{E6B12C}
+\definecolor{orange}{HTML}{CF7438}
+\definecolor{blue}{HTML}{32769B}
+\definecolor{purple}{HTML}{8C7DA8}%{64557B}
+
+\RequirePackage{sectsty}
+
+\allsectionsfont{\color{purple}}
+
+\DeclareOption{back_on} {
+  \AddToShipoutPictureBG{%
+  \begin{tikzpicture}[remember picture, overlay]
+
+    \node[inner sep=0pt] at (current page.center) {\includegraphics{/home/marudka/uni-stuff/2023-2024/fajne_tlo.png}};
+
+  \end{tikzpicture}%
+  }
+}
+\ProcessOptions\relax
 
 \endinput
