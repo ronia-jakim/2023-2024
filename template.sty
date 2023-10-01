@@ -13,6 +13,7 @@
 }
 
 \RequirePackage[default]{sourcesanspro} % czcionka
+\RequirePackage{mathastext}
 
 \RequirePackage{microtype}
 
@@ -35,6 +36,21 @@
 
 \renewcommand\labelitemi{\scalebox{0.9}{\color{green}\PHtunny}}
 
+\setlength{\parindent}{0pt}
+\RequirePackage[skip=7pt]{parskip}
+
+%%================================================================%%
+%% RZECZY PRZYDATNE
+%%================================================================%%
+
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\img}{im}
+
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\C}{\mathbb{C}}
+\DeclareMathOperator{\N}{\mathbb{N}}
+
 %%================================================================%%
 %% KOLORKI
 %%================================================================%%
@@ -51,6 +67,78 @@
 \RequirePackage{sectsty}
 
 \allsectionsfont{\color{purple}}
+
+\newcommand{\buff}[1]{\textbf{\color{orange}#1}}
+\newcommand{\acc}[1]{{\color{blue}\slshape #1}}
+
+%%================================================================%%
+%% TWIERDZENIA ETC.
+%%================================================================%%
+
+\RequirePackage{amsthm}
+\RequirePackage{thmtools}
+
+\newtheoremstyle{definicje}
+  {3pt}
+  {3pt}
+  {}
+  {}
+  {\color{green}\large\bfseries}
+  {\newline}
+  {.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+\declaretheorem[
+  name=Definicja,
+  numberwithin=section,
+  style=definicje,
+  shaded={bgcolor=yellow!10, rulecolor=green!30!black!20, rulewidth=1pt}
+]{definition}
+
+
+\newtheoremstyle{zadanka}
+  {3pt}
+  {3pt}
+  {\itshape}
+  {}
+  {\color{red}\large\bfseries}
+  {\newline}
+  {.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+\declaretheorem[
+  name=Problem,
+  numberwithin=section,
+  style=zadanka,
+  %shaded={bgcolor=blue!20, rulecolor=red!30!black!20, rulewidth=1pt}
+]{problem}
+
+\newtheoremstyle{rozw_moj}
+  {3pt}
+  {3pt}
+  {}
+  {}
+  {\color{red}\bfseries}
+  {\newline}
+  {.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+\declaretheorem[
+  name=Rozwiązanko,
+  numbered=no,
+  style=rozw_moj,
+  shaded={bgcolor=black!10, rulecolor=red!30!black!20, rulewidth=1pt}
+]{solution}
+
+%%================================================================%%
+%% OBRAZKI && DIAGRAMY
+%%================================================================%%
+
+\usetikzlibrary{cd, patterns, patterns.meta}
+
+%%================================================================%%
+%% TŁO STRON
+%%================================================================%%
 
 \DeclareOption{back_on} {
   \AddToShipoutPictureBG{%
