@@ -51,6 +51,27 @@
 \DeclareMathOperator{\C}{\mathbb{C}}
 \DeclareMathOperator{\N}{\mathbb{N}}
 
+\newcommand{\set}[1]{\mathcal{#1}}
+
+
+\renewcommand{\@seccntformat}[1]{%
+  \ifcsname format#1\endcsname
+    \csname format#1\endcsname
+  \else
+    \csname the#1\endcsname\quad % default
+  \fi
+}
+\let\latexl@section\l@section
+\def\l@section#1#2{\begingroup\let\numberline\@gobble\latexl@section{#1}{#2}\endgroup}
+
+\RequirePackage{xparse}
+\NewDocumentCommand{\datesec}{o m m}{%
+    \renewcommand\thesection{#2}
+    \IfNoValueTF{#1}
+        {\section{#3}}
+        {\section[#1]{#3}}
+}
+
 %%================================================================%%
 %% KOLORKI
 %%================================================================%%

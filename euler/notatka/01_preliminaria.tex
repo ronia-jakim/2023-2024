@@ -1,0 +1,29 @@
+\section{Preliminaria}
+
+Zacznijmy od przyjżenia się, czym jest \buff{charakterystyka Eulera}, $\color{orange}\chi(X)$, dla poznanych już przestrzeni $X$:
+
+\begin{itemize}
+  \item dla przestrzeni skończonych mamy $\chi(X)=|X|$
+  \item jeśli zajmujemy się przestrzenią wektorową nad ciałem $K$, to $\chi(X)=\dim_K(X)$.
+\end{itemize}
+
+Poza tym, będziemy przyglądać się kompleksom symplikacyjnym (poniżej) oraz kompleksom łańcuchowym (czyli uogólnieniom przestrzeni wektorowej).
+
+\subsection{Kompleksy symplikacyjne}
+
+\begin{definition}[Kompleks symplikacyjny]
+  Rozważmy zbiór (wierzchołków) $V$. Zbiór $\set{K}\subseteq 2^V$ nazywamy \buff{kompleksem symplikacyjnym} na zbiorze $V$, jeśli
+
+  \begin{itemize}
+    \item dla każdego $v\in V$ mamy $\{v\}\in \set{K}$
+    \item dla każdych $B\subseteq A\subseteq V$ zachodzi $A\in\set{K}\implies B\in\set{K}$
+  \end{itemize}
+\end{definition}
+
+Będziemy głównie zajmować się $|V|<\infty$. Dla wygody często $v$ będziemy utożsamiać z $\{v\}$.
+
+Rodzinę $\set{L}\subseteq\set{K}$ nazywamy \acc{podkompleksem} kompleksu $\set{K}$, jeśli jest on kompleksem symplikacyjnym na zbiorze wierzchołków $V(\set{L})=\bigcup_{L\in\set{L}}L$.
+
+\begin{definition}[Sympleks]
+  Elementy $\sigma\in\set{K}$ oraz podkompleksy zawierające wszystkie niepuste podzbiory $\sigma$ są \buff{sympleksami}. Wymiar sympleksu to $\dim(\sigma)=|\sigma|-1$.
+\end{definition}
