@@ -1,0 +1,121 @@
+\section{Warunkowa wartość oczekiwana}
+
+\subsection{Prawdopodobieństwo warunkowe}
+
+Tak jak zwykle do tej pory, pracować będziemy na przestrzeni probabilistycznej $(\Omega,\set{F},\prob)$.
+
+Przypomnijmy definijcję \buff{prawdopodobieństwa warunkowego} z Rachunku Prawdopodobieństwa 1 (i z liceum). Dla zdarzenia $A\in\set{F}$ takiego, że $\prob{A}\in(0, 1)$ definiujemy prawdopodobieństwo warunkowe jako
+$$\prob{B\;|\;A}=\frac{\prob{A\cap B}}{\prob{A}}.$$
+
+Wartość ta informuje nas o zajściu $B$ wtedy, gdy jesteśmy pewni, że $A$ zaszło. Ale co, jeśli nasza wiedza dotycząca $A$ jest mniej pewna? To znaczy, \acc{co jeśli $\prob{A}=0$}? Dość naturalne wydaje się rozważenie zdarzenia przeciwnego i zsumowania obu prawdopodobieństw:
+$$\mathds{1}_A\prob{B\;|\;A}+\mathds{1}_{A^c}\prob{B\;|\;A^c}.$$
+Zauważmy od razu, że wyrażenie $\mathds{1}_A\prob{B\;|\;A}$ jest zmienną losową.
+
+W przypadku, gdy mamy dwa zbiory, $A_1,A_2\in\set{F}$, i chcemy zbadać $\prob{B\;|\;A_1\cap A_2}$ możemy powyższe rozumowanie rozszerzyć na wszystkie możliwe kombinacje $A_1$, $A_2$ i ich dopełnień:
+$$\mathds{1}_{A_1\cap A_2}\prob{B\;|\;A_1\cap A_2}+\mathds{1}_{A_1\cap A_2^c}\prob{B\;|\;A_1\cap A_2^c}+\mathds{1}_{A_1^c\cap A_2}\prob{B\;|\;A_1^c\cap A_2}+\mathds{1}_{A_1^c\cap A_2^c}\prob{B\;|\;A_1^c\cap A_2^c}.$$
+Działanie jak wyżej daje pełną informacje o każdym zdarzeniu z ciała generowanego przez zdarzenia $A_1$ i $A_2$. Nazywamy je \buff{rozbiciem} względem $\sigma$-ciała generowanego przez $A_1$ i $A_2$.
+
+Analogicznie możemy zdefiniować $\expected{X\;|\;A}$ dla całkowalnej zmiennej losowej $X$ (tzn. $\expected{|X|}<\infty$):
+$$\expected{X\;|\;A}=\int_\Omega X(\omega)\prob{d\omega\;|\;A}=\frac{1}{\prob{A}}\expected{X\mathds{1}_A},$$
+gdzie całka wyżej tłumaczy się na całkę po $X$ względem miary $\prob{B\;|\;A}$. 
+
+Uzasadnimy, dlaczego wzór wyżej jest zasadną definicją prawdopodobieństwa warunkowego przy ograniczonej wiedzy o zdarzeniu $A$.
+
+\subsection{Konstrukcja warunkowej wartości oczekiwanej}
+
+Zanim zdefiniujemy \buff{warunkową wartość oczekiwaną [wwo]} zmiennej losowej $X$, zaczniemy od przyjrzenia się bliżej motywacji i konstrukcji stojącej za tym pojęciem.
+
+Niech $Z$ będzie całkowalną zmienną losową przyjmującą przeliczalnie wiele wartości. Zdefiniujmy funkcję
+    $$h(z)=\begin{cases}\expected{X\;|\; Z=z}&\prob{Z=z}>0\\0&wpp\end{cases}$$
+    oraz zmienną losową $Y=h(Z)$. Weźmy dowolny $C\in Bor(\R)$ i zbadajmy $\expected{Y\mathds{1}_{\{Z\in C\}}}$. Zaczniemy od skorzystania z faktu, że $Z$ przyjmuje przeliczalnie wiele wartości, więc możemy zapisać sumę po nich wszystkich
+    \begin{align*}
+      \expected{Y\mathds{1}_{\{Z\in C\}}}&=\sum_{z\in C}h(z)\prob{Z=z}=\\
+                                         &\overset{\star}{=}\sum_{z\in C}\expected{X\mathds{1}_{\{Z=z\}}}\frac{1}{\prob{Z=z}}\prob{Z=z}=\\
+                                         &=\sum_{z\in C}\expected{X\mathds{1}_{\{Z=z\}}}=\\
+                                         &=\expected{\sum_{z\in C}X\mathds{1}_{\{Z=z\}}}=\\
+                                         &=\expected{X\mathds{1}_{\{Z\in C\}}}
+    \end{align*}
+    Równość $\star$ wynika ze sposobu w jaki zdefiniowaliśmy $\expected{X}{A}$ w poprzednim podrozdziale.
+
+    Zauważmy, że dowolne zdarzenie $F\in\sigma(Z)$ jest postaci $F=\{z\in C\}$ dla pewnego $C\in Bor(\R)$. Wyprowadziliśmy więc równość:
+    $$\expected{Y\mathds{1}_F}=\expected{X\mathds{1}_F}\quad F\in\sigma(Z).$$
+    Pozostaje zapytać, co z tej zależności wynika?
+
+    Dla $F=\Omega$ dostajemy
+    $$\expected{h(Z)}=\expected{Y}=\expected{X}.$$
+
+    \begin{dygresja}
+      W tym miejscu kuszące byłoby rozpisanie $Y=h(Z)$ wprost z definicji, tzn. $h(Z)=\expected{X}{Z=Z}$, ale jest to całkowitą brednią. W definicji funkcji $h$ podanej na samym początku przykładu $z$ jest teoretycznym punkcikiem, natomiast przy definiowaniu $Y=h(Z)$ ów $Z$ jest już obserwowaną przez nas, konkretną zmienną losową. W takim razie, bardziej poprawny byłby zapis
+    $$h(Z(\omega))=\expected{X}{\{\omega'\;:\;Z(\omega')=Z(\omega)\}}.$$
+    \end{dygresja}
+
+\begin{example}
+  \item Ze zbioru $\{1, 2,...,10\}$ losujemy w sposób jednostajny liczbę i oznaczamy ją jako $N$. W drugim losowaniu, również w sposób jednostajny, wybieramy liczbę ze zbioru $\{1,...,N\}$ i nazywamy ją $M$. Chcemy znaleźć średnią wartość liczby $M$. Oczywiście, nie jest trudno zrobić to metodami poznanymi na poprzednich przygodach probabilistycznych, jednak w tym przypadku użyjemy konstrukcji wyżej.
+
+    Funkcja $h$ będzie wyglądać następująco:
+    $$h(n)=\expected{M}{N=n}=\sum_{1\leq i\leq n}\frac{i}{n}=\frac{1}{n}\cdot\frac{n(n+1)}{2}=\frac{n+1}{2}$$
+    czyli $h(N)=\frac{N+1}{2}$.
+
+    Stosując notację jak wyżej, mamy
+    $$\begin{matrix}Z=N\\X=M\end{matrix}$$
+    czyli podstawiając do wzoru:
+    \begin{align*}
+      \expected{M}&=\expected{h(N)}=\expected{\frac{N+1}{2}}=\\
+                  &=\frac{1}{2}\left(\expected{N}+1\right)=\frac{1}{2}\left(\sum_{1\leq i\leq 10}\frac{i}{10}+1\right)=\\
+                  &=\frac{1}{2}\left(\frac{11}{2}+1\right)\frac{13}{4}
+    \end{align*}
+\end{example}
+
+Rozbicie jak wyżej można w elegancki sposób zamienić w bardziej abstrakcyjną definicję warunkowej wartości oczekiwanej.
+
+\begin{definition}\label{wwo-definicja}
+  Niech $\set{G}\subseteq \set{F}$ będzie $\sigma$-ciałem, a $X$ całkowalną zmienną losową. 
+
+  Zmienną losową $Y$ nazywamy \buff{warunkową wartością oczekiwaną} [wwo] $X$ pod warunkiem $\set{G}$, jeśli następujące warunki są spełnione:
+  \begin{itemize}[leftmargin=50pt]
+    \item[(W1)] $Y$ jest $\set{G}$-mierzalne
+    \item[(W2)] $(\forall\;G\in\set{G})\;\expected{X\mathds{1}_G}=\expected{Y\mathds{1}_G}$
+  \end{itemize}
+\end{definition}
+
+Nasuwają się teraz pytania o poprawność $Y$ zdefiniowanego jak wyżej. Czy zawsze istnieje i czy jest on jedyny?
+
+\begin{example}
+  \item Niech $\set{G}=\sigma(Z)$, gdzie $Z$ jest zmienną losową przyjmującą przeliczalnie wiele wartości. Wówczas $Y=h(Z)$ dla $h(z)=\expected{X}{Z=z}$ jest wwo $X$ względem $\set{G}$.
+\end{example}
+
+\begin{theorem}[poprawność wwo]\label{poprawnosc wwo}
+Dla $\sigma$-ciała $\set{G}\subseteq\set{F}$ i całkowalnej zmiennej losowej $X$ \buff{istnieje jedyna zmienna losowa $Y$} będąca wwo $X$ względem $\set{G}$. Będziemy ją oznaczać
+$$\expected{X}{\set{G}}=Y.$$
+
+    Jeśli $Y, Y'$ są wwo $X$ względem $\set{G}$, to $Y=Y'$ prawie wszędzie.
+\end{theorem}
+
+\begin{proof}
+  Dowód na następnym wykładzie.
+\end{proof}
+
+\begin{uwaga}
+  O wwo $X$ pod warunkiem $\set{G}$ należy myśleć jako o przybliżeniu $X$ na podstawie informacji zawartych w $\set{G}$ (więcej na wykładzie 3).
+\end{uwaga}
+
+\begin{example}
+\item Jeśli $X$ i $\set{G}$ są niezależne, to znaczy dla każdego $B\in Bor(\R)$ i dla każdego $G\in\set{G}$ zachodzi
+  $$\prob{X\in B, G}=\prob{X\in B}\prob{G},$$
+  to wtedy $\expected{X}{\set{G}}=\expected{X}=Y$.
+
+  Warunek (W1) jest oczywiście spełniony, bo $Y$ jest funkcją stałą, więc jego przeciwobraz to całość lub $\emptyset$ (czyli jest $\set{G}$-mierzalny). Warunek (W2) sprawdzamy dla dowolnego $G\in\set{G}$:
+  $$\expected{X\mathds{1}_G}=\expected{X}\expected{\mathds{1}_G}=\expected{\expected{X}\mathds{1}_G}=\expected{Y\mathds{1}_G}.$$
+
+\item Rozważmy pokrycie $\Omega$ rozłącznymi zbiorami $\{A_n\}_{n\in\N}$, gdzie $A_i\in\set{F}$ dla każdego $i$. Niech $\set{G}=\sigma(A_i\;:\;i\in\N)$ będzie $\sigma$-ciałem rozpinanym przez to pokrycie. Wówczas
+  $$\expected{X}{\set{G}}=\sum_{i\in\N}\mathds{1}_{A_i}\expected{X}{A_i}$$
+  Spełnianie pierwszego warunku jest oczywiste, bo mamy doczynienia z funkcją prostą. Warunek (W2) wystarczy sprawdzić dla atomów, czyli $G=A_i$, bo wszystkie zmienne losowe $\set{G}$-mierzalne są stałe na $A_i$.
+  \begin{align*}
+    \expected{\left[\sum\mathds{1}_{A_i}\expected{X}{A_i}\right]\mathds{1}_{A_j}}&=\expected{\expected{X}{A_j}\mathds{1}_{A_j}}=\\
+                                                                                 &=\expected{\mathds{1}_{A_j}\frac{\expected{X\mathds{1}_{A_j}}}{\prob{A_j}}}=\\
+                                                                                 &=\expected{\mathds{1}_{A_j}}\frac{\expected{X\mathds{1}_{A_j}}}{\prob{A_j}}=\expected{X\mathds{1}_{A_j}},
+  \end{align*}
+  gdyż $\expected{\mathds{1}_{A_j}}=\prob{A_j}$.
+\item Jeśli w przykładzie wyżej weźmiemy $A_1=A$, $A_2=A^c$ i $A_3=A_4=...=\emptyset$ oraz $\set{G}=\sigma(A)$, to dostajemy to samo co na samym początku tego wykładu:
+  $$\expected{X}{\set{G}}-\mathds{1}_A\expected{X}{A}+\mathds{1}_{A^c}\expected{X}{A^c}.$$
+\end{example}

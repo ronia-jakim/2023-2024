@@ -1,6 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{template}
 
+\RequirePackage{sectsty}
+
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
 
@@ -25,6 +27,8 @@
 
 \RequirePackage{tikz}
 
+\RequirePackage{enumitem}
+
 \RequirePackage{graphicx}
 \graphicspath{ {./} }
 
@@ -38,6 +42,8 @@
 
 \setlength{\parindent}{0pt}
 \RequirePackage[skip=7pt]{parskip}
+
+\RequirePackage{xparse}
 
 %%================================================================%%
 %% RZECZY PRZYDATNE
@@ -53,6 +59,21 @@
 
 \newcommand{\set}[1]{\mathcal{#1}}
 
+\DeclareDocumentCommand\prob{g g}{\mathbb{P}
+    \IfNoValueTF {#2}
+      {\IfNoValueF {#1} {\left[#1\right]}}
+      {\left[#1\;|\;#2\right]}
+}
+%\DeclareDocumentCommand\prob{g}{\mathbb{P}
+%    \IfNoValueF {#1} {\left[#1\right]}
+%}
+
+
+\DeclareDocumentCommand\expected{g g}{\mathbb{E}
+    \IfNoValueTF {#2}
+      {\IfNoValueF {#1} {\left[#1\right]}}
+      {\left[#1\;|\;#2\right]}
+}
 
 \renewcommand{\@seccntformat}[1]{%
   \ifcsname format#1\endcsname
@@ -64,7 +85,6 @@
 \let\latexl@section\l@section
 \def\l@section#1#2{\begingroup\let\numberline\@gobble\latexl@section{#1}{#2}\endgroup}
 
-\RequirePackage{xparse}
 \NewDocumentCommand{\datesec}{o m m}{%
     \renewcommand\thesection{#2}
     \IfNoValueTF{#1}
@@ -85,7 +105,6 @@
 \definecolor{blue}{HTML}{32769B}
 \definecolor{purple}{HTML}{8C7DA8}%{64557B}
 
-\RequirePackage{sectsty}
 
 \allsectionsfont{\color{purple}}
 
@@ -98,6 +117,46 @@
 
 \RequirePackage{amsthm}
 \RequirePackage{thmtools}
+
+%\renewcommand*{\proofname}{Dowód:$ $\newline}
+
+\renewenvironment{proof}{{\bfseries\color{orange} Dowód}$ $\newline}{
+  \begin{flushright}\includegraphics[width=30pt]{~/uni-stuff/2023-2024/piwo.png}\end{flushright}
+}
+
+\newtheoremstyle{twierdzonka}
+  {3pt}
+  {3pt}
+  {}
+  {}
+  {\color{orange}\large\bfseries}
+  {\newline}
+  {.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+\declaretheorem[
+  name=Twierdzenie,
+  numberwithin=section,
+  style=twierdzonka,
+  shaded={bgcolor=yellow!5!orange!5, rulecolor=orange!50!red!20, rulewidth=2pt, textwidth=\textwidth, margin=10pt}
+]{theorem}
+
+\newtheoremstyle{uwagi-lematy}
+  {3pt}
+  {3pt}
+  {}
+  {}
+  {\color{purple}\large\bfseries}
+  {\newline}
+  {.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+\declaretheorem[
+  name=Uwaga,
+  numberlike=theorem,
+  style=uwagi-lematy,
+  %shaded={bgcolor=purple!5!blue!5, rulecolor=blue!50!purple!20, rulewidth=2pt, textwidth=\textwidth, margin=10pt}
+]{uwaga}
 
 \newtheoremstyle{definicje}
   {3pt}
@@ -113,7 +172,7 @@
   name=Definicja,
   numberwithin=section,
   style=definicje,
-  shaded={bgcolor=yellow!10, rulecolor=green!30!black!20, rulewidth=1pt}
+  shaded={bgcolor=yellow!5, rulecolor=green!50!black!20, rulewidth=2pt, textwidth=\textwidth, margin=10pt}
 ]{definition}
 
 \newtheoremstyle{przykladziki}
@@ -127,7 +186,7 @@
   {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
 
 \declaretheorem[
-  name=Przykłady,
+  name=Przykład(y),
   numberwithin=section,
   style=przykladziki
 ]{ex}
@@ -140,6 +199,24 @@
     \end{ex}
 }
 
+
+\newtheoremstyle{dygresyja}
+  {3pt}
+  {3pt}
+  {\itshape}
+  {}
+  {\color{blue}\bfseries}
+  {\newline}
+  {.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+\declaretheorem[
+  name=Dygresja,
+  numbered=no,
+  style=dygresyja,
+  shaded={rulecolor=blue!30, rulewidth=1pt, bgcolor=blue!2, textwidth=\textwidth}
+  %shaded={bgcolor=blue!20, rulecolor=red!30!black!20, rulewidth=1pt}
+]{dygresja}
 
 \newtheoremstyle{zadanka}
   {3pt}
@@ -172,7 +249,7 @@
   name=Rozwiązanko,
   numbered=no,
   style=rozw_moj,
-  shaded={bgcolor=black!10, rulecolor=red!30!black!20, rulewidth=1pt}
+  shaded={bgcolor=black!10, rulecolor=red!30!black!20, rulewidth=1pt, textwidth=\textwidth}
 ]{solution}
 
 %%================================================================%%
@@ -189,7 +266,7 @@
   \AddToShipoutPictureBG{%
   \begin{tikzpicture}[remember picture, overlay]
 
-    \node[inner sep=0pt] at (current page.center) {\includegraphics{/home/marudka/uni-stuff/2023-2024/fajne_tlo.png}};
+    \node[inner sep=0pt] at (current page.center) {\includegraphics{~/uni-stuff/2023-2024/fajne_tlo.png}};
 
   \end{tikzpicture}%
   }
