@@ -116,6 +116,30 @@
   shaded={bgcolor=yellow!10, rulecolor=green!30!black!20, rulewidth=1pt}
 ]{definition}
 
+\newtheoremstyle{przykladziki}
+  {3pt}
+  {3pt}
+  {}
+  {}
+  {\color{green}\large\bfseries}
+  {\newline}
+  {.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+\declaretheorem[
+  name=Przykłady,
+  numberwithin=section,
+  style=przykladziki
+]{ex}
+
+\newenvironment{example}[1][ ]{
+    \begin{ex}[#1]{$ $\vspace{-25pt}\\}
+    \begin{enumerate}
+}{
+    \end{enumerate}
+    \end{ex}
+}
+
 
 \newtheoremstyle{zadanka}
   {3pt}

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1696439114 "main.tex" "main.pdf" "main" 1696439115 0
-  "../../template.sty" 1696438750 3971 9bdfc414f7f7596d311f346592443618 ""
+["pdflatex"] 1696494248 "main.tex" "main.pdf" "main" 1696494249 0
+  "../../template.sty" 1696493562 4361 7cbed572a136e7f54b82f877f8025f4e ""
   "/usr/share/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc" 1689853683 3021 665788e9679767ade2a71155215d25e0 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1689853683 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/sourcesanspro/SourceSansPro-Bold-tlf-t1--base.tfm" 1689853683 1648 77a748afe0a406be1ac3f29e1cd365cb ""
@@ -29,6 +29,7 @@
   "/usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb" 1689853683 336785 795f953d37ac49dd5bce485becd006cc ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1689853683 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1689853683 36741 fa121aac0049305630cf160b86157ee4 ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1689853683 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1689853683 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb" 1689853683 156175 01c1042bd093869814db115799492489 ""
   "/usr/share/texmf-dist/fonts/vf/adobe/sourcesanspro/SourceSansPro-Bold-tlf-t1.vf" 1689853683 1728 b87be699681a04d54541fcaa47fe285c ""
@@ -186,10 +187,10 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1689853683 40684 9b9ec0b4288972636ff6a3b9c4238efc ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1694260517 4623317 a14e403ea671a9bc12f23e543c6a500e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1694260449 8204214 970c5842e707b5e5d3ac77ac394d7e44 ""
-  "01_preliminaria.tex" 1696439114 1424 6b2da3885acf2d4104457c82edf5f06a ""
-  "main.aux" 1696439115 634 ea33a5fd8fd69fc6dbc9f439762ded7a "pdflatex"
+  "01_preliminaria.tex" 1696494246 2188 ff98b480acba58307cddb646baad34f1 ""
+  "main.aux" 1696494249 807 a2fc09bef85fa776643143a622f7dda9 "pdflatex"
   "main.tex" 1696350350 272 821ccd45fa26ae156d341ab63cc0adb2 ""
-  "main.toc" 1696439115 134 e8cf99ffa3c2cffa7e567edc29950433 "pdflatex"
+  "main.toc" 1696494249 134 e8cf99ffa3c2cffa7e567edc29950433 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.9)  4 OCT 2023 19:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.9)  5 OCT 2023 10:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -700,7 +700,8 @@ Package: shadethm 1999/11/23
 \shaderightshift=\skip66
 \shadesavebox=\box67
 )
-\c@problem=\count306
+\c@ex=\count306
+\c@problem=\count307
  (/usr/share/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymatrix.code.tex
 File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryquotes.code.tex
@@ -807,16 +808,16 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count307
+\scratchcounter=\count308
 \scratchdimen=\dimen283
 \scratchbox=\box68
-\nofMPsegments=\count308
-\nofMParguments=\count309
+\nofMPsegments=\count309
+\nofMParguments=\count310
 \everyMPshowfont=\toks54
-\MPscratchCnt=\count310
+\MPscratchCnt=\count311
 \MPscratchDim=\dimen284
-\MPnumerator=\count311
-\makeMPintoPDFobject=\count312
+\MPnumerator=\count312
+\makeMPintoPDFobject=\count313
 \everyMPtoPDFconversion=\toks55
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -916,24 +917,29 @@ Overfull \hbox (2.0pt too wide) in paragraph at lines 29--29
 [][] 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+
+ []
+
 ) [3] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21544 strings out of 476025
- 426372 string characters out of 5796533
- 1858388 words of memory out of 5000000
- 41448 multiletter control sequences out of 15000+600000
- 643384 words of font info for 142 fonts, out of 8000000 for 9000
+ 21581 strings out of 476025
+ 427028 string characters out of 5796533
+ 1862388 words of memory out of 5000000
+ 41469 multiletter control sequences out of 15000+600000
+ 644723 words of font info for 152 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,7n,118p,1001b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Bold.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-It.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb>
-Output written on main.pdf (3 pages, 198492 bytes).
+</usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Bold.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-It.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb>
+Output written on main.pdf (3 pages, 210174 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
+ 58 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  49165 words of extra memory for PDF output out of 51595 (max. 10000000)
 
