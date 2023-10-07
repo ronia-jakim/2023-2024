@@ -119,3 +119,35 @@ $$\expected{X}{\set{G}}=Y.$$
 \item Jeśli w przykładzie wyżej weźmiemy $A_1=A$, $A_2=A^c$ i $A_3=A_4=...=\emptyset$ oraz $\set{G}=\sigma(A)$, to dostajemy to samo co na samym początku tego wykładu:
   $$\expected{X}{\set{G}}-\mathds{1}_A\expected{X}{A}+\mathds{1}_{A^c}\expected{X}{A^c}.$$
 \end{example}
+
+\subsection{Prawdopodobieństwo warunkowe}
+
+\begin{definition}[prawdopodobieństwo warunkowe]\label{prawdopodobienstwo warunkowe}
+  Dla $\sigma$-ciała $\set{G}\subseteq\set{F}$ definiujemy \buff{prawdopodobieństwo warunkowe} pod warunkiem $\set{G}$ jako
+  $$\prob{A}{\set{G}}=\expected{\mathds{1}_A}{\set{G}}$$
+\end{definition}
+
+Prawdopodobieństwo $\prob{A}{\set{G}}$ jest zmienną losową taką, że:
+\begin{itemize}
+  \item $\prob{A}{\set{G}}$ jest $\set{G}$-mierzalna (ze względu na wwo w definicji)
+  \item $\expected{\prob{A}{\set{G}}\mathds{1}_G}=\expected{\mathds{1}_A\mathds{1}_G}=\prob{A\cap G}$
+\end{itemize}
+
+\begin{example}
+\item Niech $E_1,E_2$ będą niezależnymi zmiennymi losowymi z rozkładem $exp(1)$. Chcemy się zastanowić jak wygląda prawdopodobieństwo
+  $$\prob{E_1+E_2>t}{\sigma(E_1)}$$
+  dla $t>0$. Ponieważ liczymy to prawdopodobieństwo względem $\sigma(E_1)$, to tak naprawdę wszystkie informacje o $E_1$ mamy w ręku, gdyż tę zmienną obserwujemy. Czyli $E_1$ możemy w takim przypadku potraktować jako zwykłą stałą i zgadnąć, że
+  $$\prob{E_1+E_2>t}{\sigma(E_1)}=e^{-(t-E_1)}.$$
+
+  Dla pewności, przerachujemy cały ten przykład wprost z definicji, żeby przekonać się że strzał był poprawny.
+
+  Niech $G\in\sigma(E_1)$, wtedy zgodnie z wcześniejszą obserwacją istnieje pewne $C\in Bor(\R)$ takie, że $G$ jest postaci $G=\{E_1\in C\}$. Policzymy $\expected{\prob{\{E_1+E_2>t\}}{\sigma(E_1)}}$ gdyż jak wyżej zauważyliśmy, $\prob{A}{\set{G}}$ jest zmienną losową. Mamy więc
+  \begin{align*}
+    \expected{\prob{E_1+E_2>t}{\sigma(E_1)}\mathds{1}_G}&\overset{\star}{=}\prob{\{E_1+E_2>t\}\cap G}=\\
+                                                        &=\prob{\{E_1+E_2>t\}\cap\{E_1\in C\}}=\\
+                                                        &=\iint\limits_{\substack{C\times\R_+\\x+y>t}}e^{-x}e^{-y}dxdy=\\
+                                                        &=\int_Ce^{-x}\underbrace{\left[\int_{x+y>t}e^{-y}dy\right]}_{\star\star}dx=\\
+                                                        &=\int_Ce^{-x}e^{-(t-x)_+}dx=\expected{e^{-(t-E_1)_+}\mathds{1}_{\{E_1\in C\}}}=\expected{e^{-(t-E_1)_+}\mathds{1}_G}
+  \end{align*}
+  Równość $\star$ wynika z uwagi pod definicją prawdopodobieństwa warunkowego. Całka $\star\star$ jest równa $1$ gdy $x>t$ (gdyż wtedy dla każdego $y$ mamy $x+y>t$), natomiast dla $x\leq t$ wynosi ona $e^{-(t-x)}$.
+\end{example}
