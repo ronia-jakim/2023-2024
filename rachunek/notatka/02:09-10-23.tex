@@ -1,0 +1,56 @@
+\section{Własności WWO}
+
+Na tym wykładzie zajmiemy się dowodzeniem własności wwo, w tym pokażemy jej istnienie i jedyność.
+
+\subsection{Istnienie i jedyność}
+
+\begin{lemma}[WWO jest całkowalna]
+  To znaczy, że mając całkowalną zmienną losową $X$ oraz $\sigma$-ciało $\set{G}\subseteq\set{F}$, to zachodzi $\expected{\left|\expected{X}{\set{G}}\right|}<\infty$.
+\end{lemma}
+
+\begin{proof}
+  Rozważmy zbiór
+  $$A=\{\omega\;:\;\expected{X}{\set{G}}(\omega)>0\}=\{\omega\;:\;\expected{X}{\set{G}}\in(0, \infty)\}=\left[\expected{X}{\set{G}}\right]^{-1}((0,\infty))$$
+  jako przeciwobraz zbioru $(0,\infty)\in Bor(\R)$ przez funkcję $\set{G}$-mierzalną $\expected{X}{\set{G}}$ wiemy, że $A\in \set{G}$. Ponieważ $\expected{X}{\set{G}}$ jest wwo $X$ pod warunkiem $\set{G}$, to musi warunek (W2): $$0\leq\expected{\expected{X}{\set{G}}\mathds{1}_A}=\expected{X\mathds{1}_A}\leq\expected{|X|\mathds{1}_A}<\infty$$
+  bo $X$ jest całkowalna.
+
+  Analogicznie postępujemy dla zbioru $A^c$:
+  $$0\leq\expected{-\expected{X}{\set{G}}\mathds{1}_A}=\expected{-X\mathds{1}_{A^c}}\leq\expected{|X|\mathds{1}_{A^c}}<\infty.$$
+  
+  Zauważmy, że 
+  $$\left|
+    \expected{X}{\set{G}}
+    \right| = \expected{X}{\set{G}}\mathds{1}_A-\expected{X}{\set{G}}\mathds{1}_{A^c}$$
+  Dodając obie te nierówności (i korzystając z liniowości wartości oczekiwanej) uzyskujemy
+  $$0\leq \expected{\expected{X}{\set{G}}\mathds{1}_A}-\expected{\expected{X}{\set{G}}\mathds{1}_{A^c}}=\expected{\expected{X}{\set{G}}\mathds{1}_A-\expected{X}{\set{G}}\mathds{1}_{A^c}}=\expected{\left|\expected{X}{\set{G}}\right|}<\infty$$
+\end{proof}
+
+\begin{lemma}[jedyność p.w.]
+  Niech $\set{G}\subseteq{F}$ będzie $\sigma$-ciałem. Jeśli $Y$ i $Y'$ są obie wersjami $\expected{X}{\set{G}}$, to $Y=Y'$ p.w..
+\end{lemma}
+
+\begin{proof}
+  Ustalmy $\varepsilon>0$ i rozważmy zdarzenie
+  $$A_\varepsilon=\{Y-Y'>\varepsilon\}\in \set{G}$$
+  które jest $\set{G}$-mierzalne, bo $Y$ i $Y'$ takie są.
+
+  \begin{align*}
+    \varepsilon\prob{A_\varepsilon}+\expected{Y'\mathds{1}_{A_\varepsilon}}&=\expected{\varepsilon\mathds{1}_{A_\varepsilon}}+\expected{Y'\mathds{1}_{A_\varepsilon}}=\\
+      &=\expected{(\varepsilon+Y')\mathds{1}_{A_\varepsilon}}\leq\\
+      &\overset{\star}{\leq}\expected{Y\mathds{1}_{A_\varepsilon}}\overset{(W2)}{=}\expected{X\mathds{1}_{A_\varepsilon}}=\\
+      &=\expected{Y'\mathds{1}_{A_\varepsilon}}
+  \end{align*}
+  gdzie $\star$ wynika z tego, że na zbiorze $A_\varepsilon$ $Y>Y'+\varepsilon$.
+
+  Dostajemy więc, że
+  $$\varepsilon\prob{A_\varepsilon}+\expected{Y'\mathds{1}_{A_\varepsilon}}\leq\expected{Y'\mathds{1}_{A_\varepsilon}}$$
+  co po przeniesieniu $\expected$ na jedną stronę daje
+  $$\varepsilon\prob{A_\varepsilon}\leq0$$
+  a ponieważ $\varepsilon>0$, to musi być $\prob{A_\varepsilon}=0$.
+
+  Wówczas 
+$$\prob{Y>Y'}=\underbrace{\prob{(\exists\;n)\;Y\geq Y'+\frac{1}{n}}}_{\prob{A_\frac{1}{n}}}=\prob{\bigcup A_\frac{1}{n}}=\lim\prob{A_{\frac{1}{n}}}=0$$
+  ponieważ $A_\frac{1}{n}\subseteq A_{\frac{1}{n+1}}$.
+
+  Zamieniając miejscami $Y$ i $Y'$ w dowodzie dostaniemy $\prob{Y'>Y}=0$, czyli obie możliwości są miary zero.
+\end{proof}
