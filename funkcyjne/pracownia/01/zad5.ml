@@ -9,4 +9,5 @@ let rec fibb n = if n <= 1 then 1 else fibb (n-1) + fibb (n-2);;
 let _ =
   List.iter (Printf.printf "%i ") (tabulate fibb 9);
   print_string "\n";
-  List.iter (Printf.printf "%i ") (tabulate fibb ~a:3 9)
+  List.iter (Printf.printf "%i ") (tabulate fibb ~a:3 9);
+  print_string "Dupa\n"
