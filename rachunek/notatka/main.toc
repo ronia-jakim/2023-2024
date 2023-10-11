@@ -1,6 +1,8 @@
-\contentsline {section}{\numberline {1}Warunkowa wartość oczekiwana}{3}{section.1}%
+\contentsline {section}{\numberline {1}06.10.23 Warunkowa wartość oczekiwana}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Prawdopodobieństwo warunkowe}{3}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Konstrukcja warunkowej wartości oczekiwanej}{3}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Prawdopodobieństwo warunkowe}{6}{subsection.1.3}%
-\contentsline {section}{\numberline {2}Własności WWO}{8}{section.2}%
+\contentsline {section}{\numberline {2}09.10.23 Własności WWO}{8}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Istnienie i jedyność}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Własności wwo}{10}{subsection.2.2}%
+\contentsfinish 

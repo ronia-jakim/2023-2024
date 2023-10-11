@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1696929337 "main.tex" "main.pdf" "main" 1696929338 0
+["pdflatex"] 1697055983 "main.tex" "main.pdf" "main" 1697055985 0
   "../../template.sty" 1696928450 6420 355a65e052de5a6beabdee61c494d1e9 ""
   "/home/marudka/uni-stuff/2023-2024/fajne_tlo.png" 1695841696 296101 0ceed1b06fdd42d9a3ac6c472ba9dd24 ""
   "/home/marudka/uni-stuff/2023-2024/piwo.png" 1696836643 168204 c9f309ceaff8e4989dde42ab205b1ccb ""
@@ -39,6 +39,7 @@
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1689853683 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1689853683 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1689853683 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1689853683 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1689853683 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/share/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb" 1689853683 17091 559f388d601cc54898d17f9de70e2e87 ""
   "/usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb" 1689853683 156175 01c1042bd093869814db115799492489 ""
@@ -217,6 +218,8 @@
   "/usr/share/texmf-dist/tex/latex/thmtools/thm-restate.sty" 1689853683 8051 95aa880802fb0d403e963ac0f9a55d9a ""
   "/usr/share/texmf-dist/tex/latex/thmtools/thmdef-shaded.sty" 1689853683 2287 1ea678bc5fd2f4a20ca54b3e5fa52d3a ""
   "/usr/share/texmf-dist/tex/latex/thmtools/thmtools.sty" 1689853683 1913 a44407bb22a93490c0d0c33535360626 ""
+  "/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty" 1689853683 48833 3b7b4cfab1a3d15596bfd3772a77ab65 ""
+  "/usr/share/texmf-dist/tex/latex/titlesec/titletoc.sty" 1689853683 16869 7ce4779f4c701438f50d52c5972cef02 ""
   "/usr/share/texmf-dist/tex/latex/tools/calc.sty" 1689853683 10214 de3e21cfc0eccc98ca7f8dac0ef263d2 ""
   "/usr/share/texmf-dist/tex/latex/url/url.sty" 1689853683 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texmf-dist/tex/latex/wasysym/uwasy.fd" 1689853683 2237 c50bf1089c7a46a0d4e9a119e980be4e ""
@@ -226,12 +229,12 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1689853683 40684 9b9ec0b4288972636ff6a3b9c4238efc ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1694260517 4623317 a14e403ea671a9bc12f23e543c6a500e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1694260449 8204214 970c5842e707b5e5d3ac77ac394d7e44 ""
-  "01:06-10-23.tex" 1696836643 11177 fcb7fe588c0ac05154117c6c76b7c2d9 ""
-  "02:09-10-23.tex" 1696929336 3173 3166b69285c571bd3d73639fb8fcb991 ""
-  "main.aux" 1696929338 3872 aae62f758171dd74311b789c2a0962ba "pdflatex"
-  "main.out" 1696929338 1171 552be8ac71f970cd7b13219f08394a0d "pdflatex"
-  "main.tex" 1696927332 371 80bdc1d70fc2f0db653452c1c7cdee13 ""
-  "main.toc" 1696929338 545 5440e13338a2cc1b450956e266e02359 "pdflatex"
+  "01:06-10-23.tex" 1697055418 11186 fb90557874a7d6cc42d6a116e7cd8e93 ""
+  "02:09-10-23.tex" 1697055983 6201 94908357536f647c5dd7b7eb0b837790 ""
+  "main.aux" 1697055985 4753 2f8055debbd1d217337140483b6d25b1 "pdflatex"
+  "main.out" 1697055985 1398 73a60f34a6b3a9b4495dac1b36605d41 "pdflatex"
+  "main.tex" 1697055469 819 235e791c9aae0088bb98cf592f13f5bc ""
+  "main.toc" 1697055985 662 39c339abc8d641ad44714ab0b91114cf "pdflatex"
   (generated)
   "main.aux"
   "main.log"

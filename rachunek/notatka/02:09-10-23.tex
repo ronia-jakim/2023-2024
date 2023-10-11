@@ -1,4 +1,4 @@
-\section{Własności WWO}
+\section{09.10.23 Własności WWO}
 
 Na tym wykładzie zajmiemy się dowodzeniem własności wwo, w tym pokażemy jej istnienie i jedyność.
 
@@ -54,3 +54,44 @@ $$\prob{Y>Y'}=\underbrace{\prob{(\exists\;n)\;Y\geq Y'+\frac{1}{n}}}_{\prob{A_\f
 
   Zamieniając miejscami $Y$ i $Y'$ w dowodzie dostaniemy $\prob{Y'>Y}=0$, czyli obie możliwości są miary zero.
 \end{proof}
+
+\begin{theorem}[o istnieniu WWO]\label{istnienie wwo}
+  Niech $\set{G}\subseteq\set{F}$ będzie $\sigma$-ciałem, a $X$ jest całkowalną zmienną losową. Istnieje zmienna losowa $Y$ spełniająca oba postulaty wwo $X$ pod warunkiem $\set{G}$.
+\end{theorem}
+
+Jest to Twierdzenie \ref{poprawnosc wwo} z poprzedniego wykładu.
+
+Zanim jednak przejdziemy do dowodu \ref{istnienie wwo}, przypomnijmy \acc{twierdzenie Radona-Nikodyma} z teorii miary:
+\begin{dygresja}[twierdzenie Radona-Nikodyma]
+  Niech $\mu$ i $\nu$ będą $\sigma$-miarami na przestrzeni $(\Omega,\set{G})$ takimi, że $\nu$ jest \acc{absolutnie ciągła} względem $\mu$ [$\nu\ll\mu$], tzn $\mu(A)=0\implies\nu(A)=0$. Wówczas istnieje $\set{G}$-mierzalna funkcja $f:\Omega\to\R$ taka, że
+  $$\nu(A)=\int_Af(x)\mu(dx)$$
+\end{dygresja}
+Funkcję $f$ jak wyżej często oznaczamy $f=\frac{d\nu}{d\mu}$ i nazywamy \acc{pochodną Radona-Nikodyma}.
+
+\begin{proof}
+  Wracając do dowodu twierdzenia \ref{istnienie wwo}. Najpierw pokażemy prostszy przykład, gdy $X\geq0$, a potem uogólnimy go do dowolnego $X$.
+
+  Załóżmy, że $X\geq0$ p.w. Wtedy możemy rozważyć miary $\mu=\prob\restriction\set{G}$ oraz $\nu(A)=\expected{X\mathds{1}_A}$. Od razu widać, że w takim ułożeniu $\nu\ll\mu$, więc na mocy twierdzenia Radona-Nikodyma istnieje $f$ $\set{G}$-mierzalna taka, że
+  $$\expected{f\mathds{1}_A}=\int_Af(\omega)\mu(d\omega)=\nu(A)-\expected{X\mathds{1}_A}.$$
+  Funkcja $f$ spełnia (W1) z definicji wwo, bo jest $\set{G}$-mierzalna, a (W2) jest potwierdzone przez rachunek wyżej. Czyli $f$ jest wwo $X$ pod warunkiem $\set{G}$.
+
+  Niech teraz $X$ będzie dowolną zmienną losową. Możemy ją rozbić jako 
+  $$X=X^+-X^-,$$ 
+  gdzie $X^+=\max(0,X)\geq0$ oraz $X^-=-\min(0,X)\geq0$. Do obu tych zmiennych możemy zastosować pierwszą część dowodu, by dostać zmienne $\expected{X^+}{\set{G}}$ oraz $\expected{X^-}{\set{G}}$. Wystarczy zauważyć, że dzięki liniowości $\expected$ możemy w prosty sposób pokazać
+  $$\expected{X}{\set{G}}=\expected{X^+}{\set{G}}-\expected{X^-}{\set{G}}$$
+\end{proof}
+
+\subsection{Własności wwo}
+
+\begin{theorem}[o arytmetyce wwo]
+  Niech $\set{G},\set{G}_1,\set{G}_2\subseteq\set{F}$ będą $\sigma$-ciałami, a $X,X_1,X_2$ całkowalnymi zmiennymi losowymi
+  \begin{enumerate}[topsep=8pt, parsep=8pt]
+    \item $\expected{\expected{X}{\set{G}}}=\expected{X}$
+    \item Jeśli $X\geq0$, to również $\expected{X}{\set{G}}\geq0$
+    \item $\expected{aX_1+bX_2}{\set{G}}=a\expected{X_1}{\set{G}}+b\expected{X_2}{\set{G}}$
+    \item $\left| \expected{X}{\set{G}} \right| \leq \expected{\left| X\right| }{\set{G}}$
+    \item Jeśli $\set{G}_1\subseteq\set{G}_2$, to wówczas
+      $$\expected{\expected{X}{\set{G}_1}}{\set{G}_2}=\expected{\expected{X}{\set{G}_2}}{\set{G}_1}=\expected{X}{\set{G}_1}$$
+    \item Jeśli $Y$ jest $\set{G}$-mierzalna i $XY$ jest całkowalna, to $\expected{XY}{\set{G}}=Y\expected{X}{\set{G}}$, czyli $Y$ możemy traktować jako stałą.
+  \end{enumerate}
+\end{theorem}

@@ -8,6 +8,14 @@
 
 \renewcommand{\contentsname}{Spis rozmaitości treściowalnych}
 
+\usepackage{titlesec}
+\usepackage[dotinlabels]{titletoc}
+\titleformat{\section}[hang]{\color{purple}\sffamily\bfseries\Large}{\color{purple}Wykład }{0.4em}{}
+\titlespacing*{\section}{0pt}{2\baselineskip}{1.25\baselineskip}
+\titleformat{\subsection}[hang]{\color{purple}\sffamily\bfseries\large}{\color{purple}\thesubsection}{0.4em}{}
+\titlespacing*{\subsection}{2em}{1\baselineskip}{1\baselineskip}
+%\dottedcontents{section}[3.8em]{}{2.3em}{1pc}
+
 \begin{document}
 \maketitle\thispagestyle{empty}
 \newpage
