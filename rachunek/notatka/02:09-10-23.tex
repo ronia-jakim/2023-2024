@@ -1,4 +1,4 @@
-\section{09.10.23 Własności WWO}
+\section{09.10.23 : Własności WWO}
 
 Na tym wykładzie zajmiemy się dowodzeniem własności wwo, w tym pokażemy jej istnienie i jedyność.
 
@@ -83,7 +83,7 @@ Funkcję $f$ jak wyżej często oznaczamy $f=\frac{d\nu}{d\mu}$ i nazywamy \acc{
 
 \subsection{Własności wwo}
 
-\begin{theorem}[o arytmetyce wwo]
+\begin{theorem}[o arytmetyce wwo]\label{o arytmetyce wwo}
   Niech $\set{G},\set{G}_1,\set{G}_2\subseteq\set{F}$ będą $\sigma$-ciałami, a $X,X_1,X_2$ całkowalnymi zmiennymi losowymi
   \begin{enumerate}[topsep=8pt, parsep=8pt]
     \item $\expected{\expected{X}{\set{G}}}=\expected{X}$
@@ -92,6 +92,137 @@ Funkcję $f$ jak wyżej często oznaczamy $f=\frac{d\nu}{d\mu}$ i nazywamy \acc{
     \item $\left| \expected{X}{\set{G}} \right| \leq \expected{\left| X\right| }{\set{G}}$
     \item Jeśli $\set{G}_1\subseteq\set{G}_2$, to wówczas
       $$\expected{\expected{X}{\set{G}_1}}{\set{G}_2}=\expected{\expected{X}{\set{G}_2}}{\set{G}_1}=\expected{X}{\set{G}_1}$$
+      To znaczy, że mając informacje o $X$ w dwóch zawartych w sobie ciałach, to mniejsze zawsze wygrywa.
     \item Jeśli $Y$ jest $\set{G}$-mierzalna i $XY$ jest całkowalna, to $\expected{XY}{\set{G}}=Y\expected{X}{\set{G}}$, czyli $Y$ możemy traktować jako stałą.
   \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Wystarczy wstawić $G=\Omega$ w warunek (W2):
+      $$\expected{\expected{X}{\set{G}}}=\expected{\expected{X}{\set{G}}\mathds{1}_\Omega}\overset{(W2)}{=}
+      \expected{X\mathds{1}_\Omega}=\expected{X}$$
+    \item Wynika z dowodu twierdzenia o istnieniu, bo $\frac{d\nu}{d\mu}=\expected{X}{\set{G}}$. Gdyby $A=\{\omega\;:\;\expected{X}{\set{G}}<0\}$, to wówczas
+      $$\expected{X\mathds{1}_A}=\nu(A)=\int_A\expected{X}{\set{G}}(\omega)\mu(d\omega)=\expected{\expected{X}{\set{G}}\mathds{1}_A}<0$$
+        ale przecież $X\geq0\implies\expected{X\mathds{1}_A}\geq0$, więc $A=\emptyset$.
+      \item Można to zrobić na dwa sposoby: licząc wszystko pokolei, albo można sprawdzić, czy $Y=a\expected{X_1}{\set{G}}+b\expected{X_2}{\set{G}}$ spełnia warunki wwo tej samej zmiennej co $\expected{aX_1+bX_2}{\set{G}}$. Wówczas obie te zmienne są równe prawie wszędzie.
+
+        Warunek $\set{G}$-mierzalności dla $Y$ jest spełniony, bo $Y$ jest kombinacją liniową dwóch funkcji $\set{G}$-mierzalnych. Wystarczy więc sprawdzić warunek (W2). W tym celu ustalmy $A\in\set{G}$.
+        \begin{align*}
+          \expected{Y\mathds{1}_A}&\overset{\star}{=}a\expected{\expected{X_1}{\set{G}}\mathds{1}_A}+b\expected{\expected{X_2}{\set{G}}\mathds{1}_A}=\\
+                                  &=a\expected{X_1\mathds{1}_A}+b\expected{X_2\mathds{1}_A}=\\
+                                  &=\expected{(aX_1+bX_2)\mathds{1}_A}=\expected{\expected{aX_1+bX_2}{\set{G}}\mathds{1}_A}
+        \end{align*}
+      \item Wiemy, że $-|X|\leq X\leq|X|$. Korzystając z punktu 2 dostajemy
+        $$0\leq X+|X|\implies 0\leq \expected{|X|}{\set{G}}+\expected{X}{\set{G}}\implies -\expected{|X|}{\set{G}}\leq\expected{X}{\set{G}}$$
+        $$0\leq |X|-X\implies 0\leq \expected{|X|}{\set{G}}-\expected{X}{\set{G}}\implies \expected{X}{\set{G}}\leq\expected{|X|}{\set{G}}$$
+        Po złożeniu tych dwóch nierówności:
+        $$-\expected{|X|}{\set{G}}\leq\expected{X}{\set{G}}\leq\expected{|X|}{\set{G}}$$
+        wiemy, że $-|\expected{X}{\set{G}}|\leq\expected{X}{\set{G}}\leq|\expected{X}{\set{G}}|$, więc musi być
+        $$|\expected{X}{\set{G}}|\leq\expected{|X|}{\set{G}}.$$
+      \item Zaczniemy od sprawdzenia, że $\expected{\expected{X}{\set{G}_2}}{\set{G}_1}=\expected{X}{\set{G}_1}$. Wybierzmy $A\in\set{G}_1\subseteq\set{G}_2$:
+        $$\expected{\expected{X}{\set{G}_1}\mathds{1}_A}=\expected{X\mathds{1}_A}=\expected{\expected{X}{\set{G}_2}\mathds{1}_A}$$
+        co potwierdza warunek (W2). $\set{G}_1$-mierzalność $\expected{X}{\set{G}_2}$ jest oczywista, gdyż $\set{G}_1\subseteq\set{G}_2$, $\expected{X}{\set{G}_2}$ jest $\set{G}_2$-mierzalne, a po obcięciu do $\set{G}_1$ dostajemy funkcję $\set{G}_1$-mierzalną.
+
+        Pozostaje nam sprawdzić czym jest $\expected{\expected{X}{\set{G}_1}}{\set{G}_2}$. Roboczo nazwiemy $Y=\expected{X}{\set{G}_1}$. Jest to funkcja $\set{G}_1$-mierzalna, ale dzięki $\set{G}_1\subseteq\set{G}_2$ mamy też $\set{G}_2$-mierzalność. W takim razie (tak jak w jednym z przykładów z pierwszego wykładu) $\expected{Y}{\set{G}_2}=Y$. Pisząc bez używania litery $Y$ dostajemy
+        $$\expected{\expected{X}{\set{G}_1}}{\set{G}_2}=\expected{X}{\set{G}_1}$$
+    \item Ćwiczenie, a poniżej moja próba.
+
+      Jeśli $Y$ jest $\set{G}$-mierzalne, to $Y\expected{X}{\set{G}}$ też takie jest jako iloczyn dwóch funkcji $\set{G}$-mierzalnych. Pozostaje sprawdzić warunek (W2).
+
+      Zacznijmy od $Y=\sum a_i\mathds{1}_{A_i}$ dla $A_i\in\set{G}$, czyli od funkcji prostej. Wybierając $A\in\set{G}$ możemy ograniczyć się do zbiorów $A_i$, gdyż są one rozłączne i na dowolnym innym zbiorze $Y=0$. Mamy więc
+      \begin{align*}
+        \expected{\expected{XY}{\set{G}}\mathds{1}_{A_i}}&\overset{(W2)}{=}\expected{XY\mathds{1}_{A_i}}=\expected{a_iX\mathds{1}_{A_i}}=a_i\expected{X\mathds{1}_{A_i}}=\\
+                                                          &=a_i\expected{\expected{X}{\set{G}}\mathds{1}_{A_i}}=\expected{(a_i\expected{X}{\set{G}})\mathds{1}_{A_i}}=\\
+                                                          &=\expected{(Y\expected{X}{\set{G}})\mathds{1}_{A_i}}
+      \end{align*}
+      Czyli $\expected{XY}{\set{G}}=Y\expected{X}{\set{G}}$ dla przypadku gdy $Y$ jest funkcją prostą.
+
+      Jeśli teraz $Y$ jest dowolną nieujemną funkcją mierzalną, to istnieje ciąg funkcji prostych
+      $$s_1\leq s_2\leq...\leq s_n\leq...\quad \lim s_i=Y$$
+      Wówczas dla dowolnego $A\in\set{G}$
+      \begin{align*}
+        \expected{\expected{XY}\mathds{1}_A}&=\expected{XY\mathds{1}_A}=\expected{X\lim s_i\mathds{1}_A}\overset{\star}{=}\lim\expected{X s_i\mathds{1}_A}=\\
+                                            &\overset{\star\star}{=}\lim \expected{s_i\expected{X}{\set{G}}\mathds{1}_A}=\expected{\lim s_i\expected{X}{\set{G}}\mathds{1}_A}=\\
+                                            &=\expected{Y\expected{X}{\set{G}}\mathds{1}_A}
+      \end{align*}
+      $\star$ można zrobić na mocy twierdzenia o monotoniczności ciągu $s_i$ dla zwykłej $\expected$, natomiast $\star\star$ stosuje poprzedni przypadek $Y$.
+
+      Pozostaje przypadek, gdy $Y$ jest dowolną $\set{G}$-mierzalną zmienną losową. Wówczas możemy rozbić $Y=Y^+-Y^-$ i skorzystać z liniowości wwo:
+      $$\expected{XY}{\set{G}}=\expected{XY^+}{\set{G}}-\expected{XY^-}{\set{G}}=Y^+\expected{X}{\set{G}}-Y^-\expected{X}{\set{G}}=Y\expected{X}{\set{G}}$$
+  \end{enumerate}
+\end{proof}
+
+\begin{theorem}[o zbieżności i ciągłości]
+  Niech $\set{G}\subseteq\set{F}$ będzie $\sigma$-ciałem, a $X,X_1, X_2,...$ będzie ciągiem całkowalnych zmiennych losowych. Wówczas
+  \begin{enumerate}[topsep=8pt, parsep=8pt]
+    \item Jeśli $0\leq X_1\leq X_2\leq ...$ oraz $X_n\nnearrow X$, to $\expected{X_n}{\set{G}}\nnearrow\expected{X}{\set{G}}$ p.w. (twierdzenie o zbieżności monotonicznej)
+    \item Jeśli $X\geq0$, to $\expected{\liminf_n X_n}{\set{G}}\leq\liminf_n\expected{X_n}{\set{G}}$ (lemat Fatou).
+    \item Jeśli $|X_n|\leq Y$ oraz $Y$ jest całkowalny i $X_n\to X$ p.w., to $\expected{X_n}{\set{G}}\to\expected{X}{\set{G}}$ (twierdzenie o zbieżności ograniczonej)
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Zauważamy, że ciąg $\expected{X_n}{\set{G}}$ jest niemalejący i ograniczony przez $\exected{X}{\set{G}}$ (na mocy punktu 2 z poprzedniego twierdzenia).
+
+      Niech $Y=\lim\expected{X_n}{\set{G}}$. Wystarczy, że pokażemy $Y=\expected{X}{\set{G}}$ p.w., czyli sprawdzimy warunki (W1) i (W2). Oczywiście, warunek (W1) wynika z faktu, że granica ciągu funkcji $\set{G}$-mierzalnych jest nadal $\set{G}$-mierzalna. Dla sprawdzenia warunku (W2) wybierzmy $A\in\set{G}$
+      \begin{align*}
+        \expected{Y\mathds{1}_A}&=\expected{\lim\expected{X_n}{\set{G}}\mathds{1}_A}\overset{\star}{=}\lim\expected{\expected{X_n}{\set{G}}\mathds{1}_A}=\\
+                                &=\lim\expected{X_n\mathds{1}_A}=\expected{\lim X_n\mathds{1}_A}=\expected{X\mathds{1}_A}
+      \end{align*}
+      czyli $Y=\expected{X}{\set{G}}$ p.w.
+    \item Zaczniemy od dwóch obserwacji:
+      \begin{itemize}
+        \item Dla ciągu $\{a_n\}$ $\lim\inf a_n$ to najmniejszy z jego punktów skupienia, równoważnie:
+          $$\liminf_na_n=\lim_{k\to\infty}\inf_{n\geq k}a_n$$
+        \item[{\color{green}\PHrosette}] Dla dowolnej przeliczalnej rodziny zmiennych losowych $\{Z_n\}_{n\in T}$ i dla dowolnego $t\in T$ mamy
+          $$\inf_{s\in T}Z_s\leq Z_t$$
+          $$\expected{\inf_{s\in T} Z_s}\leq\expected{Z_t}$$
+          $$\expected{\inf_{s\in T} Z_s}\leq\inf_{t\in T}\expected{Z_t}$$
+          (co jest tak naprawdę wersją lematu Fatou dla $\expected$ z RP1R).
+      \end{itemize}
+      Stosując obserwację \PHtunny w przejściach $\star$, obserwację \PHrosette w przejsciu $\star\star$ oraz ptk 1. ($\inf_{n>k}X_n\leq \inf_{n>k+1}X_n$) w $\star\star\star$, dostajemy
+      \begin{align*}
+        \expected{\liminf_n X_n}{\set{G}}&\overset{\star}{=}\expected{\lim_k\inf_{n>k}X_n}{\set{G}}\overset{\star\star\star}{=}\lim_k\expected{\inf_{n>k}X_n}{\set{G}}\leq\\
+                                         &\overset{\star\star}{\leq}\lim_k\inf_{n>k}\expected{X_n}{\set{G}}\overset{\star}{=}\liminf_n\expected{X_n}{\set{G}}
+      \end{align*}
+    \item Rozważmy zmienne $X_n'=Y+X_n$. Ponieważ $|X_n|\leq Y$, to $Y+X_n\geq 0$.
+      \begin{align*}
+        \expected{Y+\liminf X_n}{\set{G}}&=\expected{\liminf(X_n+Y)}{\set{G}}\overset{3.}{\leq}\liminf\expected{Y+X_n}{\set{G}}=\\
+                                         &=\expected{Y}+\liminf\expected{X_n}{\set{G}}
+      \end{align*}
+      To daje nam, że $\expected{\liminf X_n}{\set{G}}\leq\liminf\expected{X_n}{\set{G}}$.
+
+      Postępując analogicznie dla $X_n"=Y-X_n$ (które dalej jest $\geq0$) dostaniemy $\expected{\limsup X_n}{\set{G}}\geq\limsup\expected{X_n}{\set{G}}$:
+      \begin{align*}
+        \expected{Y-\limsup X_n}{\set{G}}&=\expected{\limsup(Y-X_n)}{\set{G}}=\\
+                                         &=-\expected{\liminf(X_n-Y)}{\set{G}}\overset{3.}{\geq}-\liminf\expected{X_n-Y}{\set{G}}=\\
+                                         &=\limsup\expected{Y-X_n}{\set{G}}
+      \end{align*}
+      Ale wiemy, że $\liminf X_n=X$ oraz $\limsup X_n=X$, czyli
+      $$\liminf\expected{X_n}{\set{G}}\geq\expected{\liminf X_n}{\set{G}}=\expected{X}{\set{G}}=\expected{\limsup{X_n}}{\set{G}}\geq\limsup\expected{X_n}{\set{G}}$$
+      ale przecież $\liminf\expected{X_n}{\set{G}}\leq\limsup\expected{X_n}{\set{G}}$, czyli musi być
+      $$\liminf\expected{X_n}{\set{G}}=\expected{X}{\set{G}}=\limsup\expected{X_n}{\set{G}}$$
+      i ponieważ $\liminf=\limsup=\lim$ to mamy
+      $$\lim\expected{X_n}{\set{G}}=\expected{X}{\set{G}}.$$
+  \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+  Niech $\set{G}\subseteq\set{F}$ będzie $\sigma$-ciałem. Załóżmy, że
+  \begin{itemize}
+    \item $X$ jest $\set{G}$-mierzalna
+    \item $Y$ jest niezależna od $\set{G}$
+    \item funkcja $\psi:\R^2\to\R$ jest mierzalna taka, że
+      $$\expected{\psi(X,Y)}<\infty.$$
+  \end{itemize}
+  Wówczas 
+  $$\expected{\psi(X,Y)}{\set{G}}=\Psi(X),$$ 
+  gdzie funkcja $\Psi:\R\to\R$ jest zdefiniowana jako $\Psi(X)=\expected{\psi(X,Y)}$.
+\end{theorem}
+
+\begin{proof}
+  Jeśli $\psi(x,y)=xy$, to korzystając z punktu 3. twierdzenia \ref{o arytmetyce wwo} dostajemy
+  $$\psi(x)=\expected{xY}=x\expected{Y}$$
+\end{proof}
