@@ -53,3 +53,166 @@ Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię 
 \begin{example}
   \item Przykład presnopa z wcześniej spełnia również warunek bycia snopem. Tutaj wchodzą kiełki gromadzące się nad snopem i zbierające się w większe źdźbła, ale ja sobie to odpuszczę.
 \end{example}
+
+\subsection{Funktory wierne, pełne}
+
+\begin{definition}[podkategoria $\mathbf{C}'$ kategorii $\mathbf{C}$]
+  To kategoria spełniająca następujące warunki:
+  \begin{itemize}
+    \item $Ob\mathbf{C}'\subseteq Ob\mathbf{C}$
+    \item $Hom_{\mathbf{C}'}(X,Y)\subseteq Hom_{\mathbf{C}}(X, Y)$
+    \item $id_X^{\mathbf{C}'}=id_X^{\mathbf{C}}$ zawsze gdy $X\in Ob\mathbf{C}'$
+    \item złożenie morfizmów w $\mathbf{C}'$ zachowuje się tak samo jak w $\mathbf{C}$
+  \end{itemize}
+
+  Mówimy, że podkategoria $\mathbf{C}'$ jest \acc{pełna}, gdy $Hom_{\mathbf{C}'}(X,Y)=Hom_{\mathbf{C}}(X,Y)$
+\end{definition}
+
+\begin{example}
+\item Kategoria skończonych przestrzeni wektorowych nad ciałem $K$ $\mathbf{Vect}_K^{fin}$ jest podkategorią kategorii wszystkich przestrzeni liniowych $\mathbf{Vect}_K$. Jest to pełna podkategoria.
+\item Analogicznie, kategoria grup abelowych $\mathbf{Ab}$ jest pełną podkategorią kategorii $\mathbf{Grp}$
+\item Kategoria gładkich rozmaitości $\mathbf{C^\infty-rozm}$ jest podkategorią kateogorii wszystkich przestrzeni topologicznych $\mathbf{Top}$. Nie jest to jednak pełna podkategoria.
+\end{example}
+
+\begin{definition}[funktor wierny, pełny]
+  Funkctor $F:\mathbf{C}\to\mathbf{D}$ jest
+  \begin{itemize}
+    \item \buff{wierny} gdy $F:Hom_{\mathbf{C}}(X,Y)\to Hom_{\mathbf{D}}(F(X),F(Y))$ jest bijekcją
+    \item \buff{pełny}, gdy dla wszystkich $X,Y\in Ob\mathbf{C}$ przekształcenie $F:Hom_{\mathbf{C}}(X,Y)\to Hom_{\mathbf{D}}(F(X),F(Y))$ jest surjekcją
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+\item Włożenie podkategorii w kategorię jest funktorem wiernym
+\item Jeśli podkategoria jest pełna, to taki włożeniowy funktor jest dodatkowo pełny.
+\end{example}
+
+\subsection{Naturalne przekształcenia funktorów}
+
+\begin{definition}[naturalne przekształcenie funktorów]
+  Dla dwóch funktorów $F, G:\mathbf{C}\to\mathbf{D}$ układ morfizmów $f:F\to G$ w $\mathbf{D}$ taki, że dla każdego $X\in Ob\mathbf{C}$ $f(X):F(X)\to G(X)$ i dla każdego $\phi:X\to Y\in Hom_{\mathbf{C}}(X, Y)$ diagram
+
+  $ $
+
+  \begin{center}
+    \begin{tikzcd}[column sep=large]
+      F(X) \arrow[r, "f(X)"] \arrow[d, "F(\phi)" left] & G(X)\arrow[d, "G(\phi)"]\\
+      F(Y) \arrow[r, "f(Y)" below] & G(Y)
+    \end{tikzcd}
+  \end{center}
+
+  $ $
+
+  jest przemienny nazywamy \buff{naturalnym przekształceniem funktorów} $F$ i $G$.
+\end{definition}
+
+\begin{example}
+\item Patrzymy na funktory $Id, ab:\mathbf{Grp}\to\mathbf{Grp}$ (identyczność i abelianizacja $ab(G)=G/[G,G]$).
+
+  Rozważmymy $f:Id\to ab$, wtedy $Id(G)=G$, więc sprawdzamy, czy następujący diagram komutuje:
+
+  \begin{center}
+    \begin{tikzcd}[column sep=large]
+      Id(G)=G \arrow[r, "f(G)"] \arrow[d, "Id(\phi)=\phi" left] & G/\left[G, G\right] = ab(G) \arrow[d, "ab(\phi)"] \\
+      Id(H)=H \arrow[r, "f(H)"] & H/\left[H, H\right] = ab(H)
+    \end{tikzcd}
+  \end{center}
+
+  Dla każdego $G\in Ob\mathbf{Grp}$ zdefiniujemy $f(G):Id(G)\to ab(G)$ jako
+  $$f(G):G\to G^{alb}=G/[G,G]$$
+  jako zwykłe przekształcenie ilorazowe. Wystarczy więc sprawdzić, że komutant w $G$ przechodzi przez dowolny homomorfizm $\phi:G\to H$ na komutant w $H$:
+  $$(\forall\;g,h\in [G,G])\;\phi(gh)=\phi(g)\phi(h)=\phi(h)\phi(g)=\phi(hg)$$
+
+%  \begin{center}
+%    \begin{tikzcd}
+%      Id(G)=G \arrow[r, "Id(\phi)"] \arrow[d, "f(G)"] & H=Id(H) \arrow[d]\\
+%      \left[G, G\right] \arrow[r] & \left[H,H\right]
+%    \end{tikzcd}
+%  \end{center}
+\item Z odrobiną znajomości topologii algebraicznej możemy pokazać, że istnieje naturalne przekształcenie funktorów $H_n,\Pi_n:\mathbf{Top}_*\to\mathbf{Grp}$. Jednak nie znam się na topologii algebraicznej, więc ja tego nie zrobię.
+  
+\item Pokażemy naturalne przekształcenie funktorów $Id,\star\star:\mathbf{Vect}_K\to\mathbf{Vect}_K$.
+  Dla $V\in\mathbf{Vect}_K$ definiujemy
+  \begin{center}
+    \begin{tikzcd}[column sep=large]%, row sep=tiny]
+      f(V):V \arrow[r] & V^{**}\\
+      v \arrow[u, phantom, sloped, "\in"] \arrow[r] & (V^*\ni\phi\mapsto\phi(v)\in K)=\langle\cdot,v\rangle \arrow[u, phantom, sloped, "\in"]
+    \end{tikzcd}
+  \end{center}
+
+  Chcemy sprawdzić, że diagram
+  \begin{center}
+    \begin{tikzcd}[column sep=large]
+      V \arrow[r, "f(V)"] \arrow[d, "\phi" left] & V^{**} \arrow[d, "\phi^{**}"] \\
+      W \arrow[r, "f(W)" below] & W^{**}
+    \end{tikzcd}
+  \end{center}
+  komutuje, czyli $f(V)\phi^{**}=\phi f(W)$.
+
+  \begin{align*}
+    (\phi^{**}\circ f(V))(v)&=\phi^{**}(f(V)(v))=\phi^{**}(\langle\cdot,v\rangle)=\\
+                            &=\langle\cdot,v\rangle\circ\phi^*=\langle\phi^*(\cdot),v\rangle=\\
+                            &=\langle \cdot\circ\phi,v\rangle=\langle\cdot,\phi(v)\rangle=f(W)(\phi(v))=\\
+                            &=(f(W)\circ\phi)(v)
+  \end{align*}
+  Czyli wszystko się zgadza!
+\end{example}
+
+Naturalne przekształcenia można składać. Powstaje wtedy (meta)kategoria, której elementy to funktory, a morfizmami są naturalne przejścia. Nie jest to prawdziwa kategoria, bo morfizmy nie zawsze są zbiorami w takim przypadku. Taki twór oznaczamy $\mathbf{Funct}(\mathbf{C},\mathbf{D})$ i mając naturalne przekształcenia funktorów $F\overset{a}{\to} G\overset{b}{\to}H$, dowolne $X,Y\in Ob\mathbf{C}$ oraz $\phi:X\to Y$ rysujemy
+\begin{center}
+  \begin{tikzcd}[column sep=large]
+    F(X) \arrow[r, "a(X)"] \arrow[d, "F(\phi)" left] & G(X) \arrow[r, "b(X)"] \arrow[d, "G(\phi)"] & H(X) \arrow[d, "H(\phi)"] \\
+    F(Y) \arrow[r, "a(Y)" below] & G(Y) \arrow[r, "b(Y)" below] & H(Y)
+  \end{tikzcd}
+\end{center}
+gdzie $(b\circ a)(X)=b(X)\circ a(X)$.
+
+\begin{definition}[izomorfizm funktorów]
+  W metakategorii funktorów możemy rozważać izomorfizmy, które nazywamy \buff{naturalnymi izomorfizmami funktorów}. Do ich definiowania można podejść na dwa, równoważne, sposoby:
+  \begin{itemize}
+    \item naturalne przekształcenia $f:F\to G$ dla których istnieje $g:G\to F$ takie, że $f\circ g=id_G$ oraz $g\circ f=id_F$
+    \item przekształcenie $f:F\to G$ takie, że dla każdego $X\in\mathbf{C}$ przekształcenie $f(X):F(X)\to G(X)$ jest izomorfizmem w kategorii $\mathbf{D}$.
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+  \item Przekształcenie funktorów $Id, **$ na kategorii przestrzeni wektorowych rozważane wyżej staje się izomorfizmem, gdy ograniczymy się do przestrzeni skończonego wymiaru.
+\end{example}
+
+\subsection{Równoważność kategorii}
+
+\begin{definition}[równoważność kategorii]
+  Funktor $F:\mathbf{C}\to\mathbf{D}$ zadaje \buff{równoważność kategorii}, jeśli istnieje $G:\mathbf{D}\to\mathbf{C}$ takie, że $F\circ G=id_{\mathbf{D}}$ i $G\circ F=id_{\mathbf{C}}$
+\end{definition}
+
+\begin{example}
+\item Kategoria skończenie wymiarowych przestrzeni wektorowych $\mathbf{Vect_K^{fin}}$ jest równoważna kategorii $\mathbf{S_K}$, której obiektami są $Ob\mathbf{S_K}=\{K^0,K^1,...,K^n,...\}$ a morfizmy to wszystkie przekształcenia liniowe między nimi.
+
+  Włożenie $F:\mathbf{S_K}\to \mathbf{Vect_K^{fin}}$ jest oczywisty, gdyż każdy obiekt z $\mathbf{S_K}$ jest przestrzenią wektorową skończonego wymiaru. Aby znaleźć $G:\mathbf{Vect_K^{fin}}\to \mathbf{S_K}$ do niego odwrotne, musimy najpierw w każdej przestrzeni $V\in\mathbf{Vect_K^{fin}}$ znaleźć bazę $b(V)$, którą poślemy w bazę standardową, tzn dostajemy
+  $$G(V):V\to K^{\dim V}.$$
+
+  Morfizmami na $\mathbf{Vect_K^{fin}}$ są macierze, więc wystarczy posłać je na ich odpowiedniki po zamianie bazy.
+\end{example}
+
+\begin{theorem}
+  Funktor $\mathbf{C}\to \mathbf{D}$ jest równoważnością kategorii $\iff$ jest on wierny, pełny i w zasadzie surjektywny, tzn. $(\forall\;Y\in Ob\mathbf{D})(\exists\;X\in Ob\mathbf{C})\;F(X)\underset{\mathbf{D}}{\cong}Y$.
+\end{theorem}
+
+\begin{proof}
+  $\impliedby$
+
+  Mając wiedzę o $F$ będziemy konstruować $G$.
+
+  Dla $Y\in Ob\mathbf{D}$ wybieramy $G(Y)\in Ob\mathbf{C}$ takie, że istnieje izomorfizm $\iota_Y:Y\to F(G(Y))$. Niech $\phi:Y\to Y'$ będzie morfizmem obiektów w kategorii $\mathbf{D}$. Chcemy sprawdzić istnienie $G(\phi)$ takie, że $Id_{\mathbf{D}}\cong F\circ G$
+
+  \begin{center}
+    \begin{tikzcd}[column sep=large]
+      Y \arrow[r, "\phi"] \arrow[d, "\iota_Y" left] & Y' \arrow[d, "\iota_{Y'}"]\\
+      F(G(Y)) \arrow[r, "\iota_{Y'}\circ\phi\circ\iota_Y^{-1}" below ] & F(G(Y'))
+    \end{tikzcd}
+  \end{center}
+
+  $F$ jest wierny i pełny, więc
+  $$Hom_{\mathbf{C}}(G(Y),G(Y'))\overset{F}{\rightarrow}Hom_{\mathbf{D}}(F(G(Y)),F(G(Y')))$$
+  jest bijekcją, a więc istnieje jedyne $\psi=F^{-1}(\iota_{Y'}\phi\iota_Y^{-1})$
+\end{proof}
