@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.8.25)  12 OCT 2023 13:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.9)  14 OCT 2023 22:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -759,6 +759,11 @@ Now handling font encoding LPH ...
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 ) (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2023-02-02 L3 Experimental document command parser
+) (/usr/share/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup9
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
 ) (/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
 \thm@style=\toks47
@@ -791,30 +796,175 @@ Package: aliasctr 2023/02/17 v0.75
 Package: thm-listof 2023/02/17 v0.75
 ) (/usr/share/texmf-dist/tex/latex/thmtools/thm-restate.sty
 Package: thm-restate 2023/02/17 v0.75
-) (/usr/share/texmf-dist/tex/latex/thmtools/thm-amsthm.sty
+)
+(/usr/share/texmf-dist/tex/latex/thmtools/thm-amsthm.sty
 Package: thm-amsthm 2023/02/17 v0.75
 \thmt@style@headstyle=\toks55
+)) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2023/02/12 version 6.0.1 text color boxes
+ (/usr/share/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks56
+\verbatim@line=\toks57
+\verbatim@in@stream=\read3
+) (/usr/share/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+ (/usr/share/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-Package thmtools Info: Automatically pulling in `thmdef-shaded' on input line 148.
+\tcb@titlebox=\box68
+\tcb@upperbox=\box69
+\tcb@lowerbox=\box70
+\tcb@phantombox=\box71
+\c@tcbbreakpart=\count318
+\c@tcblayer=\count319
+\c@tcolorbox@number=\count320
+\tcb@temp=\box72
+\tcb@temp=\box73
+\tcb@temp=\box74
+\tcb@temp=\box75
+) (/usr/share/texmf-dist/tex/latex/mdframed/mdframed.sty
+Package: mdframed 2013/07/01 1.9b: mdframed
+ (/usr/share/texmf-dist/tex/latex/zref/zref-abspage.sty
+Package: zref-abspage 2022-04-07 v2.34 Module abspage for zref (HO)
+ (/usr/share/texmf-dist/tex/latex/zref/zref-base.sty
+Package: zref-base 2022-04-07 v2.34 Module base for zref (HO)
+Package zref Info: New property list: main on input line 767.
+Package zref Info: New property: default on input line 768.
+Package zref Info: New property: page on input line 769.
+)
+\c@abspage=\count321
+Package zref Info: New property: abspage on input line 65.
+) (/usr/share/texmf-dist/tex/latex/needspace/needspace.sty
+Package: needspace 2010/09/12 v1.3d reserve vertical space
+)
+\mdf@templength=\skip63
+\c@mdf@globalstyle@cnt=\count322
+\mdf@skipabove@length=\skip64
+\mdf@skipbelow@length=\skip65
+\mdf@leftmargin@length=\skip66
+\mdf@rightmargin@length=\skip67
+\mdf@innerleftmargin@length=\skip68
+\mdf@innerrightmargin@length=\skip69
+\mdf@innertopmargin@length=\skip70
+\mdf@innerbottommargin@length=\skip71
+\mdf@splittopskip@length=\skip72
+\mdf@splitbottomskip@length=\skip73
+\mdf@outermargin@length=\skip74
+\mdf@innermargin@length=\skip75
+\mdf@linewidth@length=\skip76
+\mdf@innerlinewidth@length=\skip77
+\mdf@middlelinewidth@length=\skip78
+\mdf@outerlinewidth@length=\skip79
+\mdf@roundcorner@length=\skip80
+\mdf@footenotedistance@length=\skip81
+\mdf@userdefinedwidth@length=\skip82
+\mdf@needspace@length=\skip83
+\mdf@frametitleaboveskip@length=\skip84
+\mdf@frametitlebelowskip@length=\skip85
+\mdf@frametitlerulewidth@length=\skip86
+\mdf@frametitleleftmargin@length=\skip87
+\mdf@frametitlerightmargin@length=\skip88
+\mdf@shadowsize@length=\skip89
+\mdf@extratopheight@length=\skip90
+\mdf@subtitleabovelinewidth@length=\skip91
+\mdf@subtitlebelowlinewidth@length=\skip92
+\mdf@subtitleaboveskip@length=\skip93
+\mdf@subtitlebelowskip@length=\skip94
+\mdf@subtitleinneraboveskip@length=\skip95
+\mdf@subtitleinnerbelowskip@length=\skip96
+\mdf@subsubtitleabovelinewidth@length=\skip97
+\mdf@subsubtitlebelowlinewidth@length=\skip98
+\mdf@subsubtitleaboveskip@length=\skip99
+\mdf@subsubtitlebelowskip@length=\skip100
+\mdf@subsubtitleinneraboveskip@length=\skip101
+\mdf@subsubtitleinnerbelowskip@length=\skip102
+ (/usr/share/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
+File: md-frame-1.mdf 2013/07/01\ 1.9b: md-frame-1
+)
+\mdf@frametitlebox=\box76
+\mdf@footnotebox=\box77
+\mdf@splitbox@one=\box78
+\mdf@splitbox@two=\box79
+\mdf@splitbox@save=\box80
+\mdfsplitboxwidth=\skip103
+\mdfsplitboxtotalwidth=\skip104
+\mdfsplitboxheight=\skip105
+\mdfsplitboxdepth=\skip106
+\mdfsplitboxtotalheight=\skip107
+\mdfframetitleboxwidth=\skip108
+\mdfframetitleboxtotalwidth=\skip109
+\mdfframetitleboxheight=\skip110
+\mdfframetitleboxdepth=\skip111
+\mdfframetitleboxtotalheight=\skip112
+\mdffootnoteboxwidth=\skip113
+\mdffootnoteboxtotalwidth=\skip114
+\mdffootnoteboxheight=\skip115
+\mdffootnoteboxdepth=\skip116
+\mdffootnoteboxtotalheight=\skip117
+\mdftotallinewidth=\skip118
+\mdfboundingboxwidth=\skip119
+\mdfboundingboxtotalwidth=\skip120
+\mdfboundingboxheight=\skip121
+\mdfboundingboxdepth=\skip122
+\mdfboundingboxtotalheight=\skip123
+\mdf@freevspace@length=\skip124
+\mdf@horizontalwidthofbox@length=\skip125
+\mdf@verticalmarginwhole@length=\skip126
+\mdf@horizontalspaceofbox=\skip127
+\mdfsubtitleheight=\skip128
+\mdfsubsubtitleheight=\skip129
+\c@mdfcountframes=\count323
 
-(/usr/share/texmf-dist/tex/latex/thmtools/thmdef-shaded.sty
+****** mdframed patching \endmdf@trivlist
+
+****** -- success******
+
+\mdf@envdepth=\count324
+\c@mdf@env@i=\count325
+\c@mdf@env@ii=\count326
+\c@mdf@zref@counter=\count327
+Package zref Info: New property: mdf@pagevalue on input line 895.
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.1'
+)
+Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=red!50!orange, backgroundcolor=yellow!7, ')
+(thmtools)             is not a known style key.
+(thmtools)             Will pass this to every \declaretheorem
+(thmtools)             that uses `style=twierdzonka' on input line 157.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 164.
+ (/usr/share/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
+Package: thmdef-mdframed 2023/02/17 v0.75
+)
+\c@theorem=\count328
+Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=purple, backgroundcolor=purple!6!pink!3, ')
+(thmtools)             is not a known style key.
+(thmtools)             Will pass this to every \declaretheorem
+(thmtools)             that uses `style=uwagi-lematy' on input line 178.
+Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=green, backgroundcolor=yellow!5, ')
+(thmtools)             is not a known style key.
+(thmtools)             Will pass this to every \declaretheorem
+(thmtools)             that uses `style=defbox' on input line 204.
+\c@definition=\count329
+\c@ex=\count330
+Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=blue!60!purple!50, backgroundcolor=blue!2, ')
+(thmtools)             is not a known style key.
+(thmtools)             Will pass this to every \declaretheorem
+(thmtools)             that uses `style=dygresyja' on input line 250.
+\c@problem=\count331
+Package thmtools Info: Automatically pulling in `thmdef-shaded' on input line 290.
+ (/usr/share/texmf-dist/tex/latex/thmtools/thmdef-shaded.sty
 Package: thmdef-shaded 2023/02/17 v0.75
-)
-\c@theorem=\count318
- (/usr/share/texmf-dist/tex/latex/shadethm/shadethm.sty
+) (/usr/share/texmf-dist/tex/latex/shadethm/shadethm.sty
 Package: shadethm 1999/11/23
-\saveparindent=\skip63
-\shadeboxsep=\skip64
-\shadeboxrule=\skip65
-\shadedtextwidth=\skip66
-\shadeleftshift=\skip67
-\shaderightshift=\skip68
-\shadesavebox=\box68
-)
-\c@definition=\count319
-\c@ex=\count320
-\c@problem=\count321
- (/usr/share/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymatrix.code.tex
+\saveparindent=\skip130
+\shadeboxsep=\skip131
+\shadeboxrule=\skip132
+\shadedtextwidth=\skip133
+\shadeleftshift=\skip134
+\shaderightshift=\skip135
+\shadesavebox=\box81
+) (/usr/share/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymatrix.code.tex
 File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryquotes.code.tex
 File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -830,12 +980,12 @@ File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.meta.code.tex (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.meta.code.tex))) (/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2021/07/05 v2.14 Sectioning titles
-\ttl@box=\box69
-\beforetitleunit=\skip69
-\aftertitleunit=\skip70
+\ttl@box=\box82
+\beforetitleunit=\skip136
+\aftertitleunit=\skip137
 \ttl@plus=\dimen288
 \ttl@minus=\dimen289
-\ttl@toksa=\toks56
+\ttl@toksa=\toks58
 \titlewidth=\dimen290
 \titlewidthlast=\dimen291
 \titlewidthfirst=\dimen292
@@ -938,17 +1088,17 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count322
+\scratchcounter=\count332
 \scratchdimen=\dimen294
-\scratchbox=\box70
-\nofMPsegments=\count323
-\nofMParguments=\count324
-\everyMPshowfont=\toks57
-\MPscratchCnt=\count325
+\scratchbox=\box83
+\nofMPsegments=\count333
+\nofMParguments=\count334
+\everyMPshowfont=\toks59
+\MPscratchCnt=\count335
 \MPscratchDim=\dimen295
-\MPnumerator=\count326
-\makeMPintoPDFobject=\count327
-\everyMPtoPDFconversion=\toks58
+\MPnumerator=\count336
+\makeMPintoPDFobject=\count337
+\everyMPtoPDFconversion=\toks60
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
  (/usr/share/texmf-dist/tex/latex/grfext/grfext.sty
@@ -1002,14 +1152,16 @@ LaTeX Font Info:    Trying to load font information for U+wasy on input line 20.
  (/usr/share/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
-<~/uni-stuff/2023-2024/fajne_tlo.png, id=35, 597.432pt x 845.0772pt>
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 21.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 20.
+ (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+<~/uni-stuff/2023-2024/obrazki/pattern-ramka.png, id=35, 597.432pt x 845.0772pt>
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 21.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc} </home/maruda/uni-stuff/2023-2024/fajne_tlo.png>]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc} </home/marudka/uni-stuff/2023-2024/obrazki/pattern-ramka.png>]
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
 (Font)              `T1/SourceSansPro-TLF/bold/n' on input line 23.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/bold/n' will be
@@ -1031,9 +1183,9 @@ LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 24.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 24.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
  [2] (./01:06-10-23.tex
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
@@ -1056,74 +1208,76 @@ Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/10'
 (microtype)             (new value: 10.0pt) on input line 11.
 Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/8'
 (microtype)             (new value: 8.0pt) on input line 11.
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 37.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 37.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
  [3]
-LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/it' aliased to
-(Font)              `T1/SourceSansPro-TLF/regular/it' on input line 48.
-LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/it' will be
-(Font)              scaled to size 12.0pt on input line 48.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 48.
 Package hyperref Info: bookmark level for unknown dygresja defaults to 0 on input line 48.
-
-Overfull \hbox (2.0pt too wide) in paragraph at lines 50--50
-[][] 
- []
-
 Package hyperref Info: bookmark level for unknown ex defaults to 0 on input line 53.
 
 Underfull \hbox (badness 10000) in paragraph at lines 53--53
 
  []
 
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 66.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 66.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
 [4]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 71.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/14.39996'
+(microtype)             (new value: 14.39996pt) on input line 71.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/11.99945'
+(microtype)             (new value: 11.99945pt) on input line 71.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/10.07993'
+(microtype)             (new value: 10.07993pt) on input line 71.
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 71.
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 79--79
-[][] 
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 84--84
 
  []
 
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 87.
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 87.
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 92--92
-[][] 
- []
-
 <~/uni-stuff/2023-2024/piwo.png, id=77, 2055.68pt x 2055.68pt>
 File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
 <use ~/uni-stuff/2023-2024/piwo.png>
 Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 96.
 (pdftex.def)             Requested size: 30.0pt x 29.98695pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 99.
 Package hyperref Info: bookmark level for unknown uwaga defaults to 0 on input line 99.
 
 Underfull \hbox (badness 10000) in paragraph at lines 103--103
 
  []
 
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 108.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 104.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
-[5 </home/maruda/uni-stuff/2023-2024/piwo.png>]
+[5 </home/marudka/uni-stuff/2023-2024/piwo.png>]
 Overfull \hbox (1.17603pt too wide) in paragraph at lines 111--113
 \T1/SourceSansPro-TLF/regular/n/12 (-20) Speªnianie pier-wszego warunku jest oczy-wiste, bo mamy doczynienia z funkcj¡ prost¡. Warunek
  []
 
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 128--128
-[][] 
- []
-
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 125.
 LaTeX Font Info:    Trying to load font information for LPH+SourceSansPro-TLF on input line 132.
 LaTeX Font Info:    No file LPHSourceSansPro-TLF.fd. on input line 132.
 
@@ -1136,20 +1290,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 137--137
 
  []
 
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 140.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 140.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
 [6])
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 29.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 29.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
  [7] (./02:09-10-23.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 7.
 Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input line 7.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 9--9
-[][] 
+Overfull \hbox (12.93494pt too wide) in paragraph at lines 8--9
+[][][]\T1/SourceSansPro-TLF/regular/n/12 (-20) To znaczy, »e ma-j¡c caªkowaln¡ zmi-enn¡ losow¡ $[]$ oraz $\OML/cmm/m/it/12 ^^[$\T1/SourceSansPro-TLF/regular/n/12 (-20) -ciaªo $\OMS/cmsy/m/n/12 G ^^R F$\T1/SourceSansPro-TLF/regular/n/12 (-20) , to za-chodzi $\U/msb/m/n/12 E [] \T1/SourceSansPro-TLF/regular/n/12 (-20) <
  []
 
 File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
@@ -1157,13 +1314,16 @@ File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
 Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 26.
 (pdftex.def)             Requested size: 30.0pt x 29.98695pt.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 30--30
-[][] 
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
  []
 
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 46.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 28.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 46.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
 [8]
 File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
@@ -1171,18 +1331,19 @@ File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
 Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 56.
 (pdftex.def)             Requested size: 30.0pt x 29.98695pt.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 60--60
-[][] 
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+
  []
 
-
-Overfull \hbox (2.0pt too wide) in paragraph at lines 68--68
-[][] 
- []
-
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 81.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 58.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 65.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 79.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
 [9]
 File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
@@ -1190,10 +1351,13 @@ File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
 Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 82.
 (pdftex.def)             Requested size: 30.0pt x 29.98695pt.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 98--98
-[][] 
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
  []
 
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 86.
 
 Underfull \hbox (badness 10000) in paragraph at lines 100--102
 
@@ -1204,18 +1368,18 @@ Overfull \hbox (3.47443pt too wide) in paragraph at lines 108--109
 []\U/msb/m/n/12 E [] \T1/SourceSansPro-TLF/regular/n/12 (-20) + []\U/msb/m/n/12 E []$ \T1/SourceSansPro-TLF/regular/n/12 (-20) speª-nia warunki wwo tej samej zmi-en-nej co $\U/msb/m/n/12 E []$\T1/SourceSansPro-TLF/regular/n/12 (-20) . Wówczas
  []
 
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 115.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 115.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
 [10]
 Overfull \hbox (0.19803pt too wide) in paragraph at lines 124--126
 \T1/SourceSansPro-TLF/regular/n/12 (-20) co potwierdza warunek (W2). $\OMS/cmsy/m/n/12 G[]$\T1/SourceSansPro-TLF/regular/n/12 (-20) -mierzalno±¢ $\U/msb/m/n/12 E []$ \T1/SourceSansPro-TLF/regular/n/12 (-20) jest oczy-wista, gdy» $\OMS/cmsy/m/n/12 G[] ^^R G[]$\T1/SourceSansPro-TLF/regular/n/12 (-20) , $\U/msb/m/n/12 E []$
  []
 
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 151.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 151.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
 [11]
 File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
@@ -1223,48 +1387,21 @@ File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
 Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 154.
 (pdftex.def)             Requested size: 30.0pt x 29.98695pt.
 
-./02:09-10-23.tex:159: Undefined control sequence.
-l.159 ...q X_1\leq X_2\leq ...$ oraz $X_n\nnearrow
-                                                   X$, to $\expected{X_n}{\s...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
 
-./02:09-10-23.tex:159: Undefined control sequence.
-l.159 ... X$, to $\expected{X_n}{\set{G}}\nnearrow
-                                                  \expected{X}{\set{G}}$ p.w...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 163--163
-[][] 
  []
 
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 156.
 
 Underfull \hbox (badness 10000) in paragraph at lines 165--167
 
  []
 
-./02:09-10-23.tex:167: Undefined control sequence.
-<recently read> \exected 
-                         
-l.167 ...iemalejÄ…cy i ograniczony przez $\exected
-                                                  {X}{\set{G}}$ (na mocy pun...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 182.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 181.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
 [12]
 File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
@@ -1272,16 +1409,16 @@ File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
 Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 210.
 (pdftex.def)             Requested size: 30.0pt x 29.98695pt.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 223--223
-[][] 
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
+
  []
 
-
-LaTeX Warning: Reference `o arytmetyce wwo' on page 13 undefined on input line 226.
-
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 227.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 213.
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 223.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
 [13]
 File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
@@ -1289,36 +1426,34 @@ File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
 Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 228.
 (pdftex.def)             Requested size: 30.0pt x 29.98695pt.
 )
-File: ~/uni-stuff/2023-2024/fajne_tlo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/fajne_tlo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/fajne_tlo.png  used on input line 33.
+Underfull \hbox (badness 10000) in paragraph at lines 228--32
+
+ []
+
+File: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/pattern-ramka.png  used on input line 33.
 (pdftex.def)             Requested size: 597.43054pt x 845.07513pt.
- [14] (./main.aux)
+[14] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0CA3CCAC2F0DE9BBB9F6FE132E462C84;1411.
+(rerunfilecheck)             Checksum: BDD3545BF2D41ADA4DFB1B449770566D;1424.
  ) 
 Here is how much of TeX's memory you used:
- 28971 strings out of 476025
- 545042 string characters out of 5796532
- 1874388 words of memory out of 5000000
- 48604 multiletter control sequences out of 15000+600000
- 650496 words of font info for 195 fonts, out of 8000000 for 9000
+ 32431 strings out of 476025
+ 628690 string characters out of 5796533
+ 1875388 words of memory out of 5000000
+ 52008 multiletter control sequences out of 15000+600000
+ 643724 words of font info for 204 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,17n,118p,1193b,989s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Bold.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-It.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb></usr/share/texmf-dist/fonts/type1/public/wasy-type1/wasy10.pfb>
-Output written on main.pdf (14 pages, 674725 bytes).
+ 117i,17n,118p,1193b,1078s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Bold.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-It.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb></usr/share/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></usr/share/texmf-dist/fonts/type1/public/wasy-type1/wasy10.pfb>
+Output written on main.pdf (14 pages, 3120755 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 210 compressed objects within 3 object streams
+ 269 PDF objects out of 1000 (max. 8388607)
+ 214 compressed objects within 3 object streams
  76 named destinations out of 1000 (max. 500000)
- 51279 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 49231 words of extra memory for PDF output out of 51595 (max. 10000000)
 

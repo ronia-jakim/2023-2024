@@ -47,11 +47,15 @@
 
 \RequirePackage{xparse}
 
-%%================================================================%%
-%% RZECZY PRZYDATNE
+
 %%================================================================%%
 
-%\DeclareMathOperator{\ker}{ker}
+%% RZECZY PRZYDATNE
+
+%%================================================================%%
+
+\RequirePackage{ stmaryrd }
+
 \DeclareMathOperator{\img}{im}
 
 \DeclareMathOperator{\Z}{\mathbb{Z}}
@@ -70,9 +74,6 @@
       {\IfNoValueF {#1} {\left[#1\right]}}
       {\left[#1\;|\;#2\right]}
 }
-%\DeclareDocumentCommand\prob{g}{\mathbb{P}
-%    \IfNoValueF {#1} {\left[#1\right]}
-%}
 
 
 \DeclareDocumentCommand\expected{g g}{\mathbb{E}
@@ -98,8 +99,11 @@
         {\section[#1]{#3}}
 }
 
+
 %%================================================================%%
+
 %% KOLORKI
+
 %%================================================================%%
 
 \RequirePackage{xcolor}
@@ -117,75 +121,93 @@
 \newcommand{\buff}[1]{\textbf{\color{orange}#1}}
 \newcommand{\acc}[1]{{\color{blue}\slshape #1}}
 
+
 %%================================================================%%
+
 %% TWIERDZENIA ETC.
+
 %%================================================================%%
 
 \RequirePackage{amsthm}
 \RequirePackage{thmtools}
+\RequirePackage{tcolorbox}
 
-%\renewcommand*{\proofname}{Dowód:$ $\newline}
+\RequirePackage[framemethod=TikZ]{mdframed}
+
+\tcbuselibrary{theorems}
 
 \renewenvironment{proof}{{\bfseries\color{orange} Dowód}$ $\newline}{
-  \begin{flushright}\includegraphics[width=30pt]{~/uni-stuff/2023-2024/piwo.png}\end{flushright}
+  \begin{flushright}\includegraphics[width=30pt]{~/uni-stuff/2023-2024/piwo.png}\end{flushright}$ $\newline
 }
 
-\newtheoremstyle{twierdzonka}
-  {3pt}
-  {3pt}
-  {}
-  {}
-  {\color{orange}\large\bfseries}
-  {\newline}
-  {.5em}
-  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\large\color{orange!80!red},
+    bodyfont=\normalfont,
+    notebraces={: }{},
+    notefont=\color{orange},
+    headformat=\NAME$\;$\NUMBER\NOTE,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=red!50!orange, backgroundcolor=yellow!7,
+    }
+]{twierdzonka}
 
 \declaretheorem[
   name=Twierdzenie,
   numberwithin=section,
   style=twierdzonka,
-  shaded={bgcolor=yellow!5!orange!5, rulecolor=orange!50!red!20, rulewidth=2pt, textwidth=\textwidth, margin=10pt}
 ]{theorem}
 
-\newtheoremstyle{uwagi-lematy}
-  {3pt}
-  {3pt}
-  {}
-  {}
-  {\color{purple}\large\bfseries}
-  {\newline}
-  {.5em}
-  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\large\color{purple!80!blue},
+    bodyfont=\normalfont,
+    notebraces={: }{},
+    notefont=\color{purple},
+    headformat=\NAME$\;$\NUMBER\NOTE,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=purple, backgroundcolor=purple!6!pink!3,
+    }
+]{uwagi-lematy}
 
 \declaretheorem[
   name=Uwaga,
   numberlike=theorem,
   style=uwagi-lematy,
-  %shaded={bgcolor=purple!5!blue!5, rulecolor=blue!50!purple!20, rulewidth=2pt, textwidth=\textwidth, margin=10pt}
 ]{uwaga}
 
 \declaretheorem[
   name=Lemat,
   numberlike=theorem,
   style=uwagi-lematy,
-  shaded={bgcolor=purple!5!blue!2, rulecolor=blue!50!purple!20, rulewidth=2pt, textwidth=\textwidth, margin=10pt}
 ]{lemma}
 
-\newtheoremstyle{definicje}
-  {3pt}
-  {3pt}
-  {}
-  {}
-  {\color{green}\large\bfseries}
-  {\newline}
-  {.5em}
-  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\large\color{green!80!black},
+    bodyfont=\normalfont,
+    notebraces={: }{},
+    notefont=\color{green},
+    headformat=\NAME$\;$\NUMBER\NOTE,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=green, backgroundcolor=yellow!5,
+    }
+]{defbox}
+
 
 \declaretheorem[
   name=Definicja,
   numberwithin=section,
-  style=definicje,
-  shaded={bgcolor=yellow!5, rulecolor=green!50!black!20, rulewidth=2pt, textwidth=\textwidth, margin=10pt}
+  style=defbox
 ]{definition}
 
 \newtheoremstyle{przykladziki}
@@ -213,22 +235,24 @@
 }
 
 
-\newtheoremstyle{dygresyja}
-  {3pt}
-  {3pt}
-  {\itshape}
-  {}
-  {\color{blue}\bfseries}
-  {\newline}
-  {.5em}
-  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{blue!80!black},
+    bodyfont=\normalfont,
+    notebraces={: }{},
+    notefont=\color{blue},
+    headformat=\NAME\NUMBER\NOTE,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=blue!60!purple!50, backgroundcolor=blue!2,
+    }
+]{dygresyja}
 
 \declaretheorem[
   name=Dygresja,
   numbered=no,
   style=dygresyja,
-  shaded={rulecolor=blue!30, rulewidth=1pt, bgcolor=blue!2, textwidth=\textwidth}
-  %shaded={bgcolor=blue!20, rulecolor=red!30!black!20, rulewidth=1pt}
 ]{dygresja}
 
 \newtheoremstyle{zadanka}
@@ -245,7 +269,6 @@
   name=Problem,
   numberwithin=section,
   style=zadanka,
-  %shaded={bgcolor=blue!20, rulecolor=red!30!black!20, rulewidth=1pt}
 ]{problem}
 
 \newtheoremstyle{rozw_moj}
@@ -266,13 +289,17 @@
 ]{solution}
 
 %%================================================================%%
+
 %% OBRAZKI && DIAGRAMY
+
 %%================================================================%%
 
 \usetikzlibrary{cd, patterns, patterns.meta}
 
 %%================================================================%%
+
 %% TŁO STRON
+
 %%================================================================%%
 
 \DeclareOption{back_on} {
@@ -280,6 +307,15 @@
   \begin{tikzpicture}[remember picture, overlay]
 
     \node[inner sep=0pt] at (current page.center) {\includegraphics{~/uni-stuff/2023-2024/fajne_tlo.png}};
+
+  \end{tikzpicture}%
+  }
+}
+\DeclareOption{flowers} {
+  \AddToShipoutPictureBG{%
+  \begin{tikzpicture}[remember picture, overlay]
+
+    \node[inner sep=0pt, opacity=0.2] at (current page.center) {\includegraphics{~/uni-stuff/2023-2024/obrazki/pattern-ramka.png}};
 
   \end{tikzpicture}%
   }
