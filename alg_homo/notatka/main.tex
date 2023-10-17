@@ -1,15 +1,48 @@
-\documentclass{article}
+\documentclass[a5paper, twoside]{article}
 
-\usepackage[flowers]{../../template} 
+%\usepackage{showframe}
+
+\usepackage[flowers]{../../template}
+
+\geometry{
+%  showframe,
+  a5paper, 
+  total={124.5mm, 165mm}, 
+  top=20mm, 
+  marginpar={0mm},
+  left={12mm},
+  %right={26mm},
+  headsep=5mm
+}
+
+
+\makeatletter %only needed in preamble
+\renewcommand\Large{\@setfontsize\Large{12pt}{9}}
+\renewcommand\large{\@setfontsize\large{10pt}{9}}
+\renewcommand\scriptsize{\@setfontsize\scriptsize{5pt}{5}}
+\renewcommand\small{\@setfontsize\small{6pt}{6}}
+\makeatother
+
+
+\setheader{Algebra homologiczna}
+\setfoot{Dymary}
 
 \title{Algebra homologiczna}
 \author{}
 \date{Zima 2023-24}
 
 \begin{document}
+\scalefont{0.8}
+
 \maketitle
 \thispagestyle{empty} 
 \newpage
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+\pagestyle{fancy}
 
 \input{01_intro.tex}
 \newpage

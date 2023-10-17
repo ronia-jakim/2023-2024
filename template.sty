@@ -9,10 +9,12 @@
 \RequirePackage[fontsize=12pt]{fontsize}
 
 \RequirePackage{geometry}
-\geometry {
-    a4paper,
-    total={170mm, 257mm}
-}
+%\geometry {
+%    a4paper,
+%    total={170mm, 237mm}
+%}
+
+\geometry{a4paper, total={170mm, 252mm}, top=22mm}
 
 \RequirePackage[default]{sourcesanspro} % czcionka
 \RequirePackage{mathastext}
@@ -298,9 +300,34 @@
 
 %%================================================================%%
 
-%% TŁO STRON
+%% OZDOBNIKI STRON
 
 %%================================================================%%
+
+%% W TYM MOMENCIE ROBIĘ HEADERS && FOOTERS
+
+\RequirePackage{fancyhdr}
+\RequirePackage{scalefnt}
+
+\fancyhead{} % clear all header fields
+
+%\renewcommand{\headrule}{ }%\includegraphics[width=80mm]{~/uni-stuff/2023-2024/obrazki/proba.png} }
+
+\newcommand{\setheader}[1]{
+  \fancyhead[RE, LO]{\textbf{#1}}
+}
+
+\fancyfoot{} % clear all footer fields
+\fancyfoot[CE, CO]{\scalefont{0.85}\thepage}
+\fancyfoot[LE, RO]{\color{black!20}\scalefont{0.8} Weronika Jakimowicz}
+
+
+\newcommand{\setfoot}[1]{
+  \fancyfoot[RE, LO]{\color{black!20}\scalefont{0.8} Według wykładu Prof. #1}
+}
+
+\setlength{\headheight}{12.1pt}
+
 
 \DeclareOption{back_on} {
   \AddToShipoutPictureBG{%
@@ -315,7 +342,7 @@
   \AddToShipoutPictureBG{%
   \begin{tikzpicture}[remember picture, overlay]
 
-    \node[inner sep=0pt, opacity=0.2] at (current page.center) {\includegraphics{~/uni-stuff/2023-2024/obrazki/pattern-ramka.png}};
+    \node[inner sep=0pt, opacity=0.5] at (current page.center) {\includegraphics{~/uni-stuff/2023-2024/obrazki/proba.png}};
 
   \end{tikzpicture}%
   }

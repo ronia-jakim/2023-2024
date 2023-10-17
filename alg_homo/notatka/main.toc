@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Wstęp}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Kompleksy łańcuchowe}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Równoważność kategorii}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Presnop i snop}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Funktory wierne, pełne}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Naturalne przekształcenia funktorów}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Równoważność kategorii}{9}{subsection.2.4}%
