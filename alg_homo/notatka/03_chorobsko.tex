@@ -1,0 +1,110 @@
+\section{16.10.2023 : Tymczasowe}
+
+\begin{example}
+  \item W kategorii zbiorów element $X\in Ob\mathbf{Set}$ możemy widzieć jako elementy zbioru $Hom_{\mathbf{Set}}(1,X)$ gdzie $1$ jest jednoelementowych zbiorem.
+
+  \item Uogólniając obserwację wyżej, w dowolnej kategorii $\mathbf{C}$ obiektowi $X$ możemy przypisać funktor 
+    $$h_X:\mathbf{C}^{op}\to \mathbf{Set}$$
+    $$h_X(Y)=Hom_{\mathbf{C}}(Y,X) \; (\star)$$
+    ponieważ nie zawsze istnieje odpowiednik $1$, dlatego rozważamy wszystkie obiekty i morfizmy:
+    
+    \begin{center}\begin{tikzcd}[column sep = large]
+      %Y \arrow[r, "f"] & Y' \arrow[r, rightsquigarrow] & h_X(Y') \arrow[r, "h_X(f)"] & h_X(Y')
+      Y \arrow[r, "f"] \arrow[d, "\alpha" left] & Y' \arrow[d, "\alpha\circ f"] \\
+      X \arrow[r, squiggly, "h_X(f)" below] & X
+    \end{tikzcd}\end{center}
+
+    Tutaj równanie $(\star)$ można również zapisać jako $X(Y)$, czyli rozumieć jako $Y$-punkty obiektu $X$.
+\end{example}
+
+\begin{definition}[Kategoria funktorów i funktory reprezentowalne]
+  \acc{Kategorię funktorów} $(C^{op},\mathbf{Set})$, której obiektami są $h_X$ jak w przykładzie wyżej, oznaczamy $\hat{\mathbf{C}}$. 
+
+  Funktor $F\in\hat{\mathbf{C}}$ jest \buff{reprezentowalny}, jeśli $F\cong h_X$ dla pewnego $X\in Ob\mathbf{C}$. Takie $X$ jest jedyne z dokładnością do izomorfizmu. Dla morfizmu $X\xrightarrow{\phi} X'$ w $\mathbf{C}$ określamy morfizm $h_\phi:h_X\to h_{X'}$ w $\mathbf{\hat{C}}$.
+
+  \begin{center}\begin{tikzcd}[column sep=large, row sep = small]
+    Hom_{\mathbf{C}}(Y,X) \arrow[r, "h_\phi"] & Hom_{\mathbf{C}}(Y,X')\\
+    \alpha\arrow[u, phantom, sloped, "\in"] \arrow[r] & \phi\circ\alpha\arrow[u, phantom, sloped, "\in"]
+  \end{tikzcd}\end{center}
+\end{definition}
+
+\begin{example}
+  \item $\set{P}(X)$ jest funktorem, który przypisuje $X$ jest zbiór potęgowy. Jest on reprezentowalny, bo $\set{P}(X)\cong Hom(X, 2)$
+  \item $H^n(X,G)=[X,K(G, n)]$ \emph{\large\color{red}NIE JESTEM PEWNA CO TO OZNACZA? chyba nie homotopie}
+  \item wiązki $Vect_n(X)=[X,G^\infty]$????
+\end{example}
+
+Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają funktor $h:\mathbf{C}\to\mathbf{\hat{C}}$.
+
+\begin{lemma}[Yoneda lemma]
+  Przyporządkowanie $h:\mathbf{C}\to\mathbf{\hat{C}}$ zadaje równoważność kategorii $\mathbf{C}$ z pełną podkategorią kategorii $\mathbf{\hat{C}}$, której obiektami są funktory reprezentowalne.
+\end{lemma}
+
+\begin{proof}
+  Musimy pokazać, że
+
+  \begin{center}\begin{tikzcd}[column sep=large, row sep=small]
+    Hom_{\mathbf{C}}(X, X')\arrow[r, "\sim"] & Hom_{\mathbf{\hat{C}}}(h_X, h_{X'})\\
+    \phi\arrow[u, phantom, sloped, "\in"]\arrow[r] & h_\phi\arrow[u, phantom, sloped, "\in"]
+  \end{tikzcd}\end{center}
+
+  jest bijekcją.
+  
+  Jeśli funktor $F\in\mathbf{\hat{C}}$ jest reprezentowalny, to reprezentujący go obiekt jest jedyny z dokładnością do izomorfizmu, bo
+
+  \begin{center}\begin{tikzcd}
+    & F\arrow[dr, "\cong"] \arrow[dl, "\cong" left]\\
+    h_X\arrow[rr, rightsquigarrow, "\star\star", bend left=20] & & h_{X'}\\
+    X\arrow[rr, "\star"] & & X'
+  \end{tikzcd}\end{center}
+
+  izomorfizm $\star$ pojawia się bezpośrednio po tym, że $F\to h_X$ i $F\to h_{X'}$ są izmorfizmami z definicji i od razu zadają izomorfizm $\star\star$.
+
+  Niech teraz $F\in Hom_{\mathbf{\hat{C}}}(h_X,h_{X'})$.
+
+  Jeśli $F=h_{\mathbf{C}}$, to mamy
+  \begin{center}\begin{tikzcd}[column sep=large]
+     h_X(X)\ni id_X\arrow[r, bend left=30, "h_\phi"]\arrow[r, bend right=30, "f"] & h_{X'}(X)
+  \end{tikzcd}\end{center}
+
+  {\large\color{red}WRÓCIĆ TUTAJ BO NIE WIEM CO SIĘ DZIEJE}
+
+\end{proof}
+
+\subsection{Granice i kogranice}
+
+Czyli o granicach odwrotnych [granica] i prostych [kogranica].
+
+Niech $I$ będzie małą kategorią, a $F:I\to\mathbf{C}$ będzie funktorem.
+
+\begin{definition}[granica funktora $F$]
+  Obiekt $X$ z rodziną odwzorowań (zbioru morfizmów) $\Pi_i:X\to F(i)$ dla $X\in Ob\mathbf{C}$ , które spełniają
+  \begin{itemize}
+    \item \acc{[zgodność]} dla dowolnych $i\xrightarrow{\alpha}j$ w $I$ diagram
+      \begin{center}\begin{tikzcd}
+        & X\arrow[dl, "\Pi_i" left]\arrow[dr, "\Pi_j"]\\
+        F(i)\arrow[rr, "F(\alpha)" below] & & F(j)
+      \end{tikzcd}\end{center}
+      komutuje, tzn. $\Pi_j=F(\alpha)\circ\Pi_i$.
+    \item \acc{[uniwersalność]} dla każdego układu $(X',\Pi_i')$ spełniającego poprzedni warunek istnieje jedyny morfizm $\lambda:X'\to X$ taki, że dla każdego $i\in I$ diagram
+      \begin{center}\begin{tikzcd}
+      X'\arrow[rr, "\lambda"]\arrow[dr, "\Pi_i'"] & & X\arrow[dl, "\Pi_i"]\\
+      & F(i)
+    \end{tikzcd}\end{center}
+    komutuje
+  \end{itemize}
+  jest nazywany \buff{granicą funktora $F$} i oznaczamy ją jako $\lim F$.
+\end{definition}
+
+Granica funktora może nie istnieć, ale zawsze gdy istnieje, to jest jedyna z dokładnością do izomorfizmu.
+
+\begin{example}
+  \item Dla $I=\{0,1\}$ oraz $F:I\to \mathbf{C}$ granicę $\lim F$ nazywamy \acc{produktem} obiektów $F(0)$ i $F(1)$
+    \begin{center}\begin{tikzcd}[column sep=large]
+      X\arrow[r, "\Pi_1"]\arrow[d, "\Pi_0"]\arrow[dr, dashed] & F(1)\\
+      F(0) & X'\arrow[l, "\Pi_0'"]\arrow[u, "\Pi_1'"]
+    \end{tikzcd}\end{center}
+\end{example}
+
+\begin{definition}[granica odwrotna] 
+\end{definition}

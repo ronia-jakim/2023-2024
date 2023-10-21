@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.8.25)  17 OCT 2023 13:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.8.25)  21 OCT 2023 16:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -931,8 +931,8 @@ Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.1'
 Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=red!50!orange, backgroundcolor=yellow!7, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=twierdzonka' on input line 159.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 166.
+(thmtools)             that uses `style=twierdzonka' on input line 161.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 168.
  (/usr/share/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2023/02/17 v0.75
 )
@@ -940,19 +940,19 @@ Package: thmdef-mdframed 2023/02/17 v0.75
 Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=purple, backgroundcolor=purple!6!pink!3, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=uwagi-lematy' on input line 180.
+(thmtools)             that uses `style=uwagi-lematy' on input line 182.
 Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=green, backgroundcolor=yellow!5, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=defbox' on input line 206.
+(thmtools)             that uses `style=defbox' on input line 208.
 \c@definition=\count329
 \c@ex=\count330
 Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=blue!60!purple!50, backgroundcolor=blue!2, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=dygresyja' on input line 252.
+(thmtools)             that uses `style=dygresyja' on input line 254.
 \c@problem=\count331
-Package thmtools Info: Automatically pulling in `thmdef-shaded' on input line 292.
+Package thmtools Info: Automatically pulling in `thmdef-shaded' on input line 294.
  (/usr/share/texmf-dist/tex/latex/thmtools/thmdef-shaded.sty
 Package: thmdef-shaded 2023/02/17 v0.75
 ) (/usr/share/texmf-dist/tex/latex/shadethm/shadethm.sty
@@ -978,7 +978,18 @@ File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
 File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.meta.code.tex (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.meta.code.tex)) (/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+)) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.meta.code.tex (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.meta.code.tex)) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen288
+\pgfdecoratedremainingdistance=\dimen289
+\pgfdecoratedinputsegmentcompleteddistance=\dimen290
+\pgfdecoratedinputsegmentremainingdistance=\dimen291
+\pgf@decorate@distancetomove=\dimen292
+\pgf@decorate@repeatstate=\count332
+\pgfdecorationsegmentamplitude=\dimen293
+\pgfdecorationsegmentlength=\dimen294
+)
+\tikz@lib@dec@box=\box82
+) (/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@headwidth=\skip136
 \f@nch@O@elh=\skip137
@@ -989,44 +1000,58 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@O@erf=\skip142
 \f@nch@O@olf=\skip143
 \f@nch@O@orf=\skip144
-) (/usr/share/texmf-dist/tex/latex/carlisle/scalefnt.sty))
-LaTeX Font Info:    Trying to load font information for T1+SourceSansPro-TLF on input line 34.
+) (/usr/share/texmf-dist/tex/latex/carlisle/scalefnt.sty)) (/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box83
+\beforetitleunit=\skip145
+\aftertitleunit=\skip146
+\ttl@plus=\dimen295
+\ttl@minus=\dimen296
+\ttl@toksa=\toks58
+\titlewidth=\dimen297
+\titlewidthlast=\dimen298
+\titlewidthfirst=\dimen299
+) (/usr/share/texmf-dist/tex/latex/titlesec/titletoc.sty
+Package: titletoc 2021/07/05 v2.14 TOC entries
+\ttl@leftsep=\dimen300
+)
+LaTeX Font Info:    Trying to load font information for T1+SourceSansPro-TLF on input line 43.
  (/usr/share/texmf-dist/tex/latex/sourcesanspro/T1SourceSansPro-TLF.fd
 File: T1SourceSansPro-TLF.fd 2020/01/19 (autoinst) Font definitions for T1/SourceSansPro-TLF.
 )
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
-(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 34.
+(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 43.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
-(Font)              scaled to size 12.0pt on input line 34.
+(Font)              scaled to size 12.0pt on input line 43.
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 34.
-LaTeX Font Info:    Trying to load font information for LY1+ptm on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 43.
+LaTeX Font Info:    Trying to load font information for LY1+ptm on input line 43.
  (/usr/share/texmf-dist/tex/latex/ly1/ly1ptm.fd
 File: ly1ptm.fd 2001/02/01 font definitions for LY1/ptm using Berry names.
 )
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for LPH/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for LPH/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1062,20 +1087,20 @@ LaTeX Font Info:    ... okay on input line 34.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package mathastext Info: current meaning of amsmath \resetMathstrut@ saved on input line 34.
-LaTeX Info: Redefining \microtypecontext on input line 34.
-Package microtype Info: Applying patch `item' on input line 34.
-Package microtype Info: Applying patch `toc' on input line 34.
-Package microtype Info: Applying patch `eqnum' on input line 34.
-Package microtype Info: Applying patch `footnote' on input line 34.
-Package microtype Info: Applying patch `verbatim' on input line 34.
+Package mathastext Info: current meaning of amsmath \resetMathstrut@ saved on input line 43.
+LaTeX Info: Redefining \microtypecontext on input line 43.
+Package microtype Info: Applying patch `item' on input line 43.
+Package microtype Info: Applying patch `toc' on input line 43.
+Package microtype Info: Applying patch `eqnum' on input line 43.
+Package microtype Info: Applying patch `footnote' on input line 43.
+Package microtype Info: Applying patch `verbatim' on input line 43.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 34.
+LaTeX Info: Redefining \showhyphens on input line 43.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1085,17 +1110,17 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count332
-\scratchdimen=\dimen288
-\scratchbox=\box82
-\nofMPsegments=\count333
-\nofMParguments=\count334
-\everyMPshowfont=\toks58
-\MPscratchCnt=\count335
-\MPscratchDim=\dimen289
-\MPnumerator=\count336
-\makeMPintoPDFobject=\count337
-\everyMPtoPDFconversion=\toks59
+\scratchcounter=\count333
+\scratchdimen=\dimen301
+\scratchbox=\box84
+\nofMPsegments=\count334
+\nofMParguments=\count335
+\everyMPshowfont=\toks59
+\MPscratchCnt=\count336
+\MPscratchDim=\dimen302
+\MPnumerator=\count337
+\makeMPintoPDFobject=\count338
+\everyMPtoPDFconversion=\toks60
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
  (/usr/share/texmf-dist/tex/latex/grfext/grfext.sty
@@ -1108,69 +1133,69 @@ Package grfext Info: Graphics extension search list:
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 34.
+Package hyperref Info: Link coloring OFF on input line 43.
  (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
-(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 35.
+(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 44.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
-(Font)              scaled to size 9.60004pt on input line 35.
+(Font)              scaled to size 9.60004pt on input line 44.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
-(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 38.
+(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 47.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
-(Font)              scaled to size 20.73596pt on input line 38.
+(Font)              scaled to size 20.73596pt on input line 47.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
-(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 38.
+(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 47.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
-(Font)              scaled to size 10.0pt on input line 38.
+(Font)              scaled to size 10.0pt on input line 47.
  (/usr/share/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
-(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 38.
+(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 47.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
-(Font)              scaled to size 8.0pt on input line 38.
+(Font)              scaled to size 8.0pt on input line 47.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
-(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 38.
+(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 47.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
-(Font)              scaled to size 6.0pt on input line 38.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
+(Font)              scaled to size 6.0pt on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+wasy on input line 38.
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 47.
  (/usr/share/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 38.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 47.
  (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-<~/uni-stuff/2023-2024/obrazki/proba.png, id=35, 422.5386pt x 597.432pt>
+<~/uni-stuff/2023-2024/obrazki/proba.png, id=43, 422.5386pt x 597.432pt>
 File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
 <use ~/uni-stuff/2023-2024/obrazki/proba.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 39.
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 48.
 (pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc} </home/maruda/uni-stuff/2023-2024/obrazki/proba.png>]
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
-(Font)              `T1/SourceSansPro-TLF/bold/n' on input line 41.
+(Font)              `T1/SourceSansPro-TLF/bold/n' on input line 50.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/bold/n' will be
-(Font)              scaled to size 12.0pt on input line 41.
- (./main.toc
+(Font)              scaled to size 9.60004pt on input line 50.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
-(Font)              `T1/SourceSansPro-TLF/bold/n' on input line 1.
+(Font)              `T1/SourceSansPro-TLF/bold/n' on input line 50.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/bold/n' will be
-(Font)              scaled to size 9.60004pt on input line 1.
+(Font)              scaled to size 12.0pt on input line 50.
+ (./main.toc
 LaTeX Font Info:    Calculating math sizes for size <9.60004> on input line 2.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
 (Font)              `T1/SourceSansPro-TLF/regular/n' on input line 2.
@@ -1186,7 +1211,7 @@ LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
 
 File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
 <use ~/uni-stuff/2023-2024/obrazki/proba.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 43.
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 52.
 (pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
  [2] (./01_intro.tex
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
@@ -1237,7 +1262,7 @@ Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input 
  [3])
 File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
 <use ~/uni-stuff/2023-2024/obrazki/proba.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 48.
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 57.
 (pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
  [4] (./02_presnop.tex
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
@@ -1357,50 +1382,17 @@ Overfull \hbox (4.76822pt too wide) in paragraph at lines 189--190
 []\T1/SourceSansPro-TLF/regular/n/9.60004 (-20) Kategoria sko«cze-nie wymi-arowych przestrzeni wek-torowych $[]$ jest równowa»na
  []
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
 <use ~/uni-stuff/2023-2024/obrazki/proba.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 195.
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 192.
 (pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
-[9]
+ [9]
 Package mdframed Info: mdframed works in twoside mode on input line 198.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 198.
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 198.
-<~/uni-stuff/2023-2024/piwo.png, id=144, 2055.68pt x 2055.68pt>
-File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/piwo.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 218.
-(pdftex.def)             Requested size: 30.0pt x 29.98695pt.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 218--51
-
- []
-
-File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
-<use ~/uni-stuff/2023-2024/obrazki/proba.png>
-Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 53.
-(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
-[10 </home/maruda/uni-stuff/2023-2024/piwo.png>] (./main.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A0C2DB294B5A95E9EF44CE9122C9123E;1140.
- ) 
-Here is how much of TeX's memory you used:
- 32637 strings out of 476025
- 636466 string characters out of 5796532
- 1876388 words of memory out of 5000000
- 52210 multiletter control sequences out of 15000+600000
- 717557 words of font info for 208 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 117i,17n,118p,1001b,1533s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Bold.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-It.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb>
-Output written on main.pdf (10 pages, 641619 bytes).
-PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
- 66 named destinations out of 1000 (max. 500000)
- 75855 words of extra memory for PDF output out of 89155 (max. 10000000)
-
+<~/uni-stuff/2023-2024/piwo.png, id=153, 2
