@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Wstęp}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Kompleksy łańcuchowe}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Równoważność kategorii}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Presnop i snop}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Funktory wierne, pełne}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Naturalne przekształcenia funktorów}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Równoważność kategorii}{9}{subsection.2.4}%
+\contentsline {section}{\numberline {3}16.10.2023 : Tymczasowe}{11}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Granice i kogranice}{13}{subsection.3.1}%
+\contentsline {section}{\numberline {4}23.10.23 : Funktory sprzężone [adjoint functors]}{15}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Kategorie addytywne i abelowe}{17}{subsection.4.1}%
+\contentsfinish 

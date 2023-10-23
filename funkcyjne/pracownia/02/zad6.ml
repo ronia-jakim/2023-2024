@@ -1,4 +1,7 @@
-(*** Zdefiniuj funkcję zwracającą listę wszystkich permutacji zadanej listy. Można zrobić to na dwa istotnie różne sposoby: przez wybieranie i przez wstawianie. Czy potrafisz zaimplementować każdy z nich? *)
+(*** Zdefiniuj funkcję zwracającą listę wszystkich permutacji zadanej listy. Można zrobić to na dwa istotnie różne sposoby: przez wybieranie i przez wstawianie. Czy potrafisz zaimplementować każdy z nich? 
+
+ ~ NIE 
+ *)
 
 (*** Plan jest taki, że będę przechodzić po całej liście i brać sobie element i wrzucać go do wszystkich innych miejsc w permutacjach na "ogonie" od tego miejsca na którym trzymamy palec *)
 

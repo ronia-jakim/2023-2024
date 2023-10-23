@@ -58,6 +58,9 @@
 
 \RequirePackage{ stmaryrd }
 
+\DeclareMathOperator{\coker}{Coker}
+\DeclareMathOperator{\coim}{Coim}
+
 \DeclareMathOperator{\img}{im}
 
 \DeclareMathOperator{\Z}{\mathbb{Z}}
@@ -157,6 +160,7 @@
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=red!50!orange, backgroundcolor=yellow!7,
+        skipabove=3mm, skipbelow=3mm
     }
 ]{twierdzonka}
 
@@ -178,6 +182,7 @@
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=purple, backgroundcolor=purple!6!pink!3,
+        skipabove=3mm, skipbelow=3mm
     }
 ]{uwagi-lematy}
 
@@ -193,6 +198,12 @@
   style=uwagi-lematy,
 ]{lemma}
 
+\declaretheorem[
+  name=Fakt,
+  numberlike=theorem,
+  style=uwagi-lematy,
+]{fact}
+
 \declaretheoremstyle[
     headfont=\bfseries\sffamily\large\color{green!80!black},
     bodyfont=\normalfont,
@@ -204,6 +215,7 @@
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=green, backgroundcolor=yellow!5,
+        skipabove=3mm, skipbelow=3mm
     }
 ]{defbox}
 
@@ -250,6 +262,7 @@
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=blue!60!purple!50, backgroundcolor=blue!2,
+        skipabove=3mm, skipbelow=3mm
     }
 ]{dygresyja}
 

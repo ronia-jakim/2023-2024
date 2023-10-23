@@ -1,5 +1,5 @@
 open Zad7
-
+ 
 let fajne_sortowanie lst =
   let rec ff ziom = 
     match wez_daj_minimum ziom with

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.8.25)  21 OCT 2023 16:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.9)  23 OCT 2023 14:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -928,31 +928,31 @@ Package zref Info: New property: mdf@pagevalue on input line 895.
 ) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
 Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.1'
 )
-Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=red!50!orange, backgroundcolor=yellow!7, ')
+Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=red!50!orange, backgroundcolor=yellow!7, skipabove=3mm, skipbelow=3mm ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=twierdzonka' on input line 161.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 168.
+(thmtools)             that uses `style=twierdzonka' on input line 165.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 172.
  (/usr/share/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2023/02/17 v0.75
 )
 \c@theorem=\count328
-Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=purple, backgroundcolor=purple!6!pink!3, ')
+Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=purple, backgroundcolor=purple!6!pink!3, skipabove=3mm, skipbelow=3mm ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=uwagi-lematy' on input line 182.
-Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=green, backgroundcolor=yellow!5, ')
+(thmtools)             that uses `style=uwagi-lematy' on input line 187.
+Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=green, backgroundcolor=yellow!5, skipabove=3mm, skipbelow=3mm ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=defbox' on input line 208.
+(thmtools)             that uses `style=defbox' on input line 220.
 \c@definition=\count329
 \c@ex=\count330
-Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=blue!60!purple!50, backgroundcolor=blue!2, ')
+Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=blue!60!purple!50, backgroundcolor=blue!2, skipabove=3mm, skipbelow=3mm ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=dygresyja' on input line 254.
+(thmtools)             that uses `style=dygresyja' on input line 267.
 \c@problem=\count331
-Package thmtools Info: Automatically pulling in `thmdef-shaded' on input line 294.
+Package thmtools Info: Automatically pulling in `thmdef-shaded' on input line 307.
  (/usr/share/texmf-dist/tex/latex/thmtools/thmdef-shaded.sty
 Package: thmdef-shaded 2023/02/17 v0.75
 ) (/usr/share/texmf-dist/tex/latex/shadethm/shadethm.sty
@@ -1179,14 +1179,14 @@ File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 47.
  (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-<~/uni-stuff/2023-2024/obrazki/proba.png, id=43, 422.5386pt x 597.432pt>
+<~/uni-stuff/2023-2024/obrazki/proba.png, id=51, 422.5386pt x 597.432pt>
 File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
 <use ~/uni-stuff/2023-2024/obrazki/proba.png>
 Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 48.
 (pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc} </home/maruda/uni-stuff/2023-2024/obrazki/proba.png>]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc} </home/marudka/uni-stuff/2023-2024/obrazki/proba.png>]
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
 (Font)              `T1/SourceSansPro-TLF/bold/n' on input line 50.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/bold/n' will be
@@ -1304,6 +1304,9 @@ LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
 (Font)              `T1/SourceSansPro-TLF/bold/n' on input line 33.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/bold/n' will be
 (Font)              scaled to size 6.0pt on input line 33.
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 51.
 File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
 <use ~/uni-stuff/2023-2024/obrazki/proba.png>
 Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 51.
@@ -1395,4 +1398,234 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 198.
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 198.
-<~/uni-stuff/2023-2024/piwo.png, id=153, 2
+<~/uni-stuff/2023-2024/piwo.png, id=163, 2055.68pt x 2055.68pt>
+File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/piwo.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 218.
+(pdftex.def)             Requested size: 30.0pt x 29.98695pt.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 218--60
+
+ []
+
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 60.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+[10 </home/marudka/uni-stuff/2023-2024/piwo.png>] (./03_chorobsko.tex
+Underfull \hbox (badness 10000) in paragraph at lines 4--4
+
+ []
+
+Package mdframed Info: mdframed works in twoside mode on input line 20.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 20.
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+
+ []
+
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/it' aliased to
+(Font)              `T1/SourceSansPro-TLF/regular/it' on input line 33.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/it' will be
+(Font)              scaled to size 10.0pt on input line 33.
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 34.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+[11]
+Package mdframed Info: mdframed works in twoside mode on input line 39.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 39.
+Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input line 39.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 72.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+ [12]
+File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/piwo.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 72.
+(pdftex.def)             Requested size: 30.0pt x 29.98695pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+
+ []
+
+Package mdframed Info: mdframed works in twoside mode on input line 80.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 80.
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--102
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 102.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+ [13]
+Package mdframed Info: mdframed works in twoside mode on input line 109.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 109.
+)
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 63.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+ [14] (./04.tex
+Package mdframed Info: mdframed works in twoside mode on input line 4.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+
+Overfull \hbox (1.36589pt too wide) in paragraph at lines 5--6
+\T1/SourceSansPro-TLF/regular/n/9.60004 (-20) sprz¦»ony do $[]$, a $[]$ jest prawo sprz¦»ony do $[]$), je±li ist-niej¡ nat-u-ralne bi-jekcje (zarówno
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+
+ []
+
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 36.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+[15]
+Overfull \hbox (3.58545pt too wide) in paragraph at lines 46--47
+[]\T1/SourceSansPro-TLF/regular/n/9.60004 (-20) Wªo»enie zwartych przestrzeni Haus-dorffa w przestrze-nie topo-log-iczne $[][][] \OML/cmm/m/it/10 ,[]\OMS/cmsy/m/n/10 !
+ []
+
+Package mdframed Info: mdframed works in twoside mode on input line 54.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 54.
+Package hyperref Info: bookmark level for unknown fact defaults to 0 on input line 54.
+File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/piwo.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 64.
+(pdftex.def)             Requested size: 30.0pt x 29.98695pt.
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 64.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
+Package mdframed Info: mdframed works in twoside mode on input line 66.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 66.
+File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/piwo.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 74.
+(pdftex.def)             Requested size: 30.0pt x 29.98695pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+
+ []
+
+Package mdframed Info: mdframed works in twoside mode on input line 78.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 78.
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 94.
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 94.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+[17]
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 120.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+ [18]
+Package mdframed Info: mdframed works in twoside mode on input line 120.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 120.
+Package hyperref Info: bookmark level for unknown dygresja defaults to 0 on input line 120.
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+
+ []
+
+Package mdframed Info: mdframed works in twoside mode on input line 133.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 133.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 154.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+ [19]
+Package mdframed Info: mdframed works in twoside mode on input line 167.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 167.
+Package mdframed Info: mdframed works in twoside mode on input line 183.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 183.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 188.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+ [20]
+File: ~/uni-stuff/2023-2024/piwo.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/piwo.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/piwo.png  used on input line 193.
+(pdftex.def)             Requested size: 30.0pt x 29.98695pt.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 193--66
+
+ []
+
+File: ~/uni-stuff/2023-2024/obrazki/proba.png Graphic file (type png)
+<use ~/uni-stuff/2023-2024/obrazki/proba.png>
+Package pdftex.def Info: ~/uni-stuff/2023-2024/obrazki/proba.png  used on input line 68.
+(pdftex.def)             Requested size: 422.53757pt x 597.43054pt.
+[21] (./main.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 75F14CFD5BFA57311823830608A2D262;1979.
+ ) 
+Here is how much of TeX's memory you used:
+ 34823 strings out of 476025
+ 689929 string characters out of 5796533
+ 1884388 words of memory out of 5000000
+ 54262 multiletter control sequences out of 15000+600000
+ 730700 words of font info for 239 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 117i,17n,118p,1193b,1660s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Bold.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-It.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb>
+Output written on main.pdf (21 pages, 712114 bytes).
+PDF statistics:
+ 370 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 127 named destinations out of 1000 (max. 500000)
+ 79983 words of extra memory for PDF output out of 89155 (max. 10000000)
+

@@ -2,8 +2,11 @@ let length lst = List.fold_left (fun x y -> x + 1) 0 lst
 
 let rev lst = List.fold_left (fun x y -> y :: x) [] lst
 
+(*** to chyba jednak nie o to chodziło 
 let map f lst = rev (List.fold_left (fun x y -> (f y) :: x) [] lst)
+*)
 let mapp f lst = List.fold_right (fun x y -> (f x) :: y) lst []
+
 
 let append lst1 lst2 = List.fold_right (fun x y -> x :: y) lst1 lst2
 

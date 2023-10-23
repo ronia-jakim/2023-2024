@@ -1,0 +1,193 @@
+\section{23.10.23 : Funktory sprzężone [adjoint functors]}
+
+
+\begin{definition}[funktory sprzężone]
+  Para funktorów $L:\mathbf{A}\to\mathbf{B}$ i $R:\mathbf{B}\to\mathbf{A}$ nazywamy \buff{parą sprzężoną} ($L$ jest lewo sprzężony do $R$, a $R$ jest prawo sprzężony do $L$), jeśli istnieją naturalne bijekcje (zarówno względem $\mathbf{A}$ jak i $\mathbf{B}$)
+  $$Hom_{\mathbf{B}}(L(A),B)\longleftrightarrow Hom_{\mathbf{A}}(A,R(B))$$
+
+  Funktory sprzężone oznaczamy $L\dashv R$
+\end{definition}
+
+\begin{example}
+  \item Jest sporo przykładów, gdy $R$ jest \acc{funktorem zapominającym}
+    \begin{itemize}
+      \item jeśli $R:\mathbf{Grp}\to\mathbf{Set}$, wtedy
+
+        \begin{center}\begin{tikzcd}[row sep=tiny]
+          Hom_{\mathbf{Grp}}(\star,B)\arrow[r, <->] & Hom_{\mathbf{Set}}(A,B)\\
+          \text{grupa}\arrow[u, start anchor={[yshift=-2mm, xshift=3mm]}, end anchor={[xshift=5mm, yshift=2mm]}, bend right=30] & &\text{grupa jako zbiór}\arrow[ul, start anchor={[xshift=1mm]west}, end anchor={[xshift=4mm, yshift=1mm]}, bend left=15]
+        \end{tikzcd}\end{center}
+
+        $\star$ będzie grupą wolną o zbiorze generatorów $A$, co oznaczamy $F_A$.
+      \item $R:\mathbf{Vect}_K\to\mathbf{Set}$ z bijekcjami zdefiniowanymi jako
+        $$Hom_{\mathbf{Vect}_K}(LA,V)\longleftrightarrow Hom_{\mathbf{Set}}(A,V)$$
+        gdzie $LA$ to przestrzeń liniowa o bazie równej zbiorowi $A$.
+    \end{itemize}
+  \item Dla $R$-modułów $A,B,X$ zachodzi
+        $$Hom_R(A\otimes X, B)\cong Hom_R(A,Hom_R(X,B))$$
+        dla $\phi\in Hom_R(A,Hom_R(X,B))$ mamy
+        $$(a\otimes x\mapsto (\phi(a))(x))\mapsto \phi$$
+        Dla ustalonego $X$ mamy funktory sprzężone z $R$-modułów w $R$-moduły: $L=-\otimes X$ oraz $R=Hom(X,-)$
+  \item Bardzo często włożenie kategorii w inną kategorię jest funktorem mającym funktor sprzężonym.
+    \begin{itemize}
+      \item Włożenie kategorii $\mathbf{Ab}\hookrightarrow \mathbf{Grp}$ posiada funktor sprzężony:
+      $$Hom_{\mathbf{Ab}}(\star, B)\longleftrightarrow Hom_{\mathbf{Grp}}(A, B)$$
+      komutant dowolnej grupy $A$ przechodzi przez każdy homomorfizm $\phi:A\to B$ na element neutralny, więc od razu indukwoane mamy przekształcenie $A^{op}\to B$, stąd $\star=A^{op}$.
+    \item Włożenie kategorii ciał w dziedziny wyrzuca część homomorfizmów. Mamy
+      $$Hom_{\mathbf{Ciala}}(\star,K)\longleftrightarrow Hom_{\mathbf{Dziedziny}}(R,K)$$
+      Jeśli mamy odwzorowanie z pierścienia $R$ w ciało $K$, to to odwzorowanie rozszerza się na odwzorowanie z ciała ułamków ciała $R$ w ciało $K$:
+  
+      \begin{center}\begin{tikzcd}
+        R\arrow[rr, "\phi"]\arrow[dr, hookrightarrow] & & K\ni\frac{\phi(p)}{\phi(q)}\\
+         & R_0\ni \frac{p}{q}\arrow[ur]
+      \end{tikzcd}\end{center}
+  
+      stąd $\star=R_o$
+    \item Włożenie zwartych przestrzeni Hausdorffa w przestrzenie topologiczne $\mathbf{Cpt}T_0\hookrightarrow \mathbf{Top}$ mamy
+      $$Hom_{\mathbf{Cpf}T_0}(\star, Y)\longleftrightarrow Hom_{\mathbf{Top}}(X,Y)$$
+      więc $\star=\beta X$ czyli uzwarceniem Cecha-Stone'a. To jest maksymalne możliwe uzwarcenie. 
+  
+      Bierzemy przestrzeń $X$ i patrzymy na wszystkie ciągłe odwzorowania z $X$ w $[0,1]$ i potem odwzorowujemy diagonalnie $X$ w ten produkt, a potem domykamy obraz tego diagonalnego odwzorowania i to jest maksymalne uzwarcenie.
+  \end{itemize}
+\end{example}
+
+\begin{fact}[jedyność funktora sprzężonego]
+  Funktor sprzężony, jeśli istnieje, to jest jedyny z dokładnością do izomorfizmu.
+\end{fact}
+
+\begin{proof}
+  Bardzo poglądowy, bo trzeba się dokładnie wgryźć w spojrzenie jak to działa na morfizmach.
+
+  $R(B)$ to jedyny element reprezentujący funktor
+  $$A^{op}\ni A\mapsto Hom_{\mathbf{B}}(LA,B)\in\mathbf{Set}$$
+    Z lematu Yonedy wiemy, że jeśli takie coś istnieje, to jest jedyne z dokładnością do izomorfizmu.
+\end{proof}
+
+\begin{fact}[funktory sprzężone zachowują granice (prostą/odwrotną)]
+  Jeśli $L\dashv R$, to $R$ zachowuje granicę, a $L$ kogranicę.
+\end{fact}
+
+\begin{proof}
+  {\large\color{red}OBRAZEK}
+
+  Musimy wziąć dowolny obiekt $A\in \mathbf{A}$ i sprawdzić, czy $\Pi_i':A\to (R\circ F)(I)$ sfaktoryzuje się w jedyny możliwy sposób na $R\circ R(\Pi_i)$. Musimy wziąć obiekt $LA\in\mathbf{B}$ i tutaj dostajemy jedyną strzałkę $LA\to X$, gdyż $X$ jest granicą. Ale sprzężoność $R$ z $L$ mówi, że mamy jedyność odpowiadania strzałek między elementami $\mathbf{A}$ a elementami $\mathbf{B}$.
+\end{proof}
+
+\subsection{Kategorie addytywne i abelowe}
+
+\begin{definition}[kategoria addytywna]
+  \buff{Kategoria addytywna} $\mathbf{A}$ to kategoria
+  \begin{itemize}
+    \item Dla każdej pary obiektów $A,B\in Ob\mathbf{A}$ na $Hom_{\mathbf{A}}(A, B)$ jest określona struktura grupy abelowej. Złożenia są biaddytywne:
+      \begin{center}\begin{tikzcd}
+        A\arrow[r, "g"] & B\arrow[r, "f", bend left=10]\arrow[r, "f'", bend right=10] & C\arrow[r, "h"] & D
+      \end{tikzcd}\end{center}
+      $$(f+f')\circ g=f\circ g+f'\circ g$$
+      $$h\circ(f+f')=h\circ f+h\circ f'$$
+    \item Istnieje \acc{obiekt zerowy} $0$ taki, że $Hom_{\mathbf{A}}(0, 0)=0$ jest grupą trywialną
+    \item Dla dowolnej pary obiektów $A, B\in Ob\mathbf{A}$ istnieje obiekt $C$ (zwykle oznaczany $A\oplus B$), który jest ich \acc{produktem} i \acc{koproduktem}, tzn.: istnieją morfizmy
+      \begin{center}\begin{tikzcd}
+        A\arrow[r, "i_A"] & C\arrow[l, "P_A"]\arrow[r, "P_B"] & B\arrow[l, "i_B"]
+      \end{tikzcd}\end{center}
+      takie, że $P_a\circ i_A=id_A$ i $P_A\circ i_B=0$ (analogicznie gdy przestawimy $A$ i $B$). Dodatkowo, $i_AP_A+i_BP_B=id_C$.
+  \end{itemize}
+\end{definition}
+
+Tłumacząc ostatni warunek, chcemy pokazać, że istnieje jedyna strałka $D\to C$:
+\begin{center}\begin{tikzcd}
+  D\arrow[dr, dashed]\arrow[drr, bend left=20, "f_b"]\arrow[ddr, "f_A", bend right=20] & &\\
+                                                       & C\arrow[r, "P_B"]\arrow[d, "P_A"] & B\\
+                                                       & A
+\end{tikzcd}\end{center}
+Zauważmy że $i_Af_A+i_Bf_B:D\to C$, wystarczy więc sprawdzić, czy taka definicja $D\to C$ sprawia, że diagram komutuje, tzn. złożyć ją z $P_A$ i $P_B$:
+%({\large\color{red}TUTAJ ZDJĘCIE Z MNÓSTWEM OBLICZEŃ})
+$$P_A(i_Af_A+i_Bf_B)=\underbrace{P_Ai_A}_{id_A}f_A+\underbrace{P_Ai_B}_{0}f_B=f_A$$
+$$P_B(i_Af_A+i_Bf_B)=\underbrace{P_Bi_A}_{0}f_A+\underbrace{P_Bi_B}_{id_B}f_B=f_B$$
+Jeśli istnieją dwa takie odwzorowania, to ich różnica $u$ zamykałaby diagram
+\begin{center}\begin{tikzcd}
+  D\arrow[drr, "0", bend left=20]\arrow[ddr, "0", bend right=20]\arrow[dr, "u"]\\
+  & C\arrow[r, "P_B"]\arrow[d, "f_A"] & B\\
+  & A
+\end{tikzcd}\end{center}Zauważmy, że 
+\begin{align*}
+  u&=id_C\circ 0=\\
+   &=i_AP_Au+i_BP_Bu=\\
+   &=i_A0+i_B0=0+0=0
+\end{align*}
+
+Analogicznie pokazuje się dla koproduktu.
+
+\begin{dygresja}[parę słów o zerach]
+  Dla dowolnego obiektu $A\in Ob\mathbf{A}$ mamy $Hom(0, A)=0$ i $Hom(0, A)=0$, bo dla $f:A\to 0$ jest $id_0\circ f=f$, czyli $f=0\circ f$, a więc
+  $$0f=(0+0)f=0f+0f\implies 0=0f\implies f=0$$
+\end{dygresja}
+
+\begin{example}
+\item $\mathbf{AB}$
+\item $R$-moduły
+\item Presnopy grup abelowych na jakiejś przestrzeni topologicznej (lub kategorii) 
+
+  $\mathbf{Pre-snop/AB}(X)$ i od razu zagubione w tym gąszczu snopy.
+\end{example}
+
+\begin{definition}[kategoria abelowa]
+  Kategoria addytywna jest \buff{abelowa}, jeśli każdy morfizm ma jądro i kojądro i naturalny morfizm z koobrazu w obraz jest izomorfizmem.
+\end{definition}
+
+Definicja wyżej często jest formułowana w inny, równoważny, sposób.
+
+Kilka wyjaśnień:
+\begin{itemize}
+  \item Jądro $f$ to ekwalizator \begin{tikzcd}A\arrow[r, bend left=10, "f"]\arrow[r, bend right=10, "0" below] & B\end{tikzcd}. Inaczej, jest to \begin{tikzcd}K\arrow[r, "k"] &A\end{tikzcd} taki, że
+    \begin{enumerate}
+      \item \begin{tikzcd}K\arrow[r, "k"] & A\arrow[r, "f"] & B=0\end{tikzcd}
+      \item Zachodzi własność uniwersalna:
+        \begin{center}\begin{tikzcd}
+          \forall\;K'\arrow[r, "k'"]\arrow[rr, "0", bend left=30] & A\arrow[r, "f"] & B\\
+          K\arrow[u, "\exists!\;u"]\arrow[ur, "k"]\arrow[urr, "0" left, bend right=20]
+        \end{tikzcd}\end{center}
+    \end{enumerate}
+  \item Kojądro $f$ to koekwalizator \begin{tikzcd}A\arrow[r, bend left=10, "f"]\arrow[r, bend right=10, "0" below] & B\end{tikzcd} jak w następującym diagramie:
+    \begin{center}\begin{tikzcd}
+      A\arrow[r, "f"]\arrow[rr, "0", bend left=30]\arrow[drr, "0", bend right=20] & B\arrow[dr, "c'"]\arrow[r, "c"] & C\arrow[d, "\exists!"]\\
+    & & C'
+    \end{tikzcd}\end{center}
+  \item Niech $f:A\to B$, wówczas
+    \begin{itemize}
+      \item $\img f=\ker(B\to \coker\;f)$
+      \item $\coim\;f=\coker(\ker f\to A)$
+    \end{itemize}
+
+    \begin{center}\begin{tikzcd}
+      K\arrow[r, "k"] & A\arrow[r, "f"]\arrow[d] & B\arrow[r, "c"] & C\\
+                      & \coim\;f\arrow[r, dashed, green] & \img f\arrow[u]
+    \end{tikzcd}\end{center}
+\end{itemize}
+
+\begin{definition}[mono-, epi-]
+  Morfizm $f:X\to Y$ jest
+  \begin{itemize}
+    \item \buff{monomorfizmem}, jeśli dla dowolnych dwóch odwzorowań $g_1,g_2:Z\to X$ zachodzi
+      $$f\circ g_1=f\circ g_2\implies g_1=g_2$$
+      W kategorii addytywnej można zamiast powyższego zażądać, żeby dla każdego $g:Z\to X$ $f\circ g=0\implies g=0$
+    \item \buff{epimorfizmem} nazywamy morfizm $f:A\to B$ taki, że mając $h_1,h_2:B\to W$ zachodzi
+      $$h_1\circ f=h_2\circ f\implies h_1=h_2$$
+      W kategorii addytywnej można zamiast tego powiedzieć, że mając $f:A\to B$ i $h:B\to W$ to
+      $$hf=0\implies h=0$$
+  \end{itemize}
+\end{definition}
+
+Można pokazać, że jeśli $f$ jest monomorfizmem, to $\ker f=0$, a jeśli $f$ jest epimorfizmem, to $\coker f=0$.
+
+\begin{lemma}
+  Jądra są monomorfizmami, a kojądra są epimorfizmami.
+\end{lemma}
+
+\begin{proof}
+  W przypadku jądra wystarczy zbadać diagram:
+  \begin{center}\begin{tikzcd}
+    K\arrow[r, "k"] & A\arrow[r, "f"] & B\\
+    Z\arrow[u, "g" right]\arrow[u, "0" left, bend left=20, green]\arrow[ur, "0"]\arrow[urr, "0" right]
+  \end{tikzcd}\end{center}
+  i zauważyć, że jedyność odwzorowania $Z\to K$ wymaga, aby $g=0$.
+\end{proof}
