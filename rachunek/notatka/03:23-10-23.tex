@@ -1,0 +1,190 @@
+\section{23.10.23 : Interpretacje geometryczne WWO}
+
+Rozważmy zmienną losową $X$ taką, że $\expected{X^2}<\infty$. Interesuje nas zagadnienie regresji, mianowicie obserwując inną zmienną losową $Z$ chcemy móc $X$ aproksymować. Przez przybliżanie $X$ rozumiemy przybliżanie średniokwadratowe. 
+
+Szukamy więc funkcji mierzalnej $h_0:\R\to\R$ takiej, żeby 
+$$\expected{(X-h_0(Z))^2}=\inf_{h:\R\to\R}\expected{(X-h(Z))^2}$$
+
+\begin{fact}\label{fakt 3.1}
+  Dla każdej zmiennej losowej $Y$ mierzalnej względem $\sigma(Z)$ (co w skrócie będziemy notować $Y\in\sigma(Z)$) istnieje $h$ takie, że $Y=h(Z)$.
+\end{fact}
+
+\begin{proof}
+  Zadanie.
+\end{proof}
+
+$$\expected{(X-h(Z))^2}=\inf_{Y\in\sigma(Z)}\expected{(X-Y)^2}$$
+mając pewną wiedzę o przestrzeniach Hilberta jest do tego dość naturalne podejście: rzut ortogonalny.
+
+Dla $\sigma$-ciała $\set{G}\subseteq\set{F}$ będziemy rozważać
+$$L^2(\set{G})=\{Y\in\set{G}\;:\;\expected{Y^2}<\infty\}$$
+wówczas $L^2(\set{G})$ jest przestrzenią Euklidesową z iloczynem skalarnym $\langle X, Y\rangle=\expected{XY}$, który z kolei zadaje normę
+$$\|X\|=\sqrt{\expected{X^2}}.$$
+
+Używając tego języka będziemy wiedzieli jak szukać $Y$ z początku wykładu, ale najpierw fakt pomocniczy do twierdzenia które nadejdzie lada moment.
+
+\begin{fact}[warunkowa wersja nierówności Cauchy'ego-Schwartza]\label{warunkowy Cauchy-szwarc}
+  Dla zmiennych  $X,Y$ takich, że $\expected{X^2},\expected{Y^2}<\infty$ i $\sigma$-ciała $\set{G}\subseteq\set{F}$ zachodzi
+  $$\expected{|XY|}{\set{G}}\leq\expected{X^2}{\set{G}}^{\frac{1}{2}}\expected{Y^2}{\set{G}}^{\frac{1}{2}}$$
+\end{fact}
+
+\begin{proof}
+  Zadanie
+\end{proof}
+
+Z tego nierówności w fakcie \ref{warunkowy Cauchy-szwarc} wynika, że dla $Y=1$ mamy
+$$\expected{|X|}{\set{G}}^2\leq\expected{X^2}{\set{G}}\implies\expected{\expected{X}{Y}^2}<\infty$$
+
+\begin{theorem}[wwo jest rzutem ortogonalnym na $L^2(\set{G})$]
+  Niech $X$ będzie zmienną losową taką, że $\expected{X^2}<\infty$, a $\set{G}\subseteq\set{F}$ jest $\sigma$-ciałem. Wówczas 
+  $$\expected{X}{\set{G}}\in L^2(\set{G})$$
+  jest \acc{rzutem ortogonalnym} $X$ na $L^2(\set{G})$.
+\end{theorem}
+
+\begin{center}\begin{tikzpicture}
+  \node (X) at (0, 3) {$X$};
+  \filldraw (0, 2.7) circle (1.5pt);
+
+  \filldraw (-2, 0) circle (1.5pt);
+  \node (0) at (-2, -0.3) {$0$};
+  
+  \filldraw (0, 0);
+  \draw(-2, 0)--(0, 2.7);
+  \draw[dashed](0, 2.7)--(0, 0);
+
+  %\draw (-3, 1.5) rectangle (3, -1.5);
+  %\draw plot[smooth, tension=2] coordinates {(-3, -2) (3, -1.5)};
+  \draw (-3, 1.5) to[out=-20,in=220] (3, 2);
+  \draw (3, 2) to[out=5, in=5] (3, -2);
+  \draw (3, -2) to[out=150, in=20] (-3, -1.5);
+  \draw (-3, -1.5) to[out=170, in=200] (-3, 1.5);
+
+  \node at (2.7, -1) {$L^2(\set{G})$};
+\end{tikzpicture}\end{center}
+
+Dokładniej, $\expected{X}{\set{G}}$ daje minimum zbioru $\{\expected{(X-Y)^2}\;:\;Y\in L^2(\set{G})\}$. Z faktu \ref{fakt 3.1} dla $\set{G}=\sigma(Z)$, $\expected{X}{\set{G}}=h_0(Z)$ dla pewnego $h_0$.
+
+\begin{proof}
+  Dla $Y\in L^2(\set{G})$ mamy 
+  \begin{align*}
+    \expected{(X-Y)^2}&=\expected{((X-\expected{X}{\set{G}})-\overbrace{(Y-\expected{X}{\set{G}})}^{=Y'})^2}=\\
+                      &=\expected{(X-\expected{X}{\set{G}})^2}-2\expected{(X-\expected{X}{\set{G}})Y'}+\expected{(Y')^2}=\\
+                      &\overset{\star}{=}\expected{(X-\expected{X}{\set{G}})^2}+\expected{(Y')^2}
+  \end{align*}
+  Zauważmy, że
+  \begin{align*}\expected{Y'X}{\set{G}}&=Y'\expected{X}{\set{G}}\\
+    \expected{\expected{Y'X}{\set{G}}}=\expected{Y'X}&=\expected{Y'\expected{X}{\set{G}}}
+\end{align*}
+\end{proof}
+
+\begin{example}
+  \item Niewiele mający z tym co przed chwilą było. Niech $\Omega=[0,1]$, $\set{F}=Bor([0,1])$ i $\prob=\lambda$. Chcemy rozważyć $t\in(0,1)$ oraz $\set{G}=\sigma(Bor([0,t])$.
+
+    Dla całkowalnej zmiennej losowej $X$ szukamy $\expected{X}{\set{G}}$.
+
+    Dowolny $G\in\set{G}$ ma postać $G=A\cup B$, gdzie $A\in Bor([0, t])$ i $B\in \{(t, 1],\emptyset\}$. W takim razie, jeśli $Y\in \set{G}$, to $Y$ jest stała na $(t, 1]$. Czyli żeby $Y=\expected{X}{\set{G}}$ to zapewne będzie postaci:
+    $$Y(\omega)=X(\omega)\mathds{1}_{[0, t]}(\omega)+c\mathds{1}_{(t, 1]}(\omega)$$
+      gdzie $c$ jest pewną stałą.
+
+      Musimy sprawdzić, czy (i kiedy) $\expected{X\mathds{1}_G}=\expected{Y\mathds{1}_{G}}$. Widać od razu, że dla $G=A\cup B$ jak wyżej, mamy
+      $$X\mathds{1}_A=Y\mathds{1}_A,$$
+      czyli $\expected{X\mathds{1}_A}=\expected{Y\mathds{1}_A}$. Zostaje nam uzgodnić część $B$ kiedy jest on niepusty:
+      $$\expected{X\mathds{1}_B}=\int_t^1X(s)ds$$
+      $$\expected{Y\mathds{1}_B}=c(1-t),$$
+      czyli $c$ musi być średnią $X$ na przedziale $(t, 1]$:
+      $$c=\frac{1}{1-t}\int_t^1X(s)ds.$$
+\end{example}
+
+\subsection{Regularne rozkłady warunkowe}
+
+Dla zmiennej losowej $Y$ i całkowalnej zmiennej losowe $X$ napis
+$$\expected{X}{Y}:=\expected{X}{\sigma(Y)}$$
+będzie wwo $X$ względem $\sigma$-ciała generowanego przez $Y$.
+
+
+\textbf{Zadanie dla dociekliwych:}
+
+Jeśli $\prob{Y=y}>0$ dla $y\in\R$, to biorąc $\omega\in\{Y=y\}$ dostajemy:
+$$\expected{X}{Y}(\omega)=\expected{X}{Y=y}=\frac{1}{\prob{Y=y}}\expected{X\mathds{1}_{\{Y=y\}}}$$
+
+\begin{definition}[wwo $X$ pod warunkiem $\{Y=y\}$]
+ Po pierwsze zauważamy, że istnieje funkcja $h:\R\to\R$ taka, że $\expected{X}{Y}=h(Y)$. ($\star$)
+
+  Niech $X$ i $Y$ będą dowolnymi zmiennymi losowymi, przy czym od $X$ wymagamy całkowalności. Dla $y\in\R$ warunkową wartość oczekiwaną $X$ pod warunkiem $\{Y=y\}$ definiujemy przez 
+  $$\expected{X}{Y=y}=h(y)$$
+  gdzie $h$ spełnia warunek ($\star$).
+\end{definition}
+
+Podobnie definiujemy prawdopodobieństwo zbioru $A$ pod warunkiem $\{Y=y\}$:
+$$\prob{A}{Y=y}=\expected{\mathds{1}_A}{Y=y}$$
+
+\begin{example}
+\item Jeżeli $X$ i $Z$ są niezależne, to chcemy zapytać o
+  $$\prob{X+Z\in B}{X=x}\overset{?}{=}\prob{Z+x\in B}=\mu_Z(B-x)$$
+
+  Wysławiając tę wartość w terminach całego $X$:
+  \begin{align*}
+    \prob{X+Z\in B}{X}&=\expected{\mathds{1}_{X+Z\in B}}{X}\overset{\star}{=}\expected{\phi(X, Z)}{X}=\Phi(X)
+  \end{align*}
+  w $\star$ definiujemy: $\phi(x,z)=\mathds{1}_{x+z\in B}$. Dla ustalonego $x$ mamy więc:
+  $$h(x)=\expected{\phi(x, Z)}=\expected{\mathds{1}_{x+Z\in B}}=\prob{Z+x\in B}$$
+\item Niech wektor losowy $(X, Y)$ ma gęstość łączną $f(x,y)$. Wówczas
+  $$\prob{X\in B}{Y=y}=\int_Bf_{X|Y}(x,y)dx,$$
+  gdzie 
+  $$f_{X|Y}(x,y)=\frac{f(x,y)}{\int f(t,y)dt}.$$
+\item Rozważmy $\prob{E_1\in\bullet}{E_1+E_2=y}$ dla $E_1,E_2$ niezależnych o rozkładzie $Exp(1)$.
+
+  Przyłożymy do tego przypadku wzór z przykładu 2. Wektor losowy $(E_1, E_1+E_2)$ ma rozkład losowy o łącznej gęstości $f(x, y)=e^{-x}e^{-(y-x)}\mathds{1}_{y\geq x\geq0}$. 
+  $$\int f(s, y)ds=\int_0^ye^{-y}ds=y,$$
+  czyli 
+  $$f_{E_1|E_1+E_2}(x, y)=\frac{1}{y}\mathds{1}_{y\geq x\geq 0}$$
+  co daje rozkład jednostajny:
+  $$\prob{E_1\in\bullet}{E_1+E_2=y}=U[0, y](\bullet)$$
+\end{example}
+\bigskip
+
+Można zadać sobie pytanie, czy
+$$\prob{A}{Y=y}=\expected{\mathds{1}_A}{Y=y}$$
+zawsze zadaje miarę probabilistyczną? Okazuje się, że tak faktycznie jest.
+
+\begin{definition}[regularny rozkład warunkowy]
+  Niech $X$ będzie zmienną losową, a $\set{G}\subseteq\set{F}$ będzie $\sigma$-ciałem. Funkcja 
+  $$\kappa_{X,\set{G}}:\Omega\times Bor(\R)\to [0,1]$$
+  nazywa się \buff{regularnym rozkładem warunkowym} [rrw] $X$ pod warunkiem $\set{G}$, jeżeli
+  \begin{itemize}
+    \item[(R1)] Dla każdego $B\in Bor(\R)$ zmienna losowa $\kappa_{X,\set{G}}(\bullet, B)$ jest $\set{G}$-mierzalna
+    \item[(R2)] Dla każdej $\omega\in\Omega$ $\kappa_{X,\set{G}}(\omega,\bullet)$ jest rozkładem prawdopodobieństwa na prostej.
+    \item[(R3)] Dla każdego $B\in Bor(\R)$ i $\prob$-p.w. $\omega\in\Omega$
+      $$\prob{X\in B}{\set{G}}(\omega)=\kappa_{X,\set{G}}(\omega, B)$$
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}[rrw istnieje]
+  Dla każdego $X$ i dla każdego $\set{G}$ istnieje rrw $X$ pod warunkiem $\set{G}$
+\end{theorem}
+
+\begin{proof}
+  W notatkach
+\end{proof}
+
+\begin{fact}
+  Dla funkcji $f:\R\to\R$ i zmiennej losowej $X$ takiej, że $\expected{|f(X)|}<\infty$ mamy
+  $$\expected{f(X)}{\set{G}}=\int(x)\kappa_{X,\set{G}}(\omega,dx)$$
+\end{fact}
+
+Pisząc to mówię "weź $f(x)$ i weź miarę $\kappa$ w punkcie $\omega$ i scałkuj $\kappa$".
+
+\begin{proof}
+  Ćwiczenia.
+\end{proof}
+
+Jeżeli $G=\sigma(Z)$, to pojęcie rrw troszkę się upraszcza (z naciskiem na trochę):
+
+\begin{definition}
+  Dla zmiennych losowych $X,Y$ funkcję $\kappa_{X,Y}:\R\times Bor(\R)\to[0,1]$ nazywamy rrw $X$ pod warunkiem $Y$, jeżeli:
+  \begin{itemize}
+    \item[(P1)] Dla każdego $B\in Bor(\R)$ funkcja $\kappa_{X,Y}(\bullet, B)$ jest borelowska
+    \item[(P2)] Dla każdego $y\in\R$, $\kappa_{X,Y}(y,\bullet)$ jest rozkładem prawdopodobieństwa na prostej.
+    \item[(P3)] $\prob{X\in B}{Y=y}=\kappa_{X,Y}(y, B)$
+  \end{itemize}
+\end{definition}

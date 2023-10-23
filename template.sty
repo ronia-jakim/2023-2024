@@ -353,6 +353,16 @@
   \end{tikzpicture}%
   }
 }
+
+\DeclareOption{funny} {
+  \AddToShipoutPictureBG{%
+  \begin{tikzpicture}[remember picture, overlay]
+
+    \node[inner sep=0pt, opacity=0.5] at (current page.center) {\includegraphics{~/uni-stuff/2023-2024/obrazki/pattern-ramka.png}};
+
+  \end{tikzpicture}%
+  }
+}
 \DeclareOption{flowers} {
   \AddToShipoutPictureBG{%
   \begin{tikzpicture}[remember picture, overlay]
