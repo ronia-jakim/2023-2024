@@ -1,0 +1,131 @@
+\documentclass{article}
+
+\usepackage{../../../template}
+
+\title{Zadanie dodatkowe 1}
+\author{Weronika Jakimowicz}
+\date{30.10.2023}
+
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\mathbb{P}}
+
+\pagestyle{empty}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+Niech $(\Omega,\set{F})$ będzie przestrzenią mierzalną i niech $\set{G}$ będzie pod$\sigma$-ciałem $\set{F}$. Niech $\P$ i $\mathbb{Q}$ będą równoważnymi miarami probabilistycznymi na $(\Omega,\set{F})$. Dokładniej $\P$ jest absolutnie ciągła względem $\mathbb{Q}$ (na $\set{F}$) i $\mathbb{Q}$ jest absolutnie ciągła względem $\P$ (na $\set{F}$). Oznaczmy przez $X_0$ pochodną Radona-Nikodyma $\mathbb{Q}$ względem $\P$ na $\set{F}$. Przez $\mathbb{E}_\P$ i $\mathbb{E}_{\mathbb{Q}}$ oznaczać będziemy wartość oczekiwaną wyznaczoną odpowiednią przez $\P$ i $\mathbb{Q}$.
+\bigskip
+
+{\bfseries{\large\color{orange}Zadanie 1.}
+
+  Uzasadnij, że $\mathbb{E}_\mathbb{P}[X_0\;|\;\set{G}]>0$ $\P$-p.w.
+}
+\medskip
+
+Rozważmy zbiór $A=\{\omega\;:\;\E_\P[X_0\;|\;\set{G}](\omega)\leq 0\}$. Wówczas
+\begin{align*}
+  0{\geq}\int_A\max_{\omega\in A}\E_\P[X_0\;|\;\set{G}](\omega)\;d\P=&\\
+  =\int_A\E_\P[X_0\;|\;\set{G}]\;d\P={\color{blue}\E_\P[\E_\P[X_0\;|\;\set{G}]\mathds{1}_A]}&{\color{blue}=\E_\P[X_0\mathds{1}_A]=}\\
+                                                                              &=\int_AX_0\;d\P=\int_A\frac{d\Q}{d\P}d\P=\\
+                                                                              &=\int_Ad\Q=\Q(A)\geq0
+\end{align*}
+
+Skoro więc $0\geq \E_\P[\E_\P[X_0\;|\;\set{G}]\mathds{1}_A]\geq 0$, to $\E_\P[\E_\P[X_0\;|\;\set{G}]\mathds{1}_A]=0$, a ponieważ jest to całka po zbiorze na którym funkcja $\E_\P[X_0\;|\;\set{G}]$ nie zmienia znaku, to zbiór $A$ musi być miary zero, co jest chcianym przez nas rezultatem.
+\bigskip
+
+{\bfseries{\large\color{orange}Zadanie 2.}
+
+  Pokaż, że dla każdej ograniczonej, $\set{F}$-mierzalnej zmiennej $Y$,
+  $$\E_\P[YX_0\;|\;\set{G}]=\E_{\Q} [Y\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]$$
+}
+\medskip
+
+Zacznijmy od zauważenia, że $X_0'=\E_\P[X_0\;|\;\set{G}]$, gdzie $X_0'$ jest pochodna Radona-Nikodyma $\Q$ względem $\P$ na $\set{G}$. Z definicji $X_0'$ jest $\set{G}$-mierzalne, wystarczy więc sprawdzić (W2) w definicji wykładowej. Niech więc $G\in\set{G}$
+\begin{align*}
+  \E_{\P}[\E_{\P}[X_0\;|\;\set{G}]\mathds{1}_G]&=\E_{\P}[X_0\mathds{1}_G]=\int_GX_0d\P=\Q(G)
+\end{align*}
+ale ponieważ $X_0'$ jest pochodną na ciele $\set{G}$, a my jesteśmy w $\set{G}$, to z drugiej strony
+$$\Q(G)=\int_GX_0'd\P.$$
+
+Przechodząc już do sedna sprawy, przypomnijmy sobie, razem z Wikipedią, że jeśli $g$ jest $\Q$-całkowalną funkcją, to
+$$\int_Ag\;d\Q=\int_Ag\frac{d\Q}{d\P}\;d\P\implies \E_{\Q}[g]=\E_{\P}[g\frac{d\Q}{d\P}]$$
+
+%Doprowadźmy równanie docelowe do troszkę przyjemniejszej postaci, tzn. wwo względem jednej miary będę po tej stamej stronie:
+%$$\E_{\Q}[Y\;|\;\set{G}]=\frac{\E_{\P}[YX_0\;|\;\set{G}]}{\E_{\P}[X_0\;|\;\set{G}]}$$
+%co możemy zrobić dzięki zadaniu 1 ($\E_{\P}[X_0\;|\;\set{G}]\neq 0$ $\P$-p.w.).
+
+Ustalmy $G\in\set{G}$
+
+%\begin{align*}
+%  \E_{\Q}\left[
+%  \frac{\E_{\P}[YX_0\;|\;\set{G}]}{\E_{\P}[X_0\;|\;\set{G}]}\mathds{1}_G\right]&=
+%  \int_G \frac{\E_{\P}[YX_0\;|\;\set{G}]}{X_0'}\;d\Q=\\
+%                                                                   &=\int_G\frac{\E_{\P}[YX_0\;|\;\set{G}]}{X_0'}X_0'\;d\P=\\
+%                                                                   &=\int_G\E_{\P}[YX_0\;|\;\set{G}]\;d\P=\\
+%                                                                   &=\E_{\P}[\E_{\P}[YX_0\;|\;\set{G}]\mathds{1}_G]=\\
+%                                                                   &=\E_\P[YX_0\mathds{1}_G]=\\
+%                                                                   &=\int_GYX_0\;d\P
+%\end{align*}
+
+\begin{align*}
+  \E_{\Q}[\E_{\P}[YX_0\;|\;\set{G}]\mathds{1}_G]&\overset{\star\star}{=}\E_{\P}[\E_{\P}[YX_0\;|\;\set{G}]X_0'\mathds{1}_G]\\
+        &\overset{\star}{=}\E_{\P}[\E_{\P}[YX_0X_0'\;|\;\set{G}]\mathds{1}_G]=\\
+        &=\E_{\P}[YX_0X_0'\mathds{1}_G]=\\
+        &\overset{\star\star}{=}\E_{\Q}[YX_0'\mathds{1}_G]=\\
+        &=\E_{\Q}[\E_{\Q}[YX_0'\;|\;\set{G}]\mathds{1}_G]=\\
+        &\overset{\star}{=}\E_{\Q}[\E_{\Q}[Y\;|\;\set{G}]X_0'\mathds{1}_G]=\E_{\Q}[\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]\mathds{1}_G]
+\end{align*}
+
+Przejścia $\star\star$ najpierw "wypluwają" $X_0'$, żeby zamienić całkę na $G\in\set{G}$ względem $\Q$ na całkę względem $\P$, a potem zjadają $X_0$ żeby zamienić całkę względem $\P$ na całkę względem $\Q$ (tutaj myślimy już w kontekścię całego $\set{F}$, bo i tak nie ma to różnicy gdy jesteśmy na $G\in\set{G}$).
+
+Przejścia oznaczone $\star$ wymagają, żeby $YX_0X_0'$ było całkowalne względem $\P$ oraz żeby $YX_0'$ było całkowalne względem $\Q$. Od razu przypomnijmy, ponownie z pomocą Wikipedii, że
+$$\frac{d|\Q|}{d\P}=\left|\frac{d\Q}{d\P}\right|$$
+a ponieważ $\Q(\omega)\in[0,1]$, to w naszym przypadku
+$$\frac{d\Q}{d\P}=\left|\frac{d\Q}{d\P}\right|$$
+
+Z uwagi wyżej wynika więc, że $|X_0|=X_0$ oraz $|X_0'|=X_0'$. Spróbujmy teraz pokazać, że $\E_{\P}[|YX_0X_0']]<\infty$, oznaczając $M=\sup_{\omega\in\Omega} |Y(\omega)|$
+\begin{align*}
+  \E_{\P}[|YX_0X_0'|]&\leq M\E_{\P}[X_0X_0']=M\int X_0'\frac{d\Q}{d\P}d\P=M\int X_0'\;d\Q=\\
+                     &=M\int\E_{\P}[X_0\;|\set{G}]d\Q=M\E_{\P}[X_0]=M\cdot 1<\infty
+\end{align*}
+gdyż $\E_{\P}[X_0]=\int_{\Omega}X_0\;d\P=\Q(\Omega)=1$. Korzystając z tych wyliczeń dostajemy analogiczny wynik dla $YX_0'$:
+$$\E_{\Q}[YX_0']\leq M\E_{\Q}[X_0']=M\E_{\P}[X_0'X_0]<\infty$$
+\bigskip
+
+{\bfseries{\large\color{orange}Zadanie 3.}
+
+  Załóżmy, że $X'=GX_0$ dla pewnej ograniczonej $\set{G}$-mierzalnej zmiennej losowej $G$. Pokaż, że spełnione są
+  \begin{enumerate}[label=(\alph*)]
+    \item $X'$ jest $\P$-całkowalna
+    \item Dla każdej ograniczonej, $\set{F}$-mierzalnej zmiennej $Y$,
+      $$\E_{\P}[YX'\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[X'\;|\;\set{G}]$$
+  \end{enumerate}
+}
+
+\textbf{\color{green}(a)}
+
+Niech $M$ będzie takie, że $M\geq |G(\omega)|$ dla $\omega\in\Omega$, co jest przyjemniejszym zapisaniem tego co już robiłam w zadaniu 2. Wówczas korzystając ze wszystkiego co już tam wyżej napisałam (być może rozpisując bardziej czytelnie):
+\begin{align*}
+  \E_{\P}[|GX_0|]\leq M\E_{\P}[X_0]=M\int\frac{d\Q}{d\P}\;d\P=M\int d\Q=M\cdot 1=M<\infty
+\end{align*}
+
+\textbf{\color{green}(b)}
+
+Po pierwsze zauważmy, że skoro $Y$ jak i $G$ są ograniczone, to również $YG$ są ograniczone. Wprost z poprzedniego zadania dostajemy
+$$\E_{\P}[(YG)X_0\;|\;\set{G}]=\E_{\Q}[(YG)\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]$$
+I wystarczy pokazać, że 
+$$\E_{\Q}[YG\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[GX_0\;|\;\set{G}]$$
+
+Zauważmy, że
+$$\E_{\Q}[|YG|]=\int|YG|\;d\Q\leq \int M\;d\Q=M<\infty$$
+jeśli $M=\max|YG|$, czyli możemy użyć 6 własności wwo (na którą już się powoływałam), żeby dostać
+$$\E_{\Q}[YG\;|\;\set{G}]=G\E_{\Q}[Y\;|\;\set{G}].$$
+Wiemy też, że $\E_{\P}[|GX_0|]<\infty$, czyli można również napisać
+$$G\E_{\P}[X_0\;|\;\set{G}]=\E_{\P}[GX_0\;|\;\set{G}].$$
+Łącząc oba te kroki dostajemy
+\begin{align*}
+  \E_{\Q}[YG\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]&=G\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]=\\
+      &=\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[GX_0\;|\;\set{G}]
+\end{align*}
+\end{document}
