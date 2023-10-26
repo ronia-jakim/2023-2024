@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1698063736 "main.tex" "main.pdf" "main" 1698063739 0
-  "../../template.sty" 1698063203 8009 c347b2297312c0fbbd21c38074e26f58 ""
+["pdflatex"] 1698223126 "main.tex" "main.pdf" "main" 1698223129 0
+  "../../template.sty" 1698145811 8308 454c6c2d015a0587182c1a596dfb3643 ""
   "/home/marudka/uni-stuff/2023-2024/obrazki/proba.png" 1697784538 294736 811a532ad151827e4d7aaae8b367da78 ""
   "/home/marudka/uni-stuff/2023-2024/piwo.png" 1696836643 168204 c9f309ceaff8e4989dde42ab205b1ccb ""
   "/usr/share/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc" 1689853683 3021 665788e9679767ade2a71155215d25e0 ""
@@ -257,13 +257,13 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1694260517 4623317 a14e403ea671a9bc12f23e543c6a500e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1694260449 8204214 970c5842e707b5e5d3ac77ac394d7e44 ""
   "01_intro.tex" 1697019847 2344 6aed6960742283ad8bb192f86ab03bc9 ""
-  "02_presnop.tex" 1697313491 11049 3bc31cc7f61d58c7bcc03a64ba2d5aa5 ""
+  "02_presnop.tex" 1698223108 11099 d60a3179c688977cdf8bbf95e5a720f2 ""
   "03_chorobsko.tex" 1698043965 5272 d80ff0e2bb4bb7ef697ced91b6cd345d ""
   "04.tex" 1698063735 10289 2a8e9a8dddfd8a6f4230d4627b6812a0 ""
-  "main.aux" 1698063739 12679 b242038f91192b74969697d36181b650 "pdflatex"
-  "main.out" 1698063739 1979 75f14cfd5bfa57311823830608a2d262 "pdflatex"
+  "main.aux" 1698223129 12679 f18d8c0ae82681270d23510d9cf9aafb "pdflatex"
+  "main.out" 1698223129 1979 75f14cfd5bfa57311823830608a2d262 "pdflatex"
   "main.tex" 1698058193 1369 b8c76f50a22da970c3c59340ba94a3a4 ""
-  "main.toc" 1698063739 982 09c0e52394e8b57cc0427777c6b8b0e2 "pdflatex"
+  "main.toc" 1698223129 982 09c0e52394e8b57cc0427777c6b8b0e2 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

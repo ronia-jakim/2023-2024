@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.9)  23 OCT 2023 14:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.9)  25 OCT 2023 10:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -931,8 +931,8 @@ Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.1'
 Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=red!50!orange, backgroundcolor=yellow!7, skipabove=3mm, skipbelow=3mm ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=twierdzonka' on input line 165.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 172.
+(thmtools)             that uses `style=twierdzonka' on input line 166.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 173.
  (/usr/share/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2023/02/17 v0.75
 )
@@ -940,19 +940,19 @@ Package: thmdef-mdframed 2023/02/17 v0.75
 Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=purple, backgroundcolor=purple!6!pink!3, skipabove=3mm, skipbelow=3mm ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=uwagi-lematy' on input line 187.
+(thmtools)             that uses `style=uwagi-lematy' on input line 188.
 Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=green, backgroundcolor=yellow!5, skipabove=3mm, skipbelow=3mm ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=defbox' on input line 220.
+(thmtools)             that uses `style=defbox' on input line 221.
 \c@definition=\count329
 \c@ex=\count330
 Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=blue!60!purple!50, backgroundcolor=blue!2, skipabove=3mm, skipbelow=3mm ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=dygresyja' on input line 267.
+(thmtools)             that uses `style=dygresyja' on input line 268.
 \c@problem=\count331
-Package thmtools Info: Automatically pulling in `thmdef-shaded' on input line 307.
+Package thmtools Info: Automatically pulling in `thmdef-shaded' on input line 308.
  (/usr/share/texmf-dist/tex/latex/thmtools/thmdef-shaded.sty
 Package: thmdef-shaded 2023/02/17 v0.75
 ) (/usr/share/texmf-dist/tex/latex/shadethm/shadethm.sty
@@ -1614,15 +1614,15 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 75F14CFD5BFA57311823830608A2D262;1979.
  ) 
 Here is how much of TeX's memory you used:
- 34823 strings out of 476025
- 689929 string characters out of 5796533
+ 34825 strings out of 476025
+ 689936 string characters out of 5796533
  1884388 words of memory out of 5000000
- 54262 multiletter control sequences out of 15000+600000
+ 54264 multiletter control sequences out of 15000+600000
  730700 words of font info for 239 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,17n,118p,1193b,1660s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Bold.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-It.pfb></usr/share/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/phaistos/phaistos.pfb>
-Output written on main.pdf (21 pages, 712114 bytes).
+Output written on main.pdf (21 pages, 712143 bytes).
 PDF statistics:
  370 PDF objects out of 1000 (max. 8388607)
  305 compressed objects within 4 object streams
