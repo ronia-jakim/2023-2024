@@ -6,7 +6,11 @@
  *)
 
 (** reprezentacja formuł *)
-type formula (* = TODO: tu wpisz swoją definicję *)
+type formula =
+  | Zdanie of string 
+  | Falsz 
+  | Spojnik of formula * formula
+  (* = TODO: tu wpisz swoją definicję *)
 
 val pp_print_formula : Format.formatter -> formula -> unit
 
