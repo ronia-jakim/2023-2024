@@ -128,4 +128,37 @@ $$G\E_{\P}[X_0\;|\;\set{G}]=\E_{\P}[GX_0\;|\;\set{G}].$$
   \E_{\Q}[YG\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]&=G\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]=\\
       &=\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[GX_0\;|\;\set{G}]
 \end{align*}
+\bigskip
+
+{\bfseries{\large\color{orange}Zadanie 4.}
+  
+  Załóżmy, że zmienna $X'$ spełnia warunki (a) i (b). Pokaż, że $X'=GX_0$ dla pewnej $\set{G}$-mierzalnej zmiennej $G$.
+}
+\medskip
+
+Niech $Y$ będzie $\set{G}$-mierzalne, wówczas $\E_{\Q}[Y\;|\;\set{G}]=Y$, czyli
+\begin{align*}
+  \E_{\P}[YX'\;|\;\set{G}]&=\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[X'\;|\;\set{G}]=Y\E_{\P}[X'\;|\;\set{G}]
+\end{align*}
+
+Wtedy mamy dla $G\in\set{G}$
+\begin{align*}
+  \E_{\P}[\E_{\P}[X'\;|\;\set{G}]Y\mathds{1}_G]=\E_{\P}[\E_{\P}[YX'\;|\;\set{G}]\mathds{1}_G]&=\E_{\P}[YX'\mathds{1}_G]
+\end{align*}
+
+Wiem, że $\int_A X_0 d\P=\Q(A)$, czyli
+$$\int_AGX_0d\P=\int_AGd\Q=\E_{\Q}[G\mathds{1}_A]$$
+czyli 
+$$\mu(A)=\frac{\E_{\Q}[G\mathds{1}_A]}{\E_{\Q}[G]}$$
+gdy $\E_{\Q}[G]\neq 0$ jest miarą. I w dodatku $\mu<<\Q$ oraz $\mu <<\P$.
+
+Z zadania pierwszego łatwo dostać, że
+$$\E_{\P}[YX'\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]=\E_{\P}[YX_0\;|\;\set{G}]\E_{\P}[X'\;|\;\set{G}]$$
+czyli
+$$\frac{\E_{\P}[YX'\;|\;\set{G}]}{\E_{\P}[X'\;|\;\set{G}]}=\frac{\E_{\P}[YX_0\;|\;\set{G}]}{\E_{\P}[X_0\;|\;\set{G}]}$$
+
+W takim razie musi istnieć jakaś niezerowa funkcja $f$ taka, że
+$$f\cdot \E_{\P}[X'\;|\;\set{G}]=\E_{\P}[X_0\;|\;\set{G}]=X_0'$$
+A ponieważ $X_0'$ oraz $\E_{\P}[X'\;|\;\set{G}]$ są $\set{G}$-mierzalne, to wiem już, że $f$ też musi być $\set{G}$-mierzalna.
+
 \end{document}
