@@ -136,29 +136,54 @@ $$G\E_{\P}[X_0\;|\;\set{G}]=\E_{\P}[GX_0\;|\;\set{G}].$$
 }
 \medskip
 
-Niech $Y$ będzie $\set{G}$-mierzalne, wówczas $\E_{\Q}[Y\;|\;\set{G}]=Y$, czyli
-\begin{align*}
-  \E_{\P}[YX'\;|\;\set{G}]&=\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[X'\;|\;\set{G}]=Y\E_{\P}[X'\;|\;\set{G}]
-\end{align*}
+%Niech $Y$ będzie $\set{G}$-mierzalne, wówczas $\E_{\Q}[Y\;|\;\set{G}]=Y$, czyli
+%\begin{align*}
+%  \E_{\P}[YX'\;|\;\set{G}]&=\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[X'\;|\;\set{G}]=Y\E_{\P}[X'\;|\;\set{G}]
+%\end{align*}
+%
+%Wtedy mamy dla $G\in\set{G}$
+%\begin{align*}
+%  \E_{\P}[\E_{\P}[X'\;|\;\set{G}]Y\mathds{1}_G]=\E_{\P}[\E_{\P}[YX'\;|\;\set{G}]\mathds{1}_G]&=\E_{\P}[YX'\mathds{1}_G]
+%\end{align*}
+%
+%Wiem, że $\int_A X_0 d\P=\Q(A)$, czyli
+%$$\int_AGX_0d\P=\int_AGd\Q=\E_{\Q}[G\mathds{1}_A]$$
+%czyli 
+%$$\mu(A)=\frac{\E_{\Q}[G\mathds{1}_A]}{\E_{\Q}[G]}$$
+%gdy $\E_{\Q}[G]\neq 0$ jest miarą. I w dodatku $\mu<<\Q$ oraz $\mu <<\P$.
 
-Wtedy mamy dla $G\in\set{G}$
-\begin{align*}
-  \E_{\P}[\E_{\P}[X'\;|\;\set{G}]Y\mathds{1}_G]=\E_{\P}[\E_{\P}[YX'\;|\;\set{G}]\mathds{1}_G]&=\E_{\P}[YX'\mathds{1}_G]
-\end{align*}
 
-Wiem, że $\int_A X_0 d\P=\Q(A)$, czyli
-$$\int_AGX_0d\P=\int_AGd\Q=\E_{\Q}[G\mathds{1}_A]$$
-czyli 
-$$\mu(A)=\frac{\E_{\Q}[G\mathds{1}_A]}{\E_{\Q}[G]}$$
-gdy $\E_{\Q}[G]\neq 0$ jest miarą. I w dodatku $\mu<<\Q$ oraz $\mu <<\P$.
 
-Z zadania pierwszego łatwo dostać, że
+Z zadania drugiego łatwo dostać, że
 $$\E_{\P}[YX'\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]=\E_{\P}[YX_0\;|\;\set{G}]\E_{\P}[X'\;|\;\set{G}]$$
 czyli
 $$\frac{\E_{\P}[YX'\;|\;\set{G}]}{\E_{\P}[X'\;|\;\set{G}]}=\frac{\E_{\P}[YX_0\;|\;\set{G}]}{\E_{\P}[X_0\;|\;\set{G}]}$$
 
-W takim razie musi istnieć jakaś niezerowa funkcja $f$ taka, że
-$$f\cdot \E_{\P}[X'\;|\;\set{G}]=\E_{\P}[X_0\;|\;\set{G}]=X_0'$$
-A ponieważ $X_0'$ oraz $\E_{\P}[X'\;|\;\set{G}]$ są $\set{G}$-mierzalne, to wiem już, że $f$ też musi być $\set{G}$-mierzalna.
+W takim razie musi istnieć funkcja $f$ taka, że
+$$\frac{\E_{\P}[YX'\;|\;\set{G}]}{\E_{\P}[X'\;|\;\set{G}]}=\frac{f\cdot\E_{\P}[YX_0\;|\;\set{G}]}{f\cdot\E_{\P}[X_0\;|\;\set{G}]}$$
+co w szczególności oznacza, że
+$$\E_{\P}[X'\;|\;\set{G}]=f\cdot\E_{\P}[X_0\;|\;\set{G}]$$
+i ponieważ zadanie pierwsze mówi, że $\E_{\P}[X_0\;|\;\set{G}]>0$ prawie wszędzie, to
+$$\frac{\E_{\P}[X'\;|\;\set{G}]}{\E_{\P}[X_0\;|\;\set{G}]}=f$$
+czyli $f$ jest funkcją $\set{G}$-mierzalną jako iloczyn dwóch $\set{G}$-mierzalnych funkcji z dzielnikiem $>0$ prawie zawsze.
+
+Zauważmy teraz, że
+$$\E_{\P}[|\E_{\P}[X'\;|\;\set{G}|]=\E_{\P}[|X'|]<\infty$$
+gdyż $X'$ spełnia warunek (a). Z drugiej strony,
+$$\E_{\P}[|\E_{\P}[X_0\;|\;\set{G}]f|]=\E_{\P}[|X_0'\cdot f|]=\E_{\Q}[|f|]=\E_{\P}|[X_0f|]$$
+a ponieważ obie jest to nałożenie $\E_{\P}[|\cdot|]$ na obie strony równości wyżej, to wiemy, że $\E_{\P}[|X_0f|]<\infty$.
+
+W takim razie mamy
+$$\E_{\P}[X'\;|\;\set{G}]=\E_{\P}[fX_0\;|\;\set{G}]$$
+a więc całka z $X'$ i z $fX_0$ zgadza się na każdym zbiorze z $\set{G}$, czyli $X'=fX_0$ $\P$-p.w. {\scriptsize\itshape(całkiem szczerze, to mam wrażenie że gdzieś po drodze coś źle zakładam)}
+\bigskip
+
+{\bfseries{\large\color{orange}Zadanie 5.}
+
+  Znajdź warunek konieczny i dostateczny (w terminach $X_0$) na to, aby
+  $$\E_{\P}[Y\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]$$
+  dla każdej ograniczonej zmiennej $Y$.
+}
+
 
 \end{document}
