@@ -23,15 +23,25 @@ Niech $(\Omega,\set{F})$ będzie przestrzenią mierzalną i niech $\set{G}$ będ
 }
 \medskip
 
-Rozważmy zbiór $A=\{\omega\;:\;\E_\P[X_0\;|\;\set{G}](\omega)\leq 0\}$. Wówczas
-\begin{align*}
-  0{\geq}\int_A\max_{\omega\in A}\E_\P[X_0\;|\;\set{G}](\omega)\;d\P=&\\
-  =\int_A\E_\P[X_0\;|\;\set{G}]\;d\P={\color{blue}\E_\P[\E_\P[X_0\;|\;\set{G}]\mathds{1}_A]}&{\color{blue}=\E_\P[X_0\mathds{1}_A]=}\\
-                                                                              &=\int_AX_0\;d\P=\int_A\frac{d\Q}{d\P}d\P=\\
-                                                                              &=\int_Ad\Q=\Q(A)\geq0
-\end{align*}
+Zacznijmy od małej powtórki miary i całki, czyli powiedzenia, że jeśli $\P$ i $\Q$ są miarami równoważnymi, to $X_0=\frac{d\Q}{d\P}>0$ prawie wszędzie. Rozważmy zbiór 
+$$A=\{\omega\;:\;X_0(\omega)\leq 0\}.$$
 
-Skoro więc $0\geq \E_\P[\E_\P[X_0\;|\;\set{G}]\mathds{1}_A]\geq 0$, to $\E_\P[\E_\P[X_0\;|\;\set{G}]\mathds{1}_A]=0$, a ponieważ jest to całka po zbiorze na którym funkcja $\E_\P[X_0\;|\;\set{G}]$ nie zmienia znaku, to zbiór $A$ musi być miary zero, co jest chcianym przez nas rezultatem.
+Wówczas
+$$\Q(A)=\int_A X_0d\P\leq 0$$
+gdyż całkujemy funkcję na zbiorze, na którym przyjmuje ona wyłącznie niedodatnie wartości. Z drugiej strony, $\Q(A)\geq 0$, czyli $\Q(A)=0$, a ponieważ $\P\ll \Q$, to również $\P(A)=0$.
+
+Powiedzenie teraz, że skoro $X_0>0$ to $\E_{\P}[X_0\;|\;\set{G}]>0$ wynika teraz wprost z własności wwo.
+
+
+%Rozważmy zbiór $A=\{\omega\;:\;\E_\P[X_0\;|\;\set{G}](\omega)\leq 0\}$. Wówczas
+%\begin{align*}
+%  0{\geq}\int_A\max_{\omega\in A}\E_\P[X_0\;|\;\set{G}](\omega)\;d\P=&\\
+%  =\int_A\E_\P[X_0\;|\;\set{G}]\;d\P={\color{blue}\E_\P[\E_\P[X_0\;|\;\set{G}]\mathds{1}_A]}&{\color{blue}=\E_\P[X_0\mathds{1}_A]=}\\
+%                                                                              &=\int_AX_0\;d\P=\int_A\frac{d\Q}{d\P}d\P=\\
+%                                                                              &=\int_Ad\Q=\Q(A)\geq0
+%\end{align*}
+%
+%Skoro więc $0\geq \E_\P[\E_\P[X_0\;|\;\set{G}]\mathds{1}_A]\geq 0$, to $\E_\P[\E_\P[X_0\;|\;\set{G}]\mathds{1}_A]=0$, a ponieważ jest to całka po zbiorze na którym funkcja $\E_\P[X_0\;|\;\set{G}]$ nie zmienia znaku, to zbiór $A$ musi być miary zero, co jest chcianym przez nas rezultatem.
 \bigskip
 
 {\bfseries{\large\color{orange}Zadanie 2.}
@@ -77,14 +87,20 @@ Ustalmy $G\in\set{G}$
         &\overset{\star}{=}\E_{\Q}[\E_{\Q}[Y\;|\;\set{G}]X_0'\mathds{1}_G]=\E_{\Q}[\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]\mathds{1}_G]
 \end{align*}
 
+Wystarczy więc uzasadnić równości zaznaczone gwiazdką i dowód jest gotowy.
+
 Przejścia $\star\star$ najpierw "wypluwają" $X_0'$, żeby zamienić całkę na $G\in\set{G}$ względem $\Q$ na całkę względem $\P$, a potem zjadają $X_0$ żeby zamienić całkę względem $\P$ na całkę względem $\Q$ (tutaj myślimy już w kontekścię całego $\set{F}$, bo i tak nie ma to różnicy gdy jesteśmy na $G\in\set{G}$).
 
-Przejścia oznaczone $\star$ wymagają, żeby $YX_0X_0'$ było całkowalne względem $\P$ oraz żeby $YX_0'$ było całkowalne względem $\Q$. Od razu przypomnijmy, ponownie z pomocą Wikipedii, że
-$$\frac{d|\Q|}{d\P}=\left|\frac{d\Q}{d\P}\right|$$
-a ponieważ $\Q(\omega)\in[0,1]$, to w naszym przypadku
-$$\frac{d\Q}{d\P}=\left|\frac{d\Q}{d\P}\right|$$
+Przejścia oznaczone $\star$ wymagają, żeby $YX_0X_0'$ było całkowalne względem $\P$ oraz żeby $YX_0'$ było całkowalne względem $\Q$. 
+%Od razu przypomnijmy, ponownie z pomocą Wikipedii, że
+%$$\frac{d|\Q|}{d\P}=\left|\frac{d\Q}{d\P}\right|$$
+%a ponieważ $\Q(\omega)\in[0,1]$, to w naszym przypadku
+%$$\frac{d\Q}{d\P}=\left|\frac{d\Q}{d\P}\right|$$
 
-Z uwagi wyżej wynika więc, że $|X_0|=X_0$ oraz $|X_0'|=X_0'$. Spróbujmy teraz pokazać, że $\E_{\P}[|YX_0X_0']]<\infty$, oznaczając $M=\sup_{\omega\in\Omega} |Y(\omega)|$
+%Z uwagi wyżej wynika więc, że $|X_0|=X_0$ oraz $|X_0'|=X_0'$. Spróbujmy teraz pokazać, że $\E_{\P}[|YX_0X_0']]<\infty$, oznaczając $M=\sup_{\omega\in\Omega} |Y(\omega)|$
+W pierwszym zadaniu powiedzieliśmy już, że $X_0>0$, a ponieważ $X_0'$ też jest pochodną Radona-Nikodyma, to $X_0'>0$ ze względu na ten sam argument.
+
+Niech więc $M$ będzie taką stałą, że dla każdego $\omega$ $|Y(\omega)|\leq M$. Wówczas
 \begin{align*}
   \E_{\P}[|YX_0X_0'|]&\leq M\E_{\P}[X_0X_0']=M\int X_0'\frac{d\Q}{d\P}d\P=M\int X_0'\;d\Q=\\
                      &=M\int\E_{\P}[X_0\;|\set{G}]d\Q=M\E_{\P}[X_0]=M\cdot 1<\infty
@@ -105,7 +121,7 @@ $$\E_{\Q}[YX_0']\leq M\E_{\Q}[X_0']=M\E_{\P}[X_0'X_0]<\infty$$
 
 \textbf{\color{green}(a)}
 
-Niech $M$ będzie takie, że $M\geq |G(\omega)|$ dla $\omega\in\Omega$, co jest przyjemniejszym zapisaniem tego co już robiłam w zadaniu 2. Wówczas korzystając ze wszystkiego co już tam wyżej napisałam (być może rozpisując bardziej czytelnie):
+Niech $M$ będzie takie, że $M\geq |G(\omega)|$ dla każdego $\omega\in\Omega$. Stosując to samo rozumowanie co wyżej dostajemy:
 \begin{align*}
   \E_{\P}[|GX_0|]\leq M\E_{\P}[X_0]=M\int\frac{d\Q}{d\P}\;d\P=M\int d\Q=M\cdot 1=M<\infty
 \end{align*}
@@ -154,28 +170,61 @@ $$G\E_{\P}[X_0\;|\;\set{G}]=\E_{\P}[GX_0\;|\;\set{G}].$$
 
 
 
-Z zadania drugiego łatwo dostać, że
-$$\E_{\P}[YX'\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]=\E_{\P}[YX_0\;|\;\set{G}]\E_{\P}[X'\;|\;\set{G}]$$
-czyli
+Z zadania drugiego łatwo otrzymać
+%$$\E_{\P}[YX'\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]=\E_{\P}[YX_0\;|\;\set{G}]\E_{\P}[X'\;|\;\set{G}]$$
+%czyli
 $$\frac{\E_{\P}[YX'\;|\;\set{G}]}{\E_{\P}[X'\;|\;\set{G}]}=\frac{\E_{\P}[YX_0\;|\;\set{G}]}{\E_{\P}[X_0\;|\;\set{G}]}$$
 
-W takim razie musi istnieć funkcja $f$ taka, że
-$$\frac{\E_{\P}[YX'\;|\;\set{G}]}{\E_{\P}[X'\;|\;\set{G}]}=\frac{f\cdot\E_{\P}[YX_0\;|\;\set{G}]}{f\cdot\E_{\P}[X_0\;|\;\set{G}]}$$
-co w szczególności oznacza, że
-$$\E_{\P}[X'\;|\;\set{G}]=f\cdot\E_{\P}[X_0\;|\;\set{G}]$$
+W takim razie musi istnieć niezerowa funkcja $f$ taka, że
+$$\begin{cases}{\E_{\P}[YX'\;|\;\set{G}}={f\cdot\E_{\P}[YX_0\;|\;\set{G}]}\\
+{\E_{\P}[X'\;|\;\set{G}]}={f\cdot\E_{\P}[X_0\;|\;\set{G}]}\end{cases}$$
+%co w szczególności oznacza, że
+%$$\E_{\P}[YX'\;|\;\set{G}]=f\cdot\E_{\P}[YX_0\;|\;\set{G}]$$
 i ponieważ zadanie pierwsze mówi, że $\E_{\P}[X_0\;|\;\set{G}]>0$ prawie wszędzie, to
 $$\frac{\E_{\P}[X'\;|\;\set{G}]}{\E_{\P}[X_0\;|\;\set{G}]}=f$$
 czyli $f$ jest funkcją $\set{G}$-mierzalną jako iloczyn dwóch $\set{G}$-mierzalnych funkcji z dzielnikiem $>0$ prawie zawsze.
 
-Zauważmy teraz, że
-$$\E_{\P}[|\E_{\P}[X'\;|\;\set{G}|]=\E_{\P}[|X'|]<\infty$$
-gdyż $X'$ spełnia warunek (a). Z drugiej strony,
-$$\E_{\P}[|\E_{\P}[X_0\;|\;\set{G}]f|]=\E_{\P}[|X_0'\cdot f|]=\E_{\Q}[|f|]=\E_{\P}|[X_0f|]$$
-a ponieważ obie jest to nałożenie $\E_{\P}[|\cdot|]$ na obie strony równości wyżej, to wiemy, że $\E_{\P}[|X_0f|]<\infty$.
+Chcemy teraz sprawdzić, czy $\E_{\P}[|f\cdot YX_0|]<\infty$
+\begin{align*}
+  \E_{\P}[|fYX_0|]&\leq M\E_{\P}[|fX_0|]=M\E_{\P}[|f|X_0]=\\ 
+                  &=M\E_{\Q}[|f|]=M\E_{\P}[|f|X_0']=\\ 
+                  &=M\E_{\P}[|f\E_{\P}[X_0\;|\;\set{G}]|]=\\ 
+                  &=M\E_{\P}[|\E_{\P}[X'\;|\;\set{G}]|]\leq \\ 
+                  &\leq M\E_{\P}[\E_{\P}[|X'|\;|\;\set{G}]]=M\E_{\P}[|X'|]\infty
+\end{align*}
 
-W takim razie mamy
-$$\E_{\P}[X'\;|\;\set{G}]=\E_{\P}[fX_0\;|\;\set{G}]$$
-a więc całka z $X'$ i z $fX_0$ zgadza się na każdym zbiorze z $\set{G}$, czyli $X'=fX_0$ $\P$-p.w. {\scriptsize\itshape(całkiem szczerze, to mam wrażenie że gdzieś po drodze coś źle zakładam)}
+%Zauważmy teraz, że jeśli napiszemy
+%$$\E_{\P}[YX'\;|\;\set{G}]=f\cdot\E_{\P}[YX_0\;|\;\set{G}]$$
+%i nałożymy na obie strony $\E_{\P}[|\cdot|]$, to dostaniemy
+%\begin{align*}
+%  \infty>M\E_{\P}[|X'|]\geq\E_{\P}[|YX'|]&=\\ 
+%  =\E_{\P}[\E_{\P}[|YX'|\;|\;\set{G}]]&\geq\\ 
+%  \geq \E_{\P}[|\E_{\P}[YX'\;|\;\set{G}]|]&=\E_{\P}[|f\cdot\E_{\P}[YX_0\;|\;\set{G}]|]=\\
+%                                          &=\E_{\P}[|f\E_{\Q}[Y\;|\;\set{G}]||X_0'|]=\E_{\P}[|fY|X_0']=\\ 
+%                                          &=\E_{\Q}[|f\E_{\Q}[Y\;|\;\set{G}]|]=\E_{\P}[|f\E_{\Q}[Y\;|\;\set{G}]|X_0]=\\ 
+%                                                                                                &=\E_{\P}[|fYX_0|]
+%\end{align*}
+%dla $M$ jak zawsze do tej pory, tzn. $M\geq|Y(\omega)|$ dla każdego $\omega\in\Omega$.
+
+%Zauważmy teraz, że
+%$$\E_{\P}[|\E_{\P}[X'\;|\;\set{G}|]=\E_{\P}[|X'|]<\infty$$
+%gdyż $X'$ spełnia warunek (a). Z drugiej strony,
+%$$\E_{\P}[|\E_{\P}[X_0\;|\;\set{G}]f|]=\E_{\P}[|X_0'\cdot f|]=\E_{\Q}[|f|]=\E_{\P}|[X_0f|]$$
+%a ponieważ obie jest to nałożenie $\E_{\P}[|\cdot|]$ na obie strony równości wyżej, to wiemy, że $\E_{\P}[|X_0f|]<\infty$.
+
+Po dokonaniu tej formalności, możemy wciągnąć $f$ do środka wwo:
+$$\E_{\P}[YX'\;|\;\set{G}]=\E_{\P}[fYX_0\;|\;\set{G}]$$
+co daje, że
+$$0=\E_{\P}[YX'\;|\;\set{G}]-\E_{\P}[fYX_0\;|\;\set{G}]=\E_{\P}[Y(X'-fX_0)\;|\;\set{G}]$$
+dla dowolnej ograniczonej $\set{F}$-mierzalnej funkcji $Y$. Możemy teraz wybrać
+$$Y=\begin{cases}1&X'-fX_0\geq 0\\ -1&X'-fX_0<0\end{cases}$$
+co jest funkcją mierzalną jako kombinacja dwóch funkcji prostych.
+
+Wystarczy teraz zauważyć, że $Y(X'-fX_0)=|X'-fX_0|$, czyli
+$$0=\E_{\P}[\E_{\P}[|X'-fX_0|\;|\;\set{G}]]=\E_{\P}[|X'-fX_0|]$$
+funkcja $|X'-fX_0|$ nie zmienia znaku, więc skoro całka z niej jest zerem, to $|X'-fX_0|=0$ prawie wszędzie, czyli $X'=fX_0$ prawie wszędzie.
+
+%a więc całka z $X'$ i z $fX_0$ zgadza się na każdym zbiorze z $\set{G}$, czyli $X'=fX_0$ $\P$-p.w. {\scriptsize\itshape(całkiem szczerze, to mam wrażenie że gdzieś po drodze coś źle zakładam)}
 \bigskip
 
 {\bfseries{\large\color{orange}Zadanie 5.}
@@ -184,6 +233,37 @@ a więc całka z $X'$ i z $fX_0$ zgadza się na każdym zbiorze z $\set{G}$, czy
   $$\E_{\P}[Y\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]$$
   dla każdej ograniczonej zmiennej $Y$.
 }
+
+Warunek konieczny to będzie $p$ takie, że $\E_{\P}[Y\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]\implies p$. Warunek dostateczny to z kolei będzie $q$ taki, że $q\implies \E_{\P}[Y\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]$.
+
+Próbując znaleźć warunek dostateczny ciekawszy niż $X_0\equiv 1$, z przykrością stwierdziłam, że może on być praktycznie taki sam jak warunek konieczny. Z tego powodu, mogę napisać, że
+
+\begin{center}\slshape
+  $X_0$ jest $\set{G}$-mierzalny $\iff$ $\E_{\P}[Y\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]$ dla każdego ograniczonej zmiennej $Y$.
+\end{center}
+
+$\implies$ jest dość prostym kierunkiem implikacji. Jeśli $X_0$ jest $\set{G}$-mierzalne, to $\E_{\P}[X_0\;|\;\set{G}]=X_0$. To, połączone z wcześniej już zauważonym faktem, że $\E_{\P}[|YX_0|]<\infty$ daje
+$$X_0\E_{\P}[Y\;|\;\set{G}]=\E_{\P}[YX_0\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]\E_{\P}[X_0\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]X_0$$
+Wystarczy teraz przypomnieć sobie, że $X_0>0$ jeśli miary $\Q$ i $\P$ są sobie równoważne (co jest prawdą w tym zadaniu), aby dostać pozwolenie na podzielenie obu stron równości przez $X_0$ i otrzymanie
+$$\E_{\P}[Y\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}].$$
+
+$\impliedby$ jest bardzo podobny do tego co się stało w zadaniu 4, tzn. zaczynamy od
+$$\E_{\P}[Y\;|\;\set{G}]=\E_{\Q}[Y\;|\;\set{G}]=\frac{\E_{\P}[YX_0\;|\;\set{G}]}{\E_{\P}[X_0\;|\;\set{G}]}$$
+biorąc dowolny $G\in\set{G}$ i całkując obie strony na $G$ względem miary $\Q$ dostajemy
+\begin{align*}
+  \E_{\P}[YX_0'\mathds{1}_G]=\E_{\Q}[Y\mathds{1}_G]=\E_{\Q}[\E_{\Q}[Y\;|\;\set{G}]\mathds{1}_G]&=\E_{\Q}\left[ \frac{\E_{\P}[YX_0\;|\;\set{G}]}{\E_{\P}[X_0\;|\;\set{G}]}\mathds{1}_G \right]=\\
+                                                                    &=\E_{\P}\left[ \frac{\E_{\P}[YX_0\;|\;\set{G}]}{X_0'}X_0'\mathds{1}_G \right]=\\ 
+                                                                    &=\E_{\P}[YX_0\mathds{1}_G]
+\end{align*}
+Ponieważ $G\in\set{G}$ był wybrany dowolnie, to
+$$\E_{\P}[YX_0\;|\;\set{G}]=\E_{\P}[YX_0'\;|\;\set{G}]\implies \E_{\P}[YX_0-YX_0'\;|\;\set{G}]=0$$
+a więc
+$$0=\int YX_0-YX_0'd\P=\int Y(X_0-X_0')d\P$$
+biorąc
+$$Y=\begin{cases}1&X_0-X_0'\geq0\\-1&X_0-X_0'<0\end{cases}$$
+mamy $Y(X_0-X_0')=|X_0-X_0'|$, a więc
+$$0=\int |X_0-X_0'|d\P\implies X_0=X_0'\;\P-p.w.$$
+Wiedząc, że $X_0'$ było $\set{G}$-mierzalne dowiadujemy się w taki sposób, że $X_0$ też jest $\set{G}$-mierzalne.
 
 
 \end{document}
