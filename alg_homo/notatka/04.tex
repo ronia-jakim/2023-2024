@@ -162,6 +162,7 @@ Kilka wyjaśnień:
       K\arrow[r, "k"] & A\arrow[r, "f"]\arrow[d] & B\arrow[r, "c"] & C\\
                       & \coim\;f\arrow[r, dashed, green] & \img f\arrow[u]
     \end{tikzcd}\end{center}
+    Naturalne odwzorowanie zaznaczone przerywaną linią ma być izomorfizmem jeśli działaby w kategorii abelowej.
 \end{itemize}
 
 \begin{definition}[mono-, epi-]
@@ -191,3 +192,85 @@ Można pokazać, że jeśli $f$ jest monomorfizmem, to $\ker f=0$, a jeśli $f$ 
   \end{tikzcd}\end{center}
   i zauważyć, że jedyność odwzorowania $Z\to K$ wymaga, aby $g=0$.
 \end{proof}
+
+\begin{uwaga}\label{uwaga 5.1}
+  Dla każdego morfizmu $f:A\to B$ w kategorii abelowej istnieje jedyny, z dokładnością do izomorfizmu, rozkład
+  
+  \begin{center}\begin{tikzcd}
+    K\arrow[r, "k"] & A\arrow[r, "i" above, "epi" below] & I \arrow[r, "j" above, "mono" below] & B \arrow[r, "c"] & C
+  \end{tikzcd}\end{center}
+  
+  w którym $k=\ker f$, $c=\coker f$, $i=\coker k$ oraz $j=\ker c$ i $f=j\cdot i$.
+\end{uwaga}
+
+\begin{proof}
+  Załóżmy, że istnieją dwa takie rozkłady:
+  
+  \begin{center}\begin{tikzcd}
+    K\arrow[dd, blue, dashed]\arrow[dr, "k"] & & I\arrow[dr, "j"]\arrow[dd, green, dashed] & & C\arrow[dd, red, dashed]\\
+                                             & A\arrow[ur, "i"] \arrow[dr, "i'"] & & B\arrow[dr, "c'"] \arrow[ur, "c"]\\
+    K' \arrow[ur, "k'"] & & I' \arrow[ur, "j'"] & & C'
+  \end{tikzcd}\end{center}
+  Strzałki {\color{blue}niebieska} i {\color{red}czerwona} są izomorfizmami wynikającymi z definicji kategorii abelowej. Strzałkę {\color{green}zieloną} dobbieramy w taki sposób, aby diagram
+  
+  \begin{center}\begin{tikzcd}
+    I\arrow[dr, "j"]\arrow[dd, green, dashed]\\
+    & B\\
+    I'\arrow[ur, "j'"]
+  \end{tikzcd}\end{center}
+  komutował. Chcemy jeszcze pokazać, że lewa strona również komutuje, czyli zajmujemy się diagramem
+
+  \begin{center}\begin{tikzcd}
+                                      & I\arrow[dd, dashed, green]\arrow[dr, "j"] & \\
+    A\arrow[ur, "i"]\arrow[dr, "i'"] &     & B \\
+                                      & I' \arrow[ur, "j'"]
+  \end{tikzcd}\end{center}
+
+\end{proof}
+
+\begin{lemma}\label{lemat 5.2}
+  W kategorii abelowej, jeśli $f$ jest epimorfizmem, to $f=\coker\ker f$, a jeśli $f$ jest monomofizmem, to $f=\ker\coker f$.
+\end{lemma}
+
+\begin{proof}
+  Zrobimy dowód dla epimorfizmu korzystając z rozkładu przedstawionego wyżej.
+
+  \begin{center}\begin{tikzcd}
+    K\arrow[r] & A\arrow[r] & I\arrow[r, "j"] & B\arrow[r, "0"] & 0
+  \end{tikzcd}\end{center}
+  
+  wiemy, że $j$ jest $\ker(B\to 0)$, czyli funkcji zerowej. Czyli musi być $j=id_B$, możemy więc przerysować
+
+  \begin{center}\begin{tikzcd}[row sep=small]
+    K\arrow[r]\arrow[d, phantom, sloped, "\cong"] & A\arrow[r]\arrow[d, phantom, sloped, "\cong"] & I\arrow[r, "j"]\arrow[d, phantom, sloped, "\cong"] & B\arrow[r, "0"]\arrow[d, sloped, phantom, "\cong"] & 0\\
+    K'\arrow[r] & A\arrow[r, "i"] & B\arrow[r, "id_B"] & B\arrow[r, "0"] & 0 
+  \end{tikzcd}\end{center}
+  ale przecież $i:A\to I$ było $i=\coker\ker f$, z drugiej strony ponieważ $A\to I\to B$ jest równe $f$, a w tym konkretnym przypadku jest to równe $A\to B\to B$ gdzie druga strzałka to $id_B$, to musi być $i:A\to I=f:A\to B$.
+\end{proof}
+
+\begin{uwaga}
+  W kategorii addytywnej warunek z \ref{uwaga 5.1} jest równoważny stwierdzeniu, że każdy morfizm ma jądro i kojądro oraz zachodzi lemat \ref{lemat 5.2}
+\end{uwaga}
+
+\begin{example}
+  \item Rozważmy kategorię abelowych grup topologicznych z warunkiem Hausdorffa. Tworzą one kategorię addytywną. Jądro $\ker f$ to algebraiczne jądro $f$ z dziedziczoną topologią, a $\coker f$ to tak naprawdę iloraz przez domknięcie obrazu $\overline{\img f}$.
+
+  \begin{center}\begin{tikzcd}
+    A\arrow[r, "f"] & B\arrow[r] & B/\overline{f[A]}
+  \end{tikzcd}\end{center}
+
+  Przez taką definicję $\coker$ mamy kategorię addytywną, która nie jest kategorią abelową.
+
+  Wystarczy sprawdzić
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & \R^\delta \arrow[r] & \R \arrow[r] & 0
+  \end{tikzcd}\end{center}
+  gdzie $\R^\delta$ ma topologię dyskretną, a $\R$ traktujemy jako zwykłą przestrzeń euklidesową. Wtedy nie mamy naturalnego izomorfizmu między kojądrami {\large\color{red}JESZCZE RAZ PRZEMYŚLEĆ TEN PRZYKŁAD}
+
+\item Podstawowym przykładem kategorii abelowej jest kategoria $R$-modułów. Bardzo często kiedy pracujemy w kategorii abelowej zachowujemy się jakbyśmy byli w kategorii $R$-modułów na mocy twierdzenia Freyd-Mitchella:
+
+  \begin{dygresja}[twierdzenie Freyd-Mitchella]
+    Mała kategoria belowa ma wierne, pełne i dokładne zanurzenie w kategorię $R$-modułów dla pewnego $R$.
+  \end{dygresja}
+\end{example}
+
