@@ -6,15 +6,19 @@
   Niech $X$ będzie przestrzenią topologiczną i związaną z nią kategorię $\mathbf{Otw(X)}$ zdefiniujemy tak, że
   \begin{itemize}
     \item $\ob\mathbf{Otw(X)}=\{U\subseteq X\;:\;U\text{ - zbiór otwarty}\}$
-    \item morfizmy to włożenia identycznościowe
+    \item morfizmy to włożenia identycznościowe (tzn. istnieje morfizm $X\hookrightarrow Y$ jeśli $X\subseteq Y$)
   \end{itemize}
-  Wówczas funktor kontrawariantny $\mathbf{Otw(X)}^{op}\to \mathbf{Set}$ to \buff{presnop} na przestrzeni topologicznej $X$.
+
+  Tak zdefiniowany funktor kontrawariantny $\mathbf{Otw(X)}^{op}\to \mathbf{C}$ nazywamy \buff{presnopem} na przestrzeni topologicznej $X$.
 %\end{definition}
 
-Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię grup abelowych, przestrzeni liniowych etc.
+%Zamiast kategorii zbiorów $\mathbf{Set}$ możemy też mieć snop na kategorię grup abelowych, przestrzeni liniowych etc.
+  Kategoria $\mathbf{C}$ może być kategorią zbiorów $\mathbf{Set}$, ale możemy też przeprowadzać zbiory otwarte oraz morfizmy między nimi na kategorię $\mathbf{Ab}$, $\mathbf{Vect}_K$ czy $R-\mathbf{mod}$. Wtedy taki funktor będziemy nazywać odpowiednio \acc{presnopem grup abelowych, przestrzeni liniowych czy $R$-modułów}.
 
 \begin{example}
-\item Niech $X$ będzie przestrzenią topologiczną, a $U\subseteq X$ będzie dowolnym zbiorem otwartym. Funktor $F:\mathbf{Otw(X)}^{op}\to {C(X)}$ definiujemy na obiektach jako
+\item Zaczniemy od przetestowania presnopu na przestrzeni topologicznej w akcji.
+
+  Niech $X$ będzie przestrzenią topologiczną, a $U\subseteq X$ będzie dowolnym zbiorem otwartym. Funktor $F:\mathbf{Otw(X)}^{op}\to {C(X)}$ definiujemy na obiektach jako
   $$F(U)=C(U)=\{f:U\to\C\;|\;f\text{ ciągła}\}$$
   Dla $V\subseteq U\subseteq X$ otwartych zbiorów mamy
 
@@ -30,11 +34,15 @@ Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię 
   Funktor jak wyżej jest nazywany presnopem funkcji ciągłych.
 \end{example}
 
-\begin{definition}[Presnop, snop]
+\begin{definition}[presnop, snop]
   \buff{Presnopem} na kategorii $\mathbf{C}$ nazywamy dowolny funktor
   $$F:\mathbf{C}^{op}\to\mathbf{Set}$$
 
-  \buff{Snopem} nazywamy presnop, który dla wszystkich otwartych $U=\bigcup_{i\in I} U_i$ i dla wszystkich $s_i\in F(U_i)$ (które nazywamy \acc{cięciem presnopu}) zachodzi, że jeśli dla dowolnych $i,j\in I$ mamy $s_i\restriction (U_i\cap U_j)=s_j\restriction(U_i\cap U_j)$, to istnieje jedyne cięcie $s\in F(U)$ takie, że dla wszystkich $i\in I$ $s\restriction U_i=s_i$. Zapisując to na kwantyfikatorach:
+  \buff{Snopem} nazywamy presnop taki, że jeśli dla dowolnego zbioru $U=\bigcup_{i\in I}U_i$ oraz dla dowolnych $i,j\in I$ spełniony jest warunek
+  $$s_i\restriction(U_i\cap U_j)=s_j\restriction(U_i\cap U_j),$$
+  gdzie $s_i\in F(U_i)$ jest nazywane \acc{cięciem presnopu}, to wówczas istnieje dokładnie jedyne cięcie $s\in F(U)$ takie, że
+  $$s\restriction U_i=s_i.$$
+  Zapisując to za pomocą kwantyfikatorów mamy:
   \begin{align*}
     (\forall\;U=\bigcup_{i\in I}U_i)
     (\forall\;s_i\in F(U_i))\;
@@ -51,7 +59,8 @@ Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię 
 \end{definition}
 
 \begin{example}
-  \item Przykład presnopa z wcześniej spełnia również warunek bycia snopem. Tutaj wchodzą kiełki gromadzące się nad snopem i zbierające się w większe źdźbła, ale ja sobie to odpuszczę.
+  \item Presnop na przestrzeni topologicznej $X$ spełnia również warunek opisany wyżej.
+    %Przykład  z wcześniej spełnia również warunek bycia snopem. Tutaj wchodzą kiełki gromadzące się nad snopem i zbierające się w większe źdźbła, ale ja sobie to odpuszczę.
 \end{example}
 
 \subsection{Funktory wierne, pełne}
@@ -65,11 +74,11 @@ Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię 
     \item złożenie morfizmów w $\mathbf{C}'$ zachowuje się tak samo jak w $\mathbf{C}$
   \end{itemize}
 
-  Mówimy, że podkategoria $\mathbf{C}'$ jest \acc{pełna}, gdy $Hom_{\mathbf{C}'}(X,Y)=Hom_{\mathbf{C}}(X,Y)$
+  Mówimy, że podkategoria $\mathbf{C}'$ jest \acc{pełna}, gdy dla wszystkich $X,Y\in\ob\mathbb{C}'$ zachodzi $Hom_{\mathbf{C}'}(X,Y)=Hom_{\mathbf{C}}(X,Y)$
 \end{definition}
 
 \begin{example}
-\item Kategoria skończonych przestrzeni wektorowych nad ciałem $K$ $\mathbf{Vect}_K^{fin}$ jest podkategorią kategorii wszystkich przestrzeni liniowych $\mathbf{Vect}_K$. Jest to pełna podkategoria.
+\item Kategoria przestrzeni skończonego wymiaru $\mathbf{Vect}_K^{fin}$ jest podkategorią kategorii wszystkich przestrzeni liniowych $\mathbf{Vect}_K$. Jest to pełna podkategoria.
 \item Analogicznie, kategoria grup abelowych $\mathbf{Ab}$ jest pełną podkategorią kategorii $\mathbf{Grp}$
 \item Kategoria gładkich rozmaitości $\mathbf{C^\infty-rozm}$ jest podkategorią kateogorii wszystkich przestrzeni topologicznych $\mathbf{Top}$. Nie jest to jednak pełna podkategoria.
 \end{example}
@@ -77,7 +86,7 @@ Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię 
 \begin{definition}[funktor wierny, pełny]
   Funkctor $F:\mathbf{C}\to\mathbf{D}$ jest
   \begin{itemize}
-    \item \buff{wierny} gdy $F:Hom_{\mathbf{C}}(X,Y)\to Hom_{\mathbf{D}}(F(X),F(Y))$ jest bijekcją
+    \item \buff{wierny} gdy $F:Hom_{\mathbf{C}}(X,Y)\to Hom_{\mathbf{D}}(F(X),F(Y))$ jest injekcją
     \item \buff{pełny}, gdy dla wszystkich $X,Y\in Ob\mathbf{C}$ przekształcenie $F:Hom_{\mathbf{C}}(X,Y)\to Hom_{\mathbf{D}}(F(X),F(Y))$ jest surjekcją
   \end{itemize}
 \end{definition}
@@ -120,8 +129,11 @@ Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię 
 
   Dla każdego $G\in Ob\mathbf{Grp}$ zdefiniujemy $f(G):Id(G)\to ab(G)$ jako
   $$f(G):G\to G^{alb}=G/[G,G]$$
-  jako zwykłe przekształcenie ilorazowe. Wystarczy więc sprawdzić, że komutant w $G$ przechodzi przez dowolny homomorfizm $\phi:G\to H$ na komutant w $H$:
-  $$(\forall\;g,h\in [G,G])\;\phi(gh)=\phi(g)\phi(h)=\phi(h)\phi(g)=\phi(hg)$$
+  jako zwykłe przekształcenie ilorazowe. Aby więc diagram komutował, czyli
+  $$f(H)\circ Id(\phi)=ab(\phi)\circ f(G),$$ 
+  wystarczy sprawdzić, że komutant grupy $G$ przechodzi przez dowolny homomorfizm na komutant w $H$:
+  $$(\forall\;g,h\in [G,G])\;\phi(gh)=\phi(g)\phi(h)=\phi(h)\phi(g)=\phi(hg).$$
+  Skoro tak jest, to nie ma znaczenia, czy najpierw abelianizujemy grupę, a potem nakładamy na to homomorfizm, czy najpierw nakładamy homomorfizm, a potem abelianizujemy.
 
 %  \begin{center}
 %    \begin{tikzcd}
@@ -129,9 +141,13 @@ Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię 
 %      \left[G, G\right] \arrow[r] & \left[H,H\right]
 %    \end{tikzcd}
 %  \end{center}
-\item Z odrobiną znajomości topologii algebraicznej możemy pokazać, że istnieje naturalne przekształcenie funktorów $H_n,\Pi_n:\mathbf{Top}_*\to\mathbf{Grp}$. Jednak nie znam się na topologii algebraicznej, więc ja tego nie zrobię.
+\item Można pokazać, że istnieje naturalne przekształcenie funktorów z kategorii przestrzeni topologicznych z wybranym punktem bazowym ($\mathbf{Top}_*$) w kategorię grup 
+  $$H_n, \Pi_n:\mathbf{Top}_*\to\mathbf{Grp},$$
+  gdzie $\Pi_n$ to funktor przypisujący przestrzeni $n$-tą homotopię ($\Pi_1$ w szczególności przyporządkowuje przestrzeni topologicznej jej grupę fundamentalną), a $H_n$ to funktor $n$-tej homologii.
+  %Z odrobiną znajomości topologii algebraicznej możemy pokazać, że istnieje naturalne przekształcenie funktorów $H_n,\Pi_n:\mathbf{Top}_*\to\mathbf{Grp}$. Jednak nie znam się na topologii algebraicznej, więc ja tego nie zrobię.
   
 \item Pokażemy naturalne przekształcenie funktorów $Id,\star\star:\mathbf{Vect}_K\to\mathbf{Vect}_K$.
+  
   Dla $V\in\mathbf{Vect}_K$ definiujemy
   \begin{center}
     \begin{tikzcd}[column sep=large]%, row sep=tiny]
@@ -139,6 +155,7 @@ Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię 
       v \arrow[u, phantom, sloped, "\in"] \arrow[r] & (V^*\ni\phi\mapsto\phi(v)\in K)=\langle\cdot,v\rangle \arrow[u, phantom, sloped, "\in"]
     \end{tikzcd}
   \end{center}
+  to znaczy, dla $v\in V$ mamy element $f(v)=\langle\cdot, v\rangle\in V^{**}$, który elementowi $\phi\in V^*$ przyporządkowuje $\langle\phi,v\rangle=\phi(v)\in K$.
 
   Chcemy sprawdzić, że diagram
   \begin{center}
@@ -147,7 +164,7 @@ Zamiast kategorii $\mathbf{Set}$ zbiorów możemy też mieć snop na kategorię 
       W \arrow[r, "f(W)" below] & W^{**}
     \end{tikzcd}
   \end{center}
-  komutuje, czyli $f(V)\phi^{**}=\phi f(W)$.
+  komutuje, czyli pokazać, że $f(V)\circ\phi^{**}=\phi\circ f(W)$.
 
   \begin{align*}
     (\phi^{**}\circ f(V))(v)&=\phi^{**}(f(V)(v))=\phi^{**}(\langle\cdot,v\rangle)=\\
