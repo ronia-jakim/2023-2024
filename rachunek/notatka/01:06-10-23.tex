@@ -147,7 +147,8 @@ Prawdopodobieństwo $\prob{A}{\set{G}}$ jest zmienną losową taką, że:
                                                         &=\prob{\{E_1+E_2>t\}\cap\{E_1\in C\}}=\\
                                                         &=\iint\limits_{\substack{C\times\R_+\\x+y>t}}e^{-x}e^{-y}dxdy=\\
                                                         &=\int_Ce^{-x}\underbrace{\left[\int_{x+y>t}e^{-y}dy\right]}_{\star\star}dx=\\
-                                                        &=\int_Ce^{-x}e^{-(t-x)_+}dx=\expected{e^{-(t-E_1)_+}\mathds{1}_{\{E_1\in C\}}}=\expected{e^{-(t-E_1)_+}\mathds{1}_G}
+                                                        &=\int_Ce^{-x}e^{-(t-x)_+}dx=\expected{e^{-(t-E_1)_+}\mathds{1}_{\{E_1\in C\}}}=\\
+                                                        &=\expected{e^{-(t-E_1)_+}\mathds{1}_G}
   \end{align*}
   Równość $\star$ wynika z uwagi pod definicją prawdopodobieństwa warunkowego. Całka $\star\star$ jest równa $1$ gdy $x>t$ (gdyż wtedy dla każdego $y$ mamy $x+y>t$), natomiast dla $x\leq t$ wynosi ona $e^{-(t-x)}$.
 \end{example}

@@ -1,0 +1,142 @@
+\section{04.10.23 : Wstęp}
+
+\subsection{Co to kategoria}
+
+Rozważmy układ danych $\mathbf{C}$ zawierający:
+  \begin{itemize}
+    \item klasę \acc{obiektów} $\ob\mathbf{C}$
+    \item dla dowolnej pary $X,Y\in \ob\mathbf{C}$ zbiór $Hom_{\mathbf{C}}(X, Y)$, którego elementy nazywany \acc{morfizmami} i zapisujemy $\phi:X\to Y$ lub $X\xrightarrow{\phi} Y$
+    \item kolekcję odwzorowań, zwanych \acc{złożeniami}, dla wszystkich $X,Y,Z\in \ob\mathbf{C}$ takich, że
+      \begin{center}\begin{tikzcd}[row sep=tiny, column sep=small]%, /tikz/column 2/.style={column sep=1pt}, /tikz/column 1/.style={column sep=1pt}]
+        Hom_{\mathbf{C}}(X, Y)\times Hom_{\mathbf{C}}(Y, Z)\arrow[r] & Hom_{\mathbf{C}}(X, Z)\\ 
+        (\;\phi,\quad\psi\;)\arrow[u, sloped, phantom, "\in", yshift=12pt]\arrow[u, phantom, sloped, "\in", yshift=-12pt]\arrow[r, mapsto] & \psi\circ\phi\arrow[u, phantom, sloped, "\in"]
+      \end{tikzcd}\end{center}
+  \end{itemize}
+
+\begin{definition}[kategoria (mała)]
+  Układ danych $\mathbf{C}$ jak wyżej nazywamy \buff{kategorią}, jeśli spełnione są następujące warunki:
+  \begin{enumerate}
+    \item Zbiory $Hom_{\mathbf{C}}(X, Y)$ dla $X,Y\in\ob\mathbf{C}$ są parami rozłączne (tzn. morfizmy mają dobrze określone dziedziny i przeciwdziedziny).
+    \item Dla każdego $A\in\ob\mathbf{C}$ istnieje $Id_A\in Hom_{\mathbf{C}}(A, A)$ takie, że $\phi\circ Id_A=\phi$ oraz $Id_A\circ\psi=\psi$.
+    \item Złożenie morfizmów jest łączne, tzn. dla morfizmów
+      \begin{center}\begin{tikzcd}
+        X\arrow[r, "\phi"] & Y\arrow[r, "\psi"] & Z\arrow[r, "\eta"] & W
+      \end{tikzcd}\end{center}
+      zawsze zachodzi równość $(\eta\psi)\phi=\eta(\psi\phi)$.
+  \end{enumerate}
+
+  Dodatkowo, jeśli $\ob\mathbf{C}$ jest zbiorem, to $\mathbf{C}$ nazywamy \acc{małą kategorią}.
+\end{definition}
+
+\begin{example}
+\item Kategorię wszystkich pierścieni wektorowych nad ciałem $K$ oznaczamy $\mathbf{Vect}_k$. Jeśli interesują nas przestrzenie tylko skończonego wymiaru, to istnieje kategoria $\mathbf{Vect}_K^{fin}$ przestrzeni wektorowych skończenie wymiarowych. 
+
+  Obiektami obu tych kategorii są przestrzenie liniowe (skończonego wymiaru), a morfizmami są przekształcenia liniowe między nimi.
+\item Wszystkie zbiory wraz z funkcjami między nimi jako morfizmami tworzą kategorią $\mathbf{Set}$ zbiorów.
+\item Jeśli rozważamy jako obiekty tylko zbiory z określonym dobrym porządkiem, to morfizmami mogą być funkcje słabo monotoniczne. Taką kategorię oznaczamy $\mathbf{Set}_\leq$.
+\item Kategoria wszystkich grup wraz z homomorfizmami jako morfizmami jest oznaczana $\mathbf{Grp}$, natomiast kategoria, której obiekty to tylko grupy abelowe jest oznaczana $\mathbf{Ab}$.
+\item Pojedyncza grupa $G$ może tworzyć sama w sobie jednoobiektową kategorię $\mathbf{C}_G$ taką, że
+  \begin{itemize}
+    \item $\ob\mathbf{C}_G=\{\star\}$
+    \item $Hom_{\mathbf{C}_G}(\star,\star)=G$, a złożenia działa jak mnożenie elementów $G$.
+    \end{itemize}
+\item Dla dowolnego pierścienia $R$ istnieje kategoria, której obiektami są (lewe) $R$-moduły, a morfizmami są homomorfizmy między tymi modułami. Oznaczamy to $R-\mathbf{mod}$.
+\item Wszystkie przestrzenie topologiczne wraz z odwzorowaniami ciągłymi nazywamy kategorią przestrzeni topologicznych $\mathbf{Top}$.
+\item Wszystkie gładkie rozmaitości są obiektami kategorii $\mathbf{Diff}$, a morfizmy to gładkie odwzorowania między rozmaitościami.
+\item Kategoria $\mathbf{Rep}_{G,K}$ posiada jako obiekty reprezentacje grupy $G$ na przestrzeniach liniowych nad $K$, a jako morfizmy wszystkie przekształcenia $G$-ekwiwariantne.
+\end{example}
+
+\subsection{Kompleksy}
+
+\begin{definition}[kompleksy łańcuchowe (grup abelowych)]
+  Jeśli ciąg (grup abelowych) $A_\cdot$
+  \begin{center}\begin{tikzcd}
+    ...\arrow[r] & A_0\arrow[r, "d_0"] & A_1\arrow[r, "d_1"] & A_2 \arrow[r, "d_2"] & ...
+  \end{tikzcd}\end{center}
+  jest taki, że dla każdego $n\Z$ (dopuszczamy ujemne indeksy) złożenie $d_{n+1}\circ d_n=0$, to nazywamy go \buff{kompleksem łańcuchowym}.
+\end{definition}
+
+Możemy rozważać kategorię, której obiektami są kompleksy łańcuchowe obiektów z jednej kategorii $\mathbf{C}$, np. grup abelowych. Morfizmem między kompleksem $A_\cdot$ a kompleksem $B_\cdot$ nazwiemy wówczas ciąg homomorfizmów $\phi_i\in Hom_{\mathbf{C}}(A_i,B_i)$ taki, że w diagramie
+  \begin{center}\begin{tikzcd}
+    ...\arrow[r] & A_0\arrow[r, "d^A_0"]\arrow[d, "\phi_0" left] & A_1\arrow[r, "d^A_1"]\arrow[d, "\phi_1"] & A_2 \arrow[r, "d^A_2"]\arrow[d, "\phi_2"] & ... \\
+    ...\arrow[r] & B_0\arrow[r, "d^B_0"] & B_1\arrow[r, "d^B_1"] & B_2 \arrow[r, "d^B_2"] & ...
+  \end{tikzcd}\end{center}
+każdy prostokąt komutuje, tzn.
+$$d^B_n\circ\phi_n=\phi_{n+1}\circ d_{n}^A$$
+dla każdego $n$.
+
+\subsection{Funktory kowariantne i kontrawariantne}
+
+\begin{definition}[funktor]
+  \buff{Funktorem} z kategorii $\mathbf{C}$ w kategorię $\mathbf{D}$ nazywamy dwa przyporządkowania: między obiektami tych kategorii i między morfizmami takie, że:
+  \begin{itemize}
+    \item $\ob\mathbf{C}\ni X\mapsto F(X)\in\ob\mathbf{D}$
+    \item dla każdej pary $X,Y\in\ob\mathbf{C}$ odwzorowanie
+      $$Hom_{\mathbf{C}}(X, Y)\ni \phi\mapsto F(\phi)\in Hom_{\mathbf{D}}(F(X),F(Y))$$
+      zachowuje składanie morfizmów, tzn. $F(\phi\circ\psi)=F(\phi)\circ F(\psi)$.
+  \end{itemize}
+
+  Takie przyporządkowania między kategoriami nazywa się też, bardziej precyzyjnie, \acc{funktorami kowariantnymi}.
+\end{definition}
+
+\begin{example}
+\item Funktor $F:\mathbf{Set}\to \mathbf{Vect}_K$ zdefiniujmy tak, że dowolny $X\in\ob\mathbf{Set}$ przechodzi ma przestrzeń wektorową nad ciałem $K$ o bazie $X$, tzn.:
+  $$F(X)=\left\{\sum_{x\in X} a_xx\;:\;\alpha_x\in K\text{, tylko skończenie wiele }\neq0\right\}$$
+\end{example}
+
+\begin{definition}[kategoria dualna]
+  Dla kategorii $\mathbf{C}$ możemy zdefiniować nową kategorię, $\mathbf{C}^{op}$ w której każdy morfizm $\phi^{op}\in Hom_{\mathbf{C}^{op}}(Y, X)$ zostaje odwrócony:
+  \begin{center}\begin{tikzcd}
+    X\arrow[r, bend left=20, "\phi"] & Y\arrow[l, bend left=20, "\phi^{op}"]
+  \end{tikzcd}\end{center}
+  Wtedy $\ob\mathbf{C}^{op}$ to obiekty dualne do elementów znajdujących się w $\ob\mathbf{C}$. Tak zdefiniowaną kategorię $\mathbf{C}^{op}$ nazywamy \buff{kategorią dualną}.
+\end{definition}
+
+\begin{example}
+\item Kategoria dualna do kategorii przestrzeni liniowych $\mathbf{Vect}_K^{op}$ jest kategorią, której obiekty to przestrzenie sprzężone, $V^*\in\ob\mathbf{Vect}^{op}_K$, zawierające funkcjonały liniowe $V\to K$. Każdy morfizm $\phi:V\to W$ w $\mathbf{Vect}_K$ indukuje wówczas odwzorowanie $\phi^*:W^*\to V^*$ takie, że dla $f\in W^*$ mamy $\phi^*(f)=f\circ\phi:V\to W\to K$.
+
+  Kojarzenie funkcjonału $\phi^*\in V^*$ z elementem $v\in V$ jest czasem oznaczane przez $\langle \phi, v\rangle=\phi(v)$.
+\end{example}
+
+\begin{definition}[funktor kontrawariantny]
+  Funktor (kowariantny) z kategorii $\mathbf{C}^{op}$ do kategorii $\mathbf{D}$ jest nazywamy \buff{funktorem kontrawariantnym} z $\mathbf{C}$ do $\mathbf{D}$.
+\end{definition}
+
+%Niech $R$ będzie dowolnym pierścieniem, natomiast $A, B, C$ będą $R$-modułami. Mając ciąg
+%
+%\begin{center}\begin{tikzcd}
+%  A\arrow[r, "f"] & B\arrow[r, "g"] & C
+%\end{tikzcd}\end{center}
+%
+%mówimy, że jest on \acc{dokładny}, jeśli $\ker(g)=\img(f)$. W szczególności implikuje to, że $g\circ f=gf:A\to C$ jest homomorfizmem zerowym.
+%
+%\begin{definition}[Kompleks łańcuchowy]
+%  Rozważmy rodzinę $C=\{C_n\}_{n\in\Z}$ $R$-modułów wraz z mapami $d=d_n:C_n\to C_{n-1}$ takimi, że każde złożenie
+%  $$[d_{n-1}\circ d_n=]d\circ d:C_n\to C_{n-2}$$
+%  jest zerowe. Wówczas każdą mapę $d_n$ nazywamy \buff{różniczkami $C$}, a rodzina $C$ jest \buff{kompleksem łańcuchowym}.
+%\end{definition}
+%
+%Jądra każdego $d_n$ nazywamy \acc{$n$-cyklami} $C$ i oznaczamy $Z_n=Z_n(C)$, natomiast obraz każdego $d_{n+1}$ jest nazywany \acc{$n$-granicą} $C$ i oznacza się jako $B_n=B_n(C)$. Ponieważ $d_n\circ d_{n+1}=0$, to
+%$$0\subseteq B_n\subseteq Z_n\subseteq C_n.$$
+%
+%\begin{definition}[Homologia]
+%  \buff{$n$-tym modułem homologii} kompleksu $C$ nazywamy iloraz $\color{green}H_n(C)=Z_n/B_n$.
+%\end{definition}
+%
+%\begin{problem}
+%  Ustalmy $C_n=\Z/8$ dla $n\geq0$ i $C_n=0$ dla $n<0$. Dla $n>0$ niech $d_n$ posyła $x\mod 8$ do $4x\mod 8$. Pokaż, że tak zdefiniowane $C$ jest kompleksem łańcuchowym $\Z/8$-modułów i policz moduły homologii.
+%\end{problem}
+%
+%\begin{solution}
+%  Zauważyć, że $d_{n-1}d_n=0$ jest nietrudno dla $n\leq1$ ($d_{n-1}d_n:C_n\to C_{n-2}=0$). Z kolei dla dowolnego $n>1$ i dowolnego $x\in C_n$ wiemy, że $d_n(x)=4x\mod 8$. Jeśli $x$ było oryginalnie liczbą parzystą, to od razu widać, że $d_n(x)=0$. Z kolei gdy $x$ jest nieparzyste, to wówczas 
+%  $$d_{n-1}d_n(x)=d_{n-1}(4x\mod 8)=16x\mod 8=8\cdot(2x)\mod 8=0,$$
+%  a więc $d_{n-1}d_n=0$.
+%
+%  Homologie dla $n<2$ są trywialne, natomiast dla $n\geq 2$ wszystkie są takie same (gdyż funkcje $d_n$ jak i moduły $C_n$ nie ulegają zmianie wraz z $n$). Wystarczy więc przyjrzeć się $Z_1/B_1$
+%  
+%  \begin{center}\begin{tikzcd}
+%    C_0=\Z/8 & C_1=\Z/8\arrow[l, "d_1"] & C_2=\Z/8\arrow[l, "d_2"]
+%  \end{tikzcd}\end{center}
+%
+%  $Z_1$ to liczby parzyste w $\Z/8$ (kernel $d_1$), natomiast $B_1$ to liczby podzielne przez $4$, ale nie przez $8$ w $C_1$. W takim razie, $Z_1/B_1=\{4\}$.
+%\end{solution}
