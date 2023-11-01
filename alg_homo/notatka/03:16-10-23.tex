@@ -1,26 +1,33 @@
-\section{16.10.2023 : Tymczasowe}
+\section{16.10.2023 : Funktory reprezentowalne i granice}
 
-\begin{example}
-  \item W kategorii zbiorów element $X\in Ob\mathbf{Set}$ możemy widzieć jako elementy zbioru $Hom_{\mathbf{Set}}(1,X)$ gdzie $1$ jest jednoelementowych zbiorem.
+\subsection{Kategoria funktorów}
 
-  \item Uogólniając obserwację wyżej, w dowolnej kategorii $\mathbf{C}$ obiektowi $X$ możemy przypisać funktor 
+W kategorii $\mathbf{Set}$ zbiór $X\in \ob\mathbf{Set}$ możemy widzieć jako $Hom_{\mathbf{Set}}(1,X)$ gdzie $1$ jest singletonem. Robimy to utożsamiając element $x\in X$ z morfizmem $1\mapsto x\in Hom_{\mathbf{Set}}(1, X)$.
+
+Uogólniając obserwację wyżej, w dowolnej kategorii $\mathbf{C}$ obiektowi $X$ możemy przypisać funktor 
     $$h_X:\mathbf{C}^{op}\to \mathbf{Set}$$
-    $$h_X(Y)=Hom_{\mathbf{C}}(Y,X) \; (\star)$$
-    ponieważ nie zawsze istnieje odpowiednik $1$, dlatego rozważamy wszystkie obiekty i morfizmy:
+    $$h_X(Y)=Hom_{\mathbf{C}}(Y, X) \; (\star)$$
+    gdzie $(\star)$ zapisujemy czasem jako $X(Y)$.
+
+    Ponieważ nie we wszystkich kategoriach istnieje odpowiednich singletona $1$, musimy rozważać wszystkie obiekty $Y$ i morfizmy:
     
     \begin{center}\begin{tikzcd}[column sep = large]
       %Y \arrow[r, "f"] & Y' \arrow[r, rightsquigarrow] & h_X(Y') \arrow[r, "h_X(f)"] & h_X(Y')
       Y \arrow[r, "f"] \arrow[d, "\alpha" left] & Y' \arrow[d, "\alpha\circ f"] \\
-      X \arrow[r, squiggly, "h_X(f)" below] & X
+      X \arrow[r, squiggly, no head, "h_X(f)" below] & X
     \end{tikzcd}\end{center}
+    dobrane tak, że diagram komutuje.
 
-    Tutaj równanie $(\star)$ można również zapisać jako $X(Y)$, czyli rozumieć jako $Y$-punkty obiektu $X$.
-\end{example}
+    %Tutaj równanie $(\star)$ można również zapisać jako $X(Y)$, czyli rozumieć jako $Y$-punkty obiektu $X$.
+
+    Oczywiście, możemy też definiować funktor kowariantny $g:\mathbf{C}\to\mathbf{Set}$ taki, że $g_X(Y)=Hom_{\mathbf{C}}(X, Y)$.
 
 \begin{definition}[Kategoria funktorów i funktory reprezentowalne]
   \acc{Kategorię funktorów} $(C^{op},\mathbf{Set})$, której obiektami są $h_X$ jak w przykładzie wyżej, oznaczamy $\hat{\mathbf{C}}$. 
 
-  Funktor $F\in\hat{\mathbf{C}}$ jest \buff{reprezentowalny}, jeśli $F\cong h_X$ dla pewnego $X\in Ob\mathbf{C}$. Takie $X$ jest jedyne z dokładnością do izomorfizmu. Dla morfizmu $X\xrightarrow{\phi} X'$ w $\mathbf{C}$ określamy morfizm $h_\phi:h_X\to h_{X'}$ w $\mathbf{\hat{C}}$.
+  Funktor $F\in\hat{\mathbf{C}}$ jest \buff{reprezentowalny}, jeśli $F\cong h_X$ dla pewnego $X\in Ob\mathbf{C}$. Takie $X$ jest jedyne z dokładnością do izomorfizmu.
+ 
+  Dla morfizmu $X\xrightarrow{\phi} X'$ w $\mathbf{C}$ określamy morfizm $h_\phi:h_X\to h_{X'}$ w $\mathbf{\hat{C}}$.
 
   \begin{center}\begin{tikzcd}[column sep=large, row sep = small]
     Hom_{\mathbf{C}}(Y,X) \arrow[r, "h_\phi"] & Hom_{\mathbf{C}}(Y,X')\\
@@ -28,13 +35,22 @@
   \end{tikzcd}\end{center}
 \end{definition}
 
+Funktor $h_X$ można również oznaczyć jako $Hom_{\mathbf{C}}(-, X)$. Wówczas dla morfizmu $\phi:Y\to Y'$ mamy 
+$$Hom_{\mathbf{C}}(\phi, X)(\alpha)=\phi\circ\alpha$$
+dla $\alpha\in Hom_{\mathbf{C}}(-, X)$
+
 \begin{example}
-  \item $\set{P}(X)$ jest funktorem, który przypisuje $X$ jest zbiór potęgowy. Jest on reprezentowalny, bo $\set{P}(X)\cong Hom(X, 2)$
-  \item $H^n(X,G)=[X,K(G, n)]$ \emph{\large\color{red}NIE JESTEM PEWNA CO TO OZNACZA? chyba nie homotopie}
-  \item wiązki $Vect_n(X)=[X,G^\infty]$????
+  \item $\set{P}(X):\mathbf{Set}\to\mathbf{Set}$ jest funktorem, który przypisuje $X$ jest zbiór potęgowy. Jest on reprezentowalny, bo $\set{P}(X)\cong Hom(X, 2)$.
+    
+    Dla dowolnego zbioru $X\in\mathbf{Set}$ naturalne przekształcenie $f(X):Hom(X, 2)\to \set{P}(X)$ przypisze funkcji $\alpha\in Hom(X, 2)$ zbiór tych elementów $x\in X$ dla których $\alpha(x) = 2$. Przekształcenie odwrotne do tego przypisze zbiorowi $A\in\set{P}(X)$ funkcję $\alpha:X\to 2$ taką, że $\alpha(x)=1$ jeśli $x\notin A$ i $\alpha(x)=2$ wpp.
+
+  \item Funktor homotopii $H^n(X,G)=[X,K(G, n)]$ jest w oczywisty sposób funktorem reprezentowalnym.
+    %\emph{\large\color{red}NIE JESTEM PEWNA CO TO OZNACZA? chyba nie homotopie}
+  
+  \item {\large\color{red}co tutaj mają do roboty wiązki styczne?} $Vect_n(X)=[X,C^\infty]$????
 \end{example}
 
-Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają funktor $h:\mathbf{C}\to\mathbf{\hat{C}}$.
+Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają w oczywisty sposób funktor $h:\mathbf{C}\to\mathbf{\hat{C}}$.
 
 \begin{lemma}[Yoneda lemma]
   Przyporządkowanie $h:\mathbf{C}\to\mathbf{\hat{C}}$ zadaje równoważność kategorii $\mathbf{C}$ z pełną podkategorią kategorii $\mathbf{\hat{C}}$, której obiektami są funktory reprezentowalne.

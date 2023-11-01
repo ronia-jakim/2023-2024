@@ -152,10 +152,10 @@
   \begin{center}
     \begin{tikzcd}[column sep=large]%, row sep=tiny]
       f(V):V \arrow[r] & V^{**}\\
-      v \arrow[u, phantom, sloped, "\in"] \arrow[r] & (V^*\ni\phi\mapsto\phi(v)\in K)=\langle\cdot,v\rangle \arrow[u, phantom, sloped, "\in"]
+      v \arrow[u, phantom, sloped, "\in"] \arrow[r] & (V^*\ni\phi^*\mapsto\phi^*(v)\in K)=\langle\cdot,v\rangle \arrow[u, phantom, sloped, "\in"]
     \end{tikzcd}
   \end{center}
-  to znaczy, dla $v\in V$ mamy element $f(v)=\langle\cdot, v\rangle\in V^{**}$, który elementowi $\phi\in V^*$ przyporządkowuje $\langle\phi,v\rangle=\phi(v)\in K$.
+  to znaczy, dla $v\in V$ mamy element $f(V)(v)=\langle\cdot, v\rangle\in V^{**}$, który elementowi $\phi^*\in V^*$ przyporządkowuje $\langle\phi^*,v\rangle=\phi^*(v)\in K$.
 
   Chcemy sprawdzić, że diagram
   \begin{center}
@@ -165,17 +165,21 @@
     \end{tikzcd}
   \end{center}
   komutuje, czyli pokazać, że $f(V)\circ\phi^{**}=\phi\circ f(W)$.
-
+  
+  Troszkę przypomnienia z algebry liniowej. Przekształcenie liniowe $\phi:V\to W$ indukuje funkcjonał liniowy $\phi^*:W^*\to V^*$ taki, że dla $f:W\to K\in W^*$ mamy $\phi^*(f)=f\circ \phi\in V^*$. W takim razie, przekształcenie $\phi^{**}:V^{**}\to W^{**}$ dla $f^*:V^{*}\to K\in V^{**}$ przyporządkuje
+  $$\phi^{**}(f^*)=f^*\circ\phi^*:W^*\to K$$
   \begin{align*}
     (\phi^{**}\circ f(V))(v)&=\phi^{**}(f(V)(v))=\phi^{**}(\langle\cdot,v\rangle)=\\
                             &=\langle\cdot,v\rangle\circ\phi^*=\langle\phi^*(\cdot),v\rangle=\\
                             &=\langle \cdot\circ\phi,v\rangle=\langle\cdot,\phi(v)\rangle=f(W)(\phi(v))=\\
                             &=(f(W)\circ\phi)(v)
   \end{align*}
+  element $W^{**}$.
+
   Czyli wszystko się zgadza!
 \end{example}
 
-Naturalne przekształcenia można składać. Powstaje wtedy (meta)kategoria, której elementy to funktory, a morfizmami są naturalne przejścia. Nie jest to prawdziwa kategoria, bo morfizmy nie zawsze są zbiorami w takim przypadku. Taki twór oznaczamy $\mathbf{Funct}(\mathbf{C},\mathbf{D})$ i mając naturalne przekształcenia funktorów $F\overset{a}{\to} G\overset{b}{\to}H$, dowolne $X,Y\in Ob\mathbf{C}$ oraz $\phi:X\to Y$ rysujemy
+Naturalne przekształcenia można składać. Powstaje wtedy (meta)kategoria, której elementy to funktory, a morfizmami są naturalne przejścia. Nie jest to prawdziwa kategoria, bo morfizmy nie zawsze tworzą zbiory w takim przypadku. Taki twór oznaczamy $\color{blue}\mathbf{Funct}(\mathbf{C},\mathbf{D})$ i mając naturalne przekształcenia funktorów $F\overset{a}{\to} G\overset{b}{\to}H$, dowolne $X,Y\in Ob\mathbf{C}$ oraz $\phi:X\to Y$ rysujemy
 \begin{center}
   \begin{tikzcd}[column sep=large]
     F(X) \arrow[r, "a(X)"] \arrow[d, "F(\phi)" left] & G(X) \arrow[r, "b(X)"] \arrow[d, "G(\phi)"] & H(X) \arrow[d, "H(\phi)"] \\
@@ -202,34 +206,71 @@ gdzie $(b\circ a)(X)=b(X)\circ a(X)$.
   Funktor $F:\mathbf{C}\to\mathbf{D}$ zadaje \buff{równoważność kategorii}, jeśli istnieje funktor $G:\mathbf{D}\to\mathbf{C}$ oraz naturalne przekształcenia funktorów $f:F\circ G\to Id_{\mathbf{D}}$ i $g:G\circ F\to Id_{\mathbf{C}}$
 \end{definition}
 
+Równoważność kategorii jest nieco słabszym warunkiem niż istnienie izomorfizmu między nimi - złożenie $F\circ G$ niekoniecznie musi być równe $Id_{\mathbf{D}}$, wystarczy tylko żeby istniało naturalne przekształcenie między tymi dwoma funktorami.
+
 \begin{example}
-\item Kategoria skończenie wymiarowych przestrzeni wektorowych $\mathbf{Vect_K^{fin}}$ jest równoważna kategorii $\mathbf{S_K}$, której obiektami są $Ob\mathbf{S_K}=\{K^0,K^1,...,K^n,...\}$ a morfizmy to wszystkie przekształcenia liniowe między nimi.
+\item Kategoria skończenie wymiarowych przestrzeni wektorowych $\mathbf{Vect}_K^{fin}$ jest równoważna kategorii $\mathbf{S_K}$, której obiektami są $Ob\mathbf{S_K}=\{K^0,K^1,...,K^n,...\}$ a morfizmy to wszystkie przekształcenia liniowe między nimi.
 
-  Włożenie $F:\mathbf{S_K}\to \mathbf{Vect_K^{fin}}$ jest oczywisty, gdyż każdy obiekt z $\mathbf{S_K}$ jest przestrzenią wektorową skończonego wymiaru. Aby znaleźć $G:\mathbf{Vect_K^{fin}}\to \mathbf{S_K}$ do niego odwrotne, musimy najpierw w każdej przestrzeni $V\in\mathbf{Vect_K^{fin}}$ znaleźć bazę $b(V)$, którą poślemy w bazę standardową, tzn dostajemy
-  $$G(V):V\to K^{\dim V}.$$
+  Funktor włożenia
+  $$F:\mathbf{S_K}\to \mathbf{Vect}_K^{fin}$$
+  jest oczywistym wyborem na pierwszy funktor, gdyż każdy obiekt z $\mathbf{S_K}$ jest przestrzenią wektorową skończonego wymiaru.
 
-  Morfizmami na $\mathbf{Vect_K^{fin}}$ są macierze, więc wystarczy posłać je na ich odpowiedniki po zamianie bazy.
+  Aby znaleźć funktor
+  $$G:\mathbf{Vect}_K^{fin}\to\mathbf{S_K}$$
+  zaczniemy od rozważenia na co przechodzi $V\in\mathbf{Vect}_K^{fin}$. Wiemy, że $\dim\mathbf{Vect}_K^{fin}=\infty$, możemy więc zdefiniować
+  $$G(V)=K^{\dim\mathbf{Vect}_K^{fin}}.$$
+  Pozostaje zastanowić się nad przekształceniem morfizmów. W każdym $V$ możemy wyróżnić pewną bazę, a każde przekształcenie liniowe $V\to W$ będzie macierzą o wyrazach w $K$ zapisaną w tych wyróżnionych bazach. Wystarczy więc przekształceniu $V\to W$ zadanemu macierzą przyporządkować przekształcenie wyznaczone przez taką samą macierz na $K^{\dim V}\to K^{\dim W}$.
+
 \end{example}
 
 \begin{theorem}
-  Funktor $\mathbf{C}\to \mathbf{D}$ jest równoważnością kategorii $\iff$ jest on wierny, pełny i w zasadzie surjektywny, tzn. $(\forall\;Y\in Ob\mathbf{D})(\exists\;X\in Ob\mathbf{C})\;F(X)\underset{\mathbf{D}}{\cong}Y$.
+  Funktor $F:\mathbf{C}\to \mathbf{D}$ zadaje równoważność kategorii $\iff$ jest on wierny, pełny i w zasadzie surjektywny, tzn. $(\forall\;Y\in \ob\mathbf{D})(\exists\;X\in \ob\mathbf{C})\;F(X)\underset{\mathbf{D}}{\cong}Y$.
 \end{theorem}
 
 \begin{proof}
   $\impliedby$
 
-  Mając wiedzę o $F$ będziemy konstruować $G$.
+  Wiemy, że funktor $F:\mathbf{C}\to\mathbf{D}$ jest wierny, pełny i w zasadzie suriektywny i na podstawie tej wiedzy skonstruujemy $G:\mathbf{D}\to\mathbf{C}$ jak w definicji równoważności kategorii.
 
-  Dla $Y\in Ob\mathbf{D}$ wybieramy $G(Y)\in Ob\mathbf{C}$ takie, że istnieje izomorfizm $\iota_Y:Y\to F(G(Y))$. Niech $\phi:Y\to Y'$ będzie morfizmem obiektów w kategorii $\mathbf{D}$. Chcemy sprawdzić istnienie $G(\phi)$ takie, że $Id_{\mathbf{D}}\cong F\circ G$
+  Dla $Y\in \ob\mathbf{D}$ wybieramy $G(Y)\in \ob\mathbf{C}$ takie, że istnieje izomorfizm $\iota_Y:Y\to F(G(Y))$. Możemy tak zrobić, gdyż $F$ jest w zasadzie suriektywny. 
+
+  Niech $\phi:Y\to Y'$ będzie morfizmem obiektów w kategorii $\mathbf{D}$. Chcemy sprawdzić istnienie $G(\phi)$ takie, że mamy naturalny izomorfizm $Id_{\mathbf{D}}\leftrightarrow F\circ G$
 
   \begin{center}
     \begin{tikzcd}[column sep=large]
-      Y \arrow[r, "\phi"] \arrow[d, "\iota_Y" left] & Y' \arrow[d, "\iota_{Y'}"]\\
-      F(G(Y)) \arrow[r, "\iota_{Y'}\circ\phi\circ\iota_Y^{-1}" below ] & F(G(Y'))
+      Id_{\mathbf{D}}(Y)=Y \arrow[r, "\phi"] \arrow[d, "\iota_Y" left] & Y'=Id_{\mathbf{D}}(Y') \arrow[d, "\iota_{Y'}"]\\
+      F(G(Y)) \arrow[r, "F(G(\phi))?" below] & F(G(Y'))
+      %\iota_{Y'}\circ\phi\circ\iota_Y^{-1}" below ] & F(G(Y'))
     \end{tikzcd}
   \end{center}
 
-  $F$ jest wierny i pełny, więc
+  Ponieważ $\iota_Y$ jest izomorfizmem, dolną strzałkę $F(G(Y))\to F(G(Y'))$ możemy podpisać jako $\iota_{Y'}\circ\phi\circ\iota_Y^{-1}$. Chcemy pokazać, że da się dobrać $G(\phi)$ tak, żeby $F(G(\phi))=\iota_{Y'}\circ\phi\circ\iota_Y^{-1}$, tzn. żeby diagram na górze komutował.
+
+  $F$ jest wierny i pełny, więc przejście
   $$Hom_{\mathbf{C}}(G(Y),G(Y'))\overset{F}{\rightarrow}Hom_{\mathbf{D}}(F(G(Y)),F(G(Y')))$$
-  jest bijekcją, a więc istnieje jedyne $\psi=F^{-1}(\iota_{Y'}\phi\iota_Y^{-1})$
+  jest jednocześnie bijekcją i inijekcją, czyli możemy je odwracać. Istnieje więc jedyne 
+  $$\psi=F^{-1}(\iota_{Y'}\phi\iota_Y^{-1}):G(Y)\to G(Y')$$
+  które możemy przypisać do $G(\phi)=\psi$. Zbiór izomorfizmów $\iota_Y$ zadaje więc naturalny izomorfizm $Id_{\mathbf{D}}\to F\circ G$:
+  \begin{center}\begin{tikzcd}[column sep=3cm, row sep=large]
+    Y \arrow[d, "\iota_Y" left] \arrow[r, "\phi"] & Y' \arrow[d, "\iota_{Y'}"] \\ 
+    F(G(Y)) \arrow[r, "F(G(\phi))=F(\psi)=\iota_{Y'}\phi\iota_Y^{-1}" below] & F(G(Y'))
+  \end{tikzcd}\end{center}
+
+  Pozostaje sprawdzić, że dla tak zdefiniowanego $G$ istnieje również naturalne przekształcenie $Id_{\mathbf{C}}\to G\circ F$.
+
+  Dla $X, X'\in\ob\mathbf{C}$ oraz $\psi:X\to X'$ istnieje izomorfizm $F(X)\cong F(G(F(X)))$, gdyż tak właśnie zdefiniowaliśmy funktor $G$. Aby utrzymać konwencję z powyższego fragmentu dowodu, naziwjmy te izomorfizmy odpowiednio $\iota_{F(X)}$ i $\iota_{F(X')}$:
+  \begin{center}\begin{tikzcd}
+    F(X)\arrow[r, "\iota_{F(X)}"] \arrow[d, "F(\psi)" left] & F(G(F(X))) \arrow[d, "F(G(F(\psi)))"] \\ 
+    F(X') \arrow[r, "\iota_{F(X')}" below] & F(G(F(X')))
+  \end{tikzcd}\end{center}
+  Ponieważ $F$ jest wiernym i pełnym funktorem, to możemy najbardziej zewnętrzne $F$ zdjąć, by otrzymać diagram:
+  \begin{center}\begin{tikzcd}[column sep=large]
+    X\arrow[r, "F^{-1}(\iota_{F(X)})"] \arrow[d, "\psi" left] & G(F(X)) \arrow[d, "G(F(\psi))"] \\ 
+    X' \arrow[r, "F^{-1}(\iota_{F(X')})" below] & G(F(X'))
+  \end{tikzcd}\end{center}
+  Ponieważ diagram przed zdjęciem $F$ był przemienny, to również diagram niżej musi taki być - w końcu to zwykłe nałożenie $F^{-1}$ na wszystkie elementy i strzałki. W takim razie, morfizmy $F^{-1}(\iota_{F(X)})$ zadają naturalny izomorfizm $Id_{\mathbf{C}}\to G\circ F$.
+
+  $\implies$
+
+  Dowód drugiej implikacji zostaje pozostawiony jako ćwiczenie.
 \end{proof}
