@@ -209,20 +209,96 @@ Funkcję $f$ jak wyżej często oznaczamy $f=\frac{d\nu}{d\mu}$ i nazywamy \acc{
   \end{enumerate}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{2.6 twierdzenie}
   Niech $\set{G}\subseteq\set{F}$ będzie $\sigma$-ciałem. Załóżmy, że
   \begin{itemize}
     \item $X$ jest $\set{G}$-mierzalna
     \item $Y$ jest niezależna od $\set{G}$
     \item funkcja $\psi:\R^2\to\R$ jest mierzalna taka, że
-      $$\expected{\psi(X,Y)}<\infty.$$
+      $$\expected{|\psi(X,Y)|}<\infty.$$
   \end{itemize}
   Wówczas 
   $$\expected{\psi(X,Y)}{\set{G}}=\Psi(X),$$ 
-  gdzie funkcja $\Psi:\R\to\R$ jest zdefiniowana jako $\Psi(X)=\expected{\psi(X,Y)}$.
+  gdzie funkcja $\Psi:\R\to\R$ jest zdefiniowana jako $\Psi(x)=\expected{\psi(x,Y)}$.
 \end{theorem}
 
 \begin{proof}
-  Jeśli $\psi(x,y)=xy$, to korzystając z punktu 3. twierdzenia \ref{o arytmetyce wwo} dostajemy
-  $$\psi(x)=\expected{xY}=x\expected{Y}$$
+%  Jeśli $\psi(x,y)=xy$, to korzystając z punktu 3. twierdzenia \ref{o arytmetyce wwo} dostajemy
+%  $$\psi(x)=\expected{xY}=x\expected{Y}$$
+
+  Tak jak w dowodzie ostatniego punktu twierdzenia \ref{o arytmetyce wwo} zaczniemy od funkcji $\phi$ prostych i stopniowo przejdziemy do dowolnych funkcji mierzalnych. 
+
+  Zaczniemy od funkcji $\phi$ postaci $\phi(x, y)=\mathds{1}_{A\times B}(x, y)=\mathds{1}_A(x)\cdot\mathds{1}_B(y)$ dla pewnych $A, B\in Bor(\R)$.
+
+  Po pierwsze zauważmy, że jeżeli $X$ jest $\set{G}$-mierzalne, to $\mathds{1}_A(X)$ też takie jest. Analogicznie, jeśli $Y$ jest niezależna od $\set{G}$, to $\mathds{1}_B(Y)$ też jest niezależne i wtedy $\expected{\mathds{1}_B(Y)}{\set{G}}=\expected{\mathds{1}_B(Y)}$. Korzystając z \ref{o arytmetyce wwo} w przejściu $\star$, dostajemy
+  \begin{align*}
+    \expected{\phi(X, Y)}{\set{G}}&=\expected{\mathds{1}_A(X)\mathds{1}_B(Y)}{\set{G}}=\\ 
+                                  &\overset{\star}{=}\mathds{1}_A(X)\expected{\mathds{1}_B(Y)}{\set{G}}=\\ 
+                                  &=\mathds{1}_A(X)\expected{\mathds{1}_B(Y)}
+  \end{align*}
+  Z drugiej strony mamy
+  \begin{align*}
+    \Psi(x)=\expected{\phi(x, Y)}&=\expected{\mathds{1}_A(x)\mathds{1}_B(Y)}=\\ 
+                                &=\mathds{1}_A(x)\expected{\mathds{1}_B(Y)}
+  \end{align*}
+  czyli $\Psi(X)=\mathds{1}_A(X)\expected{\mathds{1}_B(Y)}$ tak jak chcieliśmy.
+
+  Chcemy przejść teraz do funkcji postaci $\phi(x, y)=\mathds{1}_C(x, y)$ dla $C\in Bor(\R^2)$. Skorzystamy przy tym z lematu o $\pi-\lambda$ układach:
+
+  \begin{dygresja}[lemat o $\pi-\lambda$ układach]
+    Niech $P$ będzie $\pi$-układem (tzn. $A, B\in P\implies A\cap B\in P$) oraz niech $P\subseteq L$ będzie $\lambda$-układem ($\Omega\in L$, $A\subseteq B\in L\implies B\setminus A\in L$ i $A_1\subseteq A_2\subseteq...\in L\implies \bigcup A_i\in L$). 
+
+    Wówczas $L$ jest $\sigma$-ciałem i w szczególności zawiera $\sigma$-ciało generowane przez $\pi$-układ $P$.
+  \end{dygresja}
+
+  Rozważmy zbiór
+  $$D=\{C\in Bor\R^2\;:\;\expected{\mathds{1}_C(X,Y)}{\set{G}}=\Psi_C(X)  \}.$$
+  Oczywiście, zbiór wszystkich "kwadratów" $A\times B$ dla $A,B\subseteq\R$ jest $\pi$-układem zbiorów z $\R^2$ i zgodnie z tym co już pokazaliśmy, zawiera się on w $D$. Chcemy więc pokazać, że $D$ jest $\lambda$-układem.
+
+  \begin{enumerate}
+    \item $\Omega\in D$
+      
+      Jest to prawdą, bo w tym przypadku $\Omega=\R\times\R$, czyli podlega pod przypadek udowodniony wyżej.
+
+    \item $A\subseteq B\in D\implies B\setminus A\in D$
+
+      Niech $A\subseteq B\in D$, wówczas
+      $$\mathds{1}_{B\setminus A}(X, Y)=\mathds{1}_B(X, Y)-\mathds{1}_A(X, Y)$$
+      czyli wówczas
+      \begin{align*}
+        \expected{\mathds{1}_{B\setminus A}(X, Y)}{\set{G}}&=\expected{\mathds{1}_B(X, Y)-\mathds{1}_A(X, Y)}{\set{G}}=\\ 
+                                                           &=\expected{\mathds{1}_B(X, Y)}{\set{G}}-\expected{\mathds{1}_A(X, Y)}{\set{G}}=\\ 
+                                                           &=\Psi_B(X)-\Psi_A(Y)=\expected{\mathds{1}_B(X, Y)}-\expected{\mathds{1}_A(X, Y)}=\\ 
+                                                           &=\expected{\mathds{1}_{B\setminus A}(X, Y)}=\Psi(X)
+      \end{align*}
+      i tym samym dostajemy $B\setminus A\in D$
+    \item $A_1\subseteq A_2\subseteq...\implies\bigcup A_i\in D$
+
+      Wystarczy zauważyć, że przy wstępującym ciągu zbiorów $A_i$ mamy $\mathds{1}_{A_n}\geq \mathds{1}_{A_{n-1}}$ oraz $\mathds{1}_{\bigcup A_i}=\lim\mathds{1}_{A_i}$, a następnie zastosować twierdzenie o zbieżności monotonicznej:
+      \begin{align*}
+        \expected{\bigcup \mathds{1}_{A_i}(X, Y)}{\set{G}}&=\expected{\lim\mathds{1}_{A_i}(X, Y)}{\set{G}}=\\ 
+                                                          &=\lim\expected{\mathds{1}_{A_i}(X, Y)}{\set{G}}=\\ 
+                                                          &=\lim\Psi_{A_i}(X)=\lim\expected{\mathds{1}_{A_i}(X, Y)}=\\ 
+                                                          &= \expected{\lim\mathds{1}_{A_i}(X, Y)}=\\ 
+                                                          &=\expected{\mathds{1}_{\bigcup A_i}(X, Y)}
+      \end{align*}
+  \end{enumerate}
+
+  W ten sposób pokazaliśmy już, że twierdzenie jest prawdziwe dla funkcji prostych $\phi:\R^2\to \R$. Przejdziemy teraz do przypadku, gdy $\phi$ jest nieujemną funkcją mierzalną, czyli istnieje ciąg funkcji prostych $s_1\leq s_2\leq ...\leq s_n\leq...\leq \phi$ taki, że $\phi=\lim s_i$.
+  \begin{align*}
+    \expected{\phi(X, Y)}{\set{G}}&=\expected{\lim s_i(X, Y)}{\set{G}}=\\ 
+                                  &\overset{\heartsuit}{=}\lim\expected{s_i(X, Y)}{\set{G}}=\\ 
+                                  &=\lim\expected{s_i(X, Y)}=\\ 
+                                  &=\expected{\lim s_i(X, Y)}=\expected{\phi(X, Y)}
+  \end{align*}
+  W przejściu $\heartsuit$ skorzystaliśmy ponownie z twierdzeniu o zbieżności monotonicznej.
+
+  Pozostaje jedynie przypadek, gdy $\phi$ jest dowolną funkcją mierzalną. Wtedy możemy zapisać $\phi=\phi^+-\phi^-$ dla $\phi^+$ oraz $\phi^-$ nieujemnych. Wtedy, korzystając z wcześniej już pokazanych form funkcji mierzalnych dostajemy
+  \begin{align*}
+    \expected{\phi(X, Y)}{\set{G}}&=\expected{\phi^+(X, Y)-\phi^-(X, Y)}{\set{G}}=\\ 
+                                  &=\expected{\phi^+(X, Y)}{\set{G}}-\expected{\phi^-(X, Y)}{\set{G}}=\\ 
+                                  &=\expected{\phi^+(X, Y)}-\expected{\phi^-(X, Y)}=\\ 
+                                  &=\expected{\phi^+(X, Y)-\phi^-(X, Y)}=\expected{\phi(X, Y)}
+  \end{align*}
+
 \end{proof}

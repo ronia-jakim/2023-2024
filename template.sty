@@ -278,37 +278,49 @@
   style=dygresyja,
 ]{dygresja}
 
-\newtheoremstyle{zadanka}
-  {3pt}
-  {3pt}
-  {\itshape}
-  {}
-  {\color{red}\large\bfseries}
-  {\newline}
-  {.5em}
-  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{red!80!black} ,
+    bodyfont=\normalfont,
+    notebraces={: }{},
+    notefont=\color{red},
+    headformat=\NAME$\;$\NUMBER\NOTE,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=red!60!purple!50, backgroundcolor=red!5,
+        skipabove=3mm, skipbelow=3mm
+    }
+]{zadanka}
 
 \declaretheorem[
-  name=Problem,
-  numberwithin=section,
+  name=Zadanie ,
   style=zadanka,
 ]{problem}
 
-\newtheoremstyle{rozw_moj}
-  {3pt}
-  {3pt}
-  {}
-  {}
-  {\color{red}\bfseries}
-  {\newline}
-  {.5em}
-  {\thmname{#1}\thmnumber{ #2}\thmnote{ : \textbf{#3}}}
+\renewcommand{\theproblem}{\arabic{problem}}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{red!80!black} ,
+    bodyfont=\normalfont,
+    notebraces={: }{},
+    notefont=\color{red},
+    headformat=\NAME\NUMBER\NOTE,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=green!60!orange!50, %, backgroundcolor=red!2,
+        skipabove=3mm, skipbelow=3mm
+    }
+]{rozw_moj}
 
 \declaretheorem[
-  name=Rozwiązanko,
+  name=Rozwiązanie,
   numbered=no,
   style=rozw_moj,
-  shaded={bgcolor=black!10, rulecolor=red!30!black!20, rulewidth=1pt, textwidth=\textwidth}
+  %shaded={bgcolor=black!10, rulecolor=red!30!black!20, rulewidth=1pt, textwidth=\textwidth}
 ]{solution}
 
 %%================================================================%%
