@@ -10,7 +10,22 @@ $$\expected{(X-h_0(Z))^2}=\inf_{h:\R\to\R}\expected{(X-h(Z))^2}$$
 \end{fact}
 
 \begin{proof}
-  Zadanie.
+  Zadanie, moja próba poniżej.
+
+  Zaczynamy od $Y$ będącego funkcją prostą i przechodzimy do coraz to bardziej skomplikowanych postaci funkcji mierzalnych.
+
+  Jeżeli $Y=\mathds{1}_A$, to ponieważ $Y$ jest $\sigma(Z)$-mierzalne, mamy $A\in\sigma(Z)$. To znaczy, że istnieje $B\in Bor(\R)$ taki, że $Z(A)=B$, czyli $A=Z^{-1}[B]$ i wówczas
+  $$Y=\mathds{1}_A=\mathds{1}_{Z^{-1}[B]}=\mathds{1}_B(Z)$$
+
+  Zrobimy tutaj jeszcze krok $Y=\sum a_i\mathds{1}_{A_i}$. Dla każdego $i$ wiemy, że $\mathds{1}_{A_i}=h_i(Z)$, gdyż są to funkcje $\sigma(Z)$-mierzalne. W takim razie:
+  $$Y=\sum a_i\mathds{1}_{A_i}=\sum a_i\cdot h_i(Z)=\left[\sum a_i\cdot h_i\right](Z)$$
+  a więc szukane $h=\sum a_i\cdot h_i$.
+
+  Teraz załóżmy, że istnieje ciąg funkcji prostych $s_1\leq s_2\leq...\leq Y$ taki, że $Y=\lim s_i$. Wówczas pokazaliśmy już, że każda funkcja $s_i=h_i(Z)$ dla pewnego borelowskiego $h_i:\R\to\R$. Ciąg $s_i$ jest zbieżny, więc również ciąg $h_i$ musi zbiegać do pewnego $h$. Wówczas dla dowolnego $\omega\in\Omega$
+  $$Y(\omega)=\lim s_i(\omega)=\lim h_i(Z(\omega))=h(Z(\omega))$$
+  czyli $Y=h(Z)$ dla $h=\lim h_i$.
+
+  Dla formalności należy rozważyć jeszcze $Y=Y^+-Y^-$, gdzie $Y^+$ oraz $Y^-$ podlegają pod poprzedni podpunkt.
 \end{proof}
 
 $$\expected{(X-h(Z))^2}=\inf_{Y\in\sigma(Z)}\expected{(X-Y)^2}$$
@@ -29,7 +44,26 @@ Używając tego języka będziemy wiedzieli jak szukać $Y$ z początku wykładu
 \end{fact}
 
 \begin{proof}
-  Zadanie
+  Zadanie, tutaj moje podejście.
+
+
+  Zauważmy na początku, że
+  $$XY=\underbrace{\frac{(\expected{Y^2}{\set{G}}+\frac{1}{n})^{1/4}}{(\expected{X^2}{\set{G}}+\frac{1}{n})^{1/4}}X}_{X_n}\underbrace{\cdot\frac{(\expected{X^2}{\set{G}}+\frac{1}{n})^{1/4}}{(\expected{Y^2}{\set{G}}+\frac{1}{n})^{1/4}}Y}_{Y_n}$$
+  przy czym korzystamy z $\frac{1}{n}$, żeby na pewno nie dzielić przez $0$ gdy np. $\expected{X^2}{\set{G}}=0$.
+
+  Dalej zauważmy, że ponieważ $(X_n-Y_n)^2\geq0$, to również
+  $$0\leq\expected{(X_n-Y_n)^2}{\set{G}}=\expected{X_n^2+Y_n^2-2X_nY_n}{\set{G}}$$
+  czyli korzystając z liniowości i przenosząc $\expected{X_nY_n}{\set{G}}$ na lewą stronę nierówności dostajemy
+  \begin{align*}\expected{XY}{\set{G}}&={\color{blue}
+    \expected{X_nY_n}{\set{G}}\leq 
+  \frac{1}{2}\expected{X_n^2}{\set{G}}+\frac{1}{2}\expected{Y_n^2}{\set{G}}}=\\ 
+  &=\frac{1}{2}\expected{\frac{(\expected{Y^2}{\set{G}}+\frac{1}{n})^{1/2}}{(\expected{X^2}{\set{G}}+\frac{1}{n})^{1/2}}X^2}{\set{G}}+\frac{1}{2}\expected{\frac{(\expected{X^2}{\set{G}}+\frac{1}{n})^{1/2}}{(\expected{Y^2}{\set{G}}+\frac{1}{n})^{1/2}}Y^2}{\set{G}}=(\heartsuit)
+  \end{align*}
+  a ponieważ $\frac{(\expected{Y^2}{\set{G}}+\frac{1}{n})^{1/2}}{(\expected{X^2}{\set{G}}+\frac{1}{n})^{1/2}}$ jest $\set{G}$-mierzalne, to możemy wyciągnąć je przed nawias:
+  \begin{align*}
+    (\heartsuit)&=\frac{1}{2}\cdot \frac{ (\expected{Y^2}{\set{G}}+\frac{1}{n})^{1/2}}{ (\expected{X^2}{\set{G}}+\frac{1}{n})^{1/2}} \expected{X^2}{\set{G}}+\frac{1}{2}\cdot  \frac{ (\expected{X^2}{\set{G}}+\frac{1}{n})^{1/2}}{ (\expected{Y^2}{\set{G}}+\frac{1}{n})^{1/2}} \expected{Y^2}{\set{G}}\to\\ 
+                &\xrightarrow{n\to\infty}(\expected{Y^2}{\set{G}})^{1/2}(\expected{X^2}{\set{G}})^{1/2}
+  \end{align*}
 \end{proof}
 
 Z tego nierówności w fakcie \ref{warunkowy Cauchy-szwarc} wynika, że dla $Y=1$ mamy
@@ -167,15 +201,45 @@ zawsze zadaje miarę probabilistyczną? Okazuje się, że tak faktycznie jest.
   W notatkach
 \end{proof}
 
-\begin{fact}
+\begin{fact}\label{fakt 3.5}
   Dla funkcji $f:\R\to\R$ i zmiennej losowej $X$ takiej, że $\expected{|f(X)|}<\infty$ mamy
-  $$\expected{f(X)}{\set{G}}=\int(x)\kappa_{X,\set{G}}(\omega,dx)$$
+  $$\expected{f(X)}{\set{G}}(\omega)=\int_{\R} f(x)\kappa_{X,\set{G}}(\omega,dx)$$
 \end{fact}
 
 Pisząc to mówię "weź $f(x)$ i weź miarę $\kappa$ w punkcie $\omega$ i scałkuj $\kappa$".
 
 \begin{proof}
   Ćwiczenia.
+
+  Będziemy przechodzić od najprostszych możliwych funkcji $f$ do coraz to bardziej skomplikowanych konstrukcji.
+
+  W pierwszych kroku niech $f(x)=\mathds{1}_B(x)$ dla $B\in Bor(\R)$. Wówczas 
+  \begin{align*}
+  \expected{f(X)}{\set{G}}(\omega)&=\expected{\mathds{1}_B(X)}{\set{G}}(\omega)=\expected{\mathds{1}_{\{X\in B\}}}{\set{G}}(\omega)=\\ 
+                                  &=\prob{X\in B}{\set{G}}(\omega)=\kappa_{X,\set{G}}(\omega, B)=\\ 
+                                  &=\int_B\kappa_{X,\set{G}}(\omega, dx)=\int_{\R} \mathds{1}_B(x)\kappa_{X,\set{G}}(\omega, dx)
+  \end{align*} 
+
+  Dalej, niech $f(x)=\sum a_i\mathds{1}_{A_i}(x)$. Wtedy mamy
+  \begin{align*}
+    \expected{f(X)}{\set{G}}(\omega)&=\expected{\sum a_i\mathds{1}_{A_i}(X)}{\set{G}}(\omega)=\sum a_i\expected{\mathds{1}_{A_i}(X)}{\set{G}}(\omega)=\\ 
+                                    &=\sum a_i\int_{\R}\mathds{1}_{A_i}(x)\kappa_{X,\set{G}}(\omega, dx)=\int_{\R}\sum a_i\mathds{1}_{A_i}(x)\kappa_{X,\set{G}}(\omega, dx)=\\ 
+                                    &=\int_{\R}f(x)\kappa_{X,\set{G}}(\omega, dx)
+  \end{align*}
+
+  Teraz niech $f(x)=\lim s_i(x)$ dla $0\leq s_1\leq s_2\leq...\leq f$ dla prostych funkcji $s_i$ jak z poprzednich podpunktów. Zauważmy, że mamy tutaj predyspozycje do skorzystania z twierdzenia o zbieżności monotonicznej.
+  \begin{align*}
+    \expected{f(X)}{\set{G}}(\omega)&=\expected{\lim s_i(X)}{\set{G}}(\omega)=\lim\expected{s_i(X)}{\set{G}}(\omega)=\\ 
+                            &=\lim \int_{\R} s_i(x)\kappa_{X,\set{G}}(\omega, dx)=\int_{\R}\lim s_i(x)\kappa_{X,\set{G}}(\omega, dx)=\\ 
+                            &=\int_{\R}f(x)\kappa_{X,\set{G}}(\omega, dx)
+  \end{align*}
+
+  Ostatni krok w dowodzie to $f=f^+-f^-$ i korzysta się tutaj już tylko z poprzednich podpunktów oraz liniowości wwo:
+  \begin{align*}
+    \expected{f(X)}{\set{G}}(\omega)&=\expected{f^+(X)-f^-(X)}{\set{G}}(\omega)=\expected{f^+(X)}{\set{G}}(\omega)-\expected{f^-(X)}{\set{G}}(\omega)=\\ 
+                            &=\int_{\R}f^+(x)\kappa_{X,\set{G}}(\omega, dx)-\int_{\R}f^-(x)\kappa_{X,\set{G}}(\omega, dx)=\\ 
+                            &=\int_{\R}(f^+(x)-f^-(x))\kappa_{X,\set{G}}(\omega, dx)=\int_{\R}f(x)\kappa_{X,\set{G}}(\omega, dx)
+  \end{align*}
 \end{proof}
 
 Jeżeli $G=\sigma(Z)$, to pojęcie rrw troszkę się upraszcza (z naciskiem na trochę):

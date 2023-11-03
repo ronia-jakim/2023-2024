@@ -1,0 +1,54 @@
+\subsection{Zadania}
+
+\setcounter{problem}{0}
+
+\begin{problem}
+  Niech $Y$ i $Z$ będą dowolnymi zmiennymi losowymi. Pokaż, że jeżeli zmienna $Y$ jest $\sigma(Z)$-mierzalna, to istnieje borelowska funkcja $h:\R\to \R$ taka, że $Y=h(Z)$.
+\end{problem}
+
+\begin{solution}
+  Treść dowodu faktu \ref{fakt 3.1}.
+\end{solution}
+
+\begin{problem}
+  Pokaż, że dla zmiennych $X$ i $Y$ takich, że $\expected{X^2},\expected{Y^2}<\infty$ i $\sigma$-ciała $\set{G}\subseteq\set{F}$ zachodzi
+  $$|\expected{XY}{\set{G}}|\leq[\expected{X^2}{\set{G}}]^{1/2}[\expected{Y^2}{\set{G}}]^{1/2}$$
+\end{problem}
+
+\begin{solution}
+  Patrz dowód twierdzenia \ref{warunkowy Cauchy-szwarc}.
+\end{solution}
+
+\begin{problem}
+  Niech $\kappa_{X,\set{G}}$ będzie regularnym rozkładem warunkowym $X$ pod warunkiem $\sigma$-ciała $\set{G}\subseteq\set{F}$. Pokaż, że dla każdej funkcji $f:\R\to\R$ takiej, że $\expected{|f(X)|}<\infty$ zachodzi
+  $$\expected{f(X)}{\set{G}}(\omega)=\int_{\R}f(x)\kappa_{X,\set{G}}(\omega,dx)$$
+\end{problem}
+
+\begin{solution}
+  Kolejne rozwiązanie jako dowód faktu \ref{fakt 3.5}.
+\end{solution}
+
+\begin{problem}
+  (Nierówność Jensena) Dana jest funkcja wypukła $\phi:\R\to\phi$, przestrzeń probabilistyczna $(\Omega,\set{F},\prob)$ oraz $\set{G}$ pod-$\sigma$-ciało $\set{F}$. Załóżmy, że zmienne losowe $X$ i $\phi(X)$ są całkowalne. Pokaż, że
+  $$\phi(\expected{X}{\set{G}})\leq\expected{\phi(X)}{\set{G}}$$
+\end{problem}
+
+\begin{solution}
+  Korzystając z faktu \ref{fakt 3.5} możemy powiedzieć, że
+  \begin{align*}
+    \expected{\phi(X)}{\set{G}}(\omega)&=\int_{\R}\phi(x)\kappa_{X,\set{G}}(\omega, dx)\geq\\ 
+                                       &\geq\phi\left[\int_{\R}\kappa_{X,\set{G}}(\omega, dx) \right]=\phi(\expected{X}{\set{G}})
+  \end{align*}
+  nierówność wynika z twierdzenia Jensena dla całek (które mówi, że $\int \phi\circ f\;d\mu\geq\phi\left(\int f\;d\mu\right)$) a ostatnie przejście to ponowne zastosowanie faktu \ref{fakt 3.5}, tym razem dla $\expected{id(X)}{\set{G}}$.
+\end{solution}
+
+\begin{problem}
+  Załóżmy, że wektor losowy $(X,Y)$ ma dwuwymiarowy rozkład normalny.
+  \begin{enumerate}[label=(\alph*)]
+    \item Znajdź $a\in\R$ takie, że zmienne $X-aY$ i $Y$ są niezależne.
+    \item Pokaż, że 
+      $$\expected{X}{Y}(\omega)=\mu_X+\frac{Cov(X,Y)}{Var(Y)}(Y(\omega)-\mu_Y),$$
+      gdzie $\mu_X=\expected{X}$ oraz $\mu_Y=\expected{Y}$.
+    \item Dla $y\in\R$ znajdź rozkład $X$ pod warunkiem $Y=y$.
+  \end{enumerate}
+\end{problem}
