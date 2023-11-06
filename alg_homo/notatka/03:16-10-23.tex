@@ -36,7 +36,7 @@ Uogólniając obserwację wyżej, w dowolnej kategorii $\mathbf{C}$ obiektowi $X
 \end{definition}
 
 Funktor $h_X$ można również oznaczyć jako $Hom_{\mathbf{C}}(-, X)$. Wówczas dla morfizmu $\phi:Y\to Y'$ mamy 
-$$Hom_{\mathbf{C}}(\phi, X)(\alpha)=\phi\circ\alpha$$
+$$h_\phi(\alpha)=Hom_{\mathbf{C}}(\phi, X)(\alpha)=\phi\circ\alpha$$
 dla $\alpha\in Hom_{\mathbf{C}}(-, X)$
 
 \begin{example}
@@ -44,7 +44,7 @@ dla $\alpha\in Hom_{\mathbf{C}}(-, X)$
     
     Dla dowolnego zbioru $X\in\mathbf{Set}$ naturalne przekształcenie $f(X):Hom(X, 2)\to \set{P}(X)$ przypisze funkcji $\alpha\in Hom(X, 2)$ zbiór tych elementów $x\in X$ dla których $\alpha(x) = 2$. Przekształcenie odwrotne do tego przypisze zbiorowi $A\in\set{P}(X)$ funkcję $\alpha:X\to 2$ taką, że $\alpha(x)=1$ jeśli $x\notin A$ i $\alpha(x)=2$ wpp.
 
-  \item Funktor homotopii $H^n(X,G)=[X,K(G, n)]$ jest w oczywisty sposób funktorem reprezentowalnym.
+  \item Funktor kohomologii $H^n:\mathbf{C}\to\mathbf{Ab}$ z kategorii $CW$-kompleksów w grupy abelowe taki, że $H^n(X,G)=[X,K(G, n)]$ jest funktorem reprezentowalnym. Pokazuje to twierdzenie Browna o reprezentowalności o którym uczy się przy okazji topologii algebraicznej.
     %\emph{\large\color{red}NIE JESTEM PEWNA CO TO OZNACZA? chyba nie homotopie}
   
   \item {\large\color{red}co tutaj mają do roboty wiązki styczne?} $Vect_n(X)=[X,C^\infty]$????
@@ -57,6 +57,23 @@ Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają w oczywisty sp
 \end{lemma}
 
 \begin{proof}
+  Wystarczy pokazać, że $h$ jest funktorem wiernym, pełnym i w zasadzie surjektywnym.
+
+  \begin{center}\begin{tikzcd}[column sep=large]
+    X\arrow[d, "\phi" left]\arrow[r, "h(X)"] & h_X=Hom_{\mathbf{C}}(-, X)\arrow[d, "h_\phi"]\\ 
+    X'\arrow[r, "h(X')"] & h_{X'}=Hom_{\mathbf{C}}(-, X')
+  \end{tikzcd}\end{center}
+
+  Chcemy pokazać, że przekształcenie $h$
+  \begin{center}\begin{tikzcd}[column sep=large]
+    Hom_{\mathbf{C}}(X, X')\arrow[r] Hom_{\hat{\mathbf{C}}}(h_X, h_{X'})\\ 
+    \phi\arrow[r, blue, "h"]\arrow[u, phantom, slopped, "\in"] & h_\phi\arrow[u, phantom, sloped, "\in"]
+  \end{tikzcd}\end{center}
+  jest bijekcją.
+
+
+
+
   Musimy pokazać, że
 
   \begin{center}\begin{tikzcd}[column sep=large, row sep=small]

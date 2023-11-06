@@ -52,3 +52,29 @@
     \item Dla $y\in\R$ znajdź rozkład $X$ pod warunkiem $Y=y$.
   \end{enumerate}
 \end{problem}
+
+\begin{solution}$ $\vspace{0pt}
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Z Rachunku Prawdopodbieństwa 1R wiemy, że jeśli wektor losowy ma rozkład normalny, a jego poszczególne elementy są nieskorelowane, to są one również niezależne. Patrzymy więc na kowariancję
+      \begin{align*}
+        Cov(X-aY, Y)&=Cov(X, Y)-aCov(Y, Y)=Cov(X, Y)-aVar(Y)
+      \end{align*}
+      i przyrównujemy ją do $0$
+      $$0=Cov(X, Y)-aVar(Y)\implies a=\frac{Cov(X,Y)}{Var(Y)}$$
+    \item Zauważmy, że korzystając z poprzedniego punktu możemy przepisać równość jako
+      $$\expected{X}{Y}(\omega)=\expected{X}-a\expected{Y}+aY(\omega)=\expected{X-aY}+a\expected{Y}{Y}$$
+      gdzie $Y=\expected{Y}{Y}$, bo $Y$ jest $\sigma(Y)$-mierzalne.
+      
+      Kolejne przekształcenia dają
+      $$\expected{X}{Y}-a\expected{Y}{Y}=\expected{X-aY}$$
+      co jest prawdą, gdyż po skorzystaniu z liniowości wwo po lewej stronie mamy
+      $$\expected{X-aY}{Y}=\expected{X-aY}$$
+      a ponieważ $X-aY$ dobraliśmy tak, żeby było niezależne od $Y$, to jest ono również niezależne od $\sigma(Y)$. Czyli wwo jest równe wartości oczekiwanej $X-aY$.
+    \item Rozkład $X$ pod warunkiem $Y=y$ to $\kappa_{X,Y}(y,B)=\prob{X\in B}{Y=y}$. Wiemy, że
+      $$\prob{X\in B}{Y=y}=\frac{\prob{X\in B\;i\;Y=y}}{\prob{Y=y}}$$
+      czyli można wydedukować, że szukamy
+      $$\prob{X}{Y=y}=f_{X|Y=y}(x, y)=\frac{f(x, y)}{f_Y(y)}$$
+      co jest zbyt dużą liczbą brzydkich obliczeń żeby nawet mi się chciało to dokładnie spisywać. Wystarczy podstawić pod gęstość $(X, Y)$ na górze i do gęstości $Y$ na dole.
+  \end{enumerate}
+\end{solution}
