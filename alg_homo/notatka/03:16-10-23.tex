@@ -66,8 +66,8 @@ Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają w oczywisty sp
 
   Chcemy pokazać, że przekształcenie $h$
   \begin{center}\begin{tikzcd}[column sep=large]
-    Hom_{\mathbf{C}}(X, X')\arrow[r] Hom_{\hat{\mathbf{C}}}(h_X, h_{X'})\\ 
-    \phi\arrow[r, blue, "h"]\arrow[u, phantom, slopped, "\in"] & h_\phi\arrow[u, phantom, sloped, "\in"]
+    Hom_{\mathbf{C}}(X, X')\arrow[r] & Hom_{\hat{\mathbf{C}}}(h_X, h_{X'})\\ 
+    \phi\arrow[r, blue, "h"]\arrow[u, phantom, sloped, "\in"] & h_\phi\arrow[u, phantom, sloped, "\in"]
   \end{tikzcd}\end{center}
   jest bijekcją.
 
@@ -108,6 +108,25 @@ Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają w oczywisty sp
 
 Czyli o granicach odwrotnych [granica] i prostych [kogranica].
 
+\begin{definition}[system prosty i odwrotny]
+  Niech $\mathbf{C}$ będzie kategorią, a $I$ zbiorem uporządkowanym. Układ $\{X_i, h_{ij}\}$ obiektów $\mathbf{C}$, gdzie dla $i\leq j$ $h_{ij}:X_i\to X_j$ są morfizmami w $\mathbf{C}$, nazywamy \buff{systemem prostym}, jeżeli
+  \begin{enumerate}
+    \item dla każdego $i\in I$ mamy $h_{ii}=id_{X_i}$
+    \item jeśli $i\leq j\leq k$, to komutuje następujący diagram
+      \begin{center}\begin{tikzcd}
+        X_i\arrow[r, "h_{ij}"] \arrow[dr, "h_{ik}" below left] & X_j\arrow[d, "h_{jk}"] \\ 
+                                                    & X_k
+      \end{tikzcd}\end{center}
+  \end{enumerate}
+
+  Jeżeli z kolei mamy układ spełniający warunek 1, ale zamiast diagramu w warunku 2. komutuje diagram
+  \begin{center}\begin{tikzcd}
+    X_k\arrow[r, "h_{jk}"]\arrow[dr, "h_{ik}" below left] & X_j \arrow[d, "h_{ij}"] \\ 
+                                                         & X_i
+  \end{tikzcd}\end{center}
+  to taki układ nazywamy \buff{systemem odwrotnym}
+\end{definition}
+
 Niech $I$ będzie małą kategorią, a $F:I\to\mathbf{C}$ będzie funktorem.
 
 \begin{definition}[granica funktora $F$]
@@ -115,13 +134,13 @@ Niech $I$ będzie małą kategorią, a $F:I\to\mathbf{C}$ będzie funktorem.
   \begin{itemize}
     \item \acc{[zgodność]} dla dowolnych $i\xrightarrow{\alpha}j$ w $I$ diagram
       \begin{center}\begin{tikzcd}
-        & X\arrow[dl, "\Pi_i" left]\arrow[dr, "\Pi_j"]\\
+        & X\arrow[dl, "\Pi_i" above left]\arrow[dr, "\Pi_j"]\\
         F(i)\arrow[rr, "F(\alpha)" below] & & F(j)
       \end{tikzcd}\end{center}
       komutuje, tzn. $\Pi_j=F(\alpha)\circ\Pi_i$.
     \item \acc{[uniwersalność]} dla każdego układu $(X',\Pi_i')$ spełniającego poprzedni warunek istnieje jedyny morfizm $\lambda:X'\to X$ taki, że dla każdego $i\in I$ diagram
       \begin{center}\begin{tikzcd}
-      X'\arrow[rr, "\lambda"]\arrow[dr, "\Pi_i'"] & & X\arrow[dl, "\Pi_i"]\\
+      X'\arrow[rr, "\exists!\lambda"]\arrow[dr, "\Pi_i'" below left] & & X\arrow[dl, "\Pi_i"]\\
       & F(i)
     \end{tikzcd}\end{center}
     komutuje
@@ -134,10 +153,12 @@ Granica funktora może nie istnieć, ale zawsze gdy istnieje, to jest jedyna z d
 \begin{example}
   \item Dla $I=\{0,1\}$ oraz $F:I\to \mathbf{C}$ granicę $\lim F$ nazywamy \acc{produktem} obiektów $F(0)$ i $F(1)$
     \begin{center}\begin{tikzcd}[column sep=large]
-      X\arrow[r, "\Pi_1"]\arrow[d, "\Pi_0"]\arrow[dr, dashed] & F(1)\\
-      F(0) & X'\arrow[l, "\Pi_0'"]\arrow[u, "\Pi_1'"]
+      X\arrow[r, "\Pi_1"]\arrow[d, "\Pi_0" left]\arrow[dr, dashed] & F(1)\\
+      F(0) & X'\arrow[l, "\Pi_0'"]\arrow[u, "\Pi_1'" right]
     \end{tikzcd}\end{center}
 \end{example}
 
-\begin{definition}[granica odwrotna] 
+\begin{definition}[granica odwrotna]
+  \begin{center}\begin{tikzcd}
+  \end{tikzcd}\end{center}
 \end{definition}
