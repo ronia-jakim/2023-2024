@@ -55,3 +55,22 @@
   $$\expected{e^{\theta X_{n+1}}}{\set{F}_n}$$
     a to już daje to co chcieliśmy.
 \end{solution}
+
+\begin{problem}
+  Niech $\{Y_n\}$ będzie ciągiem niezależnych zmiennych losowych o średniej $0$ i wariancji $\sigma^2$. Pokaż, że ciąg 
+  $$X_n=\left(\sum_{k=1}^nY_k\right)^2-n\sigma^2$$
+  jest martyngałem.
+\end{problem}
+
+\begin{solution}
+  Zacznijmy od wyrażenia $X_{n+1}$ przy użyciu $X_n$
+  \begin{align*}
+    X_{n+1}&=\left( \sum_{k=1}^{n+1}Y_{k} \right)^2 - (n+1)\sigma^2= \left( \sum_{k=1}^nY_k +Y_{n+1} \right)^2 - (n+1)\sigma^2=\\ 
+           &=\left(\sum_{k=1}^n Y_k \right)^2 -n\sigma ^2 + 2 Y_{n+1}\left( \sum_{k=1}^n Y_k \right) +Y_{n+1}^2 -\sigma^2=\\ 
+           &=X_n+2\left( \sum_{k=1}^nY_{n+1}Y_k \right) -\sigma^2 + Y_{n+1}^2
+  \end{align*}
+  Rozważmy teraz filtrację $\mathds{F}=\{\set{F}_n\}$ dla ciągu $\set{F}_n=\sigma(Y_1,...,Y_n)$. Wtedy mamy
+  \begin{align*}
+    \expected
+  \end{align*}
+\end{solution}
