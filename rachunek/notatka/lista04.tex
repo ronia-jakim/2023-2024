@@ -1,0 +1,57 @@
+\subsection{Zadania}
+
+\setcounter{problem}{0}
+
+\begin{problem}
+  Załóżmy, że $\{X_n\}_{n\in\N}$ jest ciągiem niezależnych zmiennych losowych o takim samym rozkładzie, średniej $0$ i skończonej wariancji. Rozważmy filtrację $\mathds{F}=\{\set{F}_n\}$ zadaną przez $\set{F}_n=\sigma(X_0,X_1,...,X_n)$. Udowodnij, że ciąg
+  $$Z_n=X_0X_1+X_1X_2+....+X_{n-1}X_n, \quad Z_0=0$$
+  jest $\mathds{F}$-martyngałem.
+\end{problem}
+
+\begin{solution}
+  Chcemy pokazać, że
+  $$\expected{Z_{n+1}}{\set{F}_{n}}=Z_n$$
+  dla dowolnego $n\in\N$.
+  \begin{align*}
+    \expected{Z_{n+1}}{\set{F}_n}&=\expected{Z_n+X_nX_{n+1}}{\set{F}_n}=\\ 
+                                 &=\expected{Z_n}{\set{F}}+\expected{X_nX_{n+1}}{\set{F}_n}=\\ 
+                                 &=Z_n+X_n\expected{X_{n+1}}{\set{F}_n}
+  \end{align*}
+  ponieważ $X_n$ jest $\set{F}_n$-mierzalne oraz
+  $$\expected{|X_nX_{n+1}|}\leq\expected{X_n^2}^{1/2}\expected{X_{n+1}^2}^{1/2}<\infty$$
+  gdzie nierówność wynika z nierówności Cauchy'ego-Schwarza, a $\expected{X_n^2}=Var(X_n)<\infty$.
+
+  Zauważmy teraz, że $X_{n+1}$ jest niezależne od $\set{F}_n$, gdyż $X_n$ jest niezależne od każdej ze zmiennych $X_1,...,X_n$. W takim razie, $\expected{X_{n+1}}{\set{F}_n}=\expected{X_{n+1}}=0$, a więc ostatecznie dostajemy
+  $$\expected{Z_{n+1}}{\set{F}_n}=Z_n+X_n\expected{X_{n+1}}{\set{F}_n}=Z_n+X_n\cdot 0=Z_n$$
+  Czyli $Z_n$ faktycznie jest martyngałem.
+\end{solution}
+
+\begin{problem}
+  Ustalmy $\theta\in\R$. Niech $X_1,X_2,...$ będzie ciągiem niezależnych zmiennych losowych o takim samym rozkładzie takich, że 
+  $$\expected{e^{\theta X_1}}<\infty.$$
+  Pokaż, że 
+  $$M_n=\expected{e^{\theta X_1}}^{-n}\prod_{j=1}^ne^{\theta X_j}$$
+  jest $\mathds{F}$-martyngałem dla filtracji $\mathds{F}=\{\set{F}_n\}$ danej przez $\set{F}_n=\sigma(X_1,...,X_n)$.
+\end{problem}
+
+\begin{solution}
+  Zacznijmy od obserwacji, że
+  $$M_{n+1}=\expected{e^{\theta X_1}}^{-n-1}\prod_{j=1}^{n+1}e^{\theta X_j}=M_n\cdot\expected{e^{\theta X_1}}^{-1}e^{\theta X_{n+1}}$$
+  w takim razie, wwo $M_{n+1}$ to jest
+  \begin{align*}
+    \expected{M_{n+1}}{\set{F}_n}&=\expected{e^{\theta X_1}}^{-1}\cdot \expected{M_n\cdot e^{\theta X_{n+1}}}{\set{F}_n}
+  \end{align*}
+  Od razu widać, że $M_n$ jest mierzalne względem $\set{F}_n$, bo zależy tylko od zmiennych $X_1,...,X_n$ które $\set{F}_n$ generują. Chcemy teraz sprawdzić, czy $\expected{|M_n\cdot e^{\theta X_{n+1}}|}<\infty$, wówczas możemy wyciągnąć $M_n$ przed wwo.
+  \begin{align*}
+    \expected{|M_n\cdot e^{\theta X_{n+1}}|}&=\expected{\left |\expected{e^{\theta X_1}}^{-1}\cdot \prod_{j=1}^{n} e^{\theta X_j}\cdot e^{\theta X_{n+1}} \right| }=\\ 
+                                            &=|\expected{e^{\theta X_1}}|^{-n}\cdot\expected{ \prod_{j=1}^{n+1}e^{\theta X_j} }=\\ 
+                                            &=|\expected{e^{\theta X_1}}|^{-n}\cdot \prod_{j=1}^{n+1}\expected{e^{\theta X_j}}=\\ 
+                                            &=\expected{e^{\theta X_{n+1}}}=\expected{e^{\theta X_1}}<\infty
+  \end{align*}
+  ponieważ jeśli $\{X_n\}$ są niezależne, to $e^{X_n}$ też są niezależne, a dla niezależnych $X,Y$ zachodzi $\expected{XY}=\expected{X}\expected{Y}$.
+  W takim razie dostajemy
+  $$\expected{M_{n+1}}{\set{F}_n}=\expected{e^{\theta X_1}}^{-1}\expected{M_n\cdot e^{\theta X_{n+1}}}{\set{F}_n}=M_n\expected{e^{\theta X_1}}^{-1}\expected{e^{\theta X_{n+1}}}{\set{F}_{n}}$$
+  ale ponieważ $\set{F}_n$ nie zawiera ani grama informacji o $X_{n+1}$, to $e^{\theta X_{n+1}}$ jest niezależne od $\set{F}_n$, więc
+  $$\expected{e^{\theta X_{n+1}}}{\set{F}_n}$$
+    a to już daje to co chcieliśmy.
+\end{solution}
