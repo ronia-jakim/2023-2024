@@ -71,6 +71,47 @@
   \end{align*}
   Rozważmy teraz filtrację $\mathds{F}=\{\set{F}_n\}$ dla ciągu $\set{F}_n=\sigma(Y_1,...,Y_n)$. Wtedy mamy
   \begin{align*}
-    \expected
+    \expected{X_{n+1}}{\set{F}_n}&=\expected{X_n+2 \left( \sum_{k=1}^nY_{n+1}Y_k \right) -\sigma^2+Y_{n+1}^2}{\set{F}_n}=\\
+                                 &=\expected{X_n}{\set{F}_n}+2\sum\expected{Y_{n+1}Y_n}{\set{F}_n}-\sigma^2+\expected{Y_{n+1}^2}{\set{F}_n}=(\star)
   \end{align*}
+  Zmienna $X_n$ jest $\set{F}_n$-mierzalna bo korzysta tylko z informacji zapisywanych przez $Y_1,...,Y_n$. Zmienna $Y_{n+1}$ jest niezależna od $\set{F}_n$, bo zmienne $\{Y_n\}$ są niezależne. Zmienna $Y_{n+1}Y_k$ jest całkowalna dla dowolnego $k$, bo $\expected{|Y_{n+1}Y_k|}=\expected{|Y_{n+1}|}\expected{|Y_k|}=0$. W takim razie wracając do równości wyżej, można napisać
+  \begin{align*}
+    (\star)&=X_n+2\sum Y_{k}\expected{Y_{n+1}}{\set{F}_n}-\sigma^2+\expected{Y_{n+1}^2}=\\ 
+           &=X_n+2\sum Y_k\expected{Y_{n+1}}-\sigma^2+\sigma^2=X_n+2\sum Y_k\cdot 0=X_n
+  \end{align*}
+  W takim razie ciąg $\{X_n\}$ jest $\mathds{F}$-martyngałem.
+\end{solution}
+
+\begin{problem}
+  Niech $\{X_n\}$ będzie $\mathds{F}$-martyngałem. Pokaż, że dla każdych naturalnych $m,n$
+  $$\expected{X_{m+n}}{\set{F}_n}=X_n.$$
+\end{problem}
+
+\begin{solution}
+  Dla $m=1$ działa z definicji martyngału.
+
+  Zakładamy teraz, że $\expected{X_{m+n}}{\set{F}_n}=X_n$ i chcemy to samo dostać dla $m+1$ (indukcja).
+
+  Z własnośći wwo \ref{o arytmetyce wwo} wiemy, że jeśli mamy dwa zawarte w sobie $\sigma$-ciała $\set{G}_1\subseteq\set{G}_2$, to
+  $$\expected{\expected{X}{\set{G}_2}}{\set{G}_1}=\expected{X}{\set{G}_1}$$
+  tutaj bierzemy $\set{G}_1=\set{F}_n$ natomiast $\set{G}_2=\set{F}_{n+m}$. Mamy więc
+  $$\expected{\expected{X_{m+n+1}}{\set{F}_{m+n}}}{\set{F}_n}=\expected{X_{m+n+1}}{\set{F}_n}$$
+  Z faktu, że $\{X_n\}$ jest martyngałem to mamy
+  $$\expected{X_{m+n+1}}{\set{F}_{n+m}}=X_{m+n}$$
+  czyli przechodząc już do sedna sprawy,
+  \begin{align*}
+    \expected{X_{m+n+1}}{\set{F}_n}&=\expected{\expected{X_{m+n+1}}{\set{F}_{m+n}}}{\set{F}_n}=\\ 
+                                   &=\expected{X_{m+n}}{\set{F}_n}=X_n
+  \end{align*}
+  bo ostatnie przejście wynika z założenia indukcyjnego.
+\end{solution}
+
+\begin{problem}
+  Niech $\{X_n\}$ będzie nadmartyngałem takim, że $\expected{X_n}=\expected{X_0}<\infty$ dla każdego $n\in\N$. Pokaż, że $\{X_n\}$ jest martyngałem.
+\end{problem}
+
+\begin{solution}
+  Nadmartyngał spełnia
+  $$\expected{X_{n+1}}{\set{F}_n}\leq X_n$$
+
 \end{solution}
