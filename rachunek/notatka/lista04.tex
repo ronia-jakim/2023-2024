@@ -113,5 +113,87 @@
 \begin{solution}
   Nadmartyngał spełnia
   $$\expected{X_{n+1}}{\set{F}_n}\leq X_n$$
+  Po pierwsze zauważmy, że
+  $$\expected{X_n-\expected{X_{n+1}}{\set{F}_n}}=\expected{X_n}-\expected{\expected{X_{n+1}}{\set{F}_n}}=\expected{X_n}-\expected{X_{n+1}}=0,$$
+  czyli $\expected{X_n-\expected{X_{n+1}}{\set{F}_n}}=0$, a ponieważ z warunku na nadmartyngał $X_n-\expected{X_{n+1}}{\set{F}_n}\geq0$ prawie wszędzie, to mamy nieujemną funkcję której całka jest $0$ $\implies$ ta funkcja jest prawie wszędzie równa zero.
+\end{solution}
 
+\begin{problem}
+  Pokaż, że jeżeli $T_1,T_2$ są czasami zatrzymania, to $\min\{T_1,T_2\}$ i $\max\{T_1,T_2\}$ również są czasami zatrzymania. Czy $T_1^2, T_1+1,T_1+T_2, T_1-1, \min\{T_1,2T_2\}$ są też czasami zatrzymania?
+\end{problem}
+
+\begin{solution}
+  Przychodzimy do tego zadania z wiedzą, że zdarzenie $\{T_i=n\}$ jest w zbiorze $\set{F}_n$ dla dowolnego $n$. Od razu zauważmy, że skoro $\set{F}_1\subseteq\set{F}_2\subseteq...$, to jeśli $\{T_i=n\}\in\set{F}_n$ dla dowolnego $n$, to $\set{F}_n$ nadal trzyma informację o $\{T_i=k\}$ dla $k\leq n$, czyli możemy równoważnie powiedzieć, że $\{T_i\leq n\}\in\set{F}_n$.
+
+  Zdarzenie $\{\max\{T_1,T_2\}\leq n\}$ jest równoważne zdarzeniu 
+  $$\{\max\{T_1,T_2\}\leq n\}=\{T_1\leq n\;i\;T_2\leq n\}=\{T_1\leq n\}\cap \{T_2\leq n\}$$
+  a ponieważ $\set{F}_n$ jest $\sigma$-ciałem, to skoro dwa zbiory do niego należą, to należeć też musi ich przekrój.
+
+  Zdarzenie $\{\min\{T_1,T_2\}=n\}$ potencjalnie pyta o czas w nieskończonej przyszłości, bo możemy je zapisać jako
+  $$\min\{T_1, T_2\}=n\iff (T_1=n\;\land T_2\geq n)\;\lor\;(T_1\geq n\;\land\; T_2=n)$$
+  ale jeśli popatrzymy na zdarzenie
+  $$\{\min\{T_1,T_2\}\leq n\}=\{T_1\leq n\;lub\;T_2\leq n\}=\{T_1\leq n\}\cup \{T_2\leq n\}$$
+  wiemy, że oba składniki tej sumy są w $\set{F}_n$, więc i cała suma w $\set{F}_n$ siedzi.
+
+  \begin{enumerate}
+    \item $T_1^2$ jest czasem zatrzymania, bo
+      $$\{T_1^2\leq n\}=\{T_1\leq\sqrt{n}\leq n\}$$
+      jest elementem $\set{F}_n$.
+    \item $T_1+1$ jest czasem zatrzymania, bo
+      $$\{T_1+1= n\}=\{T_1= n-1\}$$
+      co w oczywisty sposób daje nam $\{T_1=n-1\}\in\set{F}_{n-1}\subseteq\set{F}_n$
+    \item $T_1+T_2$ jak najbardziej jest czasem zatrzymania, bo dla $i\neq j$ zbiory $\{T_1=i\;\land\;T_2=n-i\}$ oraz $\{T_1=j\;\land\;T_2=n-j\}$ są rozłączne, a więc
+      $$\{T_1+T_2=n\}=\bigcup_{k\leq n}\{T_1=k\;i\;T_2=n-k\}$$
+      każdy element sumy należy do $\set{F}_n$ jak przekrój dwóch jego elementów, więc i cała suma do niego należy.
+    \item $T_1-1$ nie koniecznie jest czasem zatrzymania, bo
+      $$\{T_1-1=n\}=\{T_1=n+1\}$$
+      może należeć tylko do $\set{F}_{n+1}$, ale nie trafiać w $\set{F}_n$. Rozważmy choćby modelowanie gry w której wygrywamy i przegrywamy dolara z takim samym prawdopodobieństwem (wykład następny), ale dorzućmy możliwość nie obstawiania, czyli "kroku 0". Załóżmy, że startujemy z zerem dolarów. Innymi słowy, rozważamy skakanie w losowy sposób po $\Z$ z możliwością podskoczenia tylko pionowo w górę. Wtedy jeśli $X_i$ będzie naszym aktualnym położeniem na $\Z$ po $i$ krokach, a $\set{F}_i=\sigma(X_1,...,X_i)$, to $\set{F}_1$ będzie posiadało tylko informację o zdarzeniu $\{X_1=-1\}$, $\{X_1=0\}$ i $\{X_1=1\}$, a więc gdy $T_1=\inf\{n\;:\;X_n=1\}$, to zdarzenie
+      $$\{T_1-1=1\}=\{T_1=2\}=\{X_1=1\}\cup \{X_1=0\;i\;X_2=1\}$$
+      należy do $\set{F}_2$, ale do $\set{F}_1$ już należeć nie ma możliwości.
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}
+  Niech $T$ będzie czasem zatrzymania. Załóżmy, że istnieje $\varepsilon\in(0,1)$ oraz $N\in\N$ takie, że
+  $$\prob{T\leq N+n}{\set{F}_n}>\varepsilon$$
+  dla każdego $n\in\N$. Pokaż, że $\expected{T}<\infty$.
+\end{problem}
+
+\begin{solution}
+    Z definicji prawdopodobieństwa warunkowego mamy, że
+  $$1\geq\prob{T\leq N+n}{\set{F}_n}=\expected{\mathds{1}_{\{T\leq N+n\}}}{\set{F}_n}>\varepsilon$$
+  Funkcja $\mathds{1}_{\{T\leq N+n\}}=1-\mathds{1}_{\{T>N+n\}}$, więc mamy
+  $$1\geq \expected{1-\mathds{1}_{\{T>N+n\}}}{\set{F}_n}=\expected{1}{\set{F}_n}-\expected{\mathds{1}_{\{T>N+n\}}}{\set{F}_n}=1-\expected{\mathds{1}_{\{T>N+n\}}}{\set{F}_n}>\varepsilon$$
+  Możemy przerzucić $\varepsilon$ na lewą stronę, a wwo na prawą stronę, by otrzymać
+  $$1-\varepsilon > \expected{\mathds{1}_{\{T>N+n\}}}{\set{F}_n}\quad(\star)$$
+  co po nałożeniu całki na obie strony implikuje, że
+  $$1-\varepsilon>\expected{\mathds{1}_{\{T>N+n\}}}=\prob{T>N+n}$$
+  Zajmijmy się teraz $\expected{T}$:
+  \begin{align*}
+    \expected{T}&=\sum_{n\geq0} n\prob{T=n}=\sum_{n\geq0} \expected{n\cdot \mathds{1}_{\{T=n\}}}=\\ 
+                &=\sum_{n\geq0}\expected{\mathds{1}_{\{T> n\}}}=\sum_{n\geq 0}\prob{T>n}\quad (\heartsuit)
+  \end{align*}
+  Pachnie to bardzo podobnie do Borel-Cantalliego, tylko musimy jakoś ograniczyć $\prob{T>n}$ od góry przez szereg zbieżny. Wówczas z prawdopodobieństwem $1$ tylko skończenie wiele ze zdarzeń $\{T>n\}$ ma miejsce.
+
+  Wróćmy do punktu $(\star)$ i rozważmy $G=[\{T\leq n\}]^c=\{T>n\}\in\set{F}_n$. Zdarzenie $\{T\leq n\}\in\set{F}_n$, bo $T$ jest czasem zatrzymania, a jego dopełnienie należy do tego zbioru ze względu na fakt, że $\set{F}_n$ jest $\sigma$-ciałem. Jeśli nałożymy na obie strony $(\star)$ całkowanie po $G$, to dostajemy
+  \begin{align*}
+    \prob{T>n}(1-\varepsilon)={\color{blue}\expected{(1-\varepsilon)\mathds{1}_G}}&{\color{blue}>\expected{\expected{\mathds{1}_{\{T> N+n\}}}{\set{F}_n}\mathds{1}_G} }=\\ 
+                                                                                  &=\expected{\mathds{1}_{\{T> N+n\}}\mathds{1}_G}=\expected{\mathds{1}_{\{T>N+n>n\}}}=\\ 
+                                                                                  &=\prob{T>N+n}
+  \end{align*}
+  Dostaliśmy więc
+  $$\prob{T>n}(1-\varepsilon)>\prob{T>N+n}$$
+  Niech teraz $n=k\cdot N$. Wtedy
+  \begin{align*}
+    \prob{T>(k+1)N}=\prob{N+kN}&<\\
+    <\prob{T>k\cdot N}(1-\varepsilon)&=\\ 
+    = {\color{red}\prob{T>n}}(1-\varepsilon)&=\prob{T>N+(k-1)N}(1-\varepsilon)<\\ 
+                                                                             &<(1-\varepsilon)(1-\varepsilon)\prob{T>(k-1)N}.
+  \end{align*}
+  a w szczególności gdy $n=0$, to $\prob{T>1\cdot N}<(1-\varepsilon)^1=1-\varepsilon$. Sugeruje to, że zachodzi wzór (udowadniany indukcyjnie tak jak w równości wyżej)
+  $$(1-\varepsilon)^k>\prob{T>k\cdot N}$$
+
+  Możemy teraz rozważać zdarzenia $A_k=\{T>k\cdot N\}$. Wtedy szereg
+  $$\sum_{k\geq0}\prob{A_k}=\sum_{k\geq0}\prob{T>kN}=\sum_{k\geq 0}(1-\varepsilon)^k\leq e^{-k\varepsilon}\to0$$
+  jest bardzo zbieżnym szeregiem, więc na mocy lematu Borela-Cantalliego z prawdopodobieństwem $1$ tylko skończenie wiele z $A_k$ zachodzi. W szczególności, istnieje $M$ takie, że dla każdego $m\geq M$ $\prob{T>m}=0$, czyli szereg $(\heartsuit)$ ma skończenie wiele niezerowych wyrazów i jest zbieżny.
 \end{solution}
