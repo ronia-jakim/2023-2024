@@ -1,0 +1,46 @@
+\documentclass{article}
+
+\usepackage{../../../template}
+
+\title{Zadanie dodatkowe 2}
+\author{Weronika Jakimowicz}
+\date{15.12.2023}
+
+\pagestyle{empty}
+
+\newenvironment{zadanko}[1]{
+  \bfseries{\large\color{orange}Zadanie #1}
+}%
+{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+{\bfseries
+Niech $\{\xi_k\}$ będzie ciągiem zmiennych iid. o symetrycznym rozkładzie ($\xi_k,-\xi_k$ mają ten sam rozkład). Niech $S_0=0$,
+$$S_n=\sum_{k=1}^n\xi_k,\quad k\geq 1.$$
+Rozważmy funkcję ogonową $F_k$ zmiennej $S_k$, czyli
+$$F_k(x)=\prob{S_k\geq x},\quad x\in\R$$
+}
+
+\begin{zadanko}{1}
+  Ustalmy $n\in\N$. Uzasadnij, że dla każdego $a\in\R$ ciąg zmiennych losowych 
+  $$X_k=F_{n-k}(a-S_k),\quad k=0,2,...,n$$
+  jest martyngałem wględem filtracji $\mathds{F}=\{\set{F}_k\}$ danej przez $\set{F}_0=\{\emptyset,\Omega\}$ i $\set{F}_k=\sigma(\xi_1,...,\xi_k)$ dla $k\geq 1$.
+\end{zadanko}
+
+Zaczęłam to pisać na ćwiczeniach z listy 4, gdzie studenci prezentujący przy tablicy są bici po rękach jeśli zapomną sprawdzić całkowalności tego co wsadzamy do wwo, w tym całkowalności składników martyngału. Stąd postaram się zrobić to tak dokładnie jak tylko potrafię.
+
+\begin{enumerate}
+  \item $X_k$ jest całkowalne, bo jest ograniczone
+    $$X_k=F_{n-k}(a-S_k)=\prob{S_{n-k}\geq a-S_k}\in[0,1].$$
+  \item $X_k$ jest $\set{F}_k$-mierzalne
+    $$X_k=\prob{S_{n-k}\geq a-S_k}=\prob{\sum_{j=1}^{n-k}\xi_j\geq a-\sum_{j=1}^k\xi_j}$$
+    ale ponieważ $\xi_i$ są symetryczne, to
+    $$\prob{\xi_j\geq x}=\prob{-\xi_j\geq x}$$
+    czy da się to uogólnić na dowolną sumę $\xi_j$?
+    $$\prob{\xi_j+\xi_i\geq x}=\prob{\xi_j\geq x-\xi_i}=\prob{-\xi_j\geq x-\xi_i}=\prob{-\xi_j+\xi_i\geq x}$$
+\end{enumerate}
+
+\end{document}

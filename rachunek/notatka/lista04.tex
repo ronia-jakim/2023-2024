@@ -9,6 +9,8 @@
 \end{problem}
 
 \begin{solution}
+  {\color{red}Tak naprawdę to sprawdzenie że $Z_n$ są całkowalne powinno być na samym początku, bo inaczej to nie ma sensu.}
+
   Chcemy pokazać, że
   $$\expected{Z_{n+1}}{\set{F}_{n}}=Z_n$$
   dla dowolnego $n\in\N$.
@@ -35,6 +37,8 @@
 \end{problem}
 
 \begin{solution}
+  {\color{red}Tutaj ta sama uwaga co do poprzedniego zadania.}
+
   Zacznijmy od obserwacji, że
   $$M_{n+1}=\expected{e^{\theta X_1}}^{-n-1}\prod_{j=1}^{n+1}e^{\theta X_j}=M_n\cdot\expected{e^{\theta X_1}}^{-1}e^{\theta X_{n+1}}$$
   w takim razie, wwo $M_{n+1}$ to jest
@@ -52,7 +56,7 @@
   W takim razie dostajemy
   $$\expected{M_{n+1}}{\set{F}_n}=\expected{e^{\theta X_1}}^{-1}\expected{M_n\cdot e^{\theta X_{n+1}}}{\set{F}_n}=M_n\expected{e^{\theta X_1}}^{-1}\expected{e^{\theta X_{n+1}}}{\set{F}_{n}}$$
   ale ponieważ $\set{F}_n$ nie zawiera ani grama informacji o $X_{n+1}$, to $e^{\theta X_{n+1}}$ jest niezależne od $\set{F}_n$, więc
-  $$\expected{e^{\theta X_{n+1}}}{\set{F}_n}$$
+  $$\expected{e^{\theta X_{n+1}}}{\set{F}_n}=\expected{e^{\theta X_{n+1}}}=\expected{e^{\theta X_1}}$$
     a to już daje to co chcieliśmy.
 \end{solution}
 
@@ -63,6 +67,8 @@
 \end{problem}
 
 \begin{solution}
+  {\color{red}Tutaj powinniśmy sprawdzić jeszcze $\mathds{F}$-adaptowalność $\{X_n\}$ i jego całkowalność.}
+
   Zacznijmy od wyrażenia $X_{n+1}$ przy użyciu $X_n$
   \begin{align*}
     X_{n+1}&=\left( \sum_{k=1}^{n+1}Y_{k} \right)^2 - (n+1)\sigma^2= \left( \sum_{k=1}^nY_k +Y_{n+1} \right)^2 - (n+1)\sigma^2=\\ 
@@ -193,7 +199,9 @@
   a w szczególności gdy $n=0$, to $\prob{T>1\cdot N}<(1-\varepsilon)^1=1-\varepsilon$. Sugeruje to, że zachodzi wzór (udowadniany indukcyjnie tak jak w równości wyżej)
   $$(1-\varepsilon)^k>\prob{T>k\cdot N}$$
 
-  Możemy teraz rozważać zdarzenia $A_k=\{T>k\cdot N\}$. Wtedy szereg
-  $$\sum_{k\geq0}\prob{A_k}=\sum_{k\geq0}\prob{T>kN}=\sum_{k\geq 0}(1-\varepsilon)^k\leq e^{-k\varepsilon}\to0$$
-  jest bardzo zbieżnym szeregiem, więc na mocy lematu Borela-Cantalliego z prawdopodobieństwem $1$ tylko skończenie wiele z $A_k$ zachodzi. W szczególności, istnieje $M$ takie, że dla każdego $m\geq M$ $\prob{T>m}=0$, czyli szereg $(\heartsuit)$ ma skończenie wiele niezerowych wyrazów i jest zbieżny.
+  Wracając teraz do wyliczania $\expected{T}$, zauważmy, że funkcja $\prob{T>n}$ jest malejąca, więc dla $n\in[kN, (k+1)N)$ największą wartość przyjmuje $\prob{T>kN}$. W takim razie mamy ograniczenie górne
+  \begin{align*}
+    \expected{T}&=\sum_{n}\prob{T>n}=\sum_{k}\sum_{n=kN}^{(k+1)N}\prob{T>n}\leq\sum_kN\prob{T>kN}=\\ 
+                &= N\sum\prob{T>kN}\leq N\sum(1-\varepsilon)^k<\infty
+  \end{align*}
 \end{solution}
