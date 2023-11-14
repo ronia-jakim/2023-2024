@@ -110,12 +110,26 @@
 \end{problem}
 
 \begin{solution}
-  Rozważmy zbiór
-  $$A=\{\omega\;:\;M_n(\omega)\neq 0\;i\;M_m(\omega)=0\}$$
-  chcemy pokazać, że $\prob{A}=0$.
-
-  Zauważmy, że $A$ zawiera informacje o $\omega$ pojawiające się tylko w $\sigma(M_1,...,M_m)$.
+  Rozważmy zbiór $A=\{M_n=0\}\in\set{F}_n$. Ponieważ $\{M_n\}$ jest martyngałem, to na poprzedniej liście pokazywaliśmy, że
+  $$\expected{M_m}{\set{F}_n}=M_n.$$
+  W takim razie mamy
   \begin{align*}
-    \prob{A}&=\expected{\mathds{1}_A}
+    0=\expected{M_n\mathds{1}_A}=\expected{\expected{M_m}{\set{F}_n}\mathds{1}_A}=\expected{M_m\mathds{1}_A}
   \end{align*}
+  Ponieważ $M_m\geq0$ oraz $\int_AM_md\prob=0$, to $M_m=0$ prawie wszędzie na zbiorze $A$. Czyli 
+  $$A\subseteq\{M_m=0\}$$ 
+  prawie wszędzie.
+
+  %  Rozważmy zmienną losową
+%  $$T=\inf\{n\;:\;(\forall\;k\geq n)\;M_k=0\}$$
+%
+%
+%  Rozważmy zbiór
+%  $$A=\{\omega\;:\;M_n(\omega)\neq 0\;i\;M_m(\omega)=0\}$$
+%  chcemy pokazać, że $\prob{A}=0$.
+%
+%  Zauważmy, że $A$ zawiera informacje o $\omega$ pojawiające się tylko w $\sigma(M_1,...,M_m)$.
+%  \begin{align*}
+%    \prob{A}&=\expected{\mathds{1}_A}
+%  \end{align*}
 \end{solution}
