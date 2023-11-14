@@ -101,21 +101,6 @@
                                      &=X_n+n(1-2p)+\expected{\xi_{n+1}}{\set{F}_n}+(1-2p)=\\ 
                                      &=X_n+n(1-2p)=M_n
       \end{align*}
-    \item To jest tak samo jak w zadaniu $1$, tylko trzeba pokazać, że z prawdopodobieństwem $1$ w kończenie wielu krokach dojdziemy do $-j$ lub $k$. A tutaj można użyć Borel-Cantalliego :3
+    \item To jest tak samo jak w zadaniu $1$, tylko trzeba pokazać, że z prawdopodobieństwem $1$ w kończenie wielu krokach dojdziemy do $-j$ lub $k$.
   \end{enumerate}
-\end{solution}
-
-\begin{problem}
-  Niech $\{M_n\}$ będzie nieujemnym martyngałem. Pokaż, że dla $m>n$, $\{M_n=0\}\subseteq\{M_m=0\}$ prawie wszędzie.
-\end{problem}
-
-\begin{solution}
-  Rozważmy zbiór
-  $$A=\{\omega\;:\;M_n(\omega)\neq 0\;i\;M_m(\omega)=0\}$$
-  chcemy pokazać, że $\prob{A}=0$.
-
-  Zauważmy, że $A$ zawiera informacje o $\omega$ pojawiające się tylko w $\sigma(M_1,...,M_m)$.
-  \begin{align*}
-    \prob{A}&=\expected{\mathds{1}_A}
-  \end{align*}
 \end{solution}
