@@ -166,24 +166,42 @@
 \end{problem}
 
 \begin{solution}
-    Z definicji prawdopodobieństwa warunkowego mamy, że
+  Zaczniemy od obserwacji, że
+  \begin{align*}
+    \expected{T}&=\sum_{n\geq0}n\prob{T=n}=\sum_{n\geq0}\sum_{k=0}^{n-1}\prob{T=n}=\sum_{n\geq0}\prob{T>n}
+  \end{align*}
+  \begin{center}\begin{tikzpicture}
+    \draw[->] (-0.5, 0)--(4.5, 0);
+    \draw[->] (0, -0.5)--(0, 3.5);
+
+    \draw[green, very thick] (0, 0.8)--(4.5, 0.8) node [above] {$T>0$};
+    \draw[orange, very thick] (1, 1.6)--(4.5, 1.6) node [above] {$T>1$};
+    \draw[green, very thick] (2, 2.4)--(4.5, 2.4) node [above] {$T>2$};
+    \draw[orange, very thick] (3, 3.2)--(4.5, 3.2) node [above] {$T>3$};
+    
+    \filldraw[color=green, fill=white, very thick] (0, 0.8) circle (2pt);
+    \filldraw[color=orange, fill=white, very thick] (1, 1.6) circle (2pt);
+    \filldraw[color=green, fill=white, very thick] (2, 2.4) circle (2pt);
+    \filldraw[color=orange, fill=white, very thick] (3, 3.2) circle (2pt);
+  \end{tikzpicture}\end{center}
+  Będziemy chcieli oszacować całe to wyrażenie od góry przez zbieżny szereg. Dokładnie, będzie nam potrzebne oszacowanie go przez $\prob{T>kN}$:
+  $$\expected{T}=\sum_{n\geq 0}\prob{T>n}=\sum_{k\geq 0}\sum_{n=kN}^{(k+1)N-1}\prob{T>n}\leq \sum_{k\geq 0}N\cdot\prob{T>kN}\;(\text{\Coffeecup})$$
+  gdyż funkcja $\prob{T>n}$ jest malejąca, a więc przyjmuje ekstremum na lewym krańcu. Dzielimy więc $\sum\prob{T>n}$ na odcinki $[kN, (k+1)N)$ i szacujemy sumę na każdym z nich przez $N\cdot \prob{T>kN}$.
+
+  Żeby jednak dokończyć szacowanie wyżej, potrzebujemy ograniczyć $\prob{T>kN}$ od góry. Z definicji prawdopodobieństwa warunkowego wiemy, że
   $$1\geq\prob{T\leq N+n}{\set{F}_n}=\expected{\mathds{1}_{\{T\leq N+n\}}}{\set{F}_n}>\varepsilon$$
   Funkcja $\mathds{1}_{\{T\leq N+n\}}=1-\mathds{1}_{\{T>N+n\}}$, więc mamy
   $$1\geq \expected{1-\mathds{1}_{\{T>N+n\}}}{\set{F}_n}=\expected{1}{\set{F}_n}-\expected{\mathds{1}_{\{T>N+n\}}}{\set{F}_n}=1-\expected{\mathds{1}_{\{T>N+n\}}}{\set{F}_n}>\varepsilon$$
-  Możemy przerzucić $\varepsilon$ na lewą stronę, a wwo na prawą stronę, by otrzymać
+  Po przerzuceniu $\varepsilon$ na lewą stronę, a wwo na prawą stronę, dostajemy
   $$1-\varepsilon > \expected{\mathds{1}_{\{T>N+n\}}}{\set{F}_n}\quad(\star)$$
   co po nałożeniu całki na obie strony implikuje, że
   $$1-\varepsilon>\expected{\mathds{1}_{\{T>N+n\}}}=\prob{T>N+n}$$
-  Zajmijmy się teraz $\expected{T}$:
-  \begin{align*}
-    \expected{T}&=\sum_{n\geq0} n\prob{T=n}=\sum_{n\geq0} \expected{n\cdot \mathds{1}_{\{T=n\}}}=\\ 
-                &=\sum_{n\geq0}\expected{\mathds{1}_{\{T> n\}}}=\sum_{n\geq 0}\prob{T>n}\quad (\heartsuit)
-  \end{align*}
-  Pachnie to bardzo podobnie do Borel-Cantalliego, tylko musimy jakoś ograniczyć $\prob{T>n}$ od góry przez szereg zbieżny. Wówczas z prawdopodobieństwem $1$ tylko skończenie wiele ze zdarzeń $\{T>n\}$ ma miejsce.
 
-  Wróćmy do punktu $(\star)$ i rozważmy $G=[\{T\leq n\}]^c=\{T>n\}\in\set{F}_n$. Zdarzenie $\{T\leq n\}\in\set{F}_n$, bo $T$ jest czasem zatrzymania, a jego dopełnienie należy do tego zbioru ze względu na fakt, że $\set{F}_n$ jest $\sigma$-ciałem. Jeśli nałożymy na obie strony $(\star)$ całkowanie po $G$, to dostajemy
+  Wróćmy do punktu $(\star)$ i rozważmy zdarzenie 
+  $$G=[\{T\leq n\}]^c=\{T>n\}\in\set{F}_n.$$ 
+  Zdarzenie $\{T\leq n\}\in\set{F}_n$, bo $T$ jest czasem zatrzymania, a jego dopełnienie należy do tego zbioru ze względu na fakt, że $\set{F}_n$ jest $\sigma$-ciałem. Jeśli nałożymy na obie strony $(\star)$ całkowanie po $G$, to dostajemy
   \begin{align*}
-    \prob{T>n}(1-\varepsilon)={\color{blue}\expected{(1-\varepsilon)\mathds{1}_G}}&{\color{blue}>\expected{\expected{\mathds{1}_{\{T> N+n\}}}{\set{F}_n}\mathds{1}_G} }=\\ 
+    \prob{T>n}(1-\varepsilon)&=\\=(1-\varepsilon)\expected{\mathds{1}_G}&=\\={\color{blue}\expected{(1-\varepsilon)\mathds{1}_G}}&{\color{blue}>\expected{\expected{\mathds{1}_{\{T> N+n\}}}{\set{F}_n}\mathds{1}_G} }=\\ 
                                                                                   &=\expected{\mathds{1}_{\{T> N+n\}}\mathds{1}_G}=\expected{\mathds{1}_{\{T>N+n>n\}}}=\\ 
                                                                                   &=\prob{T>N+n}
   \end{align*}
@@ -196,12 +214,10 @@
     = {\color{red}\prob{T>n}}(1-\varepsilon)&=\prob{T>N+(k-1)N}(1-\varepsilon)<\\ 
                                                                              &<(1-\varepsilon)(1-\varepsilon)\prob{T>(k-1)N}.
   \end{align*}
-  a w szczególności gdy $n=0$, to $\prob{T>1\cdot N}<(1-\varepsilon)^1=1-\varepsilon$. Sugeruje to, że zachodzi wzór (udowadniany indukcyjnie tak jak w równości wyżej)
+  a w szczególności gdy $n=0$, to $\prob{T>1\cdot N}<(1-\varepsilon)^1=1-\varepsilon$. Sugeruje to, że zachodzi wzór% (udowadniany indukcyjnie tak jak w równości wyżej)
   $$(1-\varepsilon)^k>\prob{T>k\cdot N}$$
+  który udowadniamy indukcyjnie. Dla $k=0$ sprawa jest oczywista, a dla kroku indukcyjnego $k\implies k+1$ zaczynamy od góry i kontynuujemy jak w nierówności wyżej aż do czerwonego $\prob{T>n}$.
 
-  Wracając teraz do wyliczania $\expected{T}$, zauważmy, że funkcja $\prob{T>n}$ jest malejąca, więc dla $n\in[kN, (k+1)N)$ największą wartość przyjmuje $\prob{T>kN}$. W takim razie mamy ograniczenie górne
-  \begin{align*}
-    \expected{T}&=\sum_{n}\prob{T>n}=\sum_{k}\sum_{n=kN}^{(k+1)N}\prob{T>n}\leq\sum_kN\prob{T>kN}=\\ 
-                &= N\sum\prob{T>kN}\leq N\sum(1-\varepsilon)^k<\infty
-  \end{align*}
+  Wróćmy teraz do $(\text{\Coffeecup})$ i dokończmy szacowanie $\expected{T}$
+  $$\expected{T}\leq \sum_{k\geq 0}N\prob{T>kN}\leq N\sum_{k\geq 0}(1-\varepsilon)^k\leq N\sum e^{-k\varepsilon}<\infty$$
 \end{solution}
