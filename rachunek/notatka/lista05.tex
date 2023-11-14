@@ -133,3 +133,83 @@
 %    \prob{A}&=\expected{\mathds{1}_A}
 %  \end{align*}
 \end{solution}
+
+\begin{problem}
+  Niech $\mathds{F}=\{\set{F}_n\}$ będzie filtracją.
+  \begin{enumerate}[label=(\alph*)]
+    \item Pokaż, że dla każdych $m,n\in\N$, $m<n$ i zdarzenia $A\in\set{F}_m$ zmienna losowa
+      $$\tau=m+(n-m)\mathds{1}_A$$
+      jest $\mathds{F}$-czasem zatrzymania.
+    \item Niech $\{X_n\}$ będzie $\mathds{F}$-adaptowalnym ciągiem całkowalnych zmiennych losowych takim, że
+      $$\expected{X_\tau}=\expected{X_0}$$
+      dla każdego skończonego czasu zatrzymania $\tau$. Pokaż, że $\{X_n\}$ jest $\mathds{F}$-martyngałem.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}$ $
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Musimy sprawdzić, że zdarzenie $\{\tau=k\}\in\set{F}_k$. Od razu widzimy, że $\tau$ ma jedynie dwie możliwe wartości:
+      $$\tau(\omega)=\begin{cases}m & \omega\not\in A\\n & \omega\in A\end{cases}$$
+      Zacznijmy od $\{\tau =m\}$. Ale tak jak wyżej napisaliśmy, to zachodzi tylko dla $\omega\not\in A$, czyli $\{\tau=m\}=A^c\in\set{F}_m$, bo $A\in\set{F}_m$.
+
+      Z kolei $\{\tau=n\}=A$, a wiemy, że $A\in\set{F}_m\subseteq\set{F}_n$ bo $m<n$.
+
+      W takim razie $\tau$ zachowuje się jak bardzo dziwny czas zatrzymania.
+    \item PLAN na ten podpunkt jest taki (pokazujemy $\expected{X_{m+1}}{\set{F}_m}=X_m$):
+      \begin{center}\scalebox{0.6}{
+        \begin{tikzpicture}
+          \node (a1) at (0, 0) {$\tau'=m+(n-m)\mathds{1}_\emptyset$ z założenia wynika, że $\expected{X_0}=\expected{X_m}$};
+          \node (a2) at (0, -1.5) {nowy czas zatrzymania $\tau=m+(m+1-m)\mathds{1}_A$ dla $A\in\mathds{1}_m$};
+        \node (a3) at (0, -3) {z wwo wyprowadzamy, że $\expected{X_{m+1}\mathds{1}_A}=\expected{X_\tau\mathds{1}_A}$ };
+        \node (a4) at (0, -4.5) {$\expected{X_\tau}=\expected{X_\tau\mathds{1}_A}+\expected{X_\tau\mathds{1}_{A^c}}$};
+        \node (a5) at (0, -6) {korzystamy z pierwszego kroku};
+          \draw[->] (a1)--(a2);
+          \draw[->] (a2)--(a3);
+          \draw[->] (a3)--(a4);
+          \draw[->] (a4)--(a5);
+      \end{tikzpicture}}
+      \end{center}
+
+      Zaczniemy od wprowadzenia czasu zatrzymania
+      $$\tau'=m+(n-m)\mathds{1}_\emptyset$$
+      dla dowolnego $n>m$ i użycia założenia z tego punktu, by otrzymać
+      $$\expected{X_0}=\expected{X_{\tau'}}=\expected{X_{\tau'}\mathds{1}_\emptyset}+\expected{X_{\tau'}\mathds{1}_{\emptyset^c}}=\expected{X_m\mathds{1}_\Omega}=\expected{X_m}$$
+      gdyż $\expected{X_{\tau'}\mathds{1}_\Omega}=\int_\Omega X_{\tau'(\omega)}(\omega)=\int X_m$ - całkujemy tę część tylko po zbiorze gdzie $\tau'=m$.
+
+      Rozważamy teraz czas zatrzymania
+      $$\tau=m+(m+1-m)\mathds{1}_A=m+(m+1)\mathds{1}_A$$
+      dla dowolnego $A\in\set{F}_m$.
+
+      Z jednej strony wiemy, że
+      $$\expected{\expected{X_{m+1}}{\set{F}_m}\mathds{1}_A}=\expected{X_{m+1}\mathds{1}_A}=\expected{X_\tau\mathds{1}_A}$$
+      A z drugiej
+      $$\expected{X_0}=\expected{X_\tau}=\expected{X_\tau\mathds{1}_A}+\expected{X_\tau\mathds{1}_{A^c}}=\expected{X_{m+1}\mathds{1}_A}+\expected{X_m\mathds{1}_{A^c}}$$
+      czyli korzystając z $\expected{X_0}=\expected{X_m}$ mamy
+      $$\expected{X_{m+1}\mathds{1}_A}=\expected{X_0}-\expected{X_m\mathds{1}_{A^c}}=\expected{X_m}-\expected{X_m\mathds{1}_{A^c}}=\expected{X_m(1-\mathds{1}_{A^c}}=\expected{X_m\mathds{1}_A}$$
+      i to już wystarczy, bo $X_m$ jest mierzalne względem $\set{F}_m$ ponieważ jest $\mathds{F}$-adaptowalne.
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}
+  Niech $\{M_n\}$ będzie nieujemnym martyngałem o wartościach całkowitym takim, że $M_0=m\geq1$, $M_n-M_{n-1}\leq 1$ oraz $M_n\to 0$ p.w.. Pokaż, że dla $k\geq m$,
+  $$\prob{\sup_{n\in\N}M_n\geq k}=\frac{m}{k}$$
+\end{problem}
+
+\begin{solution}
+  Zacznijmy od rozważenia co znaczy, że $\sup_{n\in\N}M_n\geq k$. Moim skromnym zdaniem jest to powiedzenie, że $M_n$ dojdzie do $k$. Wiemy, że w każdym przejściu z $M_n$ do $M_{n+1}$ możemy skoczyć w górę o nie więcej niż $1$, a w dół możemy skakać aż do $0$.
+
+  Spróbujmy zobaczyć co się stanie, jeśli wplączemy w to zadanie czas zatrzymania
+  $$T=\inf\{n\;:\;M_n\geq k\}$$
+  to możemy zauważyć, że 
+  $$\prob{\sup_{n\in\N}M_n\geq k}=\prob{T<\infty}=\prob{M_{n\land T}=k}$$
+  Z twierdzenia Dooba wiemy, że
+  $$m=\expected{M_0}=\expected{M_{n\land T}}$$
+  zauważmy, że jeżeli $T(\omega)<\infty$, to $M_{n\land T}(\omega)=M_{T(\omega)}(\omega)=k$, a jeśli $T(\omega)=\infty$, to $M_{n\land T}(\omega)=M_n(\omega)$. 
+
+  Oznacza to, że jeśli $M_{n\land T}\geq k$, to $M_{n\land T}=k$ i jest od tego momentu funkcją stałą. W takim razie
+  $$m=\expected{M_{n\land T}}=\sum_{j=0}^kj\prob{M_{n\land T}=j}=k\cdot\prob{M_{n\land T}=k}+\sum_{j=0}^{k-1}j\prob{M_{n\land T}=j}$$
+  przechodząc teraz z $n$ do granicy, albo $M_{n\land T}=k$ albo $M_{n\land T}=M_n$ i w obu przypadkach $\prob{M_{n\land T}=j}=0$ dla $j<k$ (bo $M_n\to 0$). W takim razie, po przejściu do granicy z $n$ zostaje nam
+  $$m=k\cdot\prob{\sup_{n\in\N}M_n\geq k}$$
+  i to jest to co chcieliśmy.
+\end{solution}
