@@ -199,10 +199,34 @@
 \begin{solution}
   Zacznijmy od rozważenia co znaczy, że $\sup_{n\in\N}M_n\geq k$. Moim skromnym zdaniem jest to powiedzenie, że $M_n$ dojdzie do $k$. Wiemy, że w każdym przejściu z $M_n$ do $M_{n+1}$ możemy skoczyć w górę o nie więcej niż $1$, a w dół możemy skakać aż do $0$.
 
+  PLAN na to zadanie jest taki:
+  \begin{center}\scalebox{0.6}{
+    \begin{tikzpicture}
+      \node (a1) at (0, 0) {czas zatrzymania $T=\inf\{n\;:\;M_n\geq k\}$};
+      \node (a2) at (0, -1.5) {$\sup{M_n}\geq k\iff T<\infty$, więc $\prob{\sup M_n\geq k}=\prob{T<\infty}$};
+      \node (a3) at (0, -3) {twierdzenie Dooba daje $m=\expected{M_0}=\expected{M_{n\land T}}$};
+      \node (a4) at (0, -4.5) {$\lim_n M_{n\land T}$ będzie $M_T=k$ jeśli $T<\infty$ i $M_n$ wpp.};
+      \node (a5) at (0, -6) {$M_{n\land T}\in\{0,...,k\}$};
+      \node (a6) at (0, -7.5) {$\prob{M_{n\land T}<k}\to 0$, bo jeśli $T=\infty$ to $M_n\to 0$, a jeśli $T<\infty$, to $M_{n\land T}\to M_T=k$ jest stałe od pewnego momentu};
+      \node (a7) at (0, -9) {$\lim \prob{M_{n\land T}=k}=\prob{T<\infty}$};
+      \node (a8) at (0, -10.5) {$m=\sum_{0\leq i\leq k} i\prob{M_{n\land T}}\to k\prob{T<\infty}$};
+
+      \draw[->] (a1)--(a2);
+      \draw[->] (a2)--(a3);
+      \draw[->] (a3)--(a4);
+      \draw[->] (a4)--(a5);
+      \draw[->] (a5)--(a6);
+      \draw[->] (a6)--(a7);
+      \draw[->] (a7)--(a8);
+  \end{tikzpicture}}
+  \end{center}
+
   Spróbujmy zobaczyć co się stanie, jeśli wplączemy w to zadanie czas zatrzymania
   $$T=\inf\{n\;:\;M_n\geq k\}$$
   to możemy zauważyć, że 
   $$\prob{\sup_{n\in\N}M_n\geq k}=\prob{T<\infty}=\prob{M_{n\land T}=k}$$
+  ponieważ $T<\infty$ oznacza, że zbiór $\{n\;:\;M_n\geq k\}$ jest niepusty.
+
   Z twierdzenia Dooba wiemy, że
   $$m=\expected{M_0}=\expected{M_{n\land T}}$$
   zauważmy, że jeżeli $T(\omega)<\infty$, to $M_{n\land T}(\omega)=M_{T(\omega)}(\omega)=k$, a jeśli $T(\omega)=\infty$, to $M_{n\land T}(\omega)=M_n(\omega)$. 
@@ -212,4 +236,21 @@
   przechodząc teraz z $n$ do granicy, albo $M_{n\land T}=k$ albo $M_{n\land T}=M_n$ i w obu przypadkach $\prob{M_{n\land T}=j}=0$ dla $j<k$ (bo $M_n\to 0$). W takim razie, po przejściu do granicy z $n$ zostaje nam
   $$m=k\cdot\prob{\sup_{n\in\N}M_n\geq k}$$
   i to jest to co chcieliśmy.
+\end{solution}
+
+\begin{problem}
+  Niech $Y_k$ będą iid takie, że $\prob{Y_k\in\{-1,0,1\}}=1$ oraz $\expected{Y_k}=0$. Niech $S_0=0$, $S_n=Y_1+...+Y_n$. Dla $k\in\N$ rozważmy moment zatrzymania
+  $$T_{-k}=\inf\{n\;:\;S_n=-k\}.$$
+  Znajdź rozkład zmiennej losowej
+  $$\sup_{n\leq T_{-k}}S_n$$
+\end{problem}
+
+\begin{solution}
+  Zmienna losowa
+  $$\sup_{n\leq T_{-k}}S_n$$
+  pyta, jak wysoko możemy dojść, jeśli zatrzymamy się przy pierwszym dojściu do $-k$.
+
+  Popatrzmy teraz na $\prob{Y_k=1}$. Oznaczając $\prob{Y_k=0}=p$ mamy
+  $$0=\expected{Y_k}=\prob{Y_k=1}-\prob{Y_k=-1}$$
+  $$\prob{Y_k=1}=\prob{Y_k=-1}=\frac{1-p}{2}$$
 \end{solution}
