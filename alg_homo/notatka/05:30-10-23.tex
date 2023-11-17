@@ -47,7 +47,7 @@ Tak zdefiniowane $H_nX$ nazywamy \buff{homologiami}.
   \end{tikzcd}\end{center}
   Ponieważ $d^n\circ d^{n-1}=0$, to pojawia się nam od razu odwzorowanie do jądra $a:A^{n-1}\to K$. Chcemy więc nazwać
   $$H^n(A^\cdot)=\coker a$$
-  \buff{homologią}.
+  \buff{kohomologią}.
 \end{definition}
 
   Ale to samo można zrobić dualnie, tzn.
@@ -79,6 +79,13 @@ Tak zdefiniowane $H_nX$ nazywamy \buff{homologiami}.
   i strzałka $\color{blue}\star$ jest izomorfizmem na mocy lematu \ref{lemat 5.2}.
 
   {\large\color{red}POBAWIĆ SIĘ WYKRESEM za zdjęcia}
+
+  \begin{center}\begin{tikzcd}
+    & & & C\arrow[dr, "b"]\\ 
+    A^{n-1}\arrow[rr, "d^{n-1}"]\arrow[dr, "a"] & & A^n\arrow[ur, "c"]\arrow[rr] & & A^{n+1}\\ 
+                                                & K\arrow[ur, "k"]\\ 
+                                                & U\arrow[uul, "\exists!", green]\arrow[uur, "\theta" below right, green]\arrow[uuurr, "0" below right, green, bend right=20, xright=1mm]
+  \end{tikzcd}\end{center}
 
   \item Bez dodatkowych założeń
 

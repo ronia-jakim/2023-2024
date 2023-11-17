@@ -111,24 +111,24 @@ Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają w oczywisty sp
 
 Czyli o granicach odwrotnych [granica] i prostych [kogranica].
 
-\begin{definition}[system prosty i odwrotny]
-  Niech $\mathbf{C}$ będzie kategorią, a $I$ zbiorem uporządkowanym. Układ $\{X_i, h_{ij}\}$ obiektów $\mathbf{C}$, gdzie dla $i\leq j$ $h_{ij}:X_i\to X_j$ są morfizmami w $\mathbf{C}$, nazywamy \buff{systemem prostym}, jeżeli
-  \begin{enumerate}
-    \item dla każdego $i\in I$ mamy $h_{ii}=id_{X_i}$
-    \item jeśli $i\leq j\leq k$, to komutuje następujący diagram
-      \begin{center}\begin{tikzcd}
-        X_i\arrow[r, "h_{ij}"] \arrow[dr, "h_{ik}" below left] & X_j\arrow[d, "h_{jk}"] \\ 
-                                                    & X_k
-      \end{tikzcd}\end{center}
-  \end{enumerate}
-
-  Jeżeli z kolei mamy układ spełniający warunek 1, ale zamiast diagramu w warunku 2. komutuje diagram
-  \begin{center}\begin{tikzcd}
-    X_k\arrow[r, "h_{jk}"]\arrow[dr, "h_{ik}" below left] & X_j \arrow[d, "h_{ij}"] \\ 
-                                                         & X_i
-  \end{tikzcd}\end{center}
-  to taki układ nazywamy \buff{systemem odwrotnym}
-\end{definition}
+%\begin{definition}[system prosty i odwrotny]
+%  Niech $\mathbf{C}$ będzie kategorią, a $I$ zbiorem uporządkowanym. Układ $\{X_i, h_{ij}\}$ obiektów $\mathbf{C}$, gdzie dla $i\leq j$ $h_{ij}:X_i\to X_j$ są morfizmami w $\mathbf{C}$, nazywamy \buff{systemem prostym}, jeżeli
+%  \begin{enumerate}
+%    \item dla każdego $i\in I$ mamy $h_{ii}=id_{X_i}$
+%    \item jeśli $i\leq j\leq k$, to komutuje następujący diagram
+%      \begin{center}\begin{tikzcd}
+%        X_i\arrow[r, "h_{ij}"] \arrow[dr, "h_{ik}" below left] & X_j\arrow[d, "h_{jk}"] \\ 
+%                                                    & X_k
+%      \end{tikzcd}\end{center}
+%  \end{enumerate}
+%
+%  Jeżeli z kolei mamy układ spełniający warunek 1, ale zamiast diagramu w warunku 2. komutuje diagram
+%  \begin{center}\begin{tikzcd}
+%    X_k\arrow[r, "h_{jk}"]\arrow[dr, "h_{ik}" below left] & X_j \arrow[d, "h_{ij}"] \\ 
+%                                                         & X_i
+%  \end{tikzcd}\end{center}
+%  to taki układ nazywamy \buff{systemem odwrotnym}
+%\end{definition}
 
 Niech $I$ będzie małą kategorią, a $F:I\to\mathbf{C}$ będzie funktorem.
 
@@ -148,7 +148,7 @@ Niech $I$ będzie małą kategorią, a $F:I\to\mathbf{C}$ będzie funktorem.
     \end{tikzcd}\end{center}
     komutuje
   \end{itemize}
-  jest nazywany \buff{granicą funktora $F$} i oznaczamy ją jako $\lim F$.
+  jest nazywany \buff{granicą funktora $F$} i oznaczamy ją jako $\lim F=X$.
 \end{definition}
 
 Granica funktora może nie istnieć, ale zawsze gdy istnieje, to jest jedyna z dokładnością do izomorfizmu.
@@ -162,6 +162,9 @@ Granica funktora może nie istnieć, ale zawsze gdy istnieje, to jest jedyna z d
 \end{example}
 
 \begin{definition}[granica odwrotna]
+  Analogicznie jak w definicji granicy, obiekt $X$ wraz z rodziną odwzorowań $\Pi_i:F(i)\to X$ takich, że jeśli dla $i,j\in I$ oraz morfizmu \begin{tikzcd}i\arrow[r, "\alpha"] & j\end{tikzcd} komutuje diagram
   \begin{center}\begin{tikzcd}
+    & X \\ 
+    F(i) \arrow[ur, "\Pi_i"] \arrow[rr, "F(\alpha)" below] & & F(j) \arrow[ul, "\Pi_j" above right]
   \end{tikzcd}\end{center}
 \end{definition}

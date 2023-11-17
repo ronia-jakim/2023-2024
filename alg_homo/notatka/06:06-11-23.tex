@@ -1,0 +1,49 @@
+\section{06.11.23 : Lemat o wężu i przyjaciele}
+
+\begin{lemma}
+  Jeśli mamy dany pull-back (kwadrat kartezjański, tzn. $Z$ wraz z $g'$ i $g$ jest granicą początku alfabetu)
+  \begin{center}\begin{tikzcd}[column sep=large]
+    Z\arrow[r, "f'"]\arrow[d, "g'" left] & B\arrow[d, "g"] \\ 
+    A\arrow[r, "f" below] & C
+  \end{tikzcd}\end{center}
+  wtedy jeśli $f$ jest epimorfizmem, to $f'$ też takie jest.
+\end{lemma}
+
+\begin{proof}
+  Zaczniemy naszą przygodę od powiększenia diagramu tak, aby było widać jak konstruowany jest pull-back.
+
+  \begin{center}\begin{tikzcd}[column sep=large]
+    Z\arrow[rr, "f'"]\arrow[dd, "g'" left]\arrow[dr, "m"] & & B\arrow[dd, "g"]\arrow[dl, "i_B" below, yshift=-1mm]\\ 
+                                                          & A\oplus B\arrow[ur, "P_B" above, yshift=1mm] \arrow[dl, "P_A" above, yshift=1mm] \arrow[dr, "fP_A-gP_B" above right] \\ 
+    A \arrow[ur, "i_A" below, yshift=-1mm] \arrow[rr, "f" below] &  & C
+  \end{tikzcd}\end{center}
+  Wiemy, że $m$ jest jądrem odwzorowania $(fP_A-gP_B)$, czyli musi być monomorfizmem. Przejdziemy przez kilka etapów, żeby wyciągnąć bycie epimorfizmem przez $f$ do bycia epimorfizmem przez $f'$.
+  \begin{enumerate}
+    \item $f$ jest epimorfizmem $\implies fP_A-gP_B$
+
+      Weźmy sobie dowolny $D$ i wyobraźmy sobie, że mamy strzałkę $\alpha:C\to D$ taka, że $\alpha(fP_A-gP_B)=0$. Musimy więc pokazać, że wtedy $\alpha$ musi być $0$.
+      \begin{align*}
+        0 &= \alpha(fP_A-gP_B)i_A=\alpha f\overbrace{P_Aid_A}^{id_A}-\alphag\overbrace{P_Bid_A}^0=\\ 
+          &=\alpha f\;id_A=\alpha f
+      \end{align*}
+      Skoro więc $\alpha f=0$, a $f$ jest epimorfizmem, to na pewno wiemy, że $\alpha=0$.
+    \item $f'$ jest epimorfizmem
+
+      Wyobraźmy sobie, że teraz z kolei istnieje $E$ oraz strzałka $h:B\to E$ taka, że $hf'=0$. Tak jak wcześniej, musimy pokazać, że $h=0$.
+
+      Zauważmy, że $f'=P_Bm$, czyli możemy napisać
+      $$0=hf'=hP_Bm$$
+      czyli $hP_B$ faktoryzuje się przez $\coker m$, ale czym tak właściwie jest $\coker m$? Otóż $\coker m=C$! W takim razie możemy znaleźć $h':C\to E$ takie, że
+      $$h'(fP_A-gP_B)=hP_B,$$
+      czyli znowu szukając zera dostaniemy
+      \begin{align*}
+        0&=h\overset{P_Bi_A}^{0}=h'(fP_A-gP_B)i_A=\\ 
+         &=h'fP_Ai_A-h'gP_Bi_A=h'f
+      \end{align*}
+      Wiemy, że $f$ jest epimorfizmem, czyli $h'=0$. W takim razie
+      $$0=h'(fP_A-gP_B)=hP_B$$
+      ale z drugiej strony $h=hP_Bi_B$, czyli mamy
+      $$h=hP_Bi_B=0i_B=0$$
+      i dostajemy to co chcieliśmy.
+  \end{enumerate}
+\end{proof}
