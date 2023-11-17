@@ -84,8 +84,21 @@ Tak zdefiniowane $H_nX$ nazywamy \buff{homologiami}.
     & & & C\arrow[dr, "b"]\\ 
     A^{n-1}\arrow[rr, "d^{n-1}"]\arrow[dr, "a"] & & A^n\arrow[ur, "c"]\arrow[rr] & & A^{n+1}\\ 
                                                 & K\arrow[ur, "k"]\\ 
-                                                & U\arrow[uul, "\exists!", green]\arrow[uur, "\theta" below right, green]\arrow[uuurr, "0" below right, green, bend right=20, xright=1mm]
-  \end{tikzcd}\end{center}
+                                                & U\arrow[uul, "\exists!", green]\arrow[u, "\theta" below right, green]\arrow[uuurr, "0" below right, green, bend right=20, xshift=1mm]
+  \end{tikzcd}\end{center} 
+
+  Wiemy, że $k$ jest jądrem $d^n$, a z kolei $c=\coker d^{n-1}$. 
+
+  Z dodatkowego założenia wiemy, że
+  $$cka=cd^{n-1}=c\ker c=0$$
+  więc jeśli weźmiemy $\theta:U\to K$ takie, że również
+  $$k\theta=0$$
+  to musi się ono faktoryzować w jedyny sposób przez $\theta':U\to A^{n-1}$ tak, że
+  $$k\theta= d^{n-1}\theta'.$$
+  W takim razie, mamy
+  $$ka\theta'=d^{n-1}\theta'=k\theta$$
+  a ponieważ $k=\ker d^n$, to jest monomorfizmem i musi zachodzić $a\theta'=\theta$.
+  Ale $\theta$ działało jak jądro odwzorowania $ck$, czyli $a\theta'=\theta=\ker ck$.
 
   \item Bez dodatkowych założeń
 
