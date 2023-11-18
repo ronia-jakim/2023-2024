@@ -3,8 +3,21 @@
 \setcounter{problem}{0}
 
 \begin{problem}
-  PÓŹNIEJ
+  Niech $\{X_n\}$ będzie martyngałem. Uzasadnij wykładniczą wersję nierówności Dooba: dla każdego $h>0$ i każdego $n\in\N$
+  $$\prob{\max X_k>x}\leq e^{-hx}\expected{e^{hX_n}}$$
 \end{problem}
+
+\begin{solution}
+  Rozważmy czas zatrzymania
+  $$T=\inf\{k\;:\;X_k>x\}$$
+  dowód wygląda podobnie jak dowód twierdzenia \ref{max slabego}:
+  \begin{align*}
+    \expected{e^{hX_n}}&\geq \expected{e^{hX_{n\land T}}}=\expected{e^{hX_{n\land T}}\mathds{1}_{\{\max X_k >x\}}} + \expected{e^{hX_{n\land T}}\mathds{1}_{\{\max X_k\leq x\}}}= \\ 
+    &= \expected{e^{hX_T}\mathds{1}_{\{\max X_k>x\}}}+\expected{e^{hX_n}\mathds{1}_{\{\max X_k\leq x\}}}\geq \expected{e^{hx}\mathds{1}_{\{\max X_k>x\}}}=\\ 
+    &=e^{hx}\expected{\mathds{1}_{\{\max X_k>x\}}}=e^{hx}\prob{\max X_k>x}
+  \end{align*}
+  czyli po przerzuceniu $e^{hx}$ na lewą stronę, dostajemy tezę.
+\end{solution}
 
 \begin{problem}
   Niech $\{X_n\}$ będzie martyngałem całkowalnym z kwadratem ($\expected{X_n^2}<\infty$ dla każdego $n\in\N$). Pokaż, że
@@ -84,3 +97,40 @@
       jest cały czas rosnące, czyli $\sup{|M_n|^p}=\infty$ i wówczas musimy mieć fałsz w warunku 2, czyli istnieniu $M_\infty$ takiego, że $M_n\to M_\infty$ w $L^p$.
   \end{enumerate}
 \end{solution}
+
+\begin{problem}
+  Niech $f:[0,1]\to\R$ będzie funkcją spełniającą warunek Lipschitza: istnieje $L>0$ takie, że
+  $$|f(x)-f(y)|\leq L|x-y|$$
+  dla wszystkich $x,y\in[0,1]$. Celem zadania jest pokazanie, że $f$ jest całką z ograniczonej funkcji mierzalnej. Niech $X$ będzie zmienną o rozkładzie jednostajnym na $[0,1)$. Dla każdego $n\in\N$ połóżmy
+  $$X_n=2^{-n}\lfloor 2^nX\rfloor,\quad Z_n=2^n(f(X_n+2^{-n}) - f(X_n))$$
+  oraz $\set{F}_n=\sigma(X_0,X_1,...,X_n)$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Pokaż, że $\sigma(X_0,X_1,...,)=\sigma(X)$ i $\set{F}_n=\sigma(X_n)$
+    \item Dla ograniczonej funkcji mierzalnej $h:[0,1]\to\R$ znajdź $\expected{h(X_{n+1})}{\set{F}_n}$. Wywnioskuj, że $(X_n)_{n\in\N}$ jest martyngałem.
+    \item Pokaż, że $Z_n\to g(X)$ dla pewnej ograniczonej, mierzalnej funkcji $g:[0,1]\to\R$.
+    \item Pokaż, że
+      $$Z_n=2^n\int_{X_n}^{X_n+2^{-n}}g(u)du$$
+    \item Wywnioskuj, że dla każdego $x\in[0,1]$ 
+      $$f(x)=f(0)+\int_0^x g(u)du$$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}[label=(\alph*)]
+    \item Zacznijmy od obserwacji, że skoro $X\in[0,1)$, to $X_n=2^{-n}\lfloor 2^n X\rfloor <2^{-n}2^n=1$.
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}
+  Niech $X_n$ będzie ciągiem zmiennych losowych przyjmujących wartości w $[0,1]$ takim, że $X_0=a\in[0,1]$. Dla $n\in\N$ niech $\set{F}_n=\sigma(X_1,X_2,...,X_n)$. Załóżmy, że
+  $$\prob{X_{n+1}=X_n/2}{\set{F}_n}=1-X_n,\quad \prob{X_{n+1}=(1+X_n)/2}{\set{F}_n}=X_n$$
+  \begin{enumerate}[label=(\alph*)]
+    \item Pokaż, że $(X_n)$ jest martyngałem. Wywnioskuj, że $X_n$ jest zbieżne p.w. do pewnej zmiennej losowej $Z$.
+    \item Pokaż, że $4\expected{(X_{n+1}-X_n)^2}=\expected{X_n(1-X_n)}$
+    \item Znajdź rozkład zmiennej losowej $Z$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+\end{solution}
+

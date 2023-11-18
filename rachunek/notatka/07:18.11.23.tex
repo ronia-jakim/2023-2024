@@ -28,7 +28,7 @@ dla każdego $n\in\N$.
 
 \begin{theorem}[nierówność maksymalna słabego typu]\label{max slabego}
   Jeżeli $X$ jest podmartyngałem, to dla każdego $n\in\N$ oraz $\lambda>0$ mamy
-  $$\prob{\max_{k=0,...,n}X_k\geq\lambda}\leq \expected{X_n\mathds{1}_{\{\max_{k=0,...,n}\}}}\leq \expected{|X_n|}$$
+  $$\prob{\max_{k=0,...,n}X_k\geq\lambda}\leq \expected{X_n\mathds{1}_{\{\max_{k=0,...,n}X_k\geq \lambda\}}}\leq \expected{|X_n|}$$
   (środkowa nierówność nie jest pamiętana przez zdrowych psychicznie ludzi, ale będzie potrzebna do dowodu następnego dowodu)
 \end{theorem}
 
@@ -38,7 +38,7 @@ dla każdego $n\in\N$.
 
   Z twierdzenia o zatrzymaniu \ref{zatrzymanie podmartyngałów} wiemy, że
   \begin{align*}
-    \expected{X_n}&\geq\expected{X_{n\land\tau}}= \expected{\underbrace{X_{n\land\tau}}_{=X_\tau}\mathds{1_{\{\max X_k\geq \lambda\}}}}+\expected{\underbrace{X_{n\land\tau}}_{=X_n}\mathds{1}_{\{\max X_k<\lambda}\}}=(\star)
+  \expected{X_n}&\geq\expected{X_{n\land\tau}}= \expected{\underbrace{X_{n\land\tau}}_{=X_\tau}\mathds{1}_{\{\max  X_k\geq \lambda\}}}+\expected{\underbrace{X_{n\land\tau}}_{=X_n}\mathds{1}_{\{\max X_k<\lambda}\}}=(\star)
   \end{align*}
   nawiasy na dole są bo pierwsza całka jest po zbiorze gdzie już mamy $\max\geq \lambda$, a druga jest po zbiorze gdzie to nigdy nie dojdzie do $\lambda$. Idąc dalej mamy
   \begin{align*}
