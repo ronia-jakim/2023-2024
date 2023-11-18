@@ -34,14 +34,17 @@
 \end{problem}
 
 \begin{solution}
-  Proces Galtona-Watsona pojawił się w rozdziale 4, gdy chcieliśmy obserwować pantofelki rozmnażające się bezpłciowo, niezależnie od siebie. Rozważaliśmy zmienne losowe $Y_{n,k}$ takie oraz ciąg
+  Proces Galtona-Watsona pojawił się w rozdziale \ref{procel galtona-watsona}, gdy chcieliśmy obserwować pantofelki rozmnażające się bezpłciowo, niezależnie od siebie. Rozważaliśmy zmienne losowe $Y_{n,k}$ takie oraz ciąg
   $$Z_1=1$$
   $$Z_{n+1}=\sum_{k=1}^{Z_n}Y_{n+1,k}$$
   gdzie $Z_n$ to liczba nowych pantofelków w $n$-tej generacji, a $Y_{n,k}$ to liczba potomstwa w $n$-tej generacji zrodzona przez $k$-tego pantofelka w $n-1$ generacji.
 
   \begin{enumerate}[label=(\alph*)]
     \item Wiem już, że
-      $$\expected{Z_1}=\expected{\sum_{k=1}^Z_0}Y_{n,k}=\expected{Y_{1,1}}=\mu$$
+      $$\expected{Z_1}=\expected{\sum_{k=1}^{Z_0}Y_{n,k}}=\expected{Y_{1,1}}=\mu$$
+      oraz (korzystając z tego co pokazaliśmy na wykładzie):
+      $$\expected{Z_{n+1}}=\expected{Y_{n,k}}\expected{Z_n}=\mu\expected{Z_n}=\mu^{n+1}.$$
+
       Całość pokażemy za pomocą indukcji. Jeśli $n=1$, to mamy
       $$\expected{M_1^2}=\expected{\mu^{-2}Z_1^2}=\mu^{-2}\expected{Z_1^2}=\mu^{-2}[Var(Z_1)+\expected{Z_1}^2]=\sigma^2\mu^{-2}+1$$
       tak jak chcieliśmy.
@@ -53,20 +56,31 @@
       Wstawiając do równości w zadaniu 2 (po scałkowaniu), dostajemy
       \begin{align*}
         \expected{M_{n+1}^2}&=\expected{(M_{n+1}-M_n)^2}+\expected{M_{n}^2}=\\ 
-                            &=\expected{\left( \mu^{-n-1}\sum_{k=2}^{Z_n}(Y_{n,k}-\mu) \right)^2} +1+\sigma^2\sum_{k=1}^{n+1}\mu^{-k}=\\ 
-                            &=\mu^{-2n-2}\expected{(Z_{n+1}-\expected{Z_{n+1}})^2}+1+\sigma^2\sum_{k=2}^{n+1}\mu^{-k}
+                            &=\expected{\left( \mu^{-n-1}\sum_{k=1}^{Z_n}(Y_{n,k}-\mu) \right)^2} +1+\sigma^2\sum_{k=2}^{n+1}\mu^{-k}=\\ 
+                            &=\mu^{-2n-2}\expected{\left(\sum_{k=1}^{Z_n}(Y_{n,k}-\mu)\right)^2}+1+\sigma^2\sum_{k=2}^{n+1}\mu^{-k}=(\star)
       \end{align*}
+      Pozostaje pokazać, że $\expected{\left(\sum_{k=1}^{Z_n}(Y_{n,k}-\mu)\right)^2}=\mu^{n}\sigma^2$.
 
-
-
-      Wiemy już, że jeżeli $\expected{Y_{n,k}}=m$, to
-      $$\expected{Z_{n+1}}{\set{F}_n}=m\cdot Z_n$$
-      czyli 
-      $$\expected{Z_{n+1}}=\expected{\expected{Z_{n+1}{\set{F}_n}}}=m\cdot \expected{Z_n}$$
-       jeśli $n=1$, to $\expected{Z_2}=m\cdot\expected{Z_1}=m\cdot\mu$
-       Zacznijmy od tego, że 
+      Rozważmy funkcję 
       \begin{align*}
-        \expected{M_n^2}&=\expected{\mu^{-2n}Z_n^2}
+        h(z)&=Var(\sum_{k=1}^zY_{n+1,k})=\expected{\left(\sum_{k=1}^zY_{n+1,k}-z\mu\right)^2}=\\ 
+            &=\sum_{k=1}^zVar(Y_{n+1,k})=zVar(Y_{1,1})=zVar(Z_1)=z\sigma^2
       \end{align*}
+      i zauważmy, że wwo
+      $$\expected{\left(\sum_{k=1}^{Z_n}(Y_{n+1,k}-\mu)\right)^2}{\set{F}_n}=h(Z_n)=Z_n\sigma^2$$
+      czyli całkując obie strony otrzymujemy
+      $$\expected{\left(\sum_{k=1}^{Z_n}(Y_{n+1,k}-\mu)\right)^2}=\expected{Z_n\sigma^2}=\mu^n\sigma^2$$
+      i to jest tym co chcieliśmy, bo wracając do kroku indukcyjnego
+      $$(\star)=\mu^{-n-2}\mu^n \sigma^2+1+\sigma^2\sum_{k=2}^{n+1}\mu^{-k}=1+\sigma^2\sum_{k=2}^{n+2}\mu^{-k}$$
+    \item Aby $M_n$ zbiegało w $L^2$, musimy znaleźć funkcję $X$ taką, że $\expected{|M_n-X|^2}\to 0$. Zauważmy, że $Z_n$ zawsze przyjmuje skończone wartości, czyli $M_n=\mu^{-n}Z_n\to 0$, bo $\mu^{-n}\to 0$. W takim razie mamy $X=0$ jest potencjalną granicą $M_n$. Wystarczy wyliczyć
+      \begin{align*}
+        \expected{|M_n|^2}&=1+\sigma^2\sum_{k=2}^{n+1}\mu^{-k}=1+\sigma^2\sum_{k=0}^{n-1}\mu^{-k-2}=\\ 
+                          &=1+\sigma^2\mu^{-2}\sum_{k=0}^{n-1}\mu{-k}=1+\sigma^2\mu^{-2}\sum_{k=0}^{n-1}\mu^{-k}=\\ 
+                          &=1+\sigma^2\mu^{-2}\frac{1-\mu^{-n}}{1-\mu^{-1}}=1+\sigma^2\mu^{-1}\frac{1-\mu^{-n}}{\mu-1}\leq 1+\sigma^2\mu^{-1}\frac{1}{\mu-1}<\infty
+      \end{align*}
+      czyli stosuje się do tego twierdzenie \ref{tw 7.5}, ponieważ spełniony jest warunek $\sup\expected{|M_n|^p}<\infty\iff$ istnieje $M_\infty$ że $M_n\to M_\infty$ w $L^p$ dla $p=2$.
+    \item Argument jest prawie taki sam jak wyżej, z tym, że
+      $$\expected{|M_n|^2}=1+\sigma^2\mu^{-2}\frac{1-\mu^{-n}}{1-\mu^{-1}}=1+\sigma^2\mu^{-1}\frac{1-\mu^{-n}}{\mu-1}$$
+      jest cały czas rosnące, czyli $\sup{|M_n|^p}=\infty$ i wówczas musimy mieć fałsz w warunku 2, czyli istnieniu $M_\infty$ takiego, że $M_n\to M_\infty$ w $L^p$.
   \end{enumerate}
 \end{solution}
