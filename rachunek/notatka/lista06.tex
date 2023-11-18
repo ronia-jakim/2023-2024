@@ -117,7 +117,34 @@
 
 \begin{solution}
   \begin{enumerate}[label=(\alph*)]
-    \item Zacznijmy od obserwacji, że skoro $X\in[0,1)$, to $X_n=2^{-n}\lfloor 2^n X\rfloor <2^{-n}2^n=1$.
+    \item Zacznijmy od obserwacji, że każdy $X_n$ dzieli $X$ na odcinki $[k2^{-n}, (k+1)2^{-n})$, $k=0,1,...,2^{n}-1$:
+      \begin{center}\begin{tikzpicture}
+        \draw[->] (-0.5, 0)--(8, 0) node [below] {$X$};
+        \draw[->] (0, -0.5)--(0, 5) node [left] {$n$};
+
+        \draw[orange, very thick] (0, 0.5)--(8, 0.5) node [above] {$\{X_0=0\}$};
+        \filldraw[color=orange, fill=white] (8, 0.5) circle (2pt);
+
+        \draw[green, very thick] (0, 1.2)--(4, 1.2) node [midway, above] {$\{X_1=0\}$};
+        \draw[green, very thick] (4, 1.4)--(8, 1.4) node [midway, above] {$\{X_1=1/2\}$};
+        \filldraw[color=green, fill=white] (4, 1.2) circle (2pt);
+        \filldraw[color=green, fill=white] (8, 1.4) circle (2pt);
+
+        \draw[orange, very thick] (0, 2.2)--(2, 2.2) node [midway, above] {$\{X_2=0\}$};
+        \draw[orange, very thick] (2, 2.3)--(4, 2.3) node [midway, above] {$\{X_2=1/4\}$};
+        \draw[orange, very thick] (4, 2.4)--(6, 2.4) node [midway, above] {$\{X_2=1/2\}$};
+        \draw[orange, very thick] (6, 2.5)--(8, 2.5) node [midway, above] {$\{X_2=3/4\}$};
+
+        \draw[green, very thick] (0, 3.3)--(1, 3.3) node [midway, above] {$\scriptscriptstyle\{X_3=0\}$};
+        \draw[green, very thick] (1, 3.4)--(2, 3.4) node [midway, above] {$\scriptscriptstyle\{X_3=1/8\}$};
+        \draw[green, very thick] (2, 3.5)--(3, 3.5) node [midway, above] {$\scriptscriptstyle\{X_3=1/4\}$};
+        \draw[green, very thick] (3, 3.6)--(4, 3.6) node [midway, above] {$\scriptscriptstyle\{X_3=3/8\}$};
+        \draw[green, very thick] (4, 3.7)--(5, 3.7) node [midway, above] {$\scriptscriptstyle\{X_3=1/2\}$};
+        \draw[green, very thick] (5, 3.8)--(6, 3.8) node [midway, above] {$\scriptscriptstyle\{X_3=5/8\}$};
+        \draw[green, very thick] (6, 3.9)--(7, 3.9) node [midway, above] {$\scriptscriptstyle\{X_3=6/8\}$};
+        \draw[green, very thick] (7, 4)--(8, 4) node [midway, above] {$\scriptscriptstyle\{X_3=7/8\}$};
+      \end{tikzpicture}\end{center}
+      Moim zdaniem to już pokazuje równość. Dowolny zbiór z $RHZ$ wystarczy rozbić na wystarczająco dużo (nadal przeliczalnie) zbiorów postaci $[k 2^{-n}, (k+1)2^{-n})$ dla odpowiednich $n$. Przejście z $RHS$ do $LSH$ jest nawet bardziej trywialne, bo każdy zbiór z $\sigma(X_n)$ można zapisać jako $\{X\in B\}$ dla $B\in Bor[0, 1)$ tak jak na obrazku wyżej.
   \end{enumerate}
 \end{solution}
 
