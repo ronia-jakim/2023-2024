@@ -1,0 +1,72 @@
+\subsection{Zadania}
+
+\setcounter{problem}{0}
+
+\begin{problem}
+  PÓŹNIEJ
+\end{problem}
+
+\begin{problem}
+  Niech $\{X_n\}$ będzie martyngałem całkowalnym z kwadratem ($\expected{X_n^2}<\infty$ dla każdego $n\in\N$). Pokaż, że
+  $$\expected{(X_n-X_m)^2}{\set{F}_m}=\expected{X_n^2}{\set{F}_m}-X_m^2$$
+  {\color{red}Dodatkowe założenia: $n>m$.}
+\end{problem}
+
+\begin{solution}
+  Po pierwsze, wypadałoby pokazać, że $X_nX_m$ jest całkowalne
+  $$\expected{|X_nX_m|}\leq\expected{|X_n|^2}^{1/2}\expected{|X_m|^2}^{1/2}<\infty$$
+  W takim razie, wiedząc, że $X_m$ jest zawsze mierzalna względem $\set{F}_m$ wiemy, że $\expected{X_nX_m}{\set{F}_m}=X_m\expected{X_n}{\set{F}_m}$ i teraz jeśli $n>m$ to i $\expected{X_n}{\set{F}_m}=X_m$, co pokazaliśmy już dawno temu na liście. Przechodząc z tą wiedzą do pisania, mamy;
+  \begin{align*}
+    \expected{(X_n-X_m)^2}{\set{F}_m}&=\expected{X_n^2-2X_nX_m+X_m^2}{\set{F}_m}=\\ 
+                                     &=\expected{X_n^2}{\set{F}_m}+\expected{X_m^2}{\set{F}_m}-2X_m\expected{X_n}{\set{F}_m}=\\ 
+                                     &=\expected{X_n^2}{\set{F}_m}+X_m^2-2X_m^2=\expected{X_n^2}{\set{F}_m}-X_m^2
+  \end{align*}
+\end{solution}
+
+\begin{problem}
+  Niech $\{Z_n\}$ będzie procesem Galtona-Watsona dla którego $\expected{Z_1}=\mu$ oraz $Var(Z_1)=\sigma^2<\infty$. Rozważmy martyngał $M_n=\mu^{-n}Z_n$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Pokaż, że
+      $$\expected{M_n^2}=1+\sigma^2\sum_{k=2}^{n+1}\mu^{-k}$$
+    \item Uzasadnij, że jeśli $\mu>1$, to $M_n$ jest zbieżny w $L^2$
+    \item Uzasadnij, że jeśli $\mu<1$, to $M_n$ nie jest zbieżny w $L^2$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  Proces Galtona-Watsona pojawił się w rozdziale 4, gdy chcieliśmy obserwować pantofelki rozmnażające się bezpłciowo, niezależnie od siebie. Rozważaliśmy zmienne losowe $Y_{n,k}$ takie oraz ciąg
+  $$Z_1=1$$
+  $$Z_{n+1}=\sum_{k=1}^{Z_n}Y_{n+1,k}$$
+  gdzie $Z_n$ to liczba nowych pantofelków w $n$-tej generacji, a $Y_{n,k}$ to liczba potomstwa w $n$-tej generacji zrodzona przez $k$-tego pantofelka w $n-1$ generacji.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Wiem już, że
+      $$\expected{Z_1}=\expected{\sum_{k=1}^Z_0}Y_{n,k}=\expected{Y_{1,1}}=\mu$$
+      Całość pokażemy za pomocą indukcji. Jeśli $n=1$, to mamy
+      $$\expected{M_1^2}=\expected{\mu^{-2}Z_1^2}=\mu^{-2}\expected{Z_1^2}=\mu^{-2}[Var(Z_1)+\expected{Z_1}^2]=\sigma^2\mu^{-2}+1$$
+      tak jak chcieliśmy.
+
+      Zróbmy teraz krok indukcyjny, czyli $n\implies n+1$. Będziemy korzystać z zadania 2, więc chcemy wyliczyć $M_{n+1}-M_n$
+      \begin{align*}
+        M_{n+1}-M_n&=\mu^{-n-1}\sum_{k=1}^{Z_{n}}Y_{n,k}-\mu^{-n}Z_n=\mu^{-n-1}\sum_{k=1}^{Z_n}(Y_{n,k}-\mu)
+      \end{align*}
+      Wstawiając do równości w zadaniu 2 (po scałkowaniu), dostajemy
+      \begin{align*}
+        \expected{M_{n+1}^2}&=\expected{(M_{n+1}-M_n)^2}+\expected{M_{n}^2}=\\ 
+                            &=\expected{\left( \mu^{-n-1}\sum_{k=2}^{Z_n}(Y_{n,k}-\mu) \right)^2} +1+\sigma^2\sum_{k=1}^{n+1}\mu^{-k}=\\ 
+                            &=\mu^{-2n-2}\expected{(Z_{n+1}-\expected{Z_{n+1}})^2}+1+\sigma^2\sum_{k=2}^{n+1}\mu^{-k}
+      \end{align*}
+
+
+
+      Wiemy już, że jeżeli $\expected{Y_{n,k}}=m$, to
+      $$\expected{Z_{n+1}}{\set{F}_n}=m\cdot Z_n$$
+      czyli 
+      $$\expected{Z_{n+1}}=\expected{\expected{Z_{n+1}{\set{F}_n}}}=m\cdot \expected{Z_n}$$
+       jeśli $n=1$, to $\expected{Z_2}=m\cdot\expected{Z_1}=m\cdot\mu$
+       Zacznijmy od tego, że 
+      \begin{align*}
+        \expected{M_n^2}&=\expected{\mu^{-2n}Z_n^2}
+      \end{align*}
+  \end{enumerate}
+\end{solution}

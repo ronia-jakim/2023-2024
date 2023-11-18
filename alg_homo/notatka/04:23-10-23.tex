@@ -138,7 +138,10 @@ Analogicznie pokazuje się dla koproduktu.
 
 Definicja wyżej często jest formułowana w inny, równoważny, sposób.
 
-Kilka wyjaśnień:
+\subsection{Monomorfizm, epimorfizm i jądra}
+
+\begin{definition}[jądro, kojądro i przyjaciele]
+  Kilka wyjaśnień:
 \begin{itemize}
   \item Jądro $f$ to ekwalizator \begin{tikzcd}A\arrow[r, bend left=10, "f"]\arrow[r, bend right=10, "0" below] & B\end{tikzcd}. Inaczej, jest to \begin{tikzcd}K\arrow[r, "k"] &A\end{tikzcd} taki, że
     \begin{enumerate}
@@ -166,8 +169,10 @@ Kilka wyjaśnień:
     \end{tikzcd}\end{center}
     Naturalne odwzorowanie zaznaczone przerywaną linią ma być izomorfizmem jeśli działaby w kategorii abelowej.
 \end{itemize}
+\end{definition}
 
-\subsection{Monomorfizm, epimorfizm i jądra}
+\buff{Ekwalizator} strzałek \begin{tikzcd}A\arrow[r, bend left=10, "f"] \arrow[r, bend right=10, "g" below] & B\end{tikzcd} to obiekt $E$ oraz strzałka $e:E\to A$ taka, że $fe=ge$ oraz jeśli $U\xrightarrow{u}A$ również to spełnia, to istnieje jedyna strzałka $\phi:U\to E$ taka, że $u=e\phi$.
+
 
 \begin{definition}[mono-, epi-]
   Morfizm $f:X\to Y$ jest
