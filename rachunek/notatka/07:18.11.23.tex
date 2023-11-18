@@ -1,0 +1,156 @@
+\section{18.11.23 : Sobotnia mordęga}
+
+\subsection{Nierówności maksymalne}
+
+Niech $X=\{X_n\}$ będzie $\mathds{F}=\{\set{F}_n\}$ podmartyngałem. Wówczas 
+$$\expected{X_{n+1}}{\set{F}_n}\geq X_n$$
+dla każdego $n\in\N$.
+
+\begin{theorem}[o zatrzymaniu dla podmartyngałów]\label{zatrzymanie podmartyngałów}
+  Jeżeli $X$ jest $\mathds{F}$-podmartyngałem, a $T$ $\mathds{F}$-czasem zatrzymania, to dla każdego $n\in\N$ 
+  $$\expected{X_n}\geq\expected{X_{n\land T}}$$
+\end{theorem}
+
+\begin{proof}
+  Mamy 
+  \begin{align*}
+    X_n-X_{n\land T}&=\sum_{k=n\land T+1}^n(X_k-X_{k-1})=\sum_{k=1}^n\mathds{1}_{\{k\geq n\land T+1\}}(X_k-X_{k-1})=\\ 
+                    &=\sum_{k=1}^n\underbrace{\mathds{1}_{\{k\geq T+1\}}}_{\in\set{F}_{k-1}}(X_k-X_{k-1})
+  \end{align*}
+  Co z własności martyngału da nam
+  \begin{align*}
+    \expected{\mathds{1}_{\{k\geq T+1\}}(X_k-X_{k-1})}{\set{F}_{k-1}}=\mathds{1}_{\{k\geq T+1\}}\expected{X_k-X_{k-1}}{\set{F}_{k-1}}\geq 0
+  \end{align*}
+  Czyli jak zsumujemy rzeczy $\geq0$, to również dostaniemy wartość $\geq0$, tzn.
+  $$\expected{X_n-X_{n\land T}}\geq0$$
+  i to już kończy dowód.
+\end{proof}
+
+\begin{theorem}[nierówność maksymalna słabego typu]\label{max slabego}
+  Jeżeli $X$ jest podmartyngałem, to dla każdego $n\in\N$ oraz $\lambda>0$ mamy
+  $$\prob{\max_{k=0,...,n}X_k\geq\lambda}\leq \expected{X_n\mathds{1}_{\{\max_{k=0,...,n}\}}}\leq \expected{|X_n|}$$
+  (środkowa nierówność nie jest pamiętana przez zdrowych psychicznie ludzi, ale będzie potrzebna do dowodu następnego dowodu)
+\end{theorem}
+
+\begin{proof}
+  Wybierzmy czas zatrzymania
+  $$\tau=\inf\{k\;:\;X_k\geq\lambda\}.$$
+
+  Z twierdzenia o zatrzymaniu \ref{zatrzymanie podmartyngałów} wiemy, że
+  \begin{align*}
+    \expected{X_n}&\geq\expected{X_{n\land\tau}}= \expected{\underbrace{X_{n\land\tau}}_{=X_\tau}\mathds{1_{\{\max X_k\geq \lambda\}}}}+\expected{\underbrace{X_{n\land\tau}}_{=X_n}\mathds{1}_{\{\max X_k<\lambda}\}}=(\star)
+  \end{align*}
+  nawiasy na dole są bo pierwsza całka jest po zbiorze gdzie już mamy $\max\geq \lambda$, a druga jest po zbiorze gdzie to nigdy nie dojdzie do $\lambda$. Idąc dalej mamy
+  \begin{align*}
+    \expected{X_n}\geq (\star)&\geq \lambda\prob{\max X_k\geq\lambda}+\expected{X_n\mathds{1}_{\max X_k<\lambda}}
+  \end{align*}
+  Stad, jeśli przerzucimy $\expected$ na jedną stronę, to dostajemy
+  $$\expected{X_n\mathds{1}_{\max X_k\geq \lambda}}\geq \lambda\prob{\max X_k\geq\lambda}$$
+\end{proof}
+
+\begin{conclusion}
+  Jeżeli $M=\{M_n\}$ jest martyngałem takim, że dla pewnego $p\geq1$
+  $$\expected{|M_n|^p}<\infty$$
+  dla każdego $n\in\N$, to jeśli zastosuje się nierówność Jensena,
+  $$X_n=|M_n|^p$$
+  jest podmartyngałem.
+\end{conclusion}
+
+\begin{proof}
+  \begin{align*}
+    \expected{X_{n+1}}{\set{F}_n}&=\expected{|M_{n+1}|^p}{\set{F}_n}\geq\ |\expected{M_{n+1}}{\set{F}_n}|^p=|M_n|^p=X_n
+  \end{align*}
+\end{proof}
+
+Wówczas mamy
+\begin{align*}
+  \lambda\prob{\max|M_n|^p\geq\lambda}&\leq\expected{|M_n|^p\mathds{1}_{\{\max |M_k|^p\geq\lambda\}}}
+\end{align*}
+  Czyli dla $s=\lambda^{1/p}$ dostajemy
+  $$\prob{\max |M_k|\geq s}\leq \frac{1}{s^p}\expected{|M_n|^p\mathds{1}_{\{\max |M_k|\geq s\}}}$$
+
+\begin{example}
+  \item Nierówność maksymalna Kołmogorowa.
+
+    Niech $\xi_k$ będzie ciągiem niezależnych zmiennych z $\expected{\xi_k}=0$ i $\expected{\xi_k^2}<\infty$, to oznaczając $S_n=\sum_{k\leq n}\xi_k$ wiemy już, że $S_n$ jest martyngałem. Wówczas
+    $$\prob{\max |S_k|\geq\epsilon}\leq\frac{1}{\epsilon^2}\expected{S_n^2}=\frac{1}{\varepsilon^2}\sum_{k\leq n}\expected{\xi_j^2}$$
+\end{example}
+
+\begin{theorem}[nierówność maksymalna mocnego typu]
+  Niech $M=\{M_n\}$ będzie martyngałem takim, że $\expected{|M_n|^p}<\infty$ dla pewnego $p>1$ i wszystkich $n\in\N$, to wtedy
+  $$\expected{\max|M_k|^p}\leq\left(\frac{p}{p-1}\right)^p\expected{|M_n|^p}$$
+\end{theorem}
+
+\begin{proof}
+  Oznaczmy
+  $$M_n^*=\max_{k\leq n}|M_k|$$
+  Mamy dla $k>0$
+  \begin{align*}
+    \expected{(M_n^*\land k)^p}&=\expected{\int_0^{M_n^*\land k}ps^{p-1}ds}=\expected{\int_0^k\mathds{1}_{\{M_n^*\geq s\}}ps^{p-1}ds}=\\ 
+                               &=\int_0^kps^{p-1}\prob{M_n^*\geq s}ds\leq\int_0^kps^{p-1}\overbrace{\color{blue}\frac{1}{s}\expected{|M_n|\mathds{1}_{\{M_n^*\geq s\}}}}^{\ref{max slabego}}=\\ 
+                               &=\expected{|M_n|\int_0^kps^{p-2}\mathds{1}_{\{M_n^*\geq s\}}ds}=\expected{|M_n|\int_0^{k\land M_n^*}ps^{p-2}ds}=\\ 
+                               &=\frac{p}{p-1}\expected{|M_n|(M_n^*\land k)^{p-1}}\leq\frac{p}{p-1}\expected{|M_n|^p}^{1/p}\expected{|M_n^*\land k|^{p/(p-1)}}^{(p-1)/p}
+  \end{align*}
+  Przerzucając potworka z $\frac{p}{p-1}$ na lewą stronę, dostajemy
+  $$\expected{(M_n^*\land k)^p}^{1/p}\leq \frac{p}{p-1}\expected{|M_n|^p}^{1/p}$$
+  przechodząc z $k$ do nieskończoności. Użycie $k$ było potrzebne przy dzieleniu.
+\end{proof}
+
+\begin{theorem}
+  Niech $p>1$. Dla martyngału $\{M_n\}$ następujące warunki są równoważne:
+  \begin{enumerate}
+    \item $\sup \expected{|M_n|^p}<\infty$
+    \item istnieje zmienna losowa $M_\infty$ taka, że $\expected{|M_\infty|^p}<\infty$ i $M_n\to M_\infty$ prawie wszędzie w $L^p$
+    \item Istnieje zmienna losowa $M_\infty$ taka, że $\expected{|M_\infty|^p}<\infty$ i $\expected{M_\infty}{\set{F}_n}=M_n$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{dygresja}
+  Zbieżność w $L^p$ oznacza, że $\expected{|M_n-M_\infty|^p}\to 0$ prawie wszędzie.
+\end{dygresja}
+
+\begin{proof}
+  \begin{itemize}
+    \item[$1\implies 2$] Wiemy, że
+      $$\sup\expected{M_n^*}^p\leq\sup\expected{|M_n|^p}<\infty,$$
+      zatem istnieje $M_\infty$ taka, że $M_n\to M_\infty$. Dla każdego $n\in\N$ mamy
+      $$\expected{\max|M_k|^p}\leq\left(\frac{p}{p-1}\right)^p\expected{|M_n|^p}\leq \left(\frac{p}{p-1}\right)^p\sup\expected{|M_k|^p}$$
+      przy $n\to\infty$ daje to
+      $$\expected{\sup |M_k|^p}\leq\left(\frac{p}{p-1}\right)^p\sup\expected{|M_k|^p}$$
+      Mamy
+      $$|M_n-M_\infty|^p\leq (|M_n|+|M_\infty|)^p \leq2^p\sup|M_k|^p$$
+      z twierdzenia o zbieżności ograniczonej wiemy, że
+      $$\lim\expected{|M_n-M_\infty|^p}=\expected{\lim|M_n-M_\infty|^p}=0$$
+    \item[$2\implies3$] Chcemy pokazać, że
+      $$\expected{M_\infty}{\set{F}_n}=M_n$$
+      czyli, że dla każdego $A\in\set{F}_n$
+      $$\expected{M_\infty\mathds{1}_A}=\expected{M_n\mathds{1}_A}$$
+      Wiemy, że dla każdego $m\in\N$ zachodzi
+      $$\expected{M_{n+m}}{\set{F}_n}=M_n$$
+      czyli
+      $$\expected{M_{n+m}\mathds{1}_A}=\expected{M_n\mathds{1}_A}$$
+      przy $m\to \infty$ dostajemy
+      $$\left[\expected{(M_\infty-M_{n+m})\mathds{1}_A}\right]^p\leq\expected{|M_\infty-M_{n+m}|^p}]to 0$$
+      Skoro więc
+      $$\expected{M_{n+m}\mathds{1}_A}\xrightarrow{m\to\infty} \expected{M_\infty\mathds{1}_A}$$
+    \item[$3\implies 1$] Z założenia i nierówności Jensena mamy, że
+      $$|M_n|^p=|\expected{M_\infty}{\set{F}_n}|^p\leq\expected{|M_\infty|^p}{\set{F}_n}$$
+      stąd
+      $$\expected{|M_n|^p}\leq\expected{|M_\infty|^p}$$
+      w szczególności $\sup\expected{|M_n|^p}\leq\infty$.
+  \end{itemize}
+\end{proof}
+
+\begin{example}
+\item Niech $f:[0,1]\to\R$ będzie funkcją w $L^p$, tzn.:
+  $$\int_0^1|f(t)|^pdt<\infty$$
+  Dla $n\in\N$ niech $I_k^{(n)}=(k-1)2^{-n}, k2^{-n})$. Niech teraz $f_k^{(n)}=2^n\int_{I_k^{(n)}}f(t)dt$ będzie średnią $f$ na przedziale $I_k^{(n)}$.
+
+  Niech teraz $f^{(n)}:[0,1]\to\R$ będzie dana przez
+  $$f^{(n)}(t)=\sum_{k=1}^{2^n}f_k^{(n)}\mathds{1}_{I_k^{(n)}}(t)$$
+  Wówczas funkcje $f^{(n)}$ przybliżają $f$ w $L^p[0,1]$, tzn $f^{(n)}\to f$.
+
+  Działamy w przestrzeni z $\Omega=[0,1]$, $\prob=\lambda\restriction[0,1]$. Rozważamy rodzinę  $\set{F}_n=\sigma(I_k^{(n)}\;:\;k=1,...,2^n)$, w której mamy $I_{2k}^{(n+1)}\cup I_{2k-1}^{(n+1)}=I_k^{(n)}$, więc jest ona filtracją. 
+  $$\expected{f}{\set{F}_n}=\sum_{k=1}^{2^n}\mathds{1}_{I_k^{(n)}}\expected{f}{I_k^{(n)}}=\sum_{k=1}^{2^n}\mathds{1}_{I_k^{(n)}}f_k^{(n)}$$
+  Czyli jesteśmy w 3. punkcie równoważności z twierdzenia wyżej, czyli mamy od razu dane 2, gdzie $M_\infty=f$, $M_n=f^{(n)}$.
+\end{example}
