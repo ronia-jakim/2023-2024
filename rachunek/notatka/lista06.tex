@@ -144,7 +144,41 @@
         \draw[green, very thick] (6, 3.9)--(7, 3.9) node [midway, above] {$\scriptscriptstyle\{X_3=6/8\}$};
         \draw[green, very thick] (7, 4)--(8, 4) node [midway, above] {$\scriptscriptstyle\{X_3=7/8\}$};
       \end{tikzpicture}\end{center}
-      Moim zdaniem to już pokazuje równość. Dowolny zbiór z $RHZ$ wystarczy rozbić na wystarczająco dużo (nadal przeliczalnie) zbiorów postaci $[k 2^{-n}, (k+1)2^{-n})$ dla odpowiednich $n$. Przejście z $RHS$ do $LSH$ jest nawet bardziej trywialne, bo każdy zbiór z $\sigma(X_n)$ można zapisać jako $\{X\in B\}$ dla $B\in Bor[0, 1)$ tak jak na obrazku wyżej.
+      Moim zdaniem to już pokazuje równość. Dowolny zbiór z $RHS$ wystarczy rozbić na wystarczająco dużo (nadal przeliczalnie) zbiorów postaci $[k 2^{-n}, (k+1)2^{-n})$ dla odpowiednich $n$. Przejście z $RHS$ do $LSH$ jest nawet bardziej trywialne, bo każdy zbiór z $\sigma(X_n)$ można zapisać jako $\{X\in B\}$ dla $B\in Bor[0, 1)$ tak jak na obrazku wyżej.
+    \item Tak jak już ustaliliśmy w poprzednim podpunkcie, wiemy, że zbiory z ciała $\set{F}_n$ są generowane przez zdarzenia $\{X\in[k2^{-m}, (k+1)2^{-m})\}$ dla $m=0,1,..., n$ i $k=0,1,...,2^m-1$. Weźmy więc jeden z takich zbiorów $A=\{X\in[k2^{-m}, (k+1)2^{-m}\}\in\set{F}_n$ i popatrzmy jak powinno wyglądać wwo
+      \begin{align*}
+        \expected{\expected{h(X_{n+1})}{\set{F}_n}\mathds{1}_A}&=\expected{h(X_{n+1})\mathds{1}_A}
+      \end{align*}
+      Zauważmy, że jeśli $n+1=m+l$, to $X_{n+1}$ ma $2^l$ segmentów na $A$, tzn.
+      $$X_{n+1}\mathds{1}_{\{X\in[k2^{-m}, (k+1)2^{-m})\}}=\sum_{i=0}^{2^l-1}X_n\mathds{1}_{\{X\in [k2^{-m}+i2^{-(n+1)}, k2^{-m}+(i+1)2^{-(n+1)}\}}$$
+      i na każdym ze zbiorów $\{X\in[k2^{-m}+i2^{-(n+1)}. k2^{-m}+(i+1)2^{-(n+1)})\}$ zmienna $X_n$ przyjmuje wartość $k2^{-m}+i2^{-(n+1)}$. Mając tę wiadomość z tyłu głowy, możemy wrócić do szukania wwo.
+      \begin{align*}
+        \expected{h(X_{n+1})\mathds{1}_A}&=\expected{\sum_{i=0}^{2^l-1}h(X_{n+1})\mathds{1}_{\{X\in[k2^{-m}+2^{-(n+1)}, k2^{-m}+(i+1)2^{-(n+1)})\}}}=\\ 
+                                         &=\expected{\sum_{i=0}^{2^l-1}h(k2^{-m}+i2^{-(n+1)})\mathds{1}_{\{X\in[k2^{-m}+i2^{-(n+1)}, k2^{-m}+(i+1)2^{-(n+1)})\}}}=\\ 
+                                         &=\sum_{i=0}^{2^l-1}h(k2^{-m}+i2^{-(n+1)})\prob{X\in[k2^{-m}+i2^{-(n+1)}, k2^{-m}+(i+1)2^{-(n+1)})}=\\
+                                         &=\sum_{i=0}^{2^l-1}h(k2^{-m}+i2^{-(n+1)})2^{-(n+1)}
+      \end{align*}
+      z drugiej strony, policzmy $\expected{1/2(h(X_n) + h(X_n+2^{-(n+1)})\mathds{1}_A}$
+      \begin{align*}
+        \expected{1/2(h(X_n) + h(X_n+2^{-(n+1)})\mathds{1}_A}=&\frac{1}{2}[\expected{h(X_n)\mathds{1}_A}+\expected{h(X_n+2^{-(n+1)})} ]=\\ 
+                                                             =&\frac{1}{2}\sum_{i=0}^{2^{l-1}-1}2^{-n}h(k2^{-m}+i2^{-n})+\\ 
+                                                              &+\frac{1}{2}\sum_{i=0}^{2^{l-1}-1}2^{-n}h(k2^{-m}+i2^{-n}+2^{-(n+1)})=\\ 
+                                                             =&\sum_{i=0}^{2^{l-1}-1}2^{-(n+1)}h(k2^{-m}+(2i)2^{-(n+1)})+\\ 
+                                                              &+\sum_{i=0}^{2^{l-1}-1}2^{-(n+1)}h(k2^{-m}+(2i+1)2^{-(n+1)})
+      \end{align*}
+      pierwszy wyraz odpowiada za parzyste fragmenty $\expected{h(X_{n+1})\mathds{1}_A}$, a drugi odpowiada za nieparzyste. Stąd mogę powiedzieć, że
+      $$\expected{h(X_{n+1})}{\set{F}_n}=1/2[h(X_n)+h(X_n+2^{-(n+1)})]$$
+      Jeśli teraz stwierdzimy, zamiast $h$ podstawimy $f(X_n+2^{-n})-f(X_n)$, co jest ograniczone przez $L2^{-n}\leq L$ z definicji funkcji $f$ (ale nie jestem świadoma gdzie konkretnie używałam ograniczoności $h$, może żeby wyciągnąć sumę przed całkę?), dostajemy
+      %(bo chyba nie korzystałam z ograniczoności $h$), to dostajemy
+      \begin{align*}
+        \expected{Z_{n+1}}{\set{F}_n}&=\expected{2^{n+1}[f(X_{n+1}+2^{-(n+1)})-f(X_{n+1})]}{\set{F}_n}=\\ 
+                                     &=2^{n+1}[\expected{f(X_{n+1}+2^{-(n+1)})}{\set{F}_n}-\expected{f(X_{n+1})}{\set{F}_n}]=\\ 
+                                     &=2^{n+1}[1/2[{\color{blue}f(X_n+2^{-(n+1)})}+f(X_n+2\cdot2^{-(n+1)})]-1/2[f(X_{n})+{\color{blue}f(X_n+2^{-(n+1)})}]]=\\ 
+                                     &=2^n[f(X_n+2^{-n})-f(X_n)]=Z_n
+      \end{align*}
+    \item Nie mam pojęcia jak to zrobić, ale z twierdzenia Dooba o zbieżności martyngałów wiemy, że istnieje zmienna losowa całkowalna $Z$ taka, że $Z_n\to Z$, bo
+      $$\sup \expected{Z_n^+}=\sup\expected{2^n(f(X_n+2^{-n})-f(X_n))}\leq \sup \expected{2^nL|(X_n+2^{-n})-X_n|}=\sup\expected{L}=L<\infty.$$
+      Ale przecież $Z_n=g(X_n)$ dla pewnej funkcji ograniczonej $g$ (jak wyżej), czyli $\lim Z_n=\lim g(X_n)=g(X)$, bo $X_n\to X$.
   \end{enumerate}
 \end{solution}
 
