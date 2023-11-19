@@ -168,12 +168,10 @@ Granica funktora może nie istnieć, ale zawsze gdy istnieje, to jest jedyna z d
     & X \\ 
     F(i) \arrow[ur, "\Pi_i"] \arrow[rr, "F(\alpha)" below] & & F(j) \arrow[ul, "\Pi_j" above right]
   \end{tikzcd}\end{center}
-  Granicę odwrotną oznaczamy $\color{blue}\colim F$. 
-
-  Jeśli istnieje drugi taki obiekt $X'$ oraz przekształcenia $\Pi'$ spełniające ten warunek, to istnieje dokładnie jedna funkcja $\lambda:X\to X'$:
+  nazywamy granicą odwrotną i oznaczamy $\color{blue}\colim F$, jeśli spełnia ona warunek uniwersalności, tzn. jeśli istnieje $X'$ oraz przekształcenia $\Pi$, to istnieje dokładnie jeden morfizm $\lambda:X'\to X$:
   \begin{center}\begin{tikzcd}
-    & F(i) \arrow[dr, "\Pi_i"] \arrow[dl, "\Pi_i'"] \\ 
-    X \arrow[rr, "\exists!\lambda" below, dashed] & & X'
+    & F(i) \arrow[dr, "\Pi_i"] \arrow[dl, "\Pi_i'" above left] \\ 
+    X & & \arrow[ll, "\exists!\lambda" below, dashed] X'
   \end{tikzcd}\end{center}
 \end{definition}
 

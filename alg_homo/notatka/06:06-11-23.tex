@@ -1,6 +1,10 @@
-\section{06.11.23 : Lemat o wężu i przyjaciele}
+\section{06.11.23 : Lemat o wężu i przyjaciele (kwadraty kartezjańskie)}
 
-\begin{lemma}
+Na tym wykładzie trzymamy z tyłu głowy, że jesteśmy w kategorii abelowej.
+
+\subsection{Epimorfizm (i jądro) przenosi się przez pull-back}
+
+\begin{lemma}[epimorfizm przenosi się przez pull back]\label{epi przez pull back}
   Jeśli mamy dany pull-back (kwadrat kartezjański, tzn. $Z$ wraz z $g'$ i $g$ jest granicą początku alfabetu)
   \begin{center}\begin{tikzcd}[column sep=large]
     Z\arrow[r, "f'"]\arrow[d, "g'" left] & B\arrow[d, "g"] \\ 
@@ -47,3 +51,78 @@
       i dostajemy to co chcieliśmy.
   \end{enumerate}
 \end{proof}
+
+\begin{lemma}[jądro przenosi się przez pull-back]
+  Rozważamy diagram
+  \begin{center}\begin{tikzcd}
+    K\arrow[r, "k"]\arrow[dr, "g'k" below left, dashed]& Z\arrow[r, "f'"]\arrow[d, "g'"] & B\arrow[d, "g"]\\ 
+                    & A\arrow[r, "f"] & C
+  \end{tikzcd}\end{center}
+  gdzie $K\xrightarrow{k}Z$ jest jądrem $f'$, to wówczas $K\xrightarrow{g'k}A$ jest jądrem $f$.
+\end{lemma}
+
+\begin{proof}
+  Musimy pokazać, że $fg'k=0$ oraz że takie $g'k$ spełnia warunek uniwersalności.
+
+  \begin{itemize}
+    \item $fg'k=0$
+
+      Wystarczy zobaczyć rysunek:
+      \begin{center}\begin{tikzcd}
+        K\arrow[r, "k" below]\arrow[rr, "0" above, bend left=20]\arrow[drr, rounded corners, thick, to path ={ ([yshift=1mm]\tikztostart.south) -| ([xshift=10mm, yshift=-2mm]\tikztostart.south) |- ([yshift=-10mm]\tikztotarget)}, orange]\arrow[drr, rounded corners, thick, to path ={ -| ([yshift=4mm]\tikztostart.north) -| ([xshift=15mm]\tikztotarget)}, green]
+        & Z\arrow[r, "f'" below]\arrow[d, "g'"{coordinate, name=Z}] & B\arrow[d, "g"]\\ 
+        & A\arrow[r, "f"] & C
+      \end{tikzcd}\end{center}
+      Zielona strzałka na górze jest złożeniem funkcji $0$ z $g$, czyli sama jest $0$, a ponieważ pomarańczowa strzałka niżej jest jej równa (diagram komutuje), to ona również jest zerem.
+
+    \item $g'k$ spełnia uniwersalną własność jądra
+
+      Wyobraźmy sobie, że istnieje $U$ takie, że mamy diagram
+  \begin{center}\begin{tikzcd}
+    K\arrow[r, "k"]& Z\arrow[r, "f'"]\arrow[d, "g'"] & B\arrow[d, "g"]\\ 
+    U\arrow[r, "u" below] \arrow[ur, "\exists! u'" left]\arrow[u, "\exists! u''?", left, dashed] & A\arrow[r, "f" below] & C
+  \end{tikzcd}\end{center}
+
+  {\large\color{red}CO TU SIĘ TAK WŁAŚCIWIE STANEŁO?}
+  \end{itemize}
+\end{proof}
+
+\subsection{Czym są elementy obiektu?}
+
+\begin{definition}[element obiektu]
+  Jeśli $\mathbf{A}$ jest kategorią abelową i $Y\in\ob \mathbf{A}$, to elementem $Y$ nazywamy \buff{klasę równoważności morfizmów} $X\xrightarrow{h}Y$ względem relacji
+  \begin{center}\begin{tikzcd}[row sep=small, /tikz/column 2/.style={column sep=0.2mm}, /tikz/column 1/.style={column sep=0.2mm}]
+    (X\xrightarrow{h}Y) & \sim \arrow[d, sloped, phantom, "\iff"] & (X'\xrightarrow[h'] Y) \\ 
+    (\exists u, u':Z\to X)& Z\arrow[r, "u"] & X\\ 
+                          & Z\arrow[r, "u'"] & X'\\ 
+                      & hu=h'u'
+  \end{tikzcd}\end{center}
+  to znaczy, że istnieją $u, u'$ takie, że komutuje diagram
+  \begin{center}\begin{tikzcd}
+    & Z\arrow[dr, "u"]\arrow[dl, "u'" above left] \\ 
+    X \arrow[dr, "h" below left] & & X'\arrow[dl,"h'"]\\ 
+                      & Y 
+  \end{tikzcd}\end{center}
+\end{definition}
+
+Powyższa relacja jest relacją równoważności, bo biorąc $Z''$ jako pullback 
+\begin{center}\begin{tikzcd}[column sep=small]& Z'\arrow[d]\\ Z\arrow[r] & X'\end{tikzcd}\end{center}
+oraz korzystając z lematu \ref{epi przez pull back}, dostajemy przemienny diagram
+
+\begin{center}\begin{tikzcd}
+  & & {\color{orange}Z''}\arrow[dr, orange]\arrow[dl, orange]\\ 
+  & Z\arrow[dr]\arrow[dl] & & Z'\arrow[dr]\arrow[dl]\\ 
+  X\arrow[drr] & & X'\arrow[d] & & X''\arrow[dll]\\ 
+              & & Y
+\end{tikzcd}\end{center}
+
+O elementach możemy nadal myśleć jako o elementach "zbioru" $Y$ i podmieniać to myślenie na klasy abstrakcji relacji wyżej, jeśli jest to dla nas bardziej wygodne.
+
+{\large\bfseries\color{green}Własności elementów $\mathbf{Y}$}
+
+\begin{enumerate}
+  \item Odwzorowanie $Y\xrightarrow{f}Y'$ jest monomorfizmem $\iff$ dla wszystkich elementów $y\in Y$ $f(y)=0\implies y=0$ $\iff$ dla dowolnych $y_1,y_2\in Y$ jeśli $f(y_1)=f(y_2)\implies y_1=y_2$.
+  \item $Y\xrightarrow{f}Y'$ jest epimorfizmem $\iff$ dla każdego $y'\in Y'$ istnieje $y\in Y$ taki, że $f(y)=y'$.
+  \item $Y\xrightarrow{f}Y'$ jest odwzorowaniem zerowym $\iff$ $(\forall y\in Y)\;f(y)=0$
+  \item Ciąg \begin{tikzcd}Y\arrow[r, "f"] & Y'\arrow[r, "g"] & Y''\end{tikzcd} jest dokładny $\iff$ $gf=0$ oraz dla każdego $y'\in Y'$ takiego, że $g(y')=0$ istnieje $y\in Y$ taki, że $y'=f(y)$.
+\end{enumerate}
