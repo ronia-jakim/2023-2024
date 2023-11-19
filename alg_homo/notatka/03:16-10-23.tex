@@ -71,38 +71,38 @@ Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają w oczywisty sp
   \end{tikzcd}\end{center}
   jest bijekcją.
 
-
-
-
-
-
-
-  Musimy pokazać, że
-
-  \begin{center}\begin{tikzcd}[column sep=large, row sep=small]
-    Hom_{\mathbf{C}}(X, X')\arrow[r, "\sim"] & Hom_{\mathbf{\hat{C}}}(h_X, h_{X'})\\
-    \phi\arrow[u, phantom, sloped, "\in"]\arrow[r] & h_\phi\arrow[u, phantom, sloped, "\in"]
-  \end{tikzcd}\end{center}
-
-  jest bijekcją.
-  
-  Jeśli funktor $F\in\mathbf{\hat{C}}$ jest reprezentowalny, to reprezentujący go obiekt jest jedyny z dokładnością do izomorfizmu, bo
-
-  \begin{center}\begin{tikzcd}
-    & F\arrow[dr, "\cong"] \arrow[dl, "\cong" left]\\
-    h_X\arrow[rr, rightsquigarrow, "\star\star", bend left=20] & & h_{X'}\\
-    X\arrow[rr, "\star"] & & X'
-  \end{tikzcd}\end{center}
-
-  izomorfizm $\star$ pojawia się bezpośrednio po tym, że $F\to h_X$ i $F\to h_{X'}$ są izmorfizmami z definicji i od razu zadają izomorfizm $\star\star$.
-
-  Niech teraz $F\in Hom_{\mathbf{\hat{C}}}(h_X,h_{X'})$.
-
-  Jeśli $F=h_{\mathbf{C}}$, to mamy
-  \begin{center}\begin{tikzcd}[column sep=large]
-     h_X(X)\ni id_X\arrow[r, bend left=30, "h_\phi"]\arrow[r, bend right=30, "f"] & h_{X'}(X)
-  \end{tikzcd}\end{center}
-
+%
+%
+%
+%
+%
+%
+%  Musimy pokazać, że
+%
+%  \begin{center}\begin{tikzcd}[column sep=large, row sep=small]
+%    Hom_{\mathbf{C}}(X, X')\arrow[r, "\sim"] & Hom_{\mathbf{\hat{C}}}(h_X, h_{X'})\\
+%    \phi\arrow[u, phantom, sloped, "\in"]\arrow[r] & h_\phi\arrow[u, phantom, sloped, "\in"]
+%  \end{tikzcd}\end{center}
+%
+%  jest bijekcją.
+%  
+%  Jeśli funktor $F\in\mathbf{\hat{C}}$ jest reprezentowalny, to reprezentujący go obiekt jest jedyny z dokładnością do izomorfizmu, bo
+%
+%  \begin{center}\begin{tikzcd}
+%    & F\arrow[dr, "\cong"] \arrow[dl, "\cong" left]\\
+%    h_X\arrow[rr, rightsquigarrow, "\star\star", bend left=20] & & h_{X'}\\
+%    X\arrow[rr, "\star"] & & X'
+%  \end{tikzcd}\end{center}
+%
+%  izomorfizm $\star$ pojawia się bezpośrednio po tym, że $F\to h_X$ i $F\to h_{X'}$ są izmorfizmami z definicji i od razu zadają izomorfizm $\star\star$.
+%
+%  Niech teraz $F\in Hom_{\mathbf{\hat{C}}}(h_X,h_{X'})$.
+%
+%  Jeśli $F=h_{\mathbf{C}}$, to mamy
+%  \begin{center}\begin{tikzcd}[column sep=large]
+%     h_X(X)\ni id_X\arrow[r, bend left=30, "h_\phi"]\arrow[r, bend right=30, "f"] & h_{X'}(X)
+%  \end{tikzcd}\end{center}
+%
   {\large\color{red}WRÓCIĆ TUTAJ BO NIE WIEM CO SIĘ DZIEJE}
 
 \end{proof}
@@ -143,7 +143,7 @@ Niech $I$ będzie małą kategorią, a $F:I\to\mathbf{C}$ będzie funktorem.
       komutuje, tzn. $\Pi_j=F(\alpha)\circ\Pi_i$.
     \item \acc{[uniwersalność]} dla każdego układu $(X',\Pi_i')$ spełniającego poprzedni warunek istnieje jedyny morfizm $\lambda:X'\to X$ taki, że dla każdego $i\in I$ diagram
       \begin{center}\begin{tikzcd}
-      X'\arrow[rr, "\exists!\lambda"]\arrow[dr, "\Pi_i'" below left] & & X\arrow[dl, "\Pi_i"]\\
+      X'\arrow[rr, "\exists!\lambda", dashed]\arrow[dr, "\Pi_i'" below left] & & X\arrow[dl, "\Pi_i"]\\
       & F(i)
     \end{tikzcd}\end{center}
     komutuje
@@ -166,5 +166,10 @@ Granica funktora może nie istnieć, ale zawsze gdy istnieje, to jest jedyna z d
   \begin{center}\begin{tikzcd}
     & X \\ 
     F(i) \arrow[ur, "\Pi_i"] \arrow[rr, "F(\alpha)" below] & & F(j) \arrow[ul, "\Pi_j" above right]
+  \end{tikzcd}\end{center}
+  oraz jeśli istnieje drugi taki obiekt $X'$ oraz przekształcenia $\Pi'$ spełniające ten warunek, to istnieje dokładnie jedna funkcja $\lambda:X\to X'$:
+  \begin{center}\begin{tikzcd}
+    & F(i) \arrow[dr, "\Pi_i"] \arrow[dl, "\Pi_i'"] \\ 
+    X \arrow[rr, "\exists!\lambda" below, dashed] & & X'
   \end{tikzcd}\end{center}
 \end{definition}
