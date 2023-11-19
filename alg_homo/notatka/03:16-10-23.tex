@@ -159,6 +159,7 @@ Granica funktora może nie istnieć, ale zawsze gdy istnieje, to jest jedyna z d
       X\arrow[r, "\Pi_1"]\arrow[d, "\Pi_0" left]\arrow[dr, dashed] & F(1)\\
       F(0) & X'\arrow[l, "\Pi_0'"]\arrow[u, "\Pi_1'" right]
     \end{tikzcd}\end{center}
+  \item Jeśli rozważymy zbiór liniowo uporządkowany, gdzie obiekty to zbiory, a morfizm $A\to B$ oznacza, że $A\leq B$. Wtedy granicą jest element maksymalny tego zbioru (jeśli istnieje).
 \end{example}
 
 \begin{definition}[granica odwrotna]
@@ -167,9 +168,21 @@ Granica funktora może nie istnieć, ale zawsze gdy istnieje, to jest jedyna z d
     & X \\ 
     F(i) \arrow[ur, "\Pi_i"] \arrow[rr, "F(\alpha)" below] & & F(j) \arrow[ul, "\Pi_j" above right]
   \end{tikzcd}\end{center}
-  oraz jeśli istnieje drugi taki obiekt $X'$ oraz przekształcenia $\Pi'$ spełniające ten warunek, to istnieje dokładnie jedna funkcja $\lambda:X\to X'$:
+  Granicę odwrotną oznaczamy $\color{blue}\colim F$. 
+
+  Jeśli istnieje drugi taki obiekt $X'$ oraz przekształcenia $\Pi'$ spełniające ten warunek, to istnieje dokładnie jedna funkcja $\lambda:X\to X'$:
   \begin{center}\begin{tikzcd}
     & F(i) \arrow[dr, "\Pi_i"] \arrow[dl, "\Pi_i'"] \\ 
     X \arrow[rr, "\exists!\lambda" below, dashed] & & X'
   \end{tikzcd}\end{center}
 \end{definition}
+
+\begin{example}
+\item W kategorii $\mathbf{Set}$ koprodukt to suma mnogościowa zbiorów.
+\item Rozważając zbiór liniowo uporządkowany z morfizmami odpowiadającymi porządkowi, to kogranicą takiej kategorii jest element minimalny.
+\item W kategorii $\mathbf{Grp}$ granicą odwrotną jest koprodukt dwóch grup zdefiniowany za pomocą ich reprezentacji:
+  $$G_0=\land g_1, g_2,...,g_k\;|\;r_1,...,r_n\rangle$$
+  $$G_1=\land h_1, h_2,...,h_l\;|\;s_1,....s_m\rangle$$
+  $$G_1\star G_0=\langle g_1,...,g_k, h_1,...,h_l\;|\;r_1,...,r_n, s_1,...,s_m\rangle$$
+  gdzie $g_1,...,g_k$ to generatory $G_0$, a $r_1,...r_n$ to relacje w grupie $G_0$ (co daje element neutralny).
+\end{example}
