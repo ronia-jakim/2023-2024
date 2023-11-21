@@ -4,13 +4,13 @@ let rec fix_with_limit max_depth f x =
   else
     failwith "Za głęboko by się chciało"
 
-let rec fix_memo f x = 
+let rec fix_memo f = 
   let h = Hashtbl.create 69 in 
-  let rec g y = 
-    try Hashtbl.find h x 
-    with Not_found -> let z = f g y in Hashtbl.add h y z; 
-    z 
-    in g x
+  let rec g x = 
+    try Hashtbl.find h x
+    with Not_found -> let y = f g x in Hashtbl.add h x y; 
+    y
+    in g
 
 
 let fibf_f fib n = 
