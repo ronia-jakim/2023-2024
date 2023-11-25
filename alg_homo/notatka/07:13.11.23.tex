@@ -36,9 +36,53 @@
   \begin{center}\begin{tikzcd}
     & H^n(A)\arrow[r]\arrow[d] & H^n(B)\arrow[r]\arrow[d]\arrow[ddd, phantom, ""{coordinate, name=Z}] & H^n(C)\arrow[d] 
     \arrow[dddll, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Z) [near end]\tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget) }, orange, thick] \\ 
-    & \coker d_A^{n-1}\arrow[r]\arrow[d] & \coker d_B^{n-1} \arrow[r]\arrow[d] & \coker d_C^{n-1} \arrow[d]\arrow[r] & 0\\ 
+    & \coker d_A^{n-1}\arrow[r]\arrow[d, "d_A^{n+1}"] & \coker d_B^{n-1} \arrow[r]\arrow[d, "d_B^{n+1}"] & \coker d_C^{n-1} \arrow[d, "d_C^{n+1}"]\arrow[r] & 0\\ 
     0\arrow[r] & \ker d_A^{n+1} \arrow[r]\arrow[d] & \ker d_B^{n+1}\arrow[d]\arrow[r] & \ker d_C^{n+1}\arrow[d] \\ 
       & H^{n+1}(A)\arrow[r] & H^{n+1}(B)\arrow[r] & H^{n+1}(C) 
   \end{tikzcd}\end{center}
-  pomarańczowa strzałka wynika z lematu węża.
+  pomarańczowa strzałka wynika z lematu węża, natomiast różniczki dopisaliśmy, ponieważ "przenosi się" na dół.
+  \begin{center}\begin{tikzcd}
+    A^{n-1}\arrow[r, "d_A^{n-1}"] & A^n\arrow[r, "d_A^n"] \arrow[d, "epi" left] & A^{n+1}\arrow[r, "d_A^{n+1}"] & ... \\ 
+                                  & \coker d_A^{n-1} \arrow[r, dashed]\arrow[ur, dashed] & \ker d_A^{n+1}\arrow[u, "mono"]
+  \end{tikzcd}\end{center}
 \end{proof}
+
+\subsection{Quasi-izomorfizmy i kategoria pochodna}
+
+\begin{definition}[quasi-izomorfizm]
+  Morfizm $f:A^\cdot\to B^\cdot$ na kompleksach jest \buff{quasi-izomorfizmem} (qis), jeśli indukuje izomorfizm na kohomologiach, tzn dla każdego $i$ odwzorowanie
+  $$H^i(f):H^i(A^\cdot)\to H^i(B^\cdot)$$
+  jest izomorfizmem.
+\end{definition}
+
+\begin{example}
+  \item Dla bardzo ubogiego kompleksu
+    \begin{center}\begin{tikzcd}
+      ...\arrow[r] & A\arrow[r, "id_A"] & A\arrow[r] & 0 \arrow[r] & ... 
+    \end{tikzcd}\end{center}
+    mamy $H^\cdot =0 $ i jeśli przyrównany do niego kompleks złożony tylko z $0$, to quasi-izomorfizmem między tymi dwoma kompleksami jest odwzorowanie zerowe.
+  \item Mniej trywialny przykład to rozważenie ciągu dokładnego:
+    \begin{center}\begin{tikzcd} 
+      0 \arrow[r] & \Z\arrow[r, "2\times"] &\Z \arrow[r] &  \Z/2\Z \arrow[r] & 0 
+    \end{tikzcd}\end{center}
+    Możemy go podmienić na dwa kompleksy z odwzorowaniem między nimi jak niżej
+    \begin{center}\begin{tikzcd}
+      ...\arrow[r] & 0\arrow[r]\arrow[d] & \Z\arrow[r, "2\times"]\arrow[d, "0"] & \Z \arrow[r]\arrow[d, "epi"] & 0\arrow[d] \arrow[r] & ... \\ 
+      ... \arrow[r] & 0\arrow[r] & 0\arrow[r] & \Z/2\Z \arrow[r] & 0\arrow[r] & ...
+    \end{tikzcd}\end{center}
+    Jedyna nietrywialna grupa kohomologii w obu kompleksach pojawia się w miejscu $\Z/2\Z$ i jest równa $\Z/2\Z$. Czy odwzorowanie, które prawie wszędzie jest zerowe, ale na wysokości nietrywialnej grupy kohomologii staje się epimorfizmem jest quasi-izomorfizmem kompleksów.
+\end{example}
+
+\begin{theorem}[kategoria pochodna]
+  Niech $\mathbf{A}$ będzie kategorią abelową, natomiast $Kom(\mathbf{A})$ kategorią jej kompleksów. Istnieje \buff{kategoria pochodna} $D(\mathbf{A})$ i funktor $Q:Kom(\mathbf{A})\to D(\mathbf{A})$ taki, że 
+  \begin{enumerate}
+    \item jeśli $f$ jest qis w $kom(\mathbf{A})$, to $D(f)$ jest izomorfizmem w $D(\mathbf{A})$
+    \item jeśli $F:Kom(\mathbf{A})\to D(\mathbf{A})$ spełnia warunek $1$, to faktoryzuje się przez $Q$:
+      \begin{center}\begin{tikzcd}
+        Kom(\mathbf{A})\arrow[rr, "Q"]\arrow[dr, "F"] & & D(\mathbf{A}) \arrow[dl, "\exists!G"] \\ 
+                                                      & D(\mathbf{A})
+      \end{tikzcd}\end{center}
+  \end{enumerate}
+
+  Kategorię $D(\mathbf{A})$ czasem oznaczamy $D'$.
+\end{theorem}
