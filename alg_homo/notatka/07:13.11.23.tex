@@ -1,0 +1,44 @@
+\section{Wężowe homologie i kohomologie}
+
+\subsection{Ciąg dokładny kompleksów}
+
+\begin{lemma}
+  W kategorii abelowej, krótki ciąg dokładny kompleksów 
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & A^* \arrow[r] & B^* \arrow[r] & C^* \arrow[r] & 0 
+  \end{tikzcd}\end{center} 
+  indukuje długi ciąg dokładny kohomologii:
+  \begin{center}\begin{tikzcd}
+    & & ... \\ 
+    H^{n+1}(A) \arrow[r] & H^{n+1}(B) \arrow[r]\arrow[d, phantom, ""{coordinate, name=Z}] & H^{n+1}(C)  
+    \arrow[u, rounded corners, to path={-- ([xshift=2ex]\tikztostart.east) -| ([xshift=4ex]\tikztostart.east) |- ([xshift=4ex]\tikztotarget.west)}] \\ 
+    H^n(A) \arrow[r] & H^n(B) \arrow[r]\arrow[d, phantom, ""{coordinate, name=Y}] & H^n(C) 
+    \arrow[ull, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Z) [near end]\tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget) }] \\ 
+                     & ... & H^{n-1}(C)
+    \arrow[ull, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Y) [near end]\tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget) }] \\ 
+  \end{tikzcd}\end{center}
+\end{lemma}
+
+\begin{dygresja}
+  Jeśli jesteśmy w kategorii abelowej, to kategoria jej kompleksów również jest abelowa.
+\end{dygresja}
+
+\begin{proof}
+  Potrzebujemy dwóch diagramów i troszkę polowania:
+
+  \begin{center}\begin{tikzcd}
+    & \coker d_A^n\arrow[r] & \coker d_B^n\arrow[r] & \coker d_C^n \arrow[r] & 0\\ 
+    & A^{n+1}\arrow[u]\arrow[r] & B^{n+1}\arrow[u]\arrow[r] & C^{n+1}\arrow[u]\arrow[r] & 0\\ 
+    0\arrow[r] & A^n\arrow[r]\arrow[u] & B^n\arrow[r]\arrow[u] & C^n\arrow[r]\arrow[u] & 0\\ 
+    0\arrow[r] & \ker d_A^n\arrow[u]\arrow[r] & \ker d_B^n\arrow[u]\arrow[r] & \ker d_C^n\arrow[u]
+  \end{tikzcd}\end{center}
+
+  \begin{center}\begin{tikzcd}
+    & H^n(A)\arrow[r]\arrow[d] & H^n(B)\arrow[r]\arrow[d]\arrow[ddd, phantom, ""{coordinate, name=Z}] & H^n(C)\arrow[d] 
+    \arrow[dddll, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Z) [near end]\tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget) }, orange, thick] \\ 
+    & \coker d_A^{n-1}\arrow[r]\arrow[d] & \coker d_B^{n-1} \arrow[r]\arrow[d] & \coker d_C^{n-1} \arrow[d]\arrow[r] & 0\\ 
+    0\arrow[r] & \ker d_A^{n+1} \arrow[r]\arrow[d] & \ker d_B^{n+1}\arrow[d]\arrow[r] & \ker d_C^{n+1}\arrow[d] \\ 
+      & H^{n+1}(A)\arrow[r] & H^{n+1}(B)\arrow[r] & H^{n+1}(C) 
+  \end{tikzcd}\end{center}
+  pomarańczowa strzałka wynika z lematu węża.
+\end{proof}

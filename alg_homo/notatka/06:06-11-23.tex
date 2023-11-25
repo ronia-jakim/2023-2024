@@ -126,3 +126,90 @@ O elementach możemy nadal myśleć jako o elementach "zbioru" $Y$ i podmieniać
   \item $Y\xrightarrow{f}Y'$ jest odwzorowaniem zerowym $\iff$ $(\forall y\in Y)\;f(y)=0$
   \item Ciąg \begin{tikzcd}Y\arrow[r, "f"] & Y'\arrow[r, "g"] & Y''\end{tikzcd} jest dokładny $\iff$ $gf=0$ oraz dla każdego $y'\in Y'$ takiego, że $g(y')=0$ istnieje $y\in Y$ taki, że $y'=f(y)$.
 \end{enumerate}
+
+\begin{proof}
+  Najpierw zastanówmy się, co to znaczy, że $y=0$?
+  \begin{center}\begin{tikzcd}
+    & Z\arrow[dr, "0"]\arrow[dl, "u" above left] \\ 
+    X\arrow[dr, "y" below left] & & 0\arrow[dl, "0"]\\ 
+                     & Y
+  \end{tikzcd}\end{center}
+  Skoro $y=0$, to powyższy diagram komutuje. Wiemy, że $u$ jest epimorfizmem oraz $yu=0$, więc $y=0$. Czyli $y=0$ jako normalny element $\iff$ $y=0$ jako morfizm.
+
+  Pokażemy punkt $1$, tzn. $f$ jest monomorfizmem $\iff$ dla wszystkich elementów $y\in Y$ $f(y)=0\implies y=0$.
+
+  $\implies$ jeśli \begin{tikzcd}Y\arrow[r, "f"] & Y'\end{tikzcd} jest monomorfizmem oraz $f(y)=0$, to możemy narysować
+  \begin{center}\begin{tikzcd}
+    X\arrow[d, "y" left]\arrow[dr, "0"]\\ 
+    Y\arrow[r, "f" below] & Y'
+  \end{tikzcd}\end{center}
+  Z niego wiemy, że $fy=0$, a skoro $f$ jest monomorfizmem, to $y=0$ jako morfizm. Wcześniej pokazaliśmy, że $y=0$ jako morfizm $\iff$ $y=0$ jako element. Czyli dostajemy to czego oczekiwaliśmy.
+
+  $\impliedby$
+
+  Zakładamy, że $fy=0$ i pytamy, czy wynika z tego, że $f$ jest monomorfizmem? Wiemy, że $fy=0\implies y=0$ jako element, ale $y=0$ jako element $\iff$ $y=0$ jako morfizm. Czyli $fy=0\implies y=0$ oznacza, że $f$ spełnia warunek na monomorfizm. 
+\end{proof}
+
+\subsection{Lemat o wężu \includegraphics[width=4mm]{wunsz.png}}
+
+\begin{definition}[ciąg dokładny]
+  W kategorii abelowej kompleks łańcuchowy
+  \begin{center}\begin{tikzcd}
+    A^\cdot & ... \arrow[r] & A^{i-1} \arrow[r, "d^{i-1}"] & A^i\arrow[r, "d^i"] & A^{i+1} \arrow[r] & ...
+  \end{tikzcd}\end{center}
+  jest dokładny w $A^i$, jeśli $d^id^{i-1}=0$ oraz $i$-ta grupa kohomologii $H^i(A^\cdot)=0$.
+
+\end{definition}
+
+\begin{lemma}
+  Ciąg jest dokładny w $A^i$ $\iff$ $\img d^{i-1}=\ker d^i$.
+\end{lemma}
+
+\begin{proof}
+  $\impliedby$ 
+  Wiemy, że $\img d^{i-1}=\ker d^i$, czyli narysujmy diagram
+  \begin{center}\begin{tikzcd}[column sep=large, row sep=large]
+    & & C\arrow[d, "b", dashed]\\
+    A^{i-1}\arrow[r, "d^{i-1}"]\arrow[dr, "a\;epi" below left, dashed] & A^i \arrow[r, "d^i"]\arrow[ur, "c"] & A^{i+1}\\ 
+                                & K\arrow[u, "k\;mono" right]
+  \end{tikzcd}\end{center}
+\end{proof}
+
+\begin{example}
+  \item Ciąg \begin{tikzcd}0\arrow[r] & A\arrow[r, "f"] & B\end{tikzcd} jest dokładny $\iff$ $f$ jest monomorfizmem 
+  \item Ciąg \begin{tikzcd}A\arrow[r, "f"] & B\arrow[r] & 0\end{tikzcd} jest dokładny $\iff$ $f$ jest epimorfizmem 
+  \item Jeśli mamy ciąg \begin{tikzcd}0\arrow[r] & A\arrow[r, "f"] & B\arrow[r] & 0\end{tikzcd} to jest on dokładny $\iff$ $f$ jest izomorfizmem
+  \item Klasyczny ciąg dokładny to:
+    \begin{center}\begin{tikzcd}
+      0\arrow[r] & A\arrow[r, "f"] & B\arrow[r, "g"] & C\arrow[r] & 0 
+    \end{tikzcd}\end{center}
+    gdzie $f$ jest monomorfizmem, a $g$ jest epimorfizmem.
+\end{example}
+
+\begin{lemma}[o wężu]
+  Załóżmy, że dany jest diagram
+  \begin{center}\begin{tikzcd}
+    & A\arrow[r]\arrow[d, "\alpha"] & B\arrow[r]\arrow[d, "\beta"] & C\arrow[r]\arrow[d, "\gamma"] & 0\\ 
+    0 \arrow[r] & A'\arrow[r] & B' \arrow[r] & C'
+  \end{tikzcd}\end{center}
+  gdzie wiersze są dokładne, a wszystkie kwadraty komutują.
+
+  Wtedy istnieje odwzorowanie $\ker\gamma\to\coker\alpha$ takie, że ciąg 
+  \begin{center}\begin{tikzcd}
+    \ker\alpha\arrow[r] & \ker\beta\arrow[r]\arrow[d, phantom, ""{coordinate, name=Z}] & \ker\gamma
+    \arrow[dll, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Z) [near end]\tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget) }] \\ 
+    \coker\alpha\arrow[r] & \coker\beta \arrow[r] & \coker\gamma 
+  \end{tikzcd}\end{center}
+  jest dokładny.
+\end{lemma}
+
+\begin{proof}
+  Dowód to polowanie po diagramie, którego nie będę pisać. Narysuję za to bardziej czytelny diagram:
+  \begin{center}\begin{tikzcd}
+   &  \color{orange} \ker\alpha \arrow[r]\arrow[d] & \color{orange} \ker\beta \arrow[r]\arrow[d] & \color{orange} \ker\gamma \arrow[d]
+    \arrow[dddll, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Z) [near end]\tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget) }, orange, thick] \\  
+   & A\arrow[d, "\alpha"]\arrow[r] & B\arrow[r]\arrow[d, "\beta"]\arrow[d, phantom, ""{coordinate, name=Z}] & C \arrow[r]\arrow[d, "\gamma"] & 0\\ 
+    0\arrow[r] & A'\arrow[r]\arrow[d] & B'\arrow[r]\arrow[d] & C'\arrow[d] \\ 
+               & \color{orange} \coker\alpha\arrow[r] & \color{orange} \coker\beta\arrow[r] & \color{orange} \coker\gamma 
+  \end{tikzcd}\end{center}
+\end{proof}
