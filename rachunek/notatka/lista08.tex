@@ -147,3 +147,38 @@ Zacznę od oznaczenia pozycji literkami:
   to prawdopodobieństwo, że wygra Ala wynosi $\frac{4}{7}$.
 
 \end{solution}
+
+\begin{problem}
+  Niech $\{\xi_k\}$ będzie ciągiem niezależnych zmiennych losowych z rozkładem $\prob{\xi_k=j}=p_j$. Pokaż, że $M_n=\max_{k\leq n}\xi_k$ jest łańcuchem Markowa. Jaka jest funkcja przejścia?
+\end{problem}
+
+\begin{solution}
+  Chcemy pokazać, że
+  $$\prob{M_{n+1}=m_{n+1}}{M_0=m_0,...,M_n=m_n}=\prob{M_{n+1}=m_{n+1}}{M_n=m_n}=P(m_n,m_{n+1})$$
+
+  Zaczynamy od obserwacji, że $M_{n+1}=\max (\xi_{n+1},M_n)$ oraz, że $M_n\geq M_{n-1}\geq ...\geq M_0$. 
+  \begin{align*}
+    \prob{M_{n+1}=m_{n+1}}{M_0=m_0,...,M_n=m_n}&=\prob{M_{n+1}=\max(M_n, m_{n+1})}{M_0=m_0,...,M_n=m_n}=\\ 
+                                               &=\prob{M_{n+1}=\max(M_n,m_{n+1})}{M_n=m_n}=P(m_n, m_{n+1})
+  \end{align*}
+  ponieważ $M_{n+1}=\max(M_n,m_{n+1})$, gdzie $m_{n+1}$ mamy ustalone odgórnie, jest zależne tylko od $M_n$.
+  
+  Wyrazem macierzy jest więc $P(m_n,m_{n+1})=\frac{p_{m_n}p_{m_{n+1}}}{p_{m_n}}=p_{m_{n+1}}$
+\end{solution}
+
+\begin{problem}
+  Rozważmy łańcuch Markowa na przestrzeni stanów 
+  $$S=\{s_1, s_2,s_3,s_4\}$$ 
+  dla którego prawdopodobieństwa przejścia są zadane macierzą
+  $$P=\begin{bmatrix}0 &\frac{1}{2} & \frac{1}{2} & 0\\ 
+  0 & \frac{1}{3} &\frac{1}{3} & \frac{1}{3}\\ 
+  0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{3}\\ 
+0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{3}\end{bmatrix}$$
+tzn. $\prob{X_{n+1}=s_j}{X_n=s_i}=P(i,j)$. Dla każdego stany oblicz $\lim_n \prob{X_n=s_i}{X_0=s_1}$.
+\end{problem}
+
+\begin{solution}
+  \begin{align*}
+    \prob{X_n=s_i}{X_0=s_1}=
+  \end{align*}
+\end{solution}
