@@ -18,8 +18,8 @@ let mult_list (lst : int list) : int =
 let sorted (lst : int list) : bool = 
   let f a b cont = 
     match a with 
-    | (bl, None) -> cont (bl, Some b)
-    | (bl, Some aa) -> 
-      if b <= aa then (false, Some aa) 
-      else cont (bl, Some aa)
-  in fst (fold_left_cps f (true, None) lst (fun x -> x))
+    | None -> cont (Some b)
+    | Some aa -> 
+      if b <= aa then false
+      else cont (Some aa)
+  in fold_left_cps f None lst (fun x -> true)

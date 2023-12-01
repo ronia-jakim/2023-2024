@@ -178,7 +178,77 @@ tzn. $\prob{X_{n+1}=s_j}{X_n=s_i}=P(i,j)$. Dla każdego stany oblicz $\lim_n \pr
 \end{problem}
 
 \begin{solution}
-  \begin{align*}
-    \prob{X_n=s_i}{X_0=s_1}=
-  \end{align*}
+  Chyba można tutaj użyć kolejnego zadania.
+\end{solution}
+
+\begin{problem}
+  Niech $\{X_n\}$ będzie łańcuchem Markowa o przeliczalnej przestrzeni stanów $S$ i macierzy przejścia $P$. Pokaż, że 
+  \begin{enumerate}
+    \item $\prob{X_n=x_n,X_{n-1}=x_{n-1},...,X_0=x_0}=\prob{X_0=x_0}P(x_0,x_1)...P(x_{n-1},x_n)$
+    \item $\prob{X_{n+m}=y}{X_m=x}=\prob{X_n=y}{X_0=x}=P^n(x, y)$
+    \item (Równanie Chapmana-Kolmogorowa)
+      $$\prob{X_{n+m}=z}{X_0=x}=\sum_{y\in S}\prob{X_m=y}{X_0=x}\prob{X_n=z}{X_0=y}$$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item Może indukcją? Dla $n=0$ jest oczywiste, bo wtedy $\prob{X_0=x_0}=\prob{X_0=x_0}$ :v
+
+      To teraz przejście $n\implies n+1$. Zacznę od czegoś co wiem, tzn. prawdopodobieństwa warunkowego
+      \begin{align*}
+        P(x_n, x_{n+1})=\prob{X_{n+1}=x_{n+1}}{X_n=x_n}&=\prob{X_{n+1}=x_{n+1}}{X_n=x_n,...,X_0=x_0}=\\ 
+                                                       &=\frac{\prob{X_{n+1}=x_{n+1}, X_n=x_n,...,X_0=x_0}}{\prob{X_n=x_n,....,X_0=x_0}}
+      \end{align*}
+
+      No dobra, ale to co jest na dole to z założenia indukcyjnego wiemy, że 
+      $$\prob{X_n=x_n,...,X_0=x_0}=\prob{X_0=x_0}P(x_0, x_1)...P(x_{n-1},x_n)$$
+      podstawiając do tego równania wyżej dostajemy
+      $$P(x_n,x_{n-1})=\frac{\prob{X_{n+1}=x_{n+1},...,X_0=x_0}}{\prob{X_0=x_0}P(x_0,x_1)...P(x_{n-1},x_n)}$$
+      wystarczy przemnożyć i gotowe.
+    \item Tutaj też chyba chcemy indukcję po $n$, a $m$ ustalamy stały?
+
+      Base case to $n=0$ i wówczas
+      $$\prob{X_{0+m}=y}{X_m=x}=\prob{X_0=y}{X_0=x}=P^0(x, y)=Id$$
+      jest macierzą identyczności co ma sens - $X_m=y\;i\; X_m=x$ zachodzi z $\prob$ jeden jeśli $x=y$, a z $\prob=0$ jeśli są różne.
+
+      To teraz $n\implies n+1$.
+
+%      Zacznijmy od zapisania $P^{n+1}(x,y)$ zgodnie z definicją na wykładzie
+%      \begin{align*}
+%        P^{n+1}(x, y)&=\sum_{z\in S}P^n(x, z)P(z, y)=\sum_{z\in S}\prob{X_{n}=z}{X_0=x}P(z, y)=\\ 
+%                     &=\sum_{z\in S}\frac{\prob{X_n=z,X_0=x}}{\prob{X_0=x}}P(z,y)=\\ 
+%                     &=\sum_{z\in S}\frac{P(x, x_1)P(x_1, x_2)...P(x_{n-1}, z)P(z, y)}{\prob{X_n=z,X_{n-1}=x_{n-1},....,X_0=x}}\prob{X_n=z, X_0=x}=\\
+%                     &=\sum_{z\in S}\frac{\prob{X_{n+1}=y,X_n=z,...,X_0=x}}{\prob{X_0=x}\prob{X_n=z,X_{n-1}=x_{n-1},...,X_0=x}}\prob{X_n=z,X_0=x}=\\ 
+%                     &=\sum_{z\in S}\prob{X_{n+1}=y}{X_n=z}\prob{X_n=z}{X_0=x}=\\ 
+%                     &=\sum_{z\in S}\frac{\prob{X_{n+1}=y, X_n=z}\prob{X_n=z,X_0=x}}{\prob{X_0=x}\prob{X_n=z}}
+%      \end{align*}
+
+      \begin{align*}
+        \prob{X_{n+1}=y}{X_0=x}&=\frac{\prob{X_{n+1}=y, X_0=x}}{\prob{X_0=x}}=\\ 
+                               &=\sum_{x_n\in S}\frac{\prob{X_{n+1}=y, X_0=x}}{\prob{X_n=x_n, X_0=x}} \frac{\prob{X_n=x_n, X_0=x}}{\prob{X_0=x}}=\\ 
+                               &=\sum_{x_n\in S}\frac{\prob{X_{n+1}=y, X_0=x}}{\prob{X_n=x_n, X_0=x}}P^n(x, x_n)=\\ 
+                               &=\sum_{z\in S}\frac{\prob{X_{n+1}=y}{X_0=x}}{\prob{X_n=z}{X_0=x}}P^n(x, z)
+      \end{align*}
+      a idąc od prawej strony dostalibyśmy, że
+      \begin{align*}
+        P^{n+1}(x, y)&=\sum_{z\in S}P^n(x, z)P(z, y)=\sum_{z\in S}P^n(x, z)\prob{X_{n+1}=y}{X_n=z}=\\ 
+                     &=\sum_{z\in S}\frac{\prob{X_{n+1}=y, X_n=z}}{\prob{X_n=z}}P^n(x, z)
+      \end{align*}
+
+      \begin{align*}
+        \prob{X_{n+1}=y, X_n=x_n,..., X_0=x}&=\prob{X_0=x, X_1=x_1}\frac{\prob{X_1=x_1, X_2=x_2}}{\prob{X_1=x_1}}...\frac{\prob{X_{n+1}=y, X_n=x_n}}{\prob{X_n=x_n}}
+      \end{align*}
+
+    \item To chyba pójdzie indukcją po $m$ korzystającą z poprzedniego punktu.
+
+      \begin{align*}
+        \prob{X_{n+m+1}=y}{X_0=x}&=P^{n+m+1}(x, y)=\sum_{z\in S}P^{n+m}(x, z)P(z, y)=\\ 
+                                 &=\sum_{z\in S}\prob{X_{n+m}=z}{X_0=x}\prob{X_{n+1}=y}{X_n=z}=\\ 
+                                 &=\sum_{z\in S}\sum_{s\in S}\prob{X_m=z}{X_0=x}\prob{X_n=s}{X_0=x}\prob{X_{n+1}=y}{X_n=z}=\\ 
+                                 &=\sum_{z\in S}\prob{X_{n+1}=y}{X_n=z}\prob{X_n=z}{X_0=x}\sum_{s\in S}\prob{X_m=s}{X_0=x}=\\ 
+                                 &=\sum_{z\in S}\prob{X_{n+1}=y}{X_n=z}\prob{X_n=z}{X_0=x}\sum_{s\in S}P^m(x, s)=\\ 
+                                 &=\sum_{z\in S}\prob{X_{n+1}=y}{X_n=z}\prob{X_n=z}{X_0=x}\cdot 1
+      \end{align*}
+  \end{enumerate}
 \end{solution}
