@@ -206,39 +206,57 @@ tzn. $\prob{X_{n+1}=s_j}{X_n=s_i}=P(i,j)$. Dla każdego stany oblicz $\lim_n \pr
       podstawiając do tego równania wyżej dostajemy
       $$P(x_n,x_{n-1})=\frac{\prob{X_{n+1}=x_{n+1},...,X_0=x_0}}{\prob{X_0=x_0}P(x_0,x_1)...P(x_{n-1},x_n)}$$
       wystarczy przemnożyć i gotowe.
-    \item Tutaj też chyba chcemy indukcję po $n$, a $m$ ustalamy stały?
+    \item Tutaj zaczynamy od pokazania faktu analogicznego do punktu 1., tzn. 
+      $$\prob{X_{n+m}=x_{n+m},..., X_m=x_m}=\prob{X_m=x_m}P(x_m, x_{m+1})...P(x_{n+m-1}, x_{n+m})$$
+      robi się to indukcją tak jak wcześniej. Dla $n=0$ przypadek bazowy jest oczywisty. Teraz przejście graniczne to
+      \begin{align*}
+        P(x_{n+m}, x_{n+m+1})&=\prob{X_{n+m+1}=x_{n+m+1}}{X_{n+m}=x_{n+m}}=\\
+        \mathbb{P}\left[X_{n+m+1}\right.&=x_{n+m+1}\;|\;\left.X_{n+m}=x_{n+m},..., X_m=x_m\right]=\frac{\prob{X_{n+m+1}=x_{n+m+1},..., X_m=x_m}}{\prob{X_{n+m}=x_{n+m},..., X_m=x_m}}=\\ 
+        =&\frac{\prob{X_{n+m+1}=x_{n+m+1},..., X_m=x_m}}{\prob{X_m=x_m}P(x_{m}, x_{m+1})...P(x_{n+m-1},x_{n+m})}
+      \end{align*}
 
-      Base case to $n=0$ i wówczas
-      $$\prob{X_{0+m}=y}{X_m=x}=\prob{X_0=y}{X_0=x}=P^0(x, y)=Id$$
-      jest macierzą identyczności co ma sens - $X_m=y\;i\; X_m=x$ zachodzi z $\prob$ jeden jeśli $x=y$, a z $\prob=0$ jeśli są różne.
-
-      To teraz $n\implies n+1$.
-
-%      Zacznijmy od zapisania $P^{n+1}(x,y)$ zgodnie z definicją na wykładzie
+      Zauważmy, że prawdopodobieństwo przejścia z $X_m$ do $X_{n+m}$ to suma przejść wszystkimi możliwymi ścieżkami między tymi dwoma wierzchołkami
+      \begin{align*}\color{red}
+        \prob{X_{n+m}=y}{X_m=x}&=\sum_{\substack{x_{m+1},..., \\ x_{n+m-1}\in S}}\prob{X_{n+m}=y}{X_{n+m-1}=x_{n+m-1},..., X_{m+1}=x_{m+1},X_m=x}=\\ 
+                               &=\sum \frac{\prob{X_{n+m}=y,X_{n+m-1}=x_{n+m-1},..., X_m=x}}{\prob{X_{n+m-1}=x_{n+m-1},..., X_m=x}}=\\ 
+                               &=\sum\frac{\prob{X_m=x}P(x, x_{m+1})...P(x_{n+m-1}, y)}{\prob{X_m=x}P(x, x_{m+1})...P(x_{n+m-2},x_{n+m-1})}=\\ 
+                               &=\sum_{\substack{x_{m+1},...,\\ x_{n+m-1}\in S}} P(x_{n+m-1}, y)
+      \end{align*}
+%
+%
+%      też chyba chcemy indukcję po $n$, a $m$ ustalamy stały?
+%
+%      Base case to $n=0$ i wówczas
+%      $$\prob{X_{0+m}=y}{X_m=x}=\prob{X_0=y}{X_0=x}=P^0(x, y)=Id$$
+%      jest macierzą identyczności co ma sens - $X_m=y\;i\; X_m=x$ zachodzi z $\prob$ jeden jeśli $x=y$, a z $\prob=0$ jeśli są różne.
+%
+%      To teraz $n\implies n+1$.
+%
+%%      Zacznijmy od zapisania $P^{n+1}(x,y)$ zgodnie z definicją na wykładzie
+%%      \begin{align*}
+%%        P^{n+1}(x, y)&=\sum_{z\in S}P^n(x, z)P(z, y)=\sum_{z\in S}\prob{X_{n}=z}{X_0=x}P(z, y)=\\ 
+%%                     &=\sum_{z\in S}\frac{\prob{X_n=z,X_0=x}}{\prob{X_0=x}}P(z,y)=\\ 
+%%                     &=\sum_{z\in S}\frac{P(x, x_1)P(x_1, x_2)...P(x_{n-1}, z)P(z, y)}{\prob{X_n=z,X_{n-1}=x_{n-1},....,X_0=x}}\prob{X_n=z, X_0=x}=\\
+%%                     &=\sum_{z\in S}\frac{\prob{X_{n+1}=y,X_n=z,...,X_0=x}}{\prob{X_0=x}\prob{X_n=z,X_{n-1}=x_{n-1},...,X_0=x}}\prob{X_n=z,X_0=x}=\\ 
+%%                     &=\sum_{z\in S}\prob{X_{n+1}=y}{X_n=z}\prob{X_n=z}{X_0=x}=\\ 
+%%                     &=\sum_{z\in S}\frac{\prob{X_{n+1}=y, X_n=z}\prob{X_n=z,X_0=x}}{\prob{X_0=x}\prob{X_n=z}}
+%%      \end{align*}
+%
 %      \begin{align*}
-%        P^{n+1}(x, y)&=\sum_{z\in S}P^n(x, z)P(z, y)=\sum_{z\in S}\prob{X_{n}=z}{X_0=x}P(z, y)=\\ 
-%                     &=\sum_{z\in S}\frac{\prob{X_n=z,X_0=x}}{\prob{X_0=x}}P(z,y)=\\ 
-%                     &=\sum_{z\in S}\frac{P(x, x_1)P(x_1, x_2)...P(x_{n-1}, z)P(z, y)}{\prob{X_n=z,X_{n-1}=x_{n-1},....,X_0=x}}\prob{X_n=z, X_0=x}=\\
-%                     &=\sum_{z\in S}\frac{\prob{X_{n+1}=y,X_n=z,...,X_0=x}}{\prob{X_0=x}\prob{X_n=z,X_{n-1}=x_{n-1},...,X_0=x}}\prob{X_n=z,X_0=x}=\\ 
-%                     &=\sum_{z\in S}\prob{X_{n+1}=y}{X_n=z}\prob{X_n=z}{X_0=x}=\\ 
-%                     &=\sum_{z\in S}\frac{\prob{X_{n+1}=y, X_n=z}\prob{X_n=z,X_0=x}}{\prob{X_0=x}\prob{X_n=z}}
+%        \prob{X_{n+1}=y}{X_0=x}&=\frac{\prob{X_{n+1}=y, X_0=x}}{\prob{X_0=x}}=\\ 
+%                               &=\sum_{x_n\in S}\frac{\prob{X_{n+1}=y, X_0=x}}{\prob{X_n=x_n, X_0=x}} \frac{\prob{X_n=x_n, X_0=x}}{\prob{X_0=x}}=\\ 
+%                               &=\sum_{x_n\in S}\frac{\prob{X_{n+1}=y, X_0=x}}{\prob{X_n=x_n, X_0=x}}P^n(x, x_n)=\\ 
+%                               &=\sum_{z\in S}\frac{\prob{X_{n+1}=y}{X_0=x}}{\prob{X_n=z}{X_0=x}}P^n(x, z)
 %      \end{align*}
-
-      \begin{align*}
-        \prob{X_{n+1}=y}{X_0=x}&=\frac{\prob{X_{n+1}=y, X_0=x}}{\prob{X_0=x}}=\\ 
-                               &=\sum_{x_n\in S}\frac{\prob{X_{n+1}=y, X_0=x}}{\prob{X_n=x_n, X_0=x}} \frac{\prob{X_n=x_n, X_0=x}}{\prob{X_0=x}}=\\ 
-                               &=\sum_{x_n\in S}\frac{\prob{X_{n+1}=y, X_0=x}}{\prob{X_n=x_n, X_0=x}}P^n(x, x_n)=\\ 
-                               &=\sum_{z\in S}\frac{\prob{X_{n+1}=y}{X_0=x}}{\prob{X_n=z}{X_0=x}}P^n(x, z)
-      \end{align*}
-      a idąc od prawej strony dostalibyśmy, że
-      \begin{align*}
-        P^{n+1}(x, y)&=\sum_{z\in S}P^n(x, z)P(z, y)=\sum_{z\in S}P^n(x, z)\prob{X_{n+1}=y}{X_n=z}=\\ 
-                     &=\sum_{z\in S}\frac{\prob{X_{n+1}=y, X_n=z}}{\prob{X_n=z}}P^n(x, z)
-      \end{align*}
-
-      \begin{align*}
-        \prob{X_{n+1}=y, X_n=x_n,..., X_0=x}&=\prob{X_0=x, X_1=x_1}\frac{\prob{X_1=x_1, X_2=x_2}}{\prob{X_1=x_1}}...\frac{\prob{X_{n+1}=y, X_n=x_n}}{\prob{X_n=x_n}}
-      \end{align*}
+%      a idąc od prawej strony dostalibyśmy, że
+%      \begin{align*}
+%        P^{n+1}(x, y)&=\sum_{z\in S}P^n(x, z)P(z, y)=\sum_{z\in S}P^n(x, z)\prob{X_{n+1}=y}{X_n=z}=\\ 
+%                     &=\sum_{z\in S}\frac{\prob{X_{n+1}=y, X_n=z}}{\prob{X_n=z}}P^n(x, z)
+%      \end{align*}
+%
+%      \begin{align*}
+%        \prob{X_{n+1}=y, X_n=x_n,..., X_0=x}&=\prob{X_0=x, X_1=x_1}\frac{\prob{X_1=x_1, X_2=x_2}}{\prob{X_1=x_1}}...\frac{\prob{X_{n+1}=y, X_n=x_n}}{\prob{X_n=x_n}}
+%      \end{align*}
 
     \item To chyba pójdzie indukcją po $m$ korzystającą z poprzedniego punktu.
 
@@ -249,6 +267,63 @@ tzn. $\prob{X_{n+1}=s_j}{X_n=s_i}=P(i,j)$. Dla każdego stany oblicz $\lim_n \pr
                                  &=\sum_{z\in S}\prob{X_{n+1}=y}{X_n=z}\prob{X_n=z}{X_0=x}\sum_{s\in S}\prob{X_m=s}{X_0=x}=\\ 
                                  &=\sum_{z\in S}\prob{X_{n+1}=y}{X_n=z}\prob{X_n=z}{X_0=x}\sum_{s\in S}P^m(x, s)=\\ 
                                  &=\sum_{z\in S}\prob{X_{n+1}=y}{X_n=z}\prob{X_n=z}{X_0=x}\cdot 1
+      \end{align*}
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}
+  Pokaż własność Markowa: Niech $\{X_n\}$ będzie łańcuchem Markowa z przeliczalną przestrzenią stanów, macierzą przejścia $P$ i rozkładem początkowym $\mu_0$. Załóżmy, że dla pewnego $m\in\N$ i $s\in S$, $\prob{X_m=x}>0$. Pokaż, że pod warunkiem $\{X_m=x\}$, proces $\{X_{m+n}\}$ jest łańcuchem Markowa z macierzą przejścia $P$ i rozkładem początkowym $\delta_x$ niezależnym od $X_0,X_1,..., X_m$.
+\end{problem}
+
+\begin{solution}
+  Czy ja mam po prostu pokazać, że 
+  \begin{align*}
+    \prob{X_{m+n}=y}{X_{m+n-1}=x_{m+n-1}, X_{m+n-2}=x_{m+n-2},... X_m=x}=\\ 
+    =\prob{X_{m+n}=y}{X_{m+n-1}=x_{m+n-1}, X_m=x}?
+  \end{align*}
+
+  Korzystając z wyniku pokazanego w poprzednim zadaniu (ptk. 2), dostajemy
+  \begin{align*}
+    \prob{X_{m+n}=y}{X_{m+n-1}=x_{m+n-1},..., X_m=x}=\frac{\prob{X_{m+n}=y,..., X_m=x}}{\prob{X_{m+n-1}=x_{m+n-1},..., X_m=x}}=\\ 
+                                                    =\frac{\prob{X_m=x}P(x, x_{m+1})...P(x_{m+n-1}, y)}{\prob{X_m=x}P(x, x_{m+1})...P(x_{m+n-2}, x_{m+n-1})}=\\ 
+                                                    =P(x_{m+n-1}, y)=\prob{X_{m+n}=y}{X_{m+n-1}=x_{m+n-1}}=\\ 
+                                                    =\prob{X_{m+n}=y}{X_{m+n-1}=x_{m+n-1}, X_m=x_m}
+  \end{align*}
+  przedostatnie przejście to po prostu definicja macierzy $P$, a ostatnie przejście to po prostu stwierdzenie, że $X_{m+n}$ zależy tylko od $X_{m+n-1}$, więc jeśli dodamy warunkowanie po $X_m=x$ to nic się nie zmienia?
+
+  {\color{red}O CO CHODZI Z ROZKŁADEM POCZĄTKOWYM?}
+\end{solution}
+
+\begin{problem}
+  Niech $\{X_n\}$ będzie łańcuchem Markowa. Pokaż, że 
+  $$\prob{A}{X_0,..., X_n}=\prob{A}{X_n}$$
+  dla każdego $A\in \sigma(X_n, X_{n+1},...)$. \textbf{Wskazówka:} użyj lematu Dynkina o $\pi-\lambda$ układach.
+\end{problem}
+
+\begin{solution}
+  Rozważmy największy $\pi$-układ $\mathcal{D}$ który spełnia równość w zadaniu:
+  $$\mathcal{D}\subseteq\{A\in\sigma(X_n, X_{n+1},...)\;:\;\prob{A}{X_0,... X_n}=\prob{A}{X_n}\}$$
+
+  Teraz żeby skorzystać z tego twierdzenia, trzeba pokazać, że $\mathcal{D}$ jest $\lambda$-układem.
+  \begin{enumerate}
+    \item $\Omega\in \mathcal{D}$, bo $\prob{\Omega}{X_0,..., X_n}=1=\prob{\Omega}{X_n}$.
+    \item $A\subseteq B\in\mathcal{D}\implies B\setminus A\in\mathcal{D}$
+      \begin{align*}
+        \prob{B\setminus A}{X_0,..., X_n}&=\expected{\mathds{1}_{B\setminus A}}{X_0,..., X_n}=\expected{\mathds{1}_B-\mathds{1}_A}{X_0,..., X_n}=\\ 
+                                         &=\expected{\mathds{1}_B}{X_0,..., X_n}-\expected{\mathds{1}_A}{X_0,..., X_n}=\\ 
+                                         &=\prob{B}{X_0,..., X_n}-\prob{A}{X_0,..., X_n}=\prob{B}{X_n}-\prob{A}{X_n}=\\ 
+                                         &=\expected{\mathds{1}_B}{X_n}-\expected{\mathds{1}_A}{X_n}=\expected{\mathds{1}_{B\setminus A}}{X_n}=\\ 
+                                         &=\prob{B\setminus A}{X_n}
+      \end{align*}
+    \item $A_1\subseteq A_2\subseteq... \in\mathcal{D}\implies \bigcup A_i\in \mathcal{D}$
+      
+      Tutaj to jest po prostu przejście z $\lim$ poza całkę, co można zrobić, bo $\mathds{1}_{A_i}\leq \mathds{1}_{\bigcup A_i}$
+      \begin{align*}
+        \prob{\bigcup A_i}{X_0,..., X_n}&=\expected{\mathds{1}_{\bigcup A_i} }{X_0,..., X_n}= \expected{\lim_m\mathds{1}_{A_m}}{X_0,...,X_n}=\\ 
+                                        &=\lim_m\expected{\mathds{1}_{A_m}}{X_0,..., X_n}=\lim_m\prob{A_m}{X_0,...,X_n}=\\ 
+                                        &=\lim_m\prob{A_m}{X_n}=\lim\expected{\mathds{1}_{A_m}}{X_n}=\\ 
+                                        &=\expected{\lim \mathds{1}_{A_m}}{X_n}=\expected{\mathds{1}_{\bigcup A_i}}{X_n}=\\ 
+                                        &=\prob{\bigcup A_i}{X_n}
       \end{align*}
   \end{enumerate}
 \end{solution}
