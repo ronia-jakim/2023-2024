@@ -1,0 +1,34 @@
+\section{20.11.23 : Rezolwenta}
+
+\subsection{Definicje: rezolwenta projektywna i injektywna}
+
+\begin{definition}[rezolwenta projektywna]
+  Niech $A\in\ob \mathbf{A}$ będzie obiektem w kategorii abelowej. Wtedy kompleks $P^* \in Kom(\mathbf{A})$ razem z morfizmem $\epsilon:P^*\to\mathbf{A}$ nazywamy \buff{rezolwentą projektywną}, jeśli
+  \begin{enumerate}
+    \item $P^i$ są projektywne 
+    \item $P^i=0$ dla $i>0$ 
+    \item ciąg 
+      $$...\to P^{-2}\to P^{-1}\to P^0\xrightarrow{\epsilon} A\to 0\to ...$$
+      jest dokładny
+  \end{enumerate}
+\end{definition}
+
+Ostatni warunek w powyższej definicji można również sformułować przy pomocy qis kompleksów:
+\begin{center}\begin{tikzcd}
+  ... \arrow[r] & P^{-2} \arrow[r]\arrow[d] & P^{-1} \arrow[r]\arrow[d] & P^0\arrow[d, "\epsilon"] \arrow[r] & 0 \arrow[r]\arrow[d] & ... \\ 
+  ... \arrow[r] & 0 \arrow[r]      & 0 \arrow[r]      & A \arrow[r]                        & 0 \arrow[r] & ... 
+\end{tikzcd}\end{center}
+
+Zmienimy numerację obiektów kompleksu tak, że 
+$$\color{blue}P_i:=P^{-i}$$
+
+\begin{definition}[rezolwenta injektywna]
+  Dla obiektu $A\in\ob\mathbf{A}$ jest definiowana w sposób analogiczny do rezolwenty injektywnej, tzn. jest kompleksem $I^*$ wraz z morfizmem $\iota : I^*\to A$ takim, że 
+  \begin{enumerate}
+    \item $I^i$ są injektywne 
+    \item $I^i=0$ dla $i<0$ 
+    \item ciąg 
+      $$...\to 0\to A\xrightarrow{\iota} I^0\to I^1\to... $$
+  \end{enumerate}
+\end{definition}
+
