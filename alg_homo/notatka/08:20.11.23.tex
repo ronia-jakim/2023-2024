@@ -149,3 +149,77 @@ $$\color{blue}P_i:=P^{-i}$$
     \item Jeśli \begin{tikzcd}A^*\arrow[r, yshift=1mm, "f" above] & B^*\arrow[l, yshift=-1mm, "g" below]\end{tikzcd} są takie, że $fg\sim id_B$ oraz $gf\sim id_A$, to $f,g$ są qis oraz $H^i(f)=H^i(g)^{-1}$.
   \end{enumerate}
 \end{fact}
+
+\begin{proof}
+  \begin{enumerate}[label=(\alph*)]
+    \item Niech $f\overset{h}{\sim} g\overset{h'}{\sim} l$, wówczas $f\overset{h+h'}{\sim}l$. Wiemy więc, że 
+      $$\begin{matrix}
+        f-g = dh+hd\\ 
+        g-l=dh'+h'd
+      \end{matrix}$$
+      dodając oba równania stronami, dostajemy
+      $$f-l=(f-g)+(g-l)=(dh+hd)+(dh'+h'd)=(dh+dh')+(hd+h'd)=d(h+h')+(h+h')d.$$
+    \item Jeśli $f, g\sim 0$ tak, że $f-0=dh+hd$ oraz $g-0=dh'+h'd$. Wtedy
+      $$f+g=(f-0)+(g-0)=(dh+hd)+(dh'+h'd)=d(h+h')+(h+h')d.$$
+
+      Pokażemy teraz, że dla $f\sim 0$ oraz dla dowolnego $k:B^*\to C^*$ mamy $kf\sim 0$. Rysując diagram
+      \begin{center}
+        \begin{tikzcd}[column sep=large, row sep=large, /tikz/column 1/.style={column sep=1mm}]
+        A^*: & \bullet \arrow[d, "f" left] \arrow[r, dashed] & \bullet \tikzmark{A2} \arrow[d, "f" left] \arrow[r, dashed] \arrow[dl, "h" above] & \bullet \arrow[d, "f" left] \arrow[r, dashed] \arrow[dl, "h" above] & \bullet \arrow[d, "f" left] \\ 
+        B^*: & \bullet \tikzmark{B1} \arrow[r, dashed] \arrow[d, "k" left] & \bullet \arrow[r, dashed, blue] \arrow[d, "k" left, red] & \bullet \arrow[r, dashed] \arrow[d, "k" left, blue] & \bullet \arrow[d, "k" left] \\ 
+        C^*: & \bullet \tikzmark{C1} \arrow[r, dashed] & \bullet \arrow[r, dashed, red] & \bullet \arrow[r, dashed] & \bullet
+        \end{tikzcd}
+        \begin{tikzpicture}[remember picture, overlay]
+          \draw[orange, ->, rounded corners] ([xshift=-2mm, yshift=-2mm]pic cs:A2) to ([xshift=2mm, yshift=2mm]pic cs:B1) node [right] {$k\circ h$} to ([xshift=2mm, yshift=2mm]pic cs:C1);
+        \end{tikzpicture}
+      \end{center} 
+      Wiemy, że $f^i=h^{i+1}d+dh^i$, a dalej
+      $$k^if^i=k^i(h^{i+1}d+dh^i)=k^i(h^{i+1}d)+k^i(dh^i)=(k^ih^{i+1})d+({\color{red}k^{i}d})h^i=(k^ih^{i})d+{\color{blue}d(k^{i-1}}h^{i})$$
+
+    \item Wystarczy sprawdzić, że $f\sim 0\implies H^i(f)=0$. Niech $[a]\in H^i(f)$ zadaje klasę kohomologii, czyli $a\mapsto 0$ przez różniczkę $A^i\to A^{i+1}$.
+      \begin{center}
+        \begin{tikzcd}[/tikz/row 1/.style={row sep=1mm}, /tikz/row 3/.style={row sep=1mm}]
+          & a\arrow[d, phantom, sloped, "\in"] \arrow[r, mapsto] & 0 \\ 
+          A^{i-1} \arrow[r] \arrow[d] & A^i \arrow[r] \arrow[d] \arrow[dl, "h^i" above, blue] & A^{i+1} \arrow[d] \arrow[dl, "h^{i+1}" above, blue] \\ 
+          B^{i-1} \arrow[r] & B^i \arrow[r] & B^{i+1} \\ 
+          ? \arrow[r, dashed] & f^i(a)\arrow[r, mapsto] \arrow[u, phantom, sloped, "\in"] & 0
+        \end{tikzcd}
+      \end{center}
+      Wiemy, że 
+      $$f^i(a)=h^{i+1}\underbrace{d(a)}_{=0}+dh^i(a)=dh^i(a)$$
+      czyli $h^i(a)$ jest w ramach $?$.
+    \item Wynika z warunku c).
+  \end{enumerate}
+\end{proof}
+
+\begin{fact}
+  Niech $P^*\to X$ oraz $Q^*\to Y$ będą rezolwentami projektywnymi, a $f:X\to Y$ będzie morfizmem.
+  \begin{enumerate}
+    \item Istnieje morfizm rezolwent $R(f):P^*\to Q^*$ rozszerzający $f$ w sensie komutowania driagramu
+      \begin{center}\begin{tikzcd}
+        ... \arrow[r] & P^0\arrow[r, "\epsilon_x"]\arrow[d, "R(f)^0"] & X \arrow[d, "f"] \\ 
+        ... \arrow[r] & Q^0 \arrow[r, "\epsilon_y"] & Y
+      \end{tikzcd}\end{center}
+      oraz diagramów "dalej na lewo".
+    \item $R(f)$ jak wyżej jest jedyny z dokładnością do homotopii.
+  \end{enumerate}
+\end{fact}
+
+\begin{conclusion}
+  Gdy $Y=X$ i $f=id_X$, to mamy jedyne z dokładnością do homotopii przekształcenie między dwoma różnymi rezolwentami $X$.
+\end{conclusion}
+
+\begin{proof}
+  \begin{enumerate}[label=(\alph*)]
+    \item Konstruujemy ten morfizm 
+      \begin{center}\begin{tikzcd}
+        P_0\arrow[r, "\epsilon_X"]\arrow[d, dashed] \arrow[dr, rounded corners, to path={([yshift=-4mm]\tikztostart) -| ([xshift=-5mm]\tikztotarget)}, blue] & X\arrow[r]\arrow[d, "f" right] & 0 \\ 
+        Q_0\arrow[r, "\epsilon_Y" below] & Y \arrow[r] & 0
+      \end{tikzcd}\end{center}
+      Strzałka $P_0\to Q_0$ istnieje, ponieważ $P_0$ jest modułem projektywny, i $Q_0\to Y$ jest surjekcją. Czyli mamy diagram
+      \begin{center}\begin{tikzcd}
+        P_0\arrow[d, dashed]\arrow[dr] \\ 
+        Q_0\arrow[r] & Y \arrow[r] & 0
+      \end{tikzcd}\end{center}
+  \end{enumerate}
+\end{proof}
