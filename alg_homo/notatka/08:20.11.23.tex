@@ -32,3 +32,120 @@ $$\color{blue}P_i:=P^{-i}$$
   \end{enumerate}
 \end{definition}
 
+\begin{example}
+\item Ciąg dokładny $0\to \Z\to \Z\to \Z_2\to 0$, który pojawił się już w poprzednich przykładach, jest rezolwentą projektywną $\Z_2$:
+  \begin{center}\begin{tikzcd}
+    ...\arrow[r] & 0\arrow[r]\arrow[d] & \Z\arrow[r, "2\times"]\arrow[d] & \Z\arrow[r]\arrow[d] & 0\arrow[r]\arrow[d] & ...\\ 
+    ...\arrow[r] & 0\arrow[r] & 0\arrow[r] & \Z_2\arrow[r] & 0\arrow[r] & ...
+  \end{tikzcd}\end{center}
+\item Dla pierścienia $\C$ traktowanego jako $\C[x]$-moduł mamy następującą rezolwentę
+  \begin{center}\begin{tikzcd}
+    ...\arrow[r] & 0 \arrow[r]\arrow[d] & \C[x] \arrow[r, "\cdot x"]\arrow[d] & \C[x] \arrow[r]\arrow[d, "x=0"] & 0\arrow[r]\arrow[d] & ... \\ 
+    ...\arrow[r] & 0 \arrow[r] & 0\arrow[r] & \C \arrow[r] & 0 \arrow[r] & ...
+  \end{tikzcd}\end{center}
+\item Rezolwenta $\C$ jako $\C[x, y]$-modułu jest konstruowana w sposób analogiczny do tego wyżej:
+  \begin{center}\begin{tikzcd}[column sep=small, row sep=small]
+    ...\arrow[r] & \C[x, y]\arrow[r]& \C[x. y] \oplus \C[x, y]\arrow[r] & \C[x, y] \arrow[r, "\substack{x=0 \\ y=0}"] & \C \arrow[r] & 0 \arrow[r] & ... \\ 
+                 & R\arrow[r, mapsto] & (yR) \oplus (xR)\\ 
+                 & & q\oplus p\arrow[r, mapsto] & xq - yp
+  \end{tikzcd}\end{center}
+\end{example}
+
+\subsection{Jednoznacnzość rezolwenty projektywnej} 
+
+\begin{definition}[homotopia morfizmów]
+  Niech $\mathbf{A}$ będzie kategorią abelową (addytywną). Morfizmy kompleksów $f, g:A^*\to B^*$ są \buff{homotopijne} ($f\sim g$), jeśli istnieje między nimi homotopia, tzn. ciąg odwzorowań $h^i:A^i\to B^{i-1}$ taki, że
+  $$f^i-g^i=h^{i+1}\circ d_A^i+d_B^{i-1}\circ h^i$$
+  \begin{center}
+    \begin{tikzcd}[row sep=large, column sep=large]
+    ...\arrow[r] & A^{i-1}\tikzmark{Ai-1} \arrow[r]\arrow[d, "g" left, xshift=-1mm]\arrow[d, "f" right, xshift=1mm] & A^i \tikzmark{Ai} \arrow[dl, "h^i" above, yshift=1mm, blue]\arrow[d, "g" left, xshift=-1mm]\arrow[d, "f" right, xshift=1mm]\arrow[r] \arrow[d, to path = {}] & A^{i+1} \tikzmark{Ai+1} \arrow[d, "g" left, xshift=-1mm] \arrow[d, "f" right, xshift=1mm] \arrow[dl, "h^{i+1}" below right, yshift=-1mm, blue] \arrow[r] & ... \\ 
+    ...\arrow[r] & B^{i-1} \tikzmark{Bi-1} \arrow[r] & B^i \tikzmark{Bi} \arrow[r] & B^{i+1} \tikzmark{Bi+1} \arrow[r] & ...
+  \end{tikzcd}
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[orange, ->, rounded corners] ([xshift=-1mm]pic cs:Ai) to ([xshift=1mm, yshift=3mm]pic cs:Bi-1) to ([xshift=-3mm, yshift=3mm]pic cs:Bi);
+    \draw[orange, ->, rounded corners] ([xshift=1mm, yshift=-1mm]pic cs:Ai) to ([xshift=-6mm, yshift=-1mm]pic cs:Ai+1) to ([xshift=2mm, yshift=4mm]pic cs:Bi);
+  \end{tikzpicture}
+\end{center}
+\end{definition}
+
+\begin{example}
+\item W przypadku przestrzeni topologicznych o homotopii dwóch funkcji $f, g:X\to Y$ można myśleć jako o funkcji $H$ z cylindra $X\times I$ w przestrzeń $Y$:
+  \begin{center}\begin{tikzpicture}
+    \draw[blue, thick] (0, 0) ellipse(1 and 0.3);
+    \draw[orange, thick] (0, 2) ellipse(1 and 0.3);
+
+    \draw (-1, 0)--(-1, 2);
+    \draw (1, 0)--(1, 2);
+
+    \node at (3, 1) {$Y$};
+
+    \path[->] (1, -0.2) edge [bend right=20, thick, blue] node [midway, below] {$g$} (2.9, 0.8);
+    \path[->] (1, 2.2) edge [bend left=20, orange, thick] node [midway, above] {$f$} (2.9, 1.2);
+
+    \node at (0, 1) {$H$};
+  \end{tikzpicture}\end{center}
+
+  Możemy do tego przyłożyć wiedzę o kompleksach, jeśli pod $X$ kryją się sympleksy. Wtedy mamy
+  \begin{center}\begin{tikzpicture}[scale=1.5]
+    \draw (0, 0) ellipse(1 and 0.3);
+    \draw (0, 2) ellipse(1 and 0.3);
+
+    \draw (-1, 0)--(-1, 2);
+    \draw (1, 0)--(1, 2);
+
+   % \draw[dashed] (-0.6, -0.1)--(-0.2, -0.15)--(-0.4, 0.1)--cycle;
+   % \draw[dashed] (-0.4, 0.1)--(0, 0.15)--(-0.2, -0.15)--cycle;
+   % \draw[dashed] (-0.2, -0.15)--(0.2, -0.15)--(0, 0.15)--cycle;
+   % \draw[dashed] (0.2, -0.15)--(0.4 ,0.1)--(0, 0.15)--cycle;
+   % \draw[dashed] (0.2, -0.15)--(0.4, 0.1)--(0.6, -0.1)--cycle;
+
+    \draw[dashed] (-0.6, -0.1)--(-0.4, 0.1)--(-0.2, -0.15)--(0, 0.15)--(0.2, -0.15)--(0.4, 0.1)--(0.6, -0.1);
+    \draw[dashed] (-0.4, 0.1)--(0, 0.15)--(0.4, 0.1);
+    \draw (-0.6, -0.1)--(-0.2, -0.15)--(0.2, -0.15)--(0.6, -0.1);
+
+    \draw (-0.6, 1.9)--(-0.2, 1.85)--(-0.4, 2.1)--cycle;
+    \draw (-0.4, 2.1)--(0, 2.15)--(-0.2, 1.85)--cycle;
+    \draw (-0.2, 1.85)--(0.2, 1.85)--(0, 2.15)--cycle;
+    \draw (0.2, 1.85)--(0.4, 2.1)--(0, 2.15)--cycle;
+    \draw(0.2, 1.85)--(0.4, 2.1)--(0.6, 1.9)--cycle;
+
+    \draw(-0.6, -0.1)--(-0.6, 1.9);
+    \draw(-0.2, -0.15)--(-0.2, 1.85);
+    \draw(0.2, -0.15)--(0.2, 1.85);
+    \draw(0.6, -0.1)--(0.6, 1.9);
+
+    \draw[dashed] (-0.4, 0.1)--(-0.4, 2.1);
+    \draw[dashed] (0, 0.1)--(0, 2.1);
+    \draw[dashed] (0.4, 0.1)--(0.4, 2.1);
+
+    \draw (2, 1.8)--(3, 2.2)--(1.8, 2.2)--cycle;
+    \draw (2, -0.2)--(3, 0.2);
+    \draw (2, -0.2)--(1.8, 0.2);
+    \draw[dashed] (3, 0.2)--(1.8, 0.2);
+
+    \draw (1.8, 0.2)--(1.8, 2.2);
+    \draw (3, 0.2)--(3, 2.2);
+    \draw (2, -0.2)--(2, 1.8);
+
+    \node (HD) at (4, 1.5) {$H(\Delta)$};
+
+    \path[->] (HD) edge [bend left=20] (2.4, 1);
+
+    \node at (2.2, 2.1) {$\Delta$};
+    \node at (2.5, -0.2) {$\partial$};
+
+    \node at (4, 0.6) {$\substack{\partial H(\Delta)=f(\Delta)-g(\Delta)+\\+H(\partial\Delta)}$};
+  \end{tikzpicture}\end{center}
+\end{example}
+
+\begin{fact}$ $
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Relacja homotopijnej równoważności $\sim$ odwzorowań między ustalonymi kompleksami $A^*, B^*$ jest relacją równoważności
+    \item Morfizmy $\sim 0$ tworzą "ideał", to znaczy 
+      $$g, f\sim 0\implies f+g\sim 0$$
+      $$(\forall\;k:B^*\to C^*,\; l:C^*\to A^*)\;f\sim 0\implies kf, fl\sim 0$$
+    \item $f\sim g\implies H^i(f)=H^i(g)$
+    \item Jeśli \begin{tikzcd}A^*\arrow[r, yshift=1mm, "f" above] & B^*\arrow[l, yshift=-1mm, "g" below]\end{tikzcd} są takie, że $fg\sim id_B$ oraz $gf\sim id_A$, to $f,g$ są qis oraz $H^i(f)=H^i(g)^{-1}$.
+  \end{enumerate}
+\end{fact}
