@@ -1,0 +1,253 @@
+\section{13.11.23 : Wężowe homologie i kohomologie}
+
+\subsection{Ciąg dokładny kompleksów}
+
+\begin{lemma}
+  W kategorii abelowej, krótki ciąg dokładny kompleksów 
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & A^* \arrow[r] & B^* \arrow[r] & C^* \arrow[r] & 0 
+  \end{tikzcd}\end{center} 
+  indukuje długi ciąg dokładny kohomologii:
+  \begin{center}\begin{tikzcd}
+    & & ... \\ 
+    H^{n+1}(A) \arrow[r] & H^{n+1}(B) \arrow[r]\arrow[d, phantom, ""{coordinate, name=Z}] & H^{n+1}(C)  
+    \arrow[u, rounded corners, to path={-- ([xshift=2ex]\tikztostart.east) -| ([xshift=4ex]\tikztostart.east) |- ([xshift=4ex]\tikztotarget.west)}] \\ 
+    H^n(A) \arrow[r] & H^n(B) \arrow[r]\arrow[d, phantom, ""{coordinate, name=Y}] & H^n(C) 
+    \arrow[ull, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Z) [near end]\tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget) }] \\ 
+                     & ... & H^{n-1}(C)
+    \arrow[ull, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Y) [near end]\tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget) }] \\ 
+  \end{tikzcd}\end{center}
+\end{lemma}
+
+\begin{dygresja}
+  Jeśli jesteśmy w kategorii abelowej, to kategoria jej kompleksów również jest abelowa.
+\end{dygresja}
+
+\begin{proof}
+  Potrzebujemy dwóch diagramów i troszkę polowania:
+
+  \begin{center}\begin{tikzcd}
+    & \coker d_A^n\arrow[r] & \coker d_B^n\arrow[r] & \coker d_C^n \arrow[r] & 0\\ 
+    & A^{n+1}\arrow[u]\arrow[r] & B^{n+1}\arrow[u]\arrow[r] & C^{n+1}\arrow[u]\arrow[r] & 0\\ 
+    0\arrow[r] & A^n\arrow[r]\arrow[u] & B^n\arrow[r]\arrow[u] & C^n\arrow[r]\arrow[u] & 0\\ 
+    0\arrow[r] & \ker d_A^n\arrow[u]\arrow[r] & \ker d_B^n\arrow[u]\arrow[r] & \ker d_C^n\arrow[u]
+  \end{tikzcd}\end{center}
+
+  \begin{center}\begin{tikzcd}
+    & H^n(A)\arrow[r]\arrow[d] & H^n(B)\arrow[r]\arrow[d]\arrow[ddd, phantom, ""{coordinate, name=Z}] & H^n(C)\arrow[d] 
+    \arrow[dddll, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Z) [near end]\tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget) }, orange, thick] \\ 
+    & \coker d_A^{n-1}\arrow[r]\arrow[d, "d_A^{n+1}"] & \coker d_B^{n-1} \arrow[r]\arrow[d, "d_B^{n+1}"] & \coker d_C^{n-1} \arrow[d, "d_C^{n+1}"]\arrow[r] & 0\\ 
+    0\arrow[r] & \ker d_A^{n+1} \arrow[r]\arrow[d] & \ker d_B^{n+1}\arrow[d]\arrow[r] & \ker d_C^{n+1}\arrow[d] \\ 
+      & H^{n+1}(A)\arrow[r] & H^{n+1}(B)\arrow[r] & H^{n+1}(C) 
+  \end{tikzcd}\end{center}
+  pomarańczowa strzałka wynika z lematu węża, natomiast różniczki dopisaliśmy, ponieważ "przenosi się" na dół.
+  \begin{center}\begin{tikzcd}
+    A^{n-1}\arrow[r, "d_A^{n-1}"] & A^n\arrow[r, "d_A^n"] \arrow[d, "epi" left] & A^{n+1}\arrow[r, "d_A^{n+1}"] & ... \\ 
+                                  & \coker d_A^{n-1} \arrow[r, dashed]\arrow[ur, dashed] & \ker d_A^{n+1}\arrow[u, "mono"]
+  \end{tikzcd}\end{center}
+\end{proof}
+
+\subsection{Quasi-izomorfizmy i kategoria pochodna}
+
+\begin{definition}[quasi-izomorfizm]
+  Morfizm $f:A^\cdot\to B^\cdot$ na kompleksach jest \buff{quasi-izomorfizmem} (qis), jeśli indukuje izomorfizm na kohomologiach, tzn dla każdego $i$ odwzorowanie
+  $$H^i(f):H^i(A^\cdot)\to H^i(B^\cdot)$$
+  jest izomorfizmem.
+\end{definition}
+
+\begin{example}
+  \item Dla bardzo ubogiego kompleksu
+    \begin{center}\begin{tikzcd}
+      ...\arrow[r] & A\arrow[r, "id_A"] & A\arrow[r] & 0 \arrow[r] & ... 
+    \end{tikzcd}\end{center}
+    mamy $H^\cdot =0 $ i jeśli przyrównany do niego kompleks złożony tylko z $0$, to quasi-izomorfizmem między tymi dwoma kompleksami jest odwzorowanie zerowe.
+  \item Mniej trywialny przykład to rozważenie ciągu dokładnego:
+    \begin{center}\begin{tikzcd} 
+      0 \arrow[r] & \Z\arrow[r, "2\times"] &\Z \arrow[r] &  \Z/2\Z \arrow[r] & 0 
+    \end{tikzcd}\end{center}
+    Możemy go podmienić na dwa kompleksy z odwzorowaniem między nimi jak niżej
+    \begin{center}\begin{tikzcd}
+      ...\arrow[r] & 0\arrow[r]\arrow[d] & \Z\arrow[r, "2\times"]\arrow[d, "0"] & \Z \arrow[r]\arrow[d, "epi"] & 0\arrow[d] \arrow[r] & ... \\ 
+      ... \arrow[r] & 0\arrow[r] & 0\arrow[r] & \Z/2\Z \arrow[r] & 0\arrow[r] & ...
+    \end{tikzcd}\end{center}
+    Jedyna nietrywialna grupa kohomologii w obu kompleksach pojawia się w miejscu $\Z/2\Z$ i jest równa $\Z/2\Z$. Czy odwzorowanie, które prawie wszędzie jest zerowe, ale na wysokości nietrywialnej grupy kohomologii staje się epimorfizmem jest quasi-izomorfizmem kompleksów.
+\end{example}
+
+\begin{theorem}[kategoria pochodna]
+  Niech $\mathbf{A}$ będzie kategorią abelową, natomiast $Kom(\mathbf{A})$ kategorią jej kompleksów. Istnieje \buff{kategoria pochodna} $D(\mathbf{A})$ i funktor $Q:Kom(\mathbf{A})\to D(\mathbf{A})$ taki, że 
+  \begin{enumerate}
+    \item jeśli $f$ jest qis w $kom(\mathbf{A})$, to $D(f)$ jest izomorfizmem w $D(\mathbf{A})$
+    \item jeśli $F:Kom(\mathbf{A})\to D(\mathbf{A})$ spełnia warunek $1$, to faktoryzuje się przez $Q$:
+      \begin{center}\begin{tikzcd}
+        Kom(\mathbf{A})\arrow[rr, "Q"]\arrow[dr, "F"] & & D(\mathbf{A}) \arrow[dl, "\exists!G"] \\ 
+                                                      & D(\mathbf{A})
+      \end{tikzcd}\end{center}
+  \end{enumerate}
+
+  Kategorię $D(\mathbf{A})$ czasem oznaczamy $D'$.
+\end{theorem}
+
+\begin{proof}
+  Najprostsze podejście do dowodu, który nie daje za dużo informacji o strukturze $D(\mathbf{A})$ oraz ma szanse psuć się od strony teoriomnogościowej jeśli kategoria $Kom(\mathbf{A})$ miała troszkę za dużo obiektów i przestały one tworzyć zbiór. 
+
+  Niech obiekty kategorii pochodnej będą wszystkimi kompleksami nad $\mathbf{A}$, tzn.:
+  $$\ob D(\mathbf{A})=\ob Kom(\mathbf{A})$$
+  będziemy tylko dodawać między nimi strzałki, żeby każdy quasi-izomorfizm odpowiadał izomorfizmowi.
+
+  Zdefiniujmy graf skierowany $G$ o wierzchołkach $V(G)=\ob D(\mathbf{A})$ oraz krawędziach odpowiadających morfizmom w $Kom(\mathbf{A})$ z dodatkowymi krawędziami tak, że dla każdego quasi-izomorfizmu $f:A^\cdot\to B^\cdot$ dodajemy strzałkę $\overline{f}:B^\cdot A^\cdot$ w tym grafie.
+
+  Wtedy morfizmy w $D(\mathbf{A})$ odpowiadają krawędziom w grafie $G$ oraz ich złożeniom (drogom, ścieżkom) wydzielonym przez relację 
+  \begin{center}\begin{tikzpicture}
+    \node at (0, 0) {. . .};
+    \draw[->] (0.5, 0)--(1.9, 0.5) node [midway, above] {$f$};
+    \draw[->] (2.1, 0.5)--(3.5, 0) node [midway, above] {$g$};
+    \node at (4, 0) {. . .};
+
+    \node at (5, 0.3) {$\sim$};
+    
+    \node at (6, 0) {. . .};
+    \draw[->] (6.5, 0)--(8, 0) node [midway, above] {$gf$};
+    \node at (8.5, 0) {. . .};
+
+    \node at (0, -2) {. . .};
+    \draw[->] (0.5, -2)--(1.9, -1.5) node [midway, above] {$f$};
+    \draw[->] (2.1, -1.5)--(3.5, -2) node [midway, above] {$\overline{f}$};
+    \node at (4, -2) {. . .};
+
+    \node at (5, -1.7) {$\sim$};
+
+    \node at (6, -2) {. . .};
+    \draw[->] (6.5, -2)--(8, -2) node [midway, above] {$id$};
+    \node at (8.5, -2) {. . .};
+
+    \node at (0, -4) {. . .};
+    \draw[->] (0.5, -4)--(1.9, -3.5) node [midway, above] {$\overline{f}$};
+    \draw[->] (2.1, -3.5)--(3.5, -4) node [midway, above] {$f$};
+    \node at (4, -4) {. . .};
+
+    \node at (5, -3.7) {$\sim$};
+
+    \node at (6, -4) {. . .};
+    \draw[->] (6.5, -4)--(8, -4) node [midway, above] {$id$};
+    \node at (8.5, -4) {. . .};
+  \end{tikzpicture}\end{center}
+\end{proof}
+
+\subsection{Addytywne funktory dokładne}
+
+\begin{definition}[funktor dokładny]
+  Niech $F:\mathbf{A}\to \mathbf{B}$ będzie funktorem addytywnym między kategoriami abelowymi. Jeśli każdy krótki ciąg dokładny w $\mathbf{A}$ 
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & A_1\arrow[r] & A_2\arrow[r] & A_3\arrow[r] & 0 
+  \end{tikzcd}\end{center}
+  jest przekształcany na 
+  \begin{enumerate}[label=(\alph*)] 
+    \item krótki ciąg dokładny 
+      \begin{center}\begin{tikzcd}
+        0\arrow[r] & F(A_1) \arrow[r] & F(A_2) \arrow[r] & F(A_3) \arrow[r] & 0 
+      \end{tikzcd}\end{center} 
+      to funktor $F$ jest \acc{funktorem dokładnym}
+    \item ciąg dokładny 
+      \begin{center}\begin{tikzcd} 
+        0\arrow[r] & F(A_1)\arrow[r] & F(A_2)\arrow[r] & F(A_3) 
+      \end{tikzcd}\end{center} 
+      to $F$ jest \acc{lewo-dokładny}
+    \item ciąg dokładny
+      \begin{center}\begin{tikzcd} 
+        F(A_1)\arrow[r] & F(A_2)\arrow[r] & F(A_3) \arrow[r] & 0
+      \end{tikzcd}\end{center} 
+      to $F$ jest funktorem \acc{prawo-dokładnym}.
+  \end{enumerate}
+\end{definition}
+
+Analogiczne definicje są stosowalne dla funktora kontrawariantnego, tylko musimy myśleć o nim przez pryzmat $F:A^{op}\to B$.
+
+\begin{fact}
+  Niech \begin{tikzcd}\mathbf{A} \arrow[r, yshift=1mm, "F"] & \mathbf{B}\arrow[l, yshift=-1mm, "G"]\end{tikzcd} będzie sprzężoną parą funktorów addytywnych pomiędzy abelowymi kategoriami. Wówczas $F$ jest funktorem prawo-dokładnym, a $G$ jest funktorem lewo-dokładnym.
+\end{fact}
+
+\begin{proof}
+  Wiemy, że $G$ zachowuje granie z lematu \ref{funktory sprzezone zachowuja granice}. Popatrzmy na krótki ciąg dokładny 
+  \begin{center}\begin{tikzcd} 
+    0\arrow[r] & A_1\arrow[r, "f"] & A_2\arrow[r, "g"] & A_3\arrow[r] & 0 
+  \end{tikzcd}\end{center} 
+  Wiemy, że $f=\ker g$ 
+  \begin{center}\begin{tikzcd}
+    A_1 \arrow[d, "f" left] \arrow[dr, "0"] \arrow[dr, rounded corners, to path={-- ([xshift=-1mm]\tikztostart.west) |- ([yshift=-14mm]\tikztostart.south) -- ([yshift=-2mm]\tikztotarget.south) -| (\tikztotarget.south) }] \arrow[d, "0" left, xshift=-4mm, phantom]\\ 
+    A_2\arrow[r, "g" below, xshift=1mm] & A_3 
+  \end{tikzcd}\end{center}
+  czyli $f$ jest granicą diagramu \begin{tikzcd}A_2\arrow[r, yshift=1mm, "g"]\arrow[r, yshift=-1mm, "0" below] & A_3\end{tikzcd}. W takim razie $G(f)$ jest granicą diagramu \begin{tikzcd}G(A_2)\arrow[r, yshift=1mm, "G(g)"]\arrow[r, yshift=-1mm, "0" below] & G(A_3)\end{tikzcd} i z tego wynika, że $G(f)=\ker G(g)$ i ciąg 
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & G(A_1)\arrow[r, "G(f)"] & G(A_2) \arrow[r, "G(g)"] & G(A_3) 
+  \end{tikzcd}\end{center}
+  jest dokładny i $G$ jest lewo-dokładny.
+
+  Analogiczny dowód pokazuje, że $F$ jest prawo-dokładny.
+\end{proof}
+
+\begin{conclusion}
+  W kategorii $R$-modułów wiemy, że 
+  $$Hom(A\otimes X, C)\cong Hom(A, Hom(X, C))$$
+  więc funktory $-\otimes X \dashv Hom(X, -)$ są sprzężone, więc tensor jest funktorem prawo-dokładnym, a $Hom$ jest funktorem lewo-dokładnym.
+\end{conclusion}
+
+\begin{example}
+\item Wróćmy do ciągu dokładnego \begin{tikzcd}0\arrow[r] & \Z\arrow[r, "2\times"] & \Z/2\Z \arrow[r] & 0\end{tikzcd}
+
+  Nałożenie na niego funktora $-\times\Z/2\Z$ daje ciąg
+  \begin{center}\begin{tikzcd}
+    \Z/2\Z\arrow[r, "2\times"] & \Z/2\Z \arrow[r] & \Z/2\Z \arrow[r] & 0 
+  \end{tikzcd}\end{center}
+  czyli $-\times\Z/2\Z$ jest prawo-dokładny, ale nie jest lewo-dokładny.
+
+  Z kolei nałożenie funktora $Hom(-,\Z/2\Z)$ na ten sam ciąg daje
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & 0\arrow[r] & 0\arrow[r] & \Z/2\Z 
+  \end{tikzcd}\end{center}
+  czyli $Hom(-,\Z/2\Z)$ jest lewo-dokładny, ale nie jest prawo-dokładny. Tak samo funktor $Hom(\Z/2\Z, -)$ jest lewo-dokładny, ale nie prawo-dokładny:
+  \begin{center}\begin{tikzcd}
+    \Z/2\Z & \Z/2\Z\arrow[l] & \Z/2\Z\arrow[l] & 0\arrow[l] 
+  \end{tikzcd}\end{center}
+\item {\color{orange}[ćwiczenie]} W kategorii abelowej $Hom(-,X)$ i $Hom(X, -)$ są funktorami lewo-dokładnymi dla dowolnego obiektu $X$.
+\end{example}
+
+\begin{definition}[obiekt projektywny i injektywny]
+  Niech $\mathbf{A}$ będzie kategorią abelową. 
+  \begin{enumerate}[label=(\alph*)]
+    \item $P\in \ob\mathbf{A}$ jest \buff{projektywny}, jeśli $Hom(P,-)$ jest dokładny
+    \item $I\in\ob\mathbf{A}$ jest \buff{injektywny}, jeśli $Hom(-,I)$ jest dokładny
+  \end{enumerate}
+\end{definition}
+
+\begin{uwaga}
+  Projektywność i injektywność można również zdefiniować przez diagramy:
+  \begin{center}\begin{tikzcd}
+    & P \arrow[dl, "\exists" above left, blue]\arrow[d] & & & 0\arrow[r] & A\arrow[r]\arrow[d] & B \arrow[dl, "\exists", blue] \\ 
+    A\arrow[r] & B\arrow[r] & 0 & & & I
+  \end{tikzcd}\end{center}
+\end{uwaga} 
+
+\begin{proof}
+  Ćwiczenia.
+\end{proof}
+
+\begin{example}
+\item W kategorii grup abelowych $\Q$ jest obiektem injektywnym, ale $\Z$ nie jest, bo np:
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & \Z \arrow[d, "id"]\arrow[r, "2\times"] & \Z \\ 
+               & \Z 
+  \end{tikzcd}\end{center}
+  nie istnieje strzałka $\Z\to\Z$ taka, że złożenie mnożenia przez $2$ z tą strzałką jest identycznością - dzielenie przez $2$ musiałoby być dozwolone, a nie jest.
+\item W kategorii $R$-modułów moduły wolne $R^n$, są projektywne - wystarczy patrzeć na co przechodzą generatory $e_i\in R^n$:
+  \begin{center}\begin{tikzcd}
+    & R^n \arrow[d, "e_i\mapsto b_i"]\arrow[dl, "e_i\mapsto a_i" above left, dashed]\\ 
+    A\arrow[r, "a_i\mapsto b_i" below] & B\arrow[r] & 0
+  \end{tikzcd}\end{center}
+\item Składniki proste modułów wolnych też są projektywne:
+  \begin{center}\begin{tikzcd}
+    & R^n\arrow[dd, bend left=40, "g_B\circ \pi_P"]\arrow[ddl, dashed, "f_A" above left, bend right=20]\arrow[d, "\pi_P", xshift=1mm] \\ 
+    & P{\color{blue}\oplus L}\arrow[u, hookrightarrow, "i_P", xshift=-1mm]\arrow[dl, "f_A\circ i_P" above left]\arrow[d, "g_B" left] \\ 
+    A\arrow[r] & B\arrow[r] & 0
+  \end{tikzcd}\end{center}
+
+\end{example}
