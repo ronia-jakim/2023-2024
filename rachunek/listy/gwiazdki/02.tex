@@ -30,17 +30,114 @@ $$F_k(x)=\prob{S_k\geq x},\quad x\in\R$$
   jest martyngałem wględem filtracji $\mathds{F}=\{\set{F}_k\}$ danej przez $\set{F}_0=\{\emptyset,\Omega\}$ i $\set{F}_k=\sigma(\xi_1,...,\xi_k)$ dla $k\geq 1$.
 \end{zadanko}
 
-Zaczęłam to pisać na ćwiczeniach z listy 4, gdzie studenci prezentujący przy tablicy są bici po rękach jeśli zapomną sprawdzić całkowalności tego co wsadzamy do wwo, w tym całkowalności składników martyngału. Stąd postaram się zrobić to tak dokładnie jak tylko potrafię.
+%Zaczęłam to pisać na ćwiczeniach z listy 4, gdzie studenci prezentujący przy tablicy są bici po rękach jeśli zapomną sprawdzić całkowalności tego co wsadzamy do wwo, w tym całkowalności składników martyngału. Stąd postaram się zrobić to tak dokładnie jak tylko potrafię.
+%
+%\begin{enumerate}
+%  \item $X_k$ jest całkowalne, bo jest ograniczone
+%    $$X_k=F_{n-k}(a-S_k)=\prob{S_{n-k}\geq a-S_k}\in[0,1].$$
+%  \item $X_k$ jest $\set{F}_k$-mierzalne
+%    $$X_k=\prob{S_{n-k}\geq a-S_k}=\prob{\sum_{j=1}^{n-k}\xi_j\geq a-\sum_{j=1}^k\xi_j}$$
+%    ale ponieważ $\xi_i$ są symetryczne, to
+%    $$\prob{\xi_j\geq x}=\prob{-\xi_j\geq x}$$
+%    czy da się to uogólnić na dowolną sumę $\xi_j$?
+%    $$\prob{\xi_j+\xi_i\geq x}=\prob{\xi_j\geq x-\xi_i}=\prob{-\xi_j\geq x-\xi_i}=\prob{-\xi_j+\xi_i\geq x}$$
+%\end{enumerate}
 
+Niech $\mu$ będzie rozkładem zmiennych $\xi_i$. Wprowadźmy nową zmienną $Y_k$ o rozkładzie
+$$\mu_{Y_k}=\underbrace{\mu\ast...\ast\mu}_{\text{k razy}}$$
+tzn. $Y_k$ ma taki sam rozkład jak zmienna $\sum_{i=1}^k\xi_i$. To oznacza, że aby nie pomieszać tego zadania, możemy napisać
+$$X_k=F_{n-k}(a-S_k)=\prob{Y_{n-k}\geq a-S_k}=\int_{a-S_k}^\infty d\mu_{Y_{n-k}}=\int_{a-S_k}^\infty \mu_{Y_{n-k}}(x)dx.$$
+
+Jak już to zostało ustalone, przejdźmy do treści tego zadania:
 \begin{enumerate}
-  \item $X_k$ jest całkowalne, bo jest ograniczone
-    $$X_k=F_{n-k}(a-S_k)=\prob{S_{n-k}\geq a-S_k}\in[0,1].$$
-  \item $X_k$ jest $\set{F}_k$-mierzalne
-    $$X_k=\prob{S_{n-k}\geq a-S_k}=\prob{\sum_{j=1}^{n-k}\xi_j\geq a-\sum_{j=1}^k\xi_j}$$
-    ale ponieważ $\xi_i$ są symetryczne, to
-    $$\prob{\xi_j\geq x}=\prob{-\xi_j\geq x}$$
-    czy da się to uogólnić na dowolną sumę $\xi_j$?
-    $$\prob{\xi_j+\xi_i\geq x}=\prob{\xi_j\geq x-\xi_i}=\prob{-\xi_j\geq x-\xi_i}=\prob{-\xi_j+\xi_i\geq x}$$
+  \item $X_k$ jest całkowalny, bo
+    \begin{align*}
+      \expected{|X_k|}=\expected{|\prob{Y_{n-k}\geq a-S_k}|}\leq \expected{|1|}=1
+    \end{align*}
+  \item $X_k$ jest mierzalne względem $F_k=\sigma(\xi_1,...,\xi_k)$, bo tak jak napisałam na samym początku zadania:
+    \begin{align*}
+      X_k(\omega)=F_{n-k}(a-S_k(\omega))&=\int_{a-S_k(\omega)}^\infty \mu_{Y_{n-k}}(x)dx=\int_{\R}\mathds{1}_{[a-S_k(\omega), \infty)}(x)\cdot\mu_{Y_{n-k}}(x)dx,
+    \end{align*}
+    przyjmuje wartości z przedziału $[0,1]$ i jest całką po zbiorze $F_k$-mierzalnym (tzn. zbiorze $[a-\sum_{i=1}^k\xi_i(\omega), \infty)$) z funkcji $F_k$-mierzalnej, bo $\mu_{Y_{n-k}}(x)=\mu\ast...\ast\mu$ jest splotem miar odpowiadających rozkładom $\xi_i$. W takim razie, $X_k$ jest $F_k$-mierzalne. 
+
+    Skrupulatne zapisanie zbioru $[a-S_k, \infty)$ zostawiam na pseudo-appendix, bo nie mam pojęcia jak bardzo trzeba być dokładnym.
+    %oraz $\mu_{Y_{n-k}}$
+
+  \item $\expected{X_{k+1}}{F_k}=X_k$, czyli sedno sprawy.
+
+    Zauważmy, że gęstość $Y_{n-k-1}+\xi_{k+1}$ to splot $\mu_{Y_{n-k-1}}\ast \mu$, czyli 
+    $$\mu_{Y_{n-k-1}}\ast\mu=\underbrace{\mu\ast...\ast \mu}_{n-k-1\text{ razy}}\ast\mu=\mu_{Y_{n-k}}.$$
+    W takim razie wyliczając wwo dostajemy:
+    \begin{align*}
+      \expected{X_{k+1}}{F_k}&=\expected{\prob{Y_{n-k-1}\geq a-S_{k+1}}}{F_k}=\\
+                             &=\expected{\prob{Y_{n-k-1}\geq a-S_k-\xi_{k+1}}}{F_k}=\\ 
+                             &=\expected{\prob{Y_{n-k-1}+\xi_{k+1}\geq a-S_k}}{F_k}=\\ 
+                             &=\expected{\int_{a-S_k}(\mu\ast \mu_{Y_{n-k-1}})(x)dx}{F_k}=\\ 
+                             &=\expected{\int_{a-S_k}\mu_{Y_{n-k}}(x)dx}{F_k}=\\ 
+                             &=\expected{X_k}{F_k}=X_k
+%                             &=\expected{\int_{a-S_{k+1}}\mu_{Y_{n-k-1}}(t)dt}{F_k}=\\ 
+%                             &=\expected{\int_{a-S_k-\xi_{k+1}}\mu_{Y_{n-k-1}}(t)dt}{F_k}=\\ 
+%                             &=\expected{\phi(S_k, \xi_{k+1})}{F_k}
+    \end{align*}
+%    Mamy więc sytuację $\expected{\phi(X, Y)}{\set{G}}$, gdzie $X$ jest $\set{G}$-mierzalne i $Y$ jest niezależne od $\set{G}$. Możemy więc użyć twierdzenia z jednego z pierwszym wykładów i powiedzieć, że
+%    $$\expected{\phi(S_k, \xi_{k+1})}{F_k}=\Psi(S_k),$$
+%    gdzie $\Psi(x)=\expected{\phi(x, \xi_{k+1})}$. Chcemy więc obliczyć ile to będzie $\Psi(x)$.
+    zupełnie tak jak w martyngaleniu!
 \end{enumerate}
+
+\begin{zadanko}{2}
+  Pokaż, że dla $a>0$ mamy
+  $$\prob{\max_{0\leq k\leq n}S_k>a}\leq 2\prob{S_n>a}.$$
+  \textbf{Wskazówka}: rozważ czas zatrzymania $\tau=\inf\{k\in\N\;:\;S_k>a\}$.
+\end{zadanko}
+
+Po pierwsze zauważmy, że 
+$$\prob{S_n>a}=\expected{\prob{S_n>a-S_0}}=\expected{X_0}$$
+a z twierdzenia Doobe'a o zatrzymaniu wiemy, że dla czasu zatrzymania $\tau$ jak w treści zadania
+$$\prob{S_n>a}=\expected{X_0}=\expected{X_{n\land \tau}}.$$
+Po drugie, jeśli $\xi_i$ są symetryczne, to również $S_k=\sum_{i\leq k}\xi_i$ jest symetryczna. Pokażemy to szybciutko za pomocą indukcji. Dla $k=1$ $S_1=\xi_1$ i faktycznie jest to symetryczne. W przejściu $(k-1)\implies k$ sprawdzamy:
+\begin{align*}
+  \mu_{S_k}(t)&=\mu\ast\mu_{S_{k-1}}(t)=\int_{\R}\mu_{S_{k-1}}(t)\mu(x-t)dx=\\ 
+              &\overset{\text{\scalebox{0.55}{indukcja}}}{=}\int_{-\infty}^\infty\mu_{S_{k-1}}(-t)\mu(-x+t)dx=\begin{bmatrix}z=-x\\dz=-dx\end{bmatrix}\\ 
+              &=-\int^{-\infty}_\infty\mu_{S_{k-1}}(-t)\mu(z-(-t))dz=\\
+              &=\int_{-\infty}^\infty\mu_{S_{k-1}}(-t)\mu(z-(-t))dz=\mu\ast\mu_{S_{k-1}}(-t)=\mu_{S_k}(-t)
+\end{align*}
+czyli $\mu_{S_k}(t)=\mu_{S_k}(-t)$ jest rozkładem symetryczny.
+
+Idąc więc od prawej strony równości, którą mamy pokazać mamy
+\begin{align*}
+  2\prob{S_n>a}&=2\expected{X_0}=2\expected{X_{n\land \tau}}=\\ 
+               &=2\expected{X_{n\land\tau}\mathds{1}_{\{\max S_k>a\}}+X_{n\land\tau}\mathds{1}_{\{\max S_k\leq a\}}}\geq\\ 
+               &{\geq}2\expected{X_{n\land\tau}\mathds{1}_{\{\max S_k>a\}}}=\star
+\end{align*}
+ostatnie przejście jest możliwe, ponieważ $X_k\in[0,1]$ dla każdego $k$. Dalej zauważmy, że na zbiorze $\{\max S_k>a\}$ czas zatrzymania $\tau$ jest skończony. W takim razie 
+$$X_{n\land T}=X_T=\prob{Y_{n-T}>a-S_T}\geq\prob{Y_{n-T}\geq 0},$$
+ponieważ $a<S_T$, czyli $a-S_T\leq 0$ i to co jest po prawej stronie jest całką po troszeczkę mniejszym zbiorze niż $\prob{Y_{n-T}>a-S_T}$. Wracając do tego co zaczęliśmy wyżej, mamy 
+\begin{align*}
+  \star &=2\expected{\prob{Y_{n-T}>a-S_T}\mathds{1}_{\{\max S_k>a\}}}\geq 2\expected{\prob{Y_{n-T}\geq 0}\mathds{1}_{\{\max S_k>a\}}}=\\ 
+        &=2\expected{\frac{1}{2}\mathds{1}_{\max S_k>a\}}}=\expected{\mathds{1}_{\{\max S_k>a\}}}=\prob{\max S_k>a}
+\end{align*}
+przejście między linijkami wynika z tego, że gęstość $Y_{n-T}$ jest taka sama jak zmiennej $S_{n-T}$, a na samym początku pokazaliśmy, że $S_{n-T}$ jest symetryczna. Całkując symetryczną zmienną tylko po dodatnich wartościach daje pewność, że dostaniemy tylko połowę całości - czyli połowę $1$.
+
+
+\subsection*{PSEUDO-APPENDIX}
+
+\textbf{\large Zad 1.}
+
+Zbiór $[a-S_k, \infty)$ zapisuje się jako
+\begin{align*}
+   [a-S_k, \infty)&=\{x\geq a-S_k\}=\{a-x\leq S_k\}=\{a-x\leq \sum_{i=1}^k\xi_i\}=\\ 
+                          &=\bigcup_{s_k\in\Q }\{\xi_k\geq s_k\;\land\;a-x\leq \sum_{i=1}^k\xi_i\leq s_k+\sum_{i\leq k-1}\xi_i\}=\\ 
+                          &=\bigcup_{s_k\in\Q}\{s_k\leq \xi_k\;\land\;a-x-s_k\leq \sum_{i\leq k-1}\xi_i\}=...\\ 
+     ...&=\bigcup_{s_k\in\Q}...\bigcup_{s_2\in\Q}\{s_k\leq \xi_k\;\land\;...\;\land\; s_2\leq \xi_2\;\land\; a-x-\sum_{i=2}^ks_i\leq \xi_1 \}=\\ 
+        &=\bigcup_{s_2,...,s_k\in\Q}\{s_k\leq \xi_k\}\cap ...\{s_2\leq \xi_2\}\cap\{a-x-\sum_{i=2}^ks_i\leq \xi_1\}
+\end{align*}
+Czyli mamy przeliczalną sumę skończonych przekrojów zbiorów z $\sigma(\xi_1,...,\xi_k)$, więc $[a-S_k, \infty)\in\sigma(\xi_1,...,\xi_k)$ bardzo mocno. Można oczywiście powiedzieć po prostu, że to jest zbiór $\{a-x\geq S_k\}$, a $S_k$ jest w oczywisty sposób mierzalna względem $\sigma(\xi_1,...,\xi_k)$, ale kto by nie chciał czytać równań wyżej.
+
+%$\mu_{Y_{n-k}}$ to z kolei splot $\mu$ $n-k$ razy, czyli
+%\begin{align*}
+%  \mu_{Y_{n-k}}(t)&=\int_{\R}\mu(t)\mu_{Y_{n-k-1}}(x_1-t)dx_1=...=\int_{\R}\int_{\R}\mu(t)\mu(x_1-t)...\mu(x_1-...-x_{n-k-1}-t)dx_{n-k-1}...dx_1
+%\end{align*}
+
 
 \end{document}
