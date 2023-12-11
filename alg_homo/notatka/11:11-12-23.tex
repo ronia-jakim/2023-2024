@@ -1,0 +1,299 @@
+\section{11.12.23 : Coś}
+
+\begin{definition}
+  Niech $\mathbf{A}$ będzie kategorią abelową. Rozważamy kategorie $Kom(\mathbf{A}), K(\mathbf{A}), D(\mathbf{A})$, które wszystkie mają te same obiekty.
+
+  Niech $X\in\mathbf{A}$ będzie obiektem. Wtedy $\color{blue}X[-i]$ jest kompleksem, w który na $i$-tym miejscu stoi $X$:
+  \begin{center}\begin{tikzcd}
+    ...\arrow[r] & 0\arrow[r] & X\arrow[r] & 0\arrow[r] & ... \\ 
+                 & & i
+  \end{tikzcd}\end{center}
+
+  Dla $X,Y\in\ob\mathbf{A}$ definiujemy
+  $$\color{blue}Ext_{\mathbf{A}}^i(X, Y)=Hom_{D(\mathbf{A})}(X[0], Y[i])$$
+\end{definition}
+
+Powyższe kategorie niekoniecznie są abelowe, ale na pewno są addytywne, więc na $Hom$ jak wyżej mamy zdefiniowaną operację dodawania.
+
+Zauważmy, że
+$$Hom_{D(\mathbf{A})}(X[0], Y[i])\cong Hom_{D(\mathbf{A})}(X[l], Y[i+l]).$$
+możemy więc na $Ext$ zdefiniować mnożenie:
+\begin{definition}[mnożenie $Ext$]
+  $$Ext_{\mathbf{A}}^i(X, Y)\times Ext_{\mathbf{A}}^j(Y, Z)\xrightarrow Ext_{\mathbf{A}}^{i+j}(X, A)$$
+  takie, że
+  $$(X[0]\to Y[i])(Y[i]\to Z[j+i])\mapsto(X[0], Z[i+j])$$
+\end{definition}
+
+\subsection{Konstrukcja Yonedy}
+
+Niech będzie dany ciąg dokładny
+\begin{center}\begin{tikzcd}
+  ...\arrow[r] & 0\arrow[r] & Y^{-i}\arrow[r] & K^{-i+1}\arrow[r] & ...\arrow[r] & K^0\arrow[r] & X\arrow[r] & 0\arrow[r] & ...
+\end{tikzcd}\end{center}
+
+Możemy wziąć fragment tego ciągu aż do $X$ i dopełnić go $0$. Dostajemy ciąg który nie jest już dokładny, więc dokładamy mu $X$ na dole, czyli tak naprawdę tworzymy odwzorowanie w kompleks $X[0]$ i drugie w kompleks $Y[i]$:
+\begin{center}\begin{tikzcd}
+  0\arrow[r] & Y\arrow[r]\arrow[d, "id"] & K^{-i+1}\arrow[r] & ... \arrow[r] & K^{0}\arrow[r]\arrow[d, "qis"] & 0\\ 
+             & Y[i] & & & X[0]
+\end{tikzcd}\end{center}
+Tworzy się więc domek:
+\begin{center}\begin{tikzcd}
+  & K^*\arrow[dl, "qis" above left] \arrow[dr] \\ 
+  X[0] & & Y[i] 
+\end{tikzcd}\end{center}
+Który nazywamy $Y(K^*)$ i jest on wtedy elementem $Ext_{\mathbf{A}}^i(X, Y)$.
+
+{\large\color{red}ZDJĘCIE}
+
+\begin{example}
+  \item W kategorii przestrzeni wektorowych $Vect_K$ wszystkie $Ext=0$.
+\end{example}
+
+\begin{theorem}
+  \begin{enumerate}[label=(\alph*)]
+    \item Dla $i>0$ każdy element grupy $Ext_{\mathbf{A}}^i(X, Y)$ jest postaci $Y(K^*)$. To znaczy, że domki konstruowane wyżej są przydatne.
+    \item $Ext^0(X, Y)=Hom_{\mathbf{A}}(X Y)$ (było tydzień temu)
+    \item Dla $i<0$ $Ext^i(X, Y)=0$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}[label=(\alph*)]
+    \item Zaczynamy od kompleksu $K^*$ i cały manewr będzie polegał na usunięciu wszystkiego, co nie jest między $-i$ a $0$. Rysujemy diagram
+      \begin{center}\begin{tikzcd}
+        & K^*\arrow[dl]\arrow[dr] \\ 
+        X[0] & & Y[i]
+      \end{tikzcd}\end{center}
+    \item b
+    \item Zaczynamy od diagramu dla $A^*\in Hom_{D(\mathbf{A})}(X[0], Y[i])$
+      \begin{center}\begin{tikzcd}
+        & A^*\arrow[dl, "s" above left]\arrow[dr, "f" above right] \\ 
+        X[0] & & Y[i] \\ 
+             & B^*\arrow[ul, "s'" above left, orange]\arrow[ur, "0", orange] \arrow[uu, "t", orange]
+      \end{tikzcd}\end{center}
+      pokażemy, że te pomarańczowe strzałki da się dorysować, by cały diagram komutował.
+
+      Niech $B^*$ będzie kompleksem
+      \begin{center}\begin{tikzcd}
+        B^*=...\arrow[r] & A^{-i-2}\arrow[r] & \ker d^{-i-1}\arrow[r] & 0\arrow[r] & ... 
+      \end{tikzcd}\end{center}
+      czyli nad $Y$ ma zero, a nad $X$ ma bardzo podobny wygląd - na pewno homologie w $X$ się nie różnią od homologii w $X$ w kompleksie $A^*$.
+
+      Nowy, zerowy, domek dominuje stary domek, więc ten stary też musiał być zerowy.
+  \end{enumerate}
+
+  {\large\color{red}CAŁY TEN DOWÓD TO POWINNAM NA ZDJĘCIA POPATRZEĆ JESZCZE RAZ}
+\end{proof}
+
+\subsection{Trójkąty wyróżnione}
+
+\begin{definition}[wymiar homologiczny kategorii]
+  Dla kategorii abelowej $\mathbf{A}$ definiujemy jej \buff{wymiar homologiczny} jako maksymalne $d$ takie, że 
+  $$Ext_{\mathbf{A}}^d(X, y)\neq0 $$
+  dla pewnych $X,Y\in\ob\mathbf{A}$. Oznaczamy $\color{blue}dh(\mathbf{A})=d$.
+\end{definition}
+
+\begin{example}
+\item $dh(Vet_K)=0$
+\item $dh(\mathbf{Ab})=1$
+\item Dla pierścienia $R$ wymiar homologiczny (globalny) to $dh(R-mod)$. Na przykład pierścień wielomianów nad ciałem $\mathfrak{K}$, czyli $\mathfrak{K}[x_1,...,x_n]$, to ilość jego zmiennych $dh(\mathfrak{K}[x_1,..., x_n])=n$.
+\end{example}
+
+\begin{definition}[trójkąt wyróżniony]
+  \buff{Trójkąt wyróżniony} [czasem nazywany dokladnym] w $K(\mathbf{A})$ lub w $D(\mathbf{A})$ to trójkąt izomorficzny z trójkątem postaci
+  \begin{center}\begin{tikzcd}
+    A^*\arrow[r, "f"] & B^*\arrow[r] & C(f)\arrow[r] & A^*[1]
+  \end{tikzcd}\end{center}
+\end{definition}
+
+\begin{fact}\label{fakt 11.2}$ $\newline
+  \begin{enumerate}[label=(\alph*)]
+    \item $ $\newline
+      \begin{center}\begin{tikzcd}
+        X\arrow[r, "id"]\arrow[d] & X\arrow[r]\arrow[d] & 0\arrow[r]\arrow[d] & X[1] \\ 
+        X\arrow[r, "id"] & X\arrow[r] & C(id_X)\arrow[r] & X[1] 
+      \end{tikzcd}\end{center}
+      i tutaj stożek $C(id_X)\cong 0$, bo $h(a^{i+1}, a^i)=(a^i, 0)$.
+    \item Jeśli mamy trójkąt wyróżniony
+      \begin{center}\begin{tikzcd}
+        X\arrow[r, "u"] & Y \arrow[r] & Z\arrow[r] & X[1]
+      \end{tikzcd}\end{center}
+      to również 
+      \begin{center}\begin{tikzcd}
+        Y\arrow[r] & Z\arrow[r] & X[1]\arrow[r, "-u( 1 )"] & Y[1]
+      \end{tikzcd}\end{center}
+      też jest trójkątem wyróżnionym.
+    \item Dla trójkątów wyróżnionych można uzupełniać diagramy, tzn. jeśli wiersze są trójkątami wyróżnionymi, to istnieje strzałka domykająca go:
+      \begin{center}\begin{tikzcd}
+        X\arrow[r]\arrow[d, "f"] & Y\arrow[r]\arrow[d, "g"] & Z\arrow[r]\arrow[d, dashed, blue, "\exists"] & X[1]\arrow[d, "f(1)"]\\ 
+        X'\arrow[r] & Y'\arrow[r] & Z'\arrow[r] & X'[1]
+      \end{tikzcd}\end{center}
+  \end{enumerate}
+\end{fact}
+
+Te wszystkie własności pojawiają się w definicji kategorii striangulowanej. Poza nimi jest jeszcze jeden aksjomat, który jest bardzo skomplikowany, ale nie korzysta się z niego prawie nigdy.
+
+\begin{lemma}
+  W trójkącie wyróżnionym złożenie dwóch kolejnych odwzorowań jest zerowe jako morfizm w kategoriach $K(\mathbf{A})$ lub $D(\mathbf{A})$.
+\end{lemma}
+
+To znaczy, że samo w sobie niekoniecznie jest zerowe, ale jest homotopijne z odwzorowaniem zerowym.
+
+\begin{proof}
+  \begin{center}\begin{tikzcd}
+    X\arrow[r, "id"] \arrow[d, "id"] & X\arrow[r]\arrow[d, "f"] & 0\arrow[r]\arrow[d, dashed, blue, "\exists"] & X[1]\arrow[d, "id"]\\ 
+    X\arrow[r, "f"]\arrow[rr, orange, "0?" below, yshift=-2mm, bend right=10] & Y\arrow[r] & Z\arrow[r] & X[1]
+  \end{tikzcd}\end{center}
+
+  {\large\color{red}DOKOŃCZYĆ DIAGRAM}
+\end{proof}
+
+\begin{lemma}
+  Niech $X\to Y\to Z\to X[1]$ będzie trójkątem wyróżnionym. Wtedy następujące ciąg są dokładne:
+  \begin{center}\begin{tikzcd} 
+    ...\arrow[r] & Hom(U, X[i]) \arrow[r] & Hom(U, Y[i]) \arrow[r] & Hom(U, Z[i])\arrow[dll] \\ 
+                 & Hom(U, X[i+1]) \arrow[r] & ...
+  \end{tikzcd}\end{center}
+  
+  oraz
+
+  \begin{center}\begin{tikzcd}
+    ...\arrow[r] & Hom(Z[i], U)\arrow[r] & Hom(Y[i], U)\arrow[r] & Hom(X[i], U)\arrow[dll]\\ 
+                 & Hom(Z[i-1], U)\arrow[r] & ...
+  \end{tikzcd}\end{center}
+\end{lemma}
+
+Co jest ciekawe, to takie ciągi są dokładne niezależnie od tego, czy patrzymy w kategorii $K(\mathbf{A})$ czy $D(\mathbf{A})$.
+
+\begin{proof}
+  Ze względu na niezmienniczość tych trójkątów na przesunięcia (\ref{fakt 11.2} (b)), to wystarczy patrzeć na dokładność w jednym miejscu $X\xrightarrow{\alpha} Y\xrightarrow{\beta} Z$.
+
+  Patrzymy więc na ciąg
+  \begin{center}\begin{tikzcd}
+    Hom(Z, U)\arrow[r, "\alpha^*"] & {\color{orange}Hom(Y, U)}\arrow[r, "\beta^*"] & Hom(X, U) 
+  \end{tikzcd}\end{center}
+  Zaczniemy od pokazania, że $\beta^*\circ\alpha^*=0$, ale to jest wprost z faktu, że 
+  $$\alpha^*\beta^*=(\alpha\beta)^*=(0)^*=0$$
+  ktore można narysować
+  \begin{center}\begin{tikzcd}
+    X\arrow[r, "\alpha"]\arrow[dr, "\alpha^*\beta^*f"] & Y\arrow[r, "\beta"]\arrow[d, "\beta^*f"] & Z\arrow[dl, "f"]\\ 
+                                                       & W
+  \end{tikzcd}\end{center}
+  Dalej chcemy sprawdzić, czy $\ker\alpha^*=\img\beta^*$? Najpierw zauważmy, że jeśli $f\in\ker\alpha^*$, to wówczas
+  \begin{center}\begin{tikzcd}
+    X\arrow[r, "\alpha"]\arrow[dr, "0" below left] & Y\arrow[d, "f"] \\ 
+                                                   & U
+  \end{tikzcd}\end{center}
+  komutuje. Czyli rysując już docelowy diagram, mamy:
+  \begin{center}\begin{tikzcd}
+    X\arrow[r, "\alpha"]\arrow[d, "0", orange] & Y\arrow[r, "\beta"]\arrow[d, "f", orange] & Z\arrow[r]\arrow[d, dashed, "\exists", blue] & X[1]\arrow[d, "0(1)", orange] \\ 
+    0\arrow[r] & U\arrow[r, "id"] & U\arrow[r] & 0
+  \end{tikzcd}\end{center}
+  Niebieskie odwzorowanie zamyka diagram, stąd $id$ między $U$. Czyli 
+  $$g\beta=f\implies \beta^* g=f$$
+\end{proof}
+
+\begin{conclusion}
+  Niech 
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & A\arrow[r] & B\arrow[r] & C\arrow[r] & 0
+  \end{tikzcd}\end{center}
+  będzie krótkim ciągiem dokładnym w $\mathbf{A}$. Prowadzi on do trójkąta wyróżnionego $A\to B\to C\to A[1]$ w kategorii $D(\mathbf{A})$ (ćwiczenia).
+
+  Dzięki temu można pisać długie ciągi dokładne dla $U\in\ob\mathbf{A}$:
+  \begin{center}\begin{tikzcd}
+    ...\arrow[r] & Ext^i(C, U)\arrow[r] & Ext^i(B, U)\arrow[r] & Ext^i(A, U)\arrow[r] & Ext^{i+1}(C, U)\arrow[r] &... 
+  \end{tikzcd}\end{center}
+
+  i tak samo dla drugiej funktorialności:
+  \begin{center}\begin{tikzcd}
+    ...\arrow[r] & Ext^i(U,A)\arrow[r] & Ext^i(U, B)\arrow[r] & Ext^i(U, C)\arrow[r] & Ext^{i+1}(U, A)\arrow[r] &... 
+  \end{tikzcd}\end{center}
+\end{conclusion}
+
+\begin{fact}
+  Jeśli $dh(\mathbf{A})=0$, to każdy krótki ciąg dokładny W $\mathbf{A}$
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & A\arrow[r] & B\arrow[r] & C\arrow[r] & 0
+  \end{tikzcd}\end{center}
+  rozszczepia się, tzn. istnieje
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & A\arrow[r, "\alpha"] & B\arrow[r, "\beta", yshift=1mm] & C\arrow[r]\arrow[l, yshift=-1mm, "\exists \gamma"] & 0
+  \end{tikzcd}\end{center}
+  takie, że $\beta\gamma=Id_C$. Stąd
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & A\arrow[r]\arrow[dr] & A\oplus C\arrow[r] & C\arrow[r] & 0\\ 
+               &            & B\arrow[ur]\arrow[u, phantom, sloped, "\cong"]
+  \end{tikzcd}\end{center}
+\end{fact}
+
+\begin{proof}
+  Niech \begin{tikzcd}0\arrow[r] & A\arrow[r] & B\arrow[r] & C\arrow[r] & 0\end{tikzcd} będzie ciągiem dokładnym. Wtedy dla $U=A$ mamy
+  \begin{center}\begin{tikzcd}
+    0\arrow[r] & Ext^0(C, A)\arrow[r] Ext^0(B, A)\arrow[r] & Ext^0(A, A) \arrow[r] & Ext^1(C, A) \arrow[r] &...
+\\ 
+               & Hom(C, A)\arrow[u, phantom, sloped, "="]\arrow[r] & Hom(B, A)\arrow[r] & Hom(A, A)\arrow[r] & 0\arrow[u, phantom, sloped, "="]\\ 
+               & & \delta\arrow[u, phantom, sloped, "\in"]\arrow[r, mapsto] & id_A\arrow[u, phantom, sloped, "\in"]
+  \end{tikzcd}\end{center}
+  Stąd mamy $\ker \delta\xrightarrow{\beta} C$ i $\gamma:C\to \er\delta$ i wtedy $\delta\alpha=id_A$ i całość rozszczepia się.
+\end{proof}
+
+\begin{conclusion}
+  $dh(\mathbf{Ab})\geq 1$, bo $0\to \Z\to \Z\to \Z/2\to 0$ nie rozszczepia się.
+\end{conclusion}
+
+\subsection{Warianty kategorii pochodnej}
+
+\begin{enumerate}
+  \item $D^+(\mathbf{A})$ - podkategoria rozpinana przez kompleksy zerujące się na lewo od pewnego indeksu ($A^i=0$ dla $i<<0$)
+  \item $D^-(\mathbf{A})$ - podkategoria rozpinana przez kompleksy zerujące się na prawo od pewnego indeksu ($A^i=0$ dla $i>>0$)
+  \item $D^b(\mathbf{A})$ - podkategoria rozpinana przez kompleksy "ograniczone" ($A^i=0$ dla $|i|>>0$)
+\end{enumerate}
+
+\begin{definition}
+  W kategorii $\mathbf{A}$ jest \acc{wystarczająco dużo obiektów injektywnych}, jeśli każdy obiekt wkłada się w pewien obiekt injektywny. Analogicznie mówimy, że w $\mathbf{A}$ jest \acc{dostatecznie dużo obiektów projektwynych}, jeśli każdy obiekt jest ilorazem (istnieje surjekcja) obiektu projektywnego.
+\end{definition}
+
+\begin{theorem}
+  Jeśli w $\mathbf{A}$ jest dostatecznie dużo obiektów injektywnych, to naturalny funktor 
+  $K^+(I)\to D^+(\mathbf{A})$ jest równoważnością kategorii.
+\end{theorem}
+
+$I$ jest klasą wszystkich injektywnych obiektów kategorii $\mathbf{A}$. Z kolei $K^+(I)$ to wszystkie kompleksy o obiektach injektywnych z dokładnością do homotopii. Analogicznie, $K^-(P)$ będzie zawierało wszystkie kompleksy na obiektach projektywnych z dokładnością do homotopii.
+
+\begin{lemma}\label{lemat skladanie z qis}
+  W $K^(\mathbf{A})$ niech $f:X\toY$ będzie qis. Załóżmy, że mamy kompleks obiektów injektywnych $I^*$. Wtedy
+  $$Hom_{K(\mathbf{A})}(Y^*, I^*)\xrightarrow{-\circ s}Hom_{K(\mathbf{A})}(X^*, I^*)$$
+  jest izomorfizmem. 
+\end{lemma}
+
+\begin{proof}
+  W przyszłym tygodniu
+\end{proof}
+
+\begin{conclusion}
+  Jeśli $A^*$ oraz $I^*$ są kompleksami zaczynającymi się od pewnego miejsca ($\in Kom^+(\mathbf{A})$), a $I^*$ jest injektywny, to wtedy
+  $$Hom_{K(\mathbf{A})}(A^*, I^*)\cong Hom_{D(\mathbf{A})}(A^*, I^*)$$
+\end{conclusion}
+
+\begin{proof}
+  \begin{center}\begin{tikzcd}
+    & B^*\arrow[dl, "qis=s" above left] \arrow[dr, "f"] \\ 
+    A^*\arrow[rr, "f", dashed, blue] & & I^* 
+  \end{tikzcd}\end{center}
+
+  Zaczniemy od pokazania, że $Hom_{K(\mathbf{A})}(A^*, I^*)\to Hom_{D(\mathbf{A})}(A^*, I^*)$ jest epimorfizmem
+  \begin{center}\begin{tikzcd}
+    & B^*\arrow[dr, "s"] \arrow[dl, "f"] \arrow[dd, "s"] \\ 
+    A^* & & I^* \\  
+    A^*\arrow[ul, "id"] \arrow[ur, "f'"]
+  \end{tikzcd}\end{center}
+  
+  Natomiast monomorfizm tej strzałki wynika z tego, że 
+  \begin{center}\begin{tikzcd}
+    & & B^*\arrow[dl, "s"]\arrow[dr, "s"]\\ 
+    A^*\arrow[dl, "id"]\arrow[drrr, "f"] &  & A^*\arrow[dr, "g"]\arrow[dlll. "id"] \\ 
+    A^* & & & & I^* 
+  \end{tikzcd}\end{center}
+  Chcemy z tego wywnioskować, że skoro $fs\cong gs$, to $f$ jest homotopijne z $g$ i używamy do tego lemat \ref{lemat skladanie z qis}.
+\end{proof}
