@@ -1,4 +1,4 @@
-\section{11.12.23 : Funktor Ext}
+\section{11.12.23 : Rozszerzenia (extensions) Ext}
  
 \begin{definition}[$Ext^i_{\mathbf{A}}(X, Y)$]
   Niech $\mathbf{A}$ będzie kategorią abelową. Rozważamy kategorie $Kom(\mathbf{A}), K(\mathbf{A}), D(\mathbf{A})$, które wszystkie mają te same obiekty.
@@ -44,34 +44,41 @@ Tworzy się więc domek:
 Który nazywamy $Y(K^*)$ i jest on wtedy elementem $Ext_{\mathbf{A}}^i(X, Y)$.
 
 \begin{example}
-  \item $Ext^1$
+  \item $...\to Y\to K^0\to 0\to ... \in Ext^1(X, Y)$, wtedy domek 
+    \begin{center}\begin{tikzcd}[column sep=tiny]
+      & ...\to Y\to K^0\to 0\to ... \arrow[dl] \arrow[dr] \\ 
+      X[0] & & Y[1] 
+    \end{tikzcd}\end{center}
+    można zamienić na ciąg dokładny
     \begin{center}\begin{tikzcd}
       0\arrow[r] & Y \arrow[r] & K^0\arrow[r] & X\arrow[r] & 0 
     \end{tikzcd}\end{center}
+    $K^0$ jest rozszerzeniem (extension) obiektu $X$ przez obiekt $Y$
   \item W kategorii przestrzeni wektorowych $Vect_K$ wszystkie $Ext=0$.
+  \item W kategorii grup abelowych $\mathbf{Ab}$ mamy 
+    \begin{center}\begin{tikzcd}
+      0\arrow[r] & \Z\arrow[r, "2\times"] & \Z \arrow[r] & \Z/2\Z\arrow[r] & 0 
+    \end{tikzcd}\end{center}
+    czyli nietrywialny element w $Ext^1_{\mathbf{Ab}}(\Z/2\Z, \Z)$.
 \end{example}
 
-\begin{theorem}
+\begin{theorem}[postaci $Ext$]$ $
+
   \begin{enumerate}[label=(\alph*)]
     \item Dla $i>0$ każdy element grupy $Ext_{\mathbf{A}}^i(X, Y)$ jest postaci $Y(K^*)$. To znaczy, że domki konstruowane wyżej są przydatne.
-    \item $Ext^0(X, Y)=Hom_{\mathbf{A}}(X Y)$ (było tydzień temu)
+    \item $Ext^0(X, Y)=Hom_{D(\mathbf{A})}(X[0], Y[0])=Hom_{\mathbf{A}}(X, Y)$ (było tydzień temu \ref{fakt 10.5})
     \item Dla $i<0$ $Ext^i(X, Y)=0$.
   \end{enumerate}
 \end{theorem}
 
 \begin{proof}
   \begin{enumerate}[label=(\alph*)]
-    \item Zaczynamy od kompleksu $K^*$ i cały manewr będzie polegał na usunięciu wszystkiego, co nie jest między $-i$ a $0$. Rysujemy diagram
-      \begin{center}\begin{tikzcd}
-        & K^*\arrow[dl]\arrow[dr] \\ 
-        X[0] & & Y[i]
-      \end{tikzcd}\end{center}
-    \item b
+    \setcounter{enumi}{2}
     \item Zaczynamy od diagramu dla $A^*\in Hom_{D(\mathbf{A})}(X[0], Y[i])$
       \begin{center}\begin{tikzcd}
         & A^*\arrow[dl, "s" above left]\arrow[dr, "f" above right] \\ 
         X[0] & & Y[i] \\ 
-             & B^*\arrow[ul, "s'" above left, orange]\arrow[ur, "0", orange] \arrow[uu, "t", orange]
+             & B^*\arrow[ul, "s'" below left, orange]\arrow[ur, "0" below right, orange] \arrow[uu, "t", orange]
       \end{tikzcd}\end{center}
       pokażemy, że te pomarańczowe strzałki da się dorysować, by cały diagram komutował.
 
@@ -79,9 +86,39 @@ Który nazywamy $Y(K^*)$ i jest on wtedy elementem $Ext_{\mathbf{A}}^i(X, Y)$.
       \begin{center}\begin{tikzcd}
         B^*=...\arrow[r] & A^{-i-2}\arrow[r] & \ker d^{-i-1}\arrow[r] & 0\arrow[r] & ... 
       \end{tikzcd}\end{center}
-      czyli nad $Y$ ma zero, a nad $X$ ma bardzo podobny wygląd - na pewno homologie w $X$ się nie różnią od homologii w $X$ w kompleksie $A^*$.
+      czyli nad $Y$ ma zero, a nad $X$ ma bardzo podobny wygląd - na pewno homologie w $X$ się nie różnią od homologii w $X$ w kompleksie $A^*$:
 
-      Nowy, zerowy, domek dominuje stary domek, więc ten stary też musiał być zerowy.
+      \begin{center}\begin{tikzcd}[column sep=small]
+        A^*: ...\arrow[r]  & A^0\arrow[r] & ... \arrow[r] & A^{-i-2}\arrow[r] & A^{-i-1}\arrow[r] & A^{-i}\arrow[r] & A^{-i+1} \arrow[r] & ...\\ 
+        X[0]: ...\arrow[r] & X\arrow[r]   & 0\arrow[r] & ... &    Y[i]:...\arrow[r] & Y     \arrow[r]   & 0     \arrow[r] & ...\\ 
+        %Y[i]: ...\arrow[r] & 0\arrow[r]   & ...\arrow[r]  & 0\arrow[r]        & 0\arrow[r]        & Y\arrow[r]      & 0\arrow[r]         & ...\\ 
+        B^*:  ...\arrow[r] & A^0\arrow[r] & ...\arrow[r]  & A^{-i-2}\arrow[r] & \ker d^{-i-1}\arrow[r] & 0\arrow[r] & 0\arrow[r]         & ...
+      \end{tikzcd}\end{center}
+
+      Nowy, zerowy, domek 
+      \begin{center}\begin{tikzcd}
+        & B^*\arrow[dr, "0" above right] \arrow[dl, "s'" above left] \\ 
+        X[0] & & Y[i]
+      \end{tikzcd}\end{center}
+      dominuje stary domek z $A^*$, więc ten stary też musiał być zerowy. Stąd każdy element $Ext^i_{\mathbf{A}}(X, Y)$ jest zerowym domkiem.
+    
+    \setcounter{enumi}{0}
+    \item Zaczynamy od kompleksu $K^*$ i cały manewr będzie polegał na usunięciu wszystkiego, co nie jest między $-i$ a $0$. Mamy dany diagram
+      \begin{center}\begin{tikzcd}
+        & K^*\arrow[dl]\arrow[dr] \\ 
+        X[0] & & Y[i]
+      \end{tikzcd}\end{center}
+      a po wycinance
+      \begin{center}\begin{tikzcd}[column sep=small]
+        ...\arrow[r] & K^{-i-1}\arrow[r] & K^{-i}\arrow[r] & K^{-i+1}\arrow[r] & ... \arrow[r] & K^{-1}\arrow[r] & K^0\arrow[r] & K^1\arrow[r] & ...\\ 
+        ...\arrow[r] & K^{-i-1}\arrow[r]\arrow[u, "qis"]\arrow[d, "qis" left] & K^{-i}\arrow[r]\arrow[u]\arrow[d] & K^{-i+1}\arrow[r]\arrow[u]\arrow[d] & ...\arrow[r] & K^{-1}\arrow[r]\arrow[u]\arrow[d] & \ker d^0\arrow[r]\arrow[u]\arrow[d] & 0\arrow[r]\arrow[u]\arrow[d] & ...\\ 
+        ..\arrow[r] & 0\arrow[r] & \coker d^{-i-1}\arrow[r] & K^{-i+1}\arrow[r] & ...\arrow[r] & K^{-1}\arrow[r] & \ker d^0\arrow[r] & 0\arrow[r] & ...
+      \end{tikzcd}\end{center}
+      Dostaliśmy więc nowy kompleks i qis tworzące diagram:
+      \begin{center}\begin{tikzcd}
+        ...\arrow[r] & 0\arrow[r] & A\arrow[r]\arrow[d] & B\arrow[r] & ...\arrow[r] & Z\arrow[r]\arrow[d] & 0\arrow[r] & ...\\ 
+                     &            & Y[-i]               &            &              & X[0]
+      \end{tikzcd}\end{center}
   \end{enumerate}
 
   {\large\color{red}CAŁY TEN DOWÓD TO POWINNAM NA ZDJĘCIA POPATRZEĆ JESZCZE RAZ}
