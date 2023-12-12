@@ -54,14 +54,16 @@ Jak już to zostało ustalone, przejdźmy do treści tego zadania:
     \begin{align*}
       \expected{|X_k|}=\expected{|\prob{Y_{n-k}\geq a-S_k}|}\leq \expected{|1|}=1
     \end{align*}
-  \item $X_k$ jest mierzalne względem $F_k=\sigma(\xi_1,...,\xi_k)$, bo tak jak napisałam na samym początku zadania:
-    \begin{align*}
-      X_k(\omega)=F_{n-k}(a-S_k(\omega))&=\int_{a-S_k(\omega)}^\infty \mu_{Y_{n-k}}(x)dx=\int_{\R}\mathds{1}_{[a-S_k(\omega), \infty)}(x)\cdot\mu_{Y_{n-k}}(x)dx,
-    \end{align*}
-    przyjmuje wartości z przedziału $[0,1]$ i jest całką po zbiorze $F_k$-mierzalnym (tzn. zbiorze $[a-\sum_{i=1}^k\xi_i(\omega), \infty)$) z funkcji $F_k$-mierzalnej, bo $\mu_{Y_{n-k}}(x)=\mu\ast...\ast\mu$ jest splotem miar odpowiadających rozkładom $\xi_i$. W takim razie, $X_k$ jest $F_k$-mierzalne. 
+  \item $X_k$ jest mierzalne względem $F_k=\sigma(\xi_1,...,\xi_k)$, bo $X_k$ to złożenie
+    $$F_{n-k}(a-S_k),$$
+    gdzie $a-S_k$ jest zmienną losową mierzalną względem $F_k$ jako kombinacja liniowa $\xi_1,...,\xi_k$ i borelowskiej funkcji $\prob{\cdot}$.
+    %\begin{align*}
+    %  X_k(\omega)=F_{n-k}(a-S_k(\omega))&=\int_{a-S_k(\omega)}^\infty \mu_{Y_{n-k}}(x)dx=\int_{\R}\mathds{1}_{[a-S_k(\omega), \infty)}(x)\cdot\mu_{Y_{n-k}}(x)dx,
+    %\end{align*}
+    %przyjmuje wartości z przedziału $[0,1]$ i jest całką po zbiorze $F_k$-mierzalnym (tzn. zbiorze $[a-\sum_{i=1}^k\xi_i(\omega), \infty)$) z funkcji $F_k$-mierzalnej, bo $\mu_{Y_{n-k}}(x)=\mu\ast...\ast\mu$ jest splotem miar odpowiadających rozkładom $\xi_i$. W takim razie, $X_k$ jest $F_k$-mierzalne. 
 
-    Skrupulatne zapisanie zbioru $[a-S_k, \infty)$ zostawiam na pseudo-appendix, bo nie mam pojęcia jak bardzo trzeba być dokładnym.
-    %oraz $\mu_{Y_{n-k}}$
+    %Skrupulatne zapisanie zbioru $[a-S_k, \infty)$ zostawiam na pseudo-appendix, bo nie mam pojęcia jak bardzo trzeba być dokładnym.
+    %%oraz $\mu_{Y_{n-k}}$
 
   \item $\expected{X_{k+1}}{F_k}=X_k$, czyli sedno sprawy.
 

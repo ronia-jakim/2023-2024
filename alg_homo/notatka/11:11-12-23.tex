@@ -151,14 +151,25 @@ To znaczy, że samo w sobie niekoniecznie jest zerowe, ale jest homotopijne z od
 \begin{lemma}
   Niech $X\to Y\to Z\to X[1]$ będzie trójkątem wyróżnionym. Wtedy następujące ciąg są dokładne:
   \begin{center}\begin{tikzcd} 
-    ...\arrow[r] & Hom(U, X[i]) \arrow[r] & Hom(U, Y[i]) \arrow[r] & Hom(U, Z[i])\arrow[dll] \\ 
+    ...\arrow[r] & Hom(U, X[i]) \arrow[r] & Hom(U, Y[i]) \arrow[d, phantom, ""{coordinate, name=Z}] \arrow[r] & Hom(U, Z[i])\arrow[dll, rounded corners,
+    to path={ -- ([xshift=2ex]\tikztostart.east)
+|- (Z) [near end]\tikztonodes
+-| ([xshift=-2ex]\tikztotarget.west)
+-- (\tikztotarget)}
+    ] \\ 
                  & Hom(U, X[i+1]) \arrow[r] & ...
   \end{tikzcd}\end{center}
   
   oraz
 
   \begin{center}\begin{tikzcd}
-    ...\arrow[r] & Hom(Z[i], U)\arrow[r] & Hom(Y[i], U)\arrow[r] & Hom(X[i], U)\arrow[dll]\\ 
+    ...\arrow[r] & Hom(Z[i], U)\arrow[r] & Hom(Y[i], U)\arrow[r] & Hom(X[i], U)
+    \arrow[dll, rounded corners, 
+to path={ -- ([xshift=2ex]\tikztostart.east)
+|- (Z) [near end]\tikztonodes
+-| ([xshift=-2ex]\tikztotarget.west)
+-- (\tikztotarget)}
+    ]\\ 
                  & Hom(Z[i-1], U)\arrow[r] & ...
   \end{tikzcd}\end{center}
 \end{lemma}
@@ -175,8 +186,8 @@ Co jest ciekawe, to takie ciągi są dokładne niezależnie od tego, czy patrzym
   Zaczniemy od pokazania, że $\beta^*\circ\alpha^*=0$, ale to jest wprost z faktu, że 
   $$\alpha^*\beta^*=(\alpha\beta)^*=(0)^*=0$$
   ktore można narysować
-  \begin{center}\begin{tikzcd}
-    X\arrow[r, "\alpha"]\arrow[dr, "\alpha^*\beta^*f"] & Y\arrow[r, "\beta"]\arrow[d, "\beta^*f"] & Z\arrow[dl, "f"]\\ 
+  \begin{center}\begin{tikzcd}[column sep=large, row sep=large]
+    X\arrow[r, "\alpha"]\arrow[dr, "\alpha^*\beta^*f" below left] & Y\arrow[r, "\beta"]\arrow[d, "\beta^*f"] & Z\arrow[dl, "f" below right]\\ 
                                                        & W
   \end{tikzcd}\end{center}
   Dalej chcemy sprawdzić, czy $\ker\alpha^*=\img\beta^*$? Najpierw zauważmy, że jeśli $f\in\ker\alpha^*$, to wówczas
@@ -230,12 +241,12 @@ Co jest ciekawe, to takie ciągi są dokładne niezależnie od tego, czy patrzym
 \begin{proof}
   Niech \begin{tikzcd}0\arrow[r] & A\arrow[r] & B\arrow[r] & C\arrow[r] & 0\end{tikzcd} będzie ciągiem dokładnym. Wtedy dla $U=A$ mamy
   \begin{center}\begin{tikzcd}
-    0\arrow[r] & Ext^0(C, A)\arrow[r] Ext^0(B, A)\arrow[r] & Ext^0(A, A) \arrow[r] & Ext^1(C, A) \arrow[r] &...
+    0\arrow[r] & Ext^0(C, A)\arrow[r] & Ext^0(B, A)\arrow[r] & Ext^0(A, A) \arrow[r] & Ext^1(C, A) \arrow[r] &...
 \\ 
                & Hom(C, A)\arrow[u, phantom, sloped, "="]\arrow[r] & Hom(B, A)\arrow[r] & Hom(A, A)\arrow[r] & 0\arrow[u, phantom, sloped, "="]\\ 
                & & \delta\arrow[u, phantom, sloped, "\in"]\arrow[r, mapsto] & id_A\arrow[u, phantom, sloped, "\in"]
   \end{tikzcd}\end{center}
-  Stąd mamy $\ker \delta\xrightarrow{\beta} C$ i $\gamma:C\to \er\delta$ i wtedy $\delta\alpha=id_A$ i całość rozszczepia się.
+  Stąd mamy $\ker \delta\xrightarrow{\beta} C$ i $\gamma:C\to \ker\delta$ i wtedy $\delta\alpha=id_A$ i całość rozszczepia się.
 \end{proof}
 
 \begin{conclusion}
@@ -262,7 +273,7 @@ Co jest ciekawe, to takie ciągi są dokładne niezależnie od tego, czy patrzym
 $I$ jest klasą wszystkich injektywnych obiektów kategorii $\mathbf{A}$. Z kolei $K^+(I)$ to wszystkie kompleksy o obiektach injektywnych z dokładnością do homotopii. Analogicznie, $K^-(P)$ będzie zawierało wszystkie kompleksy na obiektach projektywnych z dokładnością do homotopii.
 
 \begin{lemma}\label{lemat skladanie z qis}
-  W $K^(\mathbf{A})$ niech $f:X\toY$ będzie qis. Załóżmy, że mamy kompleks obiektów injektywnych $I^*$. Wtedy
+  W $K^(\mathbf{A})$ niech $f:X\to Y$ będzie qis. Załóżmy, że mamy kompleks obiektów injektywnych $I^*$. Wtedy
   $$Hom_{K(\mathbf{A})}(Y^*, I^*)\xrightarrow{-\circ s}Hom_{K(\mathbf{A})}(X^*, I^*)$$
   jest izomorfizmem. 
 \end{lemma}
@@ -286,13 +297,13 @@ $I$ jest klasą wszystkich injektywnych obiektów kategorii $\mathbf{A}$. Z kole
   \begin{center}\begin{tikzcd}
     & B^*\arrow[dr, "s"] \arrow[dl, "f"] \arrow[dd, "s"] \\ 
     A^* & & I^* \\  
-    A^*\arrow[ul, "id"] \arrow[ur, "f'"]
+    & A^*\arrow[ul, "id"] \arrow[ur, "f'"]
   \end{tikzcd}\end{center}
   
   Natomiast monomorfizm tej strzałki wynika z tego, że 
   \begin{center}\begin{tikzcd}
     & & B^*\arrow[dl, "s"]\arrow[dr, "s"]\\ 
-    A^*\arrow[dl, "id"]\arrow[drrr, "f"] &  & A^*\arrow[dr, "g"]\arrow[dlll. "id"] \\ 
+    & A^*\arrow[dl, "id"]\arrow[drrr, "f"] &   & A^*\arrow[dr, "g"]\arrow[dlll, "id"] \\ 
     A^* & & & & I^* 
   \end{tikzcd}\end{center}
   Chcemy z tego wywnioskować, że skoro $fs\cong gs$, to $f$ jest homotopijne z $g$ i używamy do tego lemat \ref{lemat skladanie z qis}.
