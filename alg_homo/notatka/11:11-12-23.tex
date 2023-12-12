@@ -1,10 +1,10 @@
-\section{11.12.23 : Coś}
-
-\begin{definition}
+\section{11.12.23 : Funktor Ext}
+ 
+\begin{definition}[$Ext^i_{\mathbf{A}}(X, Y)$]
   Niech $\mathbf{A}$ będzie kategorią abelową. Rozważamy kategorie $Kom(\mathbf{A}), K(\mathbf{A}), D(\mathbf{A})$, które wszystkie mają te same obiekty.
 
   Niech $X\in\mathbf{A}$ będzie obiektem. Wtedy $\color{blue}X[-i]$ jest kompleksem, w który na $i$-tym miejscu stoi $X$:
-  \begin{center}\begin{tikzcd}
+  \begin{center}\begin{tikzcd}[row sep=tiny]
     ...\arrow[r] & 0\arrow[r] & X\arrow[r] & 0\arrow[r] & ... \\ 
                  & & i
   \end{tikzcd}\end{center}
@@ -19,7 +19,7 @@ Zauważmy, że
 $$Hom_{D(\mathbf{A})}(X[0], Y[i])\cong Hom_{D(\mathbf{A})}(X[l], Y[i+l]).$$
 możemy więc na $Ext$ zdefiniować mnożenie:
 \begin{definition}[mnożenie $Ext$]
-  $$Ext_{\mathbf{A}}^i(X, Y)\times Ext_{\mathbf{A}}^j(Y, Z)\xrightarrow Ext_{\mathbf{A}}^{i+j}(X, A)$$
+  $$Ext_{\mathbf{A}}^i(X, Y)\times Ext_{\mathbf{A}}^j(Y, Z)\xrightarrow{} Ext_{\mathbf{A}}^{i+j}(X, A)$$
   takie, że
   $$(X[0]\to Y[i])(Y[i]\to Z[j+i])\mapsto(X[0], Z[i+j])$$
 \end{definition}
@@ -43,9 +43,11 @@ Tworzy się więc domek:
 \end{tikzcd}\end{center}
 Który nazywamy $Y(K^*)$ i jest on wtedy elementem $Ext_{\mathbf{A}}^i(X, Y)$.
 
-{\large\color{red}ZDJĘCIE}
-
 \begin{example}
+  \item $Ext^1$
+    \begin{center}\begin{tikzcd}
+      0\arrow[r] & Y \arrow[r] & K^0\arrow[r] & X\arrow[r] & 0 
+    \end{tikzcd}\end{center}
   \item W kategorii przestrzeni wektorowych $Vect_K$ wszystkie $Ext=0$.
 \end{example}
 
