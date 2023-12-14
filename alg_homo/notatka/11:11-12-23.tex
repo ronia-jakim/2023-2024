@@ -116,12 +116,29 @@ Który nazywamy $Y(K^*)$ i jest on wtedy elementem $Ext_{\mathbf{A}}^i(X, Y)$.
       \end{tikzcd}\end{center}
       Dostaliśmy więc nowy kompleks i qis tworzące diagram:
       \begin{center}\begin{tikzcd}
-        ...\arrow[r] & 0\arrow[r] & A\arrow[r]\arrow[d] & B\arrow[r] & ...\arrow[r] & Z\arrow[r]\arrow[d] & 0\arrow[r] & ...\\ 
+        ...\arrow[r] & 0\arrow[r] & A\arrow[r, "d"]\arrow[d, "g" left] & B\arrow[r] & ...\arrow[r] & Z\arrow[r]\arrow[d] & 0\arrow[r] & ...\\ 
                      &            & Y[-i]               &            &              & X[0]
+      \end{tikzcd}\end{center}
+      Chcemy teraz $A$ podmienić na $Y$, żeby całość wyglądała jak diagram w $Y(K^*)$. Zaczynamy od dopisania $Y$ na siłę przy pomocy produktów:
+      \begin{center}\begin{tikzcd}[row sep=small]
+        & (y, a)\arrow[r, mapsto]\arrow[d, phantom,sloped, "\in"] & (y-g(a), da)\arrow[d, phantom, sloped, "\in"]\\
+        0\arrow[r] & Y\oplus A\arrow[r]\arrow[d] & Y\oplus B\arrow[r] & C\arrow[r] & ... \arrow[r] & Z\arrow[d]\\ 
+                   & Y & & & & X
+      \end{tikzcd}\end{center}
+      Dopełniamy kolumny do krótkich ciągów dokładnych:
+      \begin{center}\begin{tikzcd}[/tikz/row 1/.style={row sep=1cm}]
+        0\arrow[r] & A\arrow[r, "id"]\arrow[d, "\substack{a \\ \downarrow \\ (0; a)}"] & A \arrow[r]\arrow[d, "\substack{a \\ \downarrow \\ (-g(a); da)}"] & 0 \arrow[r] & ...\\ 
+        0\arrow[r] & Y\oplus A\arrow[r]\arrow[d] & Y\oplus B\arrow[r] & C\arrow[r] & ... \arrow[r] & Z\arrow[d]\\ 
+                   & Y & & & & X
+      \end{tikzcd}\end{center}
+      Z tego wynika, że $(Y\oplus A) /A\cong Y$ i ostatecznie mamy
+      \begin{center}\begin{tikzcd}
+        0\arrow[r] & (Y\oplus A)/A \arrow[r]\arrow[d] & (Y\oplus B)/A \arrow[r] & C\arrow[r] & ... \arrow[r] & Z\arrow[d] \\ 
+                   & Y & & & & X
       \end{tikzcd}\end{center}
   \end{enumerate}
 
-  {\large\color{red}CAŁY TEN DOWÓD TO POWINNAM NA ZDJĘCIA POPATRZEĆ JESZCZE RAZ}
+  %{\large\color{red}CAŁY TEN DOWÓD TO POWINNAM NA ZDJĘCIA POPATRZEĆ JESZCZE RAZ}
 \end{proof}
 
 \subsection{Trójkąty wyróżnione}
@@ -179,12 +196,14 @@ Te wszystkie własności pojawiają się w definicji kategorii striangulowanej. 
 To znaczy, że samo w sobie niekoniecznie jest zerowe, ale jest homotopijne z odwzorowaniem zerowym.
 
 \begin{proof}
+  Dany jest trójkąt wyróżniony $X\to Y\to Z\to X[1]$. Wiemy też, że $X\to X\to 0\to X[1]$ też jest trójkątem wyróżnionym. Na mocy \ref{fakt 11.2} istnieje więc strzałka $0\to Z$ domykająca diagram niżej:
   \begin{center}\begin{tikzcd}
-    X\arrow[r, "id"] \arrow[d, "id"] & X\arrow[r]\arrow[d, "f"] & 0\arrow[r]\arrow[d, dashed, blue, "\exists"] & X[1]\arrow[d, "id"]\\ 
-    X\arrow[r, "f"]\arrow[rr, orange, "0?" below, yshift=-2mm, bend right=10] & Y\arrow[r] & Z\arrow[r] & X[1]
+    X\arrow[r, "id"] \arrow[d, "id"] \arrow[drr, green, to path={ (\tikztostart.north) -| ([xshift=7mm]\tikztotarget)}, thick, rounded corners] \arrow[drr, green, to path ={(\tikztostart.west) |- ([yshift=-3mm]\tikztotarget.south)}, thick, rounded corners] & X\arrow[r]\arrow[d, "f"] & 0\arrow[r]\arrow[d, dashed, blue, "\exists" left] & X[1]\arrow[d, "id"]\\ 
+    X\arrow[r, "f"]\arrow[rr, orange, "0?" below, yshift=-4mm, bend right=10] & Y\arrow[r] & Z\arrow[r] & X[1]
   \end{tikzcd}\end{center}
+  Próbując opisać w tekście to co się dzieje na diagramie: przejście górną zieloną strzałką, która jest zerowe, jest tym samym co przejście dolną strzałką. Ale dolna strzałka to złożenie dwóch kolejnych odwzorowań trójkąta wyróżnionego z identycznością. Identyczność jest surjekcją, czyli strzałka o którą pytamy musi być zerem. 
 
-  {\large\color{red}DOKOŃCZYĆ DIAGRAM}
+  %{\large\color{red}DOKOŃCZYĆ DIAGRAM}
 \end{proof}
 
 \begin{lemma}
@@ -300,7 +319,7 @@ Co jest ciekawe, to takie ciągi są dokładne niezależnie od tego, czy patrzym
   \item $D^b(\mathbf{A})$ - podkategoria rozpinana przez kompleksy "ograniczone" ($A^i=0$ dla $|i|>>0$)
 \end{enumerate}
 
-\begin{definition}
+\begin{definition}[dostatecznie dużo obiektów $P/I$]
   W kategorii $\mathbf{A}$ jest \acc{wystarczająco dużo obiektów injektywnych}, jeśli każdy obiekt wkłada się w pewien obiekt injektywny. Analogicznie mówimy, że w $\mathbf{A}$ jest \acc{dostatecznie dużo obiektów projektwynych}, jeśli każdy obiekt jest ilorazem (istnieje surjekcja) obiektu projektywnego.
 \end{definition}
 
