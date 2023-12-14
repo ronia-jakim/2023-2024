@@ -54,9 +54,8 @@ Jak już to zostało ustalone, przejdźmy do treści tego zadania:
     \begin{align*}
       \expected{|X_k|}=\expected{|\prob{Y_{n-k}\geq a-S_k}|}\leq \expected{|1|}=1
     \end{align*}
-  \item $X_k$ jest mierzalne względem $F_k=\sigma(\xi_1,...,\xi_k)$, bo $X_k$ to złożenie
-    $$F_{n-k}(a-S_k),$$
-    gdzie $a-S_k$ jest zmienną losową mierzalną względem $F_k$ jako kombinacja liniowa $\xi_1,...,\xi_k$ i borelowskiej funkcji $\prob{\cdot}$.
+  \item $X_k$ jest mierzalne względem $F_k=\sigma(\xi_1,...,\xi_k)$, bo $X_k$ to złożenie $X_k=F_{n-k}\circ a-S_k,$ mierzalnej zmiennej losowej $a-S_k$ (kombinacja liniowa $\xi_1,...,\xi_k$) z funkcją borelowską jaką jest dystrybuanta.
+    %gdzie $a-S_k$ jest zmienną losową mierzalną względem $F_k$ jako kombinacja liniowa $\xi_1,...,\xi_k$ i borelowskiej funkcji $\prob{\cdot}$.
     %\begin{align*}
     %  X_k(\omega)=F_{n-k}(a-S_k(\omega))&=\int_{a-S_k(\omega)}^\infty \mu_{Y_{n-k}}(x)dx=\int_{\R}\mathds{1}_{[a-S_k(\omega), \infty)}(x)\cdot\mu_{Y_{n-k}}(x)dx,
     %\end{align*}
@@ -112,34 +111,34 @@ Idąc więc od prawej strony równości, którą mamy pokazać mamy
                &=2\expected{X_{n\land\tau}\mathds{1}_{\{\max S_k>a\}}+X_{n\land\tau}\mathds{1}_{\{\max S_k\leq a\}}}\geq\\ 
                &{\geq}2\expected{X_{n\land\tau}\mathds{1}_{\{\max S_k>a\}}}=\star
 \end{align*}
-ostatnie przejście jest możliwe, ponieważ $X_k\in[0,1]$ dla każdego $k$. Dalej zauważmy, że na zbiorze $\{\max S_k>a\}$ czas zatrzymania $\tau$ jest skończony. W takim razie 
+ostatnie przejście jest możliwe, ponieważ $X_k\in[0,1]$ dla każdego $k$. Dalej zauważmy, że na zbiorze $\{\max S_k>a\}$ czas zatrzymania $\tau$ jest skończony. W takim razie (pamiętając, że teraz działamy na zbiorze $\{\max S_k>a\}$) 
 $$X_{n\land T}=X_T=\prob{Y_{n-T}>a-S_T}\geq\prob{Y_{n-T}\geq 0},$$
-ponieważ $a<S_T$, czyli $a-S_T\leq 0$ i to co jest po prawej stronie jest całką po troszeczkę mniejszym zbiorze niż $\prob{Y_{n-T}>a-S_T}$. Wracając do tego co zaczęliśmy wyżej, mamy 
+ponieważ $a<S_T$, czyli $a-S_T\leq 0$ i to co jest po prawej stronie jest całką po troszeczkę mniejszym zbiorze niż $\prob{Y_{n-T}>a-S_T}$, bo w tym miejscu $a<S_T$. Wracając do tego co zaczęliśmy wyżej, mamy 
 \begin{align*}
   \star &=2\expected{\prob{Y_{n-T}>a-S_T}\mathds{1}_{\{\max S_k>a\}}}\geq 2\expected{\prob{Y_{n-T}\geq 0}\mathds{1}_{\{\max S_k>a\}}}=\\ 
         &=2\expected{\frac{1}{2}\mathds{1}_{\max S_k>a\}}}=\expected{\mathds{1}_{\{\max S_k>a\}}}=\prob{\max S_k>a}
 \end{align*}
-przejście między linijkami wynika z tego, że gęstość $Y_{n-T}$ jest taka sama jak zmiennej $S_{n-T}$, a na samym początku pokazaliśmy, że $S_{n-T}$ jest symetryczna. Całkując symetryczną zmienną tylko po dodatnich wartościach daje pewność, że dostaniemy tylko połowę całości - czyli połowę $1$.
+przejście między linijkami wynika z tego, że gęstość $Y_{n-T}$ jest taka sama jak zmiennej $S_{n-T}$, a na samym początku pokazaliśmy, że $S_{n-T}$ jest symetryczna. Całkując symetryczną zmienną tylko po dodatnich wartościach mamy pewność, że dostaniemy tylko połowę całości - czyli $\prob{Y_{n-T}\geq0}=\frac{1}{2}$.
 
-
-\subsection*{PSEUDO-APPENDIX}
-
-\textbf{\large Zad 1.}
-
-Zbiór $[a-S_k, \infty)$ zapisuje się jako
-\begin{align*}
-   [a-S_k, \infty)&=\{x\geq a-S_k\}=\{a-x\leq S_k\}=\{a-x\leq \sum_{i=1}^k\xi_i\}=\\ 
-                          &=\bigcup_{s_k\in\Q }\{\xi_k\geq s_k\;\land\;a-x\leq \sum_{i=1}^k\xi_i\leq s_k+\sum_{i\leq k-1}\xi_i\}=\\ 
-                          &=\bigcup_{s_k\in\Q}\{s_k\leq \xi_k\;\land\;a-x-s_k\leq \sum_{i\leq k-1}\xi_i\}=...\\ 
-     ...&=\bigcup_{s_k\in\Q}...\bigcup_{s_2\in\Q}\{s_k\leq \xi_k\;\land\;...\;\land\; s_2\leq \xi_2\;\land\; a-x-\sum_{i=2}^ks_i\leq \xi_1 \}=\\ 
-        &=\bigcup_{s_2,...,s_k\in\Q}\{s_k\leq \xi_k\}\cap ...\{s_2\leq \xi_2\}\cap\{a-x-\sum_{i=2}^ks_i\leq \xi_1\}
-\end{align*}
-Czyli mamy przeliczalną sumę skończonych przekrojów zbiorów z $\sigma(\xi_1,...,\xi_k)$, więc $[a-S_k, \infty)\in\sigma(\xi_1,...,\xi_k)$ bardzo mocno. Można oczywiście powiedzieć po prostu, że to jest zbiór $\{a-x\geq S_k\}$, a $S_k$ jest w oczywisty sposób mierzalna względem $\sigma(\xi_1,...,\xi_k)$, ale kto by nie chciał czytać równań wyżej.
-
-%$\mu_{Y_{n-k}}$ to z kolei splot $\mu$ $n-k$ razy, czyli
+%
+%\subsection*{PSEUDO-APPENDIX}
+%
+%\textbf{\large Zad 1.}
+%
+%Zbiór $[a-S_k, \infty)$ zapisuje się jako
 %\begin{align*}
-%  \mu_{Y_{n-k}}(t)&=\int_{\R}\mu(t)\mu_{Y_{n-k-1}}(x_1-t)dx_1=...=\int_{\R}\int_{\R}\mu(t)\mu(x_1-t)...\mu(x_1-...-x_{n-k-1}-t)dx_{n-k-1}...dx_1
+%   [a-S_k, \infty)&=\{x\geq a-S_k\}=\{a-x\leq S_k\}=\{a-x\leq \sum_{i=1}^k\xi_i\}=\\ 
+%                          &=\bigcup_{s_k\in\Q }\{\xi_k\geq s_k\;\land\;a-x\leq \sum_{i=1}^k\xi_i\leq s_k+\sum_{i\leq k-1}\xi_i\}=\\ 
+%                          &=\bigcup_{s_k\in\Q}\{s_k\leq \xi_k\;\land\;a-x-s_k\leq \sum_{i\leq k-1}\xi_i\}=...\\ 
+%     ...&=\bigcup_{s_k\in\Q}...\bigcup_{s_2\in\Q}\{s_k\leq \xi_k\;\land\;...\;\land\; s_2\leq \xi_2\;\land\; a-x-\sum_{i=2}^ks_i\leq \xi_1 \}=\\ 
+%        &=\bigcup_{s_2,...,s_k\in\Q}\{s_k\leq \xi_k\}\cap ...\{s_2\leq \xi_2\}\cap\{a-x-\sum_{i=2}^ks_i\leq \xi_1\}
 %\end{align*}
-
-
+%Czyli mamy przeliczalną sumę skończonych przekrojów zbiorów z $\sigma(\xi_1,...,\xi_k)$, więc $[a-S_k, \infty)\in\sigma(\xi_1,...,\xi_k)$ bardzo mocno. Można oczywiście powiedzieć po prostu, że to jest zbiór $\{a-x\geq S_k\}$, a $S_k$ jest w oczywisty sposób mierzalna względem $\sigma(\xi_1,...,\xi_k)$, ale kto by nie chciał czytać równań wyżej.
+%
+%%$\mu_{Y_{n-k}}$ to z kolei splot $\mu$ $n-k$ razy, czyli
+%%\begin{align*}
+%%  \mu_{Y_{n-k}}(t)&=\int_{\R}\mu(t)\mu_{Y_{n-k-1}}(x_1-t)dx_1=...=\int_{\R}\int_{\R}\mu(t)\mu(x_1-t)...\mu(x_1-...-x_{n-k-1}-t)dx_{n-k-1}...dx_1
+%%\end{align*}
+%
+%
 \end{document}
