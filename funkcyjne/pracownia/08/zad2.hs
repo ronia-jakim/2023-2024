@@ -35,6 +35,7 @@ runIOStreamTrans stream =
       else do
         x <- getChar 
         runIOStreamTrans $ f (Just x)
+    -- ReadS f -> getChar >>= runIOStreamTrans . f . Just
 
 main = do
   runIOStreamTrans myToLower
