@@ -1,0 +1,5 @@
+(executable
+ (name test)
+; (modules Simple_test)
+ (libraries raylib))
+
