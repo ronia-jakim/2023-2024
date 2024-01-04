@@ -1,5 +1,5 @@
 \section{18.12.23 : Kompleksy podwójne, totalne i inne przymiotniki}
-
+ 
 \begin{lemma}
   W $K^+(\mathbf{A})$ jeśli $f:X^*\to Y^*$ jest qis, a $I^*$ jest kompleksem injektywnym, to wówczas
   $$Hom_{K^+(\mathbf{A})}(Y^*, I^*)\cong Hom_{K^+(\mathbf{A})}(X^*, U^*)$$
@@ -63,12 +63,18 @@
 \begin{proof}Patrz dowód \ref{wniosek 11.10}
 \end{proof}
 
+\begin{theorem}
+  Jeśli w kategorii abelowej $\mathbf{A}$ jest dostatecznie dużo obiektów injektywnych, to funktor włożenia
+  $$K^+(\mathbf{I})\to D^+(\mathbf{A})$$
+  jest równoważnością kategorii.
+\end{theorem}
 
+Zanim przejdziemy do dowodu tego twierdzenia, wprowadzimy kilka przydatnych definicji:
 
   \begin{definition}[kompleks podwójny, kompleks totalny]
-    Kompleks podwójny to przemienny diagram $I^{*,*}$ z różniczkami $d_I(\to)$ i $d_{II}(\uparrow)$.
+    \buff{Kompleks podwójny} to przemienny diagram $I^{*,*}$ z różniczkami $d_I(\to)$ i $d_{II}(\uparrow)$.
 
-    Kompleks totalny kompleksu podwójnego $I^{*,*}$ to 
+    \buff{Kompleks totalny} kompleksu podwójnego $I^{*,*}$ to 
     $$Tot(I^{*,*})^n=\bigoplus_{i+j=n}I^{i,j}$$
     z różniczką $D=d_I+(-1)^id_{II}$. 
   \end{definition}
@@ -104,12 +110,42 @@
 \end{enumerate}
   \end{definition}
 
+  Udowodnimy teraz fakt pomocniczy (a raczej lemat), który uprości dowód twierdzenia do znalezienia odpowiedniej rezolwenty Cartana-Eilenberga.
 
-\begin{theorem}
-  Jeśli w kategorii abelowej $\mathbf{A}$ jest dostatecznie dużo obiektów injektywnych, to funktor włożenia
-  $$K^+(\mathbf{I})\to D^+(\mathbf{A})$$
-  jest równoważnością kategorii.
-\end{theorem}
+\begin{fact}
+  Dla rezolwenty Cartana-Eilenberga morfizm $A^*\to Tot(I^{*,*})$ indukowany przez 
+  $$A^*\to I^{*,0}$$ 
+  jest qis. 
+\end{fact}
+
+Dowodzi się to polowaniem po diagramie, które jest prawdziwe nawet dla sformułowania tego faktu ze słabszymi założeniami:
+\begin{lemma}
+  Niech $(K^{i,j})_{i,j\geq 0}$ będzie kompleksem podwójnym. $A^*\to K^{*,0}$ to morfizm kompleksów, który uzupełnia kolumny tak, że stają się one dokładne. Wtedy indukowane odwzorowanie $A^*\to Tot(K^{*,*})$ jest qis.
+\end{lemma}
+
+\begin{proof}
+  {\large\color{red}ZDJĘCIE}
+
+  Zaczynamy od wybrania cyklu $Tot^n$, zaznaczonego na niebiesko. Chcemy pokazać, że istnieje coś w $Z^n(A^*)$ które przechodzi w tenże cykl:
+  \begin{center}\begin{tikzpicture}
+    \foreach \i in {0,...,5}
+      { 
+        \draw (-0.5,\i)--(5.5, \i);
+        \draw (\i, 0)--(\i, 5.5);
+      }
+
+      \node at (-0.7, 0) {$A$};
+
+      \foreach \i in {1,...,5}
+      {
+        \filldraw[blue!15] (5- \i, \i) circle (5pt);
+        \node at (5-\i, \i) {$0$};
+      }
+  \end{tikzpicture}\end{center}
+\end{proof}
+
+
+
 
 \begin{proof}
   Wniosek \ref{wniosek 12.2} mówi nam, że funktor wyżej jest wierny i pełny. Pozostaje sprawdzić, że jest w zasadzie surjektywny. To znaczy, że $(\forall\;A^*\in Kom^+(\mathbf{A}))(\exists\;I^*\in Kom^+(\mathbf{A}))$ oraz qis $A^*\to I^*$. Wtedy będziemy mieli izomorfizm w $D^+(\mathbf{A})$.
@@ -162,19 +198,6 @@
       \end{tikzcd}\end{center}
     \item {\large\color{red}ZDJĘCIE}, gdzie to co pod $A$ można na niebiesko, bo to wychodzi z poprzednich podpunktów - tworzy się rezolwenta Cartana-Eilebnerga. plus widzimy te diagramki maluczkie (też na zdjęciu)
   \end{enumerate}
-\end{proof}
-
-\begin{fact}
-  Dla rezolwenty Cartana-Eilenberga morfizm $A^*\to Tot(I^{*,*})$ indukowany przez $A^*\to I^{*,0}$ jest qis. 
-\end{fact}
-
-Dowodzi się to polowaniem po diagramie, które jest prawdziwe nawet dla słabszego sformuowania tego faktu:
-\begin{lemma}
-  Niech $(K^{i,j})_{i,j\geq 0}$ będzie kompleksem podwójnym. $A^*\to K^{*,0}$ to morfizm kompleksów, który uzupełnia kolumny tak, że stają się one dokładne. Wtedy indukowane odwzorowanie $A^*\to Tot(K^{*,*})$ jest qis.
-\end{lemma}
-
-\begin{proof}
-  {\large\color{red}ZDJĘCIE}
 \end{proof}
 
 \subsection{Funktor pochodny}
