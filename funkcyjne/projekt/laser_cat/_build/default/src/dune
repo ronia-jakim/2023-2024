@@ -1,5 +1,8 @@
-(executable
- (name test)
+;(executable
+; (name test)
 ; (modules Simple_test)
- (libraries raylib))
+; (libraries raylib))
 
+(executable
+ (name main)
+ (libraries raylib))
