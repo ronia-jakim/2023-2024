@@ -51,7 +51,7 @@ $$\color{blue}P_i:=P^{-i}$$
   \end{tikzcd}\end{center}
 \end{example}
 
-\subsection{Jednoznacnzość rezolwenty projektywnej} 
+\subsection{Homotopijna równoważność homomorfizmów} 
 
 \begin{definition}[homotopia morfizmów]
   Niech $\mathbf{A}$ będzie kategorią abelową (addytywną). Morfizmy kompleksów $f, g:A^*\to B^*$ są \buff{homotopijne} ($f\sim g$), jeśli istnieje między nimi homotopia, tzn. ciąg odwzorowań $h^i:A^i\to B^{i-1}$ taki, że
@@ -192,6 +192,8 @@ $$\color{blue}P_i:=P^{-i}$$
   \end{enumerate}
 \end{proof}
 
+\subsection{Jednoznaczność rezolwenty projektywnej}
+
 \begin{fact}
   Niech $P^*\to X$ oraz $Q^*\to Y$ będą rezolwentami projektywnymi, a $f:X\to Y$ będzie morfizmem.
   \begin{enumerate}
@@ -210,7 +212,7 @@ $$\color{blue}P_i:=P^{-i}$$
 
   \begin{center}\begin{tikzcd}
     P^*\arrow[r]\arrow[d, "R" right, bend left=20] & X\arrow[d, "id"]\\ 
-    Q^*\arrow[r]\arrow[u, bend left=20, "L" lef] & X
+    Q^*\arrow[r]\arrow[u, bend left=20, "L" left] & X
   \end{tikzcd}\end{center}
 \end{conclusion}
 
@@ -221,12 +223,72 @@ $$\color{blue}P_i:=P^{-i}$$
         P_0\arrow[r, "\epsilon_X"]\arrow[d, dashed] \arrow[dr, rounded corners, to path={([yshift=-4mm]\tikztostart) -| ([xshift=-5mm]\tikztotarget)}, blue] & X\arrow[r]\arrow[d, "f" right] & 0 \\ 
         Q_0\arrow[r, "\epsilon_Y" below] & Y \arrow[r] & 0
       \end{tikzcd}\end{center}
-      Strzałka $P_0\to Q_0$ istnieje, ponieważ $P_0$ jest modułem projektywny, i $Q_0\to Y$ jest surjekcją. Czyli mamy diagram
+      Strzałka $P_0\to Q_0$ istnieje, ponieważ $P_0$ jest modułem projektywny, i $Q_0\to Y$ jest surjekcją (bo rezolwenta jest acykliczna). Czyli mamy komutujący diagram
       \begin{center}\begin{tikzcd}
-        P_0\arrow[d, dashed]\arrow[dr] \\ 
+        P_0\arrow[d, dashed]\arrow[dr, blue] \\ 
         Q_0\arrow[r] & Y \arrow[r] & 0
       \end{tikzcd}\end{center}
-  \end{enumerate}
+      {\color{red}
 
-  {\large\color{red}CHYBA WRÓCIĆ}
+  Mamy więc pierwszy krok konstrukcji. Zakładamy teraz, że dla wszystkich $P_i\to Q_i$ o $i\leq n$ udało nam się skonstruować $R(f)^i$. Chcemy teraz korzystając z poprzednich korków aby skonstruować strałkę $P_{n+1}\to Q_{n+1}$:
+  \begin{center}\begin{tikzcd}
+    ... \arrow[r] & P_{n+1}\arrow[r, "d_{n+1}^P" above]\arrow[d, dashed] & P_n\arrow[r, "d_n^P" above]\arrow[d, "R(f)^n" right] & P_{n-1}\arrow[r]\arrow[d, "R(f)^{n-1}"] & ... \\ 
+    ...\arrow[r] & Q_{n+1}\arrow[r, "d_{n+1}^Q" below] & Q_n\arrow[r, "d_n^Q" below] & Q_{n-1} \arrow[r] & ... 
+  \end{tikzcd}\end{center}
+
+  Mamy 
+  $$0=R(f)^{n-1}d_n^Pd_{n+1}^P=d_n^QR(f)^nd_{n+1}^P$$
+  czyli możemy narysować diagram 
+  \begin{center}\begin{tikzcd}
+    & P_{n+1}\arrow[d, "\exists!"] \arrow[dr, "d_{n+1}^PR(f)^n" above right]\\ 
+    Q_{n+1}\arrow[r, "\exists!", twoheadrightarrow] & \ker d_n^Q = \img d_{n+1}^Q\arrow[r] & Q_n\arrow[r] & 0 
+  \end{tikzcd}\end{center}
+  ale ponieważ $\ker d_n^Q=\img d_{n+1}^Q$, to strzałka $Q_{n+1}\to \img d_{n+1}$ jest surjekcją. W takim razie z projektywności $P_{n+1}$ wiemy, że istnieje jedyna strzałka $P_{n+1}\to Q_{n+1}$ dzięki której komutuje diagram 
+  \begin{center}\begin{tikzcd}
+    & P_{n+1}\arrow[d]\arrow[dl, "\exists!" above left]\\ 
+    Q_{n+1}\arrow[r] & \ker d_n^Q\arrow[r] & 0
+  \end{tikzcd}\end{center}
+  
+  
+}
+  \item Teraz szukamy $h$ który jest "światkiem" homotopijnej równoważności dwóch możliwych $R(f)^i$ i $R(f')^i$, które będziemy oznaczać $f_i$ oraz $f_i'$.
+    \begin{center}\begin{tikzcd}
+      & P_0\arrow[dl, "h_0" above left]\arrow[r, "\epsilon_X"]\arrow[d, xshift=-1mm, "f_0" left] \arrow[d, xshift=1mm, "f_0'" right]& X\arrow[d, "f"] \arrow[r] & 0\\ 
+      Q_1 \arrow[r] & Q_0\arrow[r, "\epsilon_Y"] & Y\arrow[r] & 0
+    \end{tikzcd}\end{center}
+
+    Zdefiniujmy $dh^0=f_0-f_0'$ dla pewnego $h_0$. Wtedy
+    $$\epsilon_Y(f_0-f_0')=\epsilon_Yf_0-\epsilon_Yf_0'=f\epsilon_X-f\epsilon_X=0.$$
+    Przechodząc bardziej na lewo mamy diagram
+    \begin{center}\begin{tikzcd}[column sep=large, row sep=huge]
+      & P_i\arrow[dl, "h^i" above left]\arrow[r]\arrow[d, "f_i" left, xshift=-1mm]\arrow[d, xshift=1mm, "f_i'" right]\arrow[d, bend left=30, xshift=2mm, "\alpha"] & P_{i-1}\arrow[dl, "h^{i-1}"]\\ 
+      Q_{i+1}\arrow[r] & Q_i\arrow[r] & Q_{i-1}
+    \end{tikzcd}\end{center}
+    gdzie $\alpha=f_i-f_i'-h^{i-1}d$. Jeśli $d\alpha=0$, to istnieje $h^i$ takie, że $\alpha=d h^i$.
+    \begin{align*}
+      d\alpha&=d(f_i-f_i'-h^{i-1}d)=\\ 
+             &=df_i-df_i'-dh^{i-1}d=\\ 
+             &=(f_{i-1}-f_{i-1}'-dh^{i-1})d=\\ 
+             &=(h^{i-2}d+dh^{i-1}-dh^{i-1})d=h^{i-2}dd=0
+    \end{align*}
+    Zatem $\alpha=f_i-f_i'-h^{i-1}d=dh^i$ i mamy wtedy
+    $$f_i-f_i'=dh^i+h^{i-1}d$$
+    tak jak w definicji homotopijnej równoważności.
+\end{enumerate}
 \end{proof}
+
+Analogiczny fakt jest prawdziwy dla rezolwent injektywnych. W takim razie, dowolny obiekt $A$ rozumiany jako kompleks $...\to 0\to A\to 0\to...$ jest izomorficzny ze swoją rezolwentą injektywną i projektwyną w kategorii pochodnej $D(\mathbf{A})$.
+
+\begin{example}
+\item Niech $\mathbf{A}$ i $\mathbf{B}$ będą kategoriami abelowymi, a $T:\mathbf{A}\to \mathbf{B}$ addytywnym funktorem między tymi kategoriami.
+
+  Weźmy obiekt $A\in\ob\mathbf{A}$ i dwie jego projektywne rezolwenty \begin{tikzcd}P^*\arrow[r, yshift=-1mm, "f" below]&Q^*\arrow[l, yshift=1mm, "g" above]\end{tikzcd} takie, że $fg$ i $gf$ są oba homotopijnie równoważne z identycznością. Wtedy oczywiście $T(P^*)$ i $T(Q^*)$ są kompleksami:
+  $$T(d)T(d)=T(dd)=T(0)=0$$
+  z odwzorowaniami \begin{tikzcd}T(P^*)\arrow[r, yshift=1mm, "f" above] & T(Q^*)\arrow[l, yshift=-1mm, "g" below]\end{tikzcd} które również są homotopijne z identycznością:
+  $$id-T(f)T(g)=T(id)-T(fg)=T(id-fg)=T(dh+hd)=T(d)T(h)+T(h)T(d).$$
+  
+  \begin{conclusion}
+    $T(f)$ i $T(g)$ są wzajemnie odwrotnymi qis.
+  \end{conclusion}
+\end{example}
+

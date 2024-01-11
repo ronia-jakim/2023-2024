@@ -1,15 +1,15 @@
 \section{27.11.23 : Klasa lokalizująca}
 
 \begin{definition}[klasa lokalizująca]
-  Klasa $S\subseteq Mor(\mathbf{B})$ spełnia następujące warunki
+  Klasa $S\subseteq Mor(\mathbf{B})$ jest nazywana \buff{lokalizującą}, jeśli spełnia następujące warunki:
   \begin{enumerate}
     \item identyczność dla dowolnego obiektu należy do $S$ i dla dowolnych $s,t\in S$ które można składać $s\circ t\in S$
-    \item Poniższe diagramy dopełniają się
+    \item poniższe diagramy dopełniają się
       \begin{center}\begin{tikzcd}
         \bullet \arrow[r, dashed, green, "\in S"] \arrow[d, dashed] & \bullet\arrow[d] & & \bullet\arrow[r, green, "\in S"] \arrow[d] & \bullet\arrow[d, dashed]\\ 
         \bullet \arrow[r, green, "\in S" below] & \bullet & & \bullet\arrow[r, green, dashed, "\in S" below] & \bullet
       \end{tikzcd}\end{center}
       To znaczy, mając strzałki nieprzerywane znajdziemy strzałki przerywane tak, że odpowiednia strzałka jest z $S$ i powstałe diagramy komutują.
-    \item Dla wszystkich \begin{tikzcd}X\arrow[r, yshift=1mm, "f"]\arrow[r, yshift=-1mm, "g" below] & Y\end{tikzcd} $(\exists\;s\in S)\;(sf=sg)\iff ((\exists\;t\in S)\;ft=gt)$.
+    \item dla wszystkich \begin{tikzcd}X\arrow[r, yshift=1mm, "f"]\arrow[r, yshift=-1mm, "g" below] & Y\end{tikzcd} $(\exists\;s\in S)\;(sf=sg)\iff ((\exists\;t\in S)\;ft=gt)$.
   \end{enumerate}
 \end{definition}
