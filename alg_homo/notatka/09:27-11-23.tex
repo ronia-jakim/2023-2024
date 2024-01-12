@@ -1,4 +1,4 @@
-\section{27.11.23 : Klasa lokalizująca}
+\section{27.11.23 : Kategoria lokalna}
 
 \begin{definition}[klasa lokalizująca]
   Klasa $S\subseteq Mor(\mathbf{B})$ jest nazywana \buff{lokalizującą}, jeśli spełnia następujące warunki:
@@ -9,7 +9,75 @@
         \bullet \arrow[r, dashed, green, "\in S"] \arrow[d, dashed] & \bullet\arrow[d] & & \bullet\arrow[r, green, "\in S"] \arrow[d] & \bullet\arrow[d, dashed]\\ 
         \bullet \arrow[r, green, "\in S" below] & \bullet & & \bullet\arrow[r, green, dashed, "\in S" below] & \bullet
       \end{tikzcd}\end{center}
-      To znaczy, mając strzałki nieprzerywane znajdziemy strzałki przerywane tak, że odpowiednia strzałka jest z $S$ i powstałe diagramy komutują.
+      to znaczy, mając strzałki nieprzerywane znajdziemy strzałki przerywane tak, że odpowiednia strzałka jest z $S$ i powstałe diagramy komutują.
     \item dla wszystkich \begin{tikzcd}X\arrow[r, yshift=1mm, "f"]\arrow[r, yshift=-1mm, "g" below] & Y\end{tikzcd} $(\exists\;s\in S)\;(sf=sg)\iff ((\exists\;t\in S)\;ft=gt)$.
   \end{enumerate}
 \end{definition}
+
+\begin{definition}[domki]
+  Niech $S$ będzie klasą lokalizującą w kategorii $\mathbf{B}$. Definiujemy nową kategorię $\color{green}\mathbf{B}[S^{-1}]$:
+  \begin{itemize}
+    \item $\ob \mathbf{B}[S^{-1}]=\ob \mathbf{B}$
+    \item morfizmy $A\to A'$ to klasy równoważności "domków", czyli diagramów
+      \begin{center}\begin{tikzcd}
+        & B\arrow[dl, "s\in S", orange] \arrow[dr, "f"]\\ 
+        A & & A' 
+      \end{tikzcd}\end{center}
+      które można rozumieć jako "ułamek" $fs^{-1}$.
+
+      Mówimy, że dwa domki $B$ i $B'$ przedstawiające morfizm $A\to A'$ w $\mathbf{B}[S^{-1}]$ są równoważne, jeśli istnieje $C$ wraz z morfizmami (w $\mathbf{B}$) $C\to B$ i $C\to B'$ takimi, że poniższy domek komutuje
+      \begin{center}\begin{tikzcd}
+        & & C\arrow[dl, "r"]\arrow[dr] \arrow[ddll, orange, "sr\in S" above left, bend right=30]\\ 
+        & B\arrow[dl, "s\in S" above left, orange]\arrow[drrr] & & B'\arrow[dr]\arrow[dlll, orange, "s'\in S" above left]\\ 
+        A & & & & A'
+      \end{tikzcd}\end{center}
+  \end{itemize}
+\end{definition}
+
+Jeśli mamy domki $A\leftarrow B\to A'$ i $A' \leftarrow B'\to A''$, to ich złożeniem jest nowy domek, którego istnienie wynika z 2 warunku klasy lokalizujące:
+\begin{center}\begin{tikzcd}
+        & & C\arrow[dl, "s''\in S" above left, orange]\arrow[dr] \\ 
+        & B\arrow[dl, "s\in S" above left, orange]\arrow[dr] & & B'\arrow[dr]\arrow[dl, orange, "s'\in S" above left]\\ 
+        A & & A' & & A''
+\end{tikzcd}\end{center}
+
+\begin{theorem}[kategoria domków jest ciekawa]
+  \begin{enumerate}
+    \item $\mathbf{B}[S^{-1}]$ jest dobrze określona:
+      \begin{enumerate}
+        \item relacja na domkach jest relacją równoważności 
+        \item składanie domków nie zależy od wyboru reprezentantów
+        \item składanie domków jest łączne
+      \end{enumerate}
+    \item Funktor $\mathbf{B}\to \mathbf{B}[S^{-1}]$ ma własność uniwersalną, tzn. jeśli mamy funktor $\mathbf{B}\to \mathbf{D}$ taki, że elementy klasy lokalizującej $S$ są przez niego posyłane na izomorfizmy w $\mathbf{D}$, to wówczas taki funktor faktoryzuje się przez $\mathbf{B}[S^{-1}]$:
+      \begin{center}\begin{tikzcd}[column sep=large, row sep=small]
+        \mathbf{B}\arrow[r]\arrow[ddr] & \mathbf{B}[S^{-1}]\arrow[dd, dashed]\\ 
+        S\arrow[u, sloped, phantom, "\subseteq"]\arrow[ddr]\\
+                                                                                               & \mathbf{D}\\ 
+                                                                                               & \text{izo.}\arrow[u, sloped, phantom, "\subseteq"]
+      \end{tikzcd}\end{center}
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item 
+      \begin{enumerate}
+        \item Jedyną ciekawą częścią jest sprawdzenie przechodności relacji równoważności domków. To znaczy, mając dane domki $A\leftarrow B\to A'\sim A\leftarrow B'\to A'$ oraz $A\leftarrow B'\to A'\sim A\leftarrow B''\to A'$ chcemy znaleźć dowód na równoważność domków $B$ i $B''$:
+          \begin{center}\begin{tikzcd}
+            & & D\arrow[dr, dashed]\arrow[dl, dashed]\\
+            & C \arrow[dl]\arrow[dr] & & C''\arrow[dl]\arrow[dr]\\
+            B\arrow[d, orange]\arrow[drrrr] & & B'\arrow[dll, orange]\arrow[drr] & & B''\arrow[d]\arrow[dllll, orange]\\
+            A & & & & A'
+          \end{tikzcd}\end{center}
+          Obiekt $D$ wraz ze strzałkami $D\to C$ oraz $D\to C''$ dostajemy z warunku 2. klasy lokalizującej:
+          \begin{center}\begin{tikzcd}[column sep=tiny, row sep=tiny]
+              &   & D\arrow[ddll, orange]\arrow[ddrr] \\
+              & {\color{white}d} \\ 
+            C\arrow[dr]\arrow[ddrr, orange, bend right=30] &   &   &    & C'\arrow[dl]\arrow[ddll, orange, bend left=30] \\ 
+                                                           & B \arrow[dr, orange] &   & B'\arrow[dl, orange]     \\ 
+              &   & A
+          \end{tikzcd}\end{center}
+      \end{enumerate}
+  \end{enumerate}
+\end{proof}
