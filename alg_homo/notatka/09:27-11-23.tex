@@ -181,7 +181,6 @@ Jeśli mamy domki $A\leftarrow B\to A'$ i $A' \leftarrow B'\to A''$, to ich zło
   \end{enumerate}
 \end{proof}
 
-\subsection{Quasi-isomorfizmy tworzą klasę lokalizującą}
 
 \begin{theorem}$ $
 
@@ -191,5 +190,37 @@ Jeśli mamy domki $A\leftarrow B\to A'$ i $A' \leftarrow B'\to A''$, to ich zło
   \end{enumerate}
 \end{theorem}
 
+\subsection{Stożek odwzorowania}
 
+Topologicznie, stożek odwzorowania $f:X\to Y$ to suma spójna $C(f)=X\cup_fY$:
+\begin{center}\begin{tikzpicture}
+  \draw[dashed] (0,0) arc (0:180:1 and 0.3);
+  \draw(0,0) arc (360:180:1 and 0.3);
 
+  \draw(-1, 2)--(0,0);
+  \draw(-1, 2)--(-2, 0);
+
+  \node at (-1,0) {$X$};
+
+  \draw (-1, -2) circle (3 and 0.7);
+  \node at (0, -2) {$Y$};
+
+  \draw[->] (-1.7, -0.5) -- (-1.7, -1);
+  \draw[->] (-1, -0.5) -- (-1, -1);
+  \draw[->] (-0.3, -0.5) -- (-0.3, -1);
+  
+  \node at (0, -0.75) {$f$};
+\end{tikzpicture}\end{center}
+lub bardziej formalnie jest to przestrzeń ilorazowa $(I\times X\cup Y)/\sim$ dla relacji zdefiniowanej jako 
+$$(\forall\;x, x'\in X\cup Y)\;(0,x)\sim (0, x')$$
+$$(1, x)\sim (1,f(x))$$
+
+\begin{definition}[stożek algebraicznie]
+  Jeśli $f:A^*\to B^*$ jest morfizmem kompleksów, to definiujemy \buff{stożek} jako nowy kompleks
+  $$C(f)^i=A^{i+1}\oplus B^i$$
+  z różniczką
+  $$d_{C(f)}=\begin{bmatrix}-d_A & 0\\ f & d_B\end{bmatrix}.$$
+\end{definition}
+W praktyce oznacza to, że
+$$d_{C(f)}(a^{i+1}, b^i)=(-da^{i+1}, f(a^{i+1})+db^i).$$
+ 

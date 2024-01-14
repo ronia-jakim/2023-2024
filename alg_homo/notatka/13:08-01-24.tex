@@ -1,22 +1,26 @@
-\section{08.01.24 : }
+\section{08.01.24 : Funktor pochodny }
+
+Przypominając wykład sprzed tygodnia, prawy funktor pochodny $RF$ powstaje przez złożenie czerwonych strzałek:
 
 \begin{center}\begin{tikzcd}
-  K^+(I_\mathbf{A})\arrow[r]\arrow[dr, yshift=1mm, "\iota"] & K^+(\mathbf{A})\arrow[r, "K(F)"]\arrow[d] & K^+(\mathbf{B})\arrow[d]\\ 
-                                                            & D^+(\mathbf{A})\arrow[ul, "\iota^{-1}", yshift=-1mm] & D^+(\mathbf{B})
+  K^+(I_\mathbf{A})\arrow[r]\arrow[dr, yshift=1mm, "\iota"]\arrow[rr, bend left=20, yshift=2mm, red] & K^+(\mathbf{A})\arrow[r, "K(F)"]\arrow[d] & K^+(\mathbf{B})\arrow[d] \arrow[d, red, bend left=20, xshift=2mm]\\ 
+                                                            & D^+(\mathbf{A})\arrow[ul, "\iota^{-1}", yshift=-1mm]\arrow[r, red, "RF" below] \arrow[ul, red, bend left=20, yshift=-2mm, xshift=-2mm] & D^+(\mathbf{B})
 \end{tikzcd}\end{center}
 
-\begin{definition}
-  Dla dowolnego $A\in\ob\mathbf{A}$ definiujemy
-  $$R^iF(A):=H^i(RF(A[0]))$$
-\end{definition}
+%\begin{definition}
+%  Dla dowolnego $A\in\ob\mathbf{A}$ definiujemy
+%  $$R^iF(A):=H^i(RF(A[0]))$$
+%\end{definition}
+%
+%\begin{fact}
+%  Jeśli $F$ jest lewo dokładny, i $0\to A\to B\to C\to 0$ jest dokładny w $\mathbf{A}$, to również
+%  \begin{center}\begin{tikzcd}
+%    0\arrow[r] & F(A)\arrow[r] & F(B)\arrow[r] & F(C)\arrow[r] R^1F(A)\arrow[r] R^1F(B)\arrow[r] & R^1F(C)\arrow[r] & R^2F(A)\arrow[r] & ...
+%    \end{tikzcd}\end{center}
+%    jest ciągiem dokładnym.
+%\end{fact}
 
-\begin{fact}
-  Jeśli $F$ jest lewo dokładny, i $0\to A\to B\to C\to 0$ jest dokładny w $\mathbf{A}$, to również
-  \begin{center}\begin{tikzcd}
-    0\arrow[r] & F(A)\arrow[r] & F(B)\arrow[r] & F(C)\arrow[r] R^1F(A)\arrow[r] R^1F(B)\arrow[r] & R^1F(C)\arrow[r] & R^2F(A)\arrow[r] & ...
-    \end{tikzcd}\end{center}
-    jest ciągiem dokładnym.
-\end{fact}
+\subsection{Własności funktora pochodnego}
 
 \begin{fact}
   $$Ext_\mathbf{A}^i(A,-)=R^iHom(A, -)$$
@@ -93,23 +97,32 @@
 
       Mamy więc z tego odwzorowanie trójkąta z drugiej linii do trójkąta z 1 linii i to odwzorowanie jest izomorfizmem w $D^+(\mathbf{A})$. Ponieważ 1 i 2 linia składają się z obiektów injektywnych, to izomorfizm ten realizuje się w $K^+(\mathbf{A})$.
 
-    \item Mamy diagram
+    \item Pytamy o istnienie strzałki $\epsilon_F$ na diagramie
       \begin{center}\begin{tikzcd}[column sep=large, row sep=large]
-        K^+\mathbf{A}\arrow[r, "K(F)"]\arrow[d, "Q_A" left] & K^+\mathbf{B}\arrow[d, "Q_B"]\arrow[dl, "\varepsilon_F"]\\ 
+        K^+\mathbf{A}\arrow[r, "K(F)"]\arrow[d, "Q_A" left] & K^+\mathbf{B}\arrow[d, "Q_B"]\arrow[dl, "\varepsilon_F" above left, bend right=30, Rightarrow, xshift=3mm, yshift=-5mm, end anchor = {[xshift=3mm, yshift=2mm]north east}]\\ 
         D^+\mathbf{A}\arrow[r, "RF" below] & D^+\mathbf{B}
       \end{tikzcd}\end{center}
-      i drugi
+      
+      Rysujemy diagram
       \begin{center}\begin{tikzcd}
-        & A^*\arrow[r] \arrow[d] & F(A^*)\arrow[d]\\ 
-        & A^*\arrow[dl, "\mu(A^*)" above left]\arrow[dr] & \arrow[dd, bend left=40, "F(\mu(A^*))"] F(A^*)\\ 
-        I^* & & RF(A^*)\arrow[d, "\cong"]\\ 
-            & & F(I^*)
+        & A^*\arrow[r, "KF"] \arrow[d, "Q_A"] & F(A^*)\arrow[d, "Q_B"]\\ 
+        & A^*\arrow[dl, "\mu(A^*)" above left]\arrow[d, "RF"] & \arrow[ddl, bend left=40, "F(\mu(A^*))"] F(A^*)\\ 
+        I^* & RF(A^*)\arrow[d, "\cong" left]\\ 
+        \iota\iota^{-1}(A^*)\arrow[u, phantom, sloped, "="]& F(I^*)
       \end{tikzcd}\end{center}
-    \item 
+      gdzie \begin{tikzcd}\mu:ID_{D^+\mathbf{A}}\arrow[r, Rightarrow] &\iota\iota^{-1}\end{tikzcd} jest naturalnym przekształceniem. Szukany $\epsilon_F=F\mu$.
+    \item Diagram wygląda następująco
       \begin{center}\begin{tikzcd}
-        K^+\mathbf{A}\arrow[d] \arrow[r, "K(F)"] & K^+\mathbf{B} \arrow[d] \\ 
+        K^+\mathbf{A}\arrow[d] \arrow[r, "K(F)"]
+        \arrow[dr, blue, to path={ -- ([yshift=1mm]\tikztostart.north)  -| ([yshift=1cm]\tikztotarget.east) -- (\tikztotarget.east)}, rounded corners] 
+        \arrow[dr, blue, to path={ -- ([xshift=-1mm]\tikztostart.west)  |- ([xshift=-1.4cm, yshift=-4mm]\tikztotarget.south) -| ([yshift=-2mm]\tikztotarget.south) }, rounded corners]%-- ([xhisft=4mm]\tikztotarget.east)}] 
+        & K^+\mathbf{B} \arrow[d] \arrow[d, bend left=100, start anchor={[xshift=0.5mm, yshift=-7mm]}, Rightarrow, blue, "\epsilon_G", end anchor={[xshift=-3mm, yshift=-4mm]south}] \\ 
         D^+\mathbf{A} \arrow[r, bend left=20, "RF" above]\arrow[r, bend right=20, "G" below] & D^+\mathbf{B}
-      \end{tikzcd}\end{center}
+
+        \end{tikzcd}
+        \begin{tikzpicture}[overlay, remember picture]
+          \draw[->, orange, dashed] (-2, -0.5)--(-2, -0.85) node [midway, left] {$\scriptstyle\eta$};
+      \end{tikzpicture}\end{center}
       {\large\color{red}ZDJĘCIE}
   \end{enumerate}
 \end{proof}
@@ -120,6 +133,8 @@ tensorujemy ją z $A$ i dostajemy
 $$...\to A\otimes P_2\to A\otimes P_1\to A\otimes P_0\to 0$$
 Wtedy kohomologie tego nowego kompleksu to tory: $H^i=Tor_i(A, B)$
   
+\subsection{Obiekty $F$-acykliczne}
+
 \begin{theorem}
   Niech $\mathbf{A},\mathbf{B}$ będą kategoriami abelowymi takimi, że w $\mathbf{A}$ jest dostatecznie dużo oniektów injektywnych $I_\mathbf{A}$. Niech 
   $$F:\mathbf{A}\to \mathbf{B}$$
@@ -138,7 +153,7 @@ Wtedy kohomologie tego nowego kompleksu to tory: $H^i=Tor_i(A, B)$
   \begin{enumerate}
     \item Niech $I\in I_A$ i chcemy sprawdzić, że wyższe pochodne $R^iF(I)=0$. Rozważamy rezolwentę injektywną $I$:
       \begin{center}\begin{tikzcd}
-        I\arrow[r] \arrow[d, "F"] & I\arrow[r] & 0\arrow[r] & 0\arrow[r] & ... \\ 
+        I\arrow[r] & I\arrow[r]\arrow[d, "F" right] & 0\arrow[r] & 0\arrow[r] & ... \\ 
         0\arrow[r] & F(I)\arrow[r] & 0\arrow[r] & 0 \arrow[r] & ...
       \end{tikzcd}\end{center}
       czyli $H^*$ to $0\quad F(I)=R^0F(I) \quad 0\quad 0=R^2F(I)\quad ...$.
@@ -151,20 +166,74 @@ Wtedy kohomologie tego nowego kompleksu to tory: $H^i=Tor_i(A, B)$
       $$0\to B^2\to A^2\to B^3\to 0$$
       $$...$$
       Czyli $B^1\cong A^0$ jest $F$-acykliczny. Z zestawu ciągów dokładnych dostajemy ciąg indukowany przez $F$
-      \begin{center}\begin{tikzcd}
-        0\arrow[r] & FB^1\arrow[r] & FA^1\arrow[r] & FB^2\arrow[r] & R^1F(B^1)\arrow[r] & R^1F(A^1)\arrow[r] & R^1F(B^2)\arrow[r] & R^2F(B^1)\arrow[r] & ...\\ 
-                   & & & & 0\arrow[u, phantom, sloped, "="] & 0\arrow[u,phantom,sloped,"="] & 0 & 0
+      \begin{center}\begin{tikzcd}[row sep=small]
+        0\arrow[r] & FB^1\arrow[r] & FA^1\arrow[r] & FB^2\arrow[dll, rounded corners,
+    to path={ -- ([xshift=2ex]\tikztostart.east)
+      |- ([xshift=2ex, yshift=-3ex]\tikztostart.east)
+-| ([xshift=-2ex]\tikztotarget.west)
+-- (\tikztotarget)}]
+        \\ 
+                   & R^1F(B^1)\arrow[r] & R^1F(A^1)\arrow[r] & R^1F(B^2)\arrow[r] & R^2F(B^1)\arrow[r] & ...\\ 
+                   & 0\arrow[u, phantom, sloped, "="] & 0\arrow[u,phantom,sloped,"="] & 0\arrow[u, phantom, sloped, "="] & 0\arrow[u, phantom, sloped, "="]
       \end{tikzcd}\end{center}
 
-      \begin{center}\begin{tikzcd}
-        & & 0 & & 0\\ 
-        & & & B^k \\
-        & & A^{k-1} & & A^k
+      Ciągi dokładne wyżej możemy połączyć w diagram
+      \begin{center}\begin{tikzcd}[column sep=tiny, row sep=small]
+        & & 0\arrow[dr] & & 0 & & & & 0\\ 
+        & & & B^k\arrow[ur]\arrow[dr] & & & & B^{k+2}\arrow[ur]\\
+        & ...\arrow[r] & A^{k-1}\arrow[ur]\arrow[rr] & & A^k\arrow[rr]\arrow[dr] & & A^{k+1}\arrow[r]\arrow[ur] & ...\\ 
+        & B^{k-1}\arrow[ur] & & & & B^{k+1}\arrow[dr]\arrow[ur]\\ 
+        0\arrow[ur] & & & & 0\arrow[ur] & & 0
       \end{tikzcd}\end{center}
-      {\color{red}ZDJĘCIE}
-    \item Użyjemy do tego punktu rezolwenty C-E z poprzedniego wykładu.
+      który po przejściu przez $F$ zmienia się w 
+      \begin{center}
+        %\scalebox{0.9}{
+      \begin{tikzcd}[scale cd=0.8, column sep=tiny, row sep=small]
+        & & 0\arrow[dr] & & R^1FB^{k-1}=0 & & 0\arrow[dr] & & R^1FB^{k+1}=0\\ 
+        & & & FB^k\arrow[ur]\arrow[dr] & & & & FB^{k+2}\arrow[ur]\\
+        & ...\arrow[r] & FA^{k-1}\arrow[ur]\arrow[rr] & & FA^k\arrow[rr]\arrow[dr] & & FA^{k+1}\arrow[r]\arrow[ur] & ...\\ 
+        & FB^{k-1}\arrow[ur] & & & & FB^{k+1}\arrow[dr]\arrow[ur]\\ 
+        0\arrow[ur] & & & & 0\arrow[ur] & & 0=R^1FB^k
+    \end{tikzcd}
+  %}
+    \end{center}
+    \item Użyjemy do tego punktu rezolwenty C-E z poprzedniego wykładu (\ref{rezolwenta C-E}).
       Odwzorowanie $A[0]\to A^*$ jest qis, czyli jest izomorfizmem w $D^+\mathbf{A}$. Czyli $RF(A[0])\cong RF(A^*)$, w szczególności $R^iF(A)\cong H^i(RF(A^*))$.
-      {\large\color{red}ZDJĘCIE BO NIE PRZEJDZIE RYSOWANIE TEGO}
+
+      \begin{center}
+          \begin{tikzpicture}
+        \draw[rounded corners] (-1, 0) rectangle (3, 2.6);
+        \node at (-1.5, 1.3) {C-E};
+        \node at (0, 1) {$I^{*,*}$};
+        
+        \draw[rounded corners] (-1, -0.5) rectangle (3, -1.3);
+        \draw[->] (1, -0.4)--(1, -0.1); 
+
+        \node at (1, -0.9) {$A^0\to...\to {\color{orange}A^k}\to ...$};
+        \node at (1.4, 1.3) {$\color{orange}\begin{matrix}\vdots\\\uparrow\\I^{k,1}\\\uparrow\\I^{k, 0}\end{matrix}$}; 
+
+        \draw[blue, ->, thick, style={decorate, decoration=snake}] (3.3, 1)--(4.2, 1) node [midway, above] {$F$};
+
+
+        \draw[rounded corners] (4.5, 0) rectangle (8.5, 2.6);
+        \node at (5.5, 1) {$F(I^{*,*})$};
+        
+        \draw[rounded corners] (4.5, -0.5) rectangle (8.5, -1.3);
+        \draw[->] (6.5, -0.4)--(6.5, -0.1); 
+
+        \node at (6.5, -0.9) {$F(A^0)\to...\to {\color{orange}F(A^k)}\to ...$};
+        \node at (6.9, 1.3) {$\color{orange}\begin{matrix}\vdots\\\uparrow\\F(I^{k,1})\\\uparrow\\F(I^{k, 0})\end{matrix}$}; 
+
+        \node (a) at (6.5, -1.7) {\small\color{orange}dokładne z ptk. 2};
+        \draw[->, orange] (6.95, -0.6)--(6.95, 0.2);
+        \path[->, orange] (a) edge [bend right=20] (6.95, -1.1);
+      \end{tikzpicture}
+    \end{center}
+    Na mocy faktu \ref{qis dla C-E} strzałka $A^*\to Tot(I^{*, *})$ jest qis, czyli mamy równości
+    $$RF(A^*)=F(Tot(I^{*,*}))=Tot(F(I^{*,*})).$$
+    Dalej z dokładności ciągu $F(A^k)\to F(I^{k,0})\to...$ wiemy, że $F(A^*)\to Tot(F(I^{*,*}))$ indukuje izomorfizm na $H^*$, czyli jest qis, a więc w $D^+\mathbf{B}$ - izomorfizmem. To znaczy, że mamy
+    $$RF(A[0])=RF(A^*)=Tot(F(I^{*,*}))=F(A^*).$$
+
   \end{enumerate}
 \end{proof}
 
@@ -175,11 +244,18 @@ Wtedy kohomologie tego nowego kompleksu to tory: $H^i=Tor_i(A, B)$
 \end{theorem}
 
 \begin{proof}
-  Z uniwersalności dostajemy $\varepsilon:R(F\circ G)\to RF\circ RG$.
+  Z uniwersalności dostajemy $\varepsilon:R(F\circ G)\implies RF\circ RG$:
   \begin{center}\begin{tikzcd}
-    K^+\mathbf{C}\arrow[d]\arrow[dr, "\varepsilon_F"] & K^+\mathbf{B}\arrow[l]\arrow[d]\arrow[dr, "\varepsilon_G"] & K^+\mathbf{A}\arrow[l]\arrow[d] \\ 
+    K^+\mathbf{C}\arrow[d, "Q_C"]\arrow[dr, "\varepsilon_F", Rightarrow, blue] & K^+\mathbf{B}\arrow[l, "K(F)" above]\arrow[d, "Q_B"]\arrow[dr, "\varepsilon_G", Rightarrow, blue] & K^+\mathbf{A}\arrow[l, "K(G)" above]\arrow[d, "Q_A"] \\ 
     D^+\mathbf{C} & \arrow[l, "RF"] D^+\mathbf{B} & \arrow[l, "RG"] D^+\mathbf{A}
   \end{tikzcd}\end{center}
-  {\large\color{red}ZDJĘCIE, BO COŚ SIĘ POPSUŁO}
+  wiemy, że istnieje $\epsilon_F\circ K(G):Q_C K(F\circ G)\implies {\color{green}(RF\circ Q_B) K(G)}$ oraz $RF\circ\epsilon_G:{\color{green}RF(Q_B\circ K(G))}\implies RF(RG\circ Q_A)$. Po złożeniu dostajemy 
+  $$Q_CK(F\circ G)\implies (RF\circ RG)Q_A.$$
+  Dla kompleksu injektywnego $I^*$ zachodzi
+  \begin{align*}
+    R(F\circ G)(I^*)&=(F\circ G)(I^*)=F(G(I^*))\\ 
+    (RF\circ RG)(I^*)&=RF(RG(I^*))=RF(G(I^*))=F(G(I^*))
+  \end{align*}
+  Ponieważ każdy element w $D^+\mathbf{A}$ jest izomorficzny z pewnym $I^*$, to pokazaliśmy właśnie $R(F\circ G)\cong RF\circ RG$.
 \end{proof}
-
+ 

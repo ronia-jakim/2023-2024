@@ -63,6 +63,8 @@
 \begin{proof}Patrz dowód \ref{wniosek 11.10}
 \end{proof}
 
+\subsection{Kompleks podwójny, rezolwenta Cartana-Eilenberga}
+
 \begin{theorem}
   Jeśli w kategorii abelowej $\mathbf{A}$ jest dostatecznie dużo obiektów injektywnych, to funktor włożenia
   $$K^+(\mathbf{I})\to D^+(\mathbf{A})$$
@@ -79,7 +81,7 @@ Zanim przejdziemy do dowodu tego twierdzenia, wprowadzimy kilka przydatnych defi
     z różniczką $D=d_I+(-1)^id_{II}$. 
   \end{definition}
 
-  \begin{definition}[rezolwenta Cartana-Eilebnerga]
+  \begin{definition}[rezolwenta Cartana-Eilenberga]\label{rezolwenta C-E}
     Niech $A^*$ będzie kompleksem. Rozważmy kompleks podwójny $I^{*,*}=(I^{i,j})_{i,j\geq 0}$ wyposażony w morfizm $A^*\to I^{*,0}$
 
     \begin{center}\tikz[overlay]{
@@ -112,7 +114,7 @@ Zanim przejdziemy do dowodu tego twierdzenia, wprowadzimy kilka przydatnych defi
 
   Udowodnimy teraz fakt pomocniczy (a raczej lemat), który uprości dowód twierdzenia do znalezienia odpowiedniej rezolwenty Cartana-Eilenberga.
 
-\begin{fact}
+  \begin{fact}\label{qis dla C-E}
   Dla rezolwenty Cartana-Eilenberga morfizm $A^*\to Tot(I^{*,*})$ indukowany przez 
   $$A^*\to I^{*,0}$$ 
   jest qis. 
@@ -207,15 +209,18 @@ Dowodzi się to polowaniem po diagramie, które jest prawdziwe nawet dla sformu�
   $$RF:D^+(\mathbf{A})\to D^+(\mathbf{B})$$
   jest złożeniem diagramów
   \begin{center}\begin{tikzcd}
-    K^+(\mathbf{I}_A)\arrow[dr, yshift=-1mm]\arrow[r, hookrightarrow] & K^+(\mathbf{A}) \arrow[r, "K(F)"]\arrow[d] & K^+(\mathbf{B})\arrow[d]\\
-                                & D^+(\mathbf{A})\arrow[ul, yshift=1mm] & B^+(\mathbf{B})
+    K^+(\mathbf{I}_A)\arrow[dr, yshift=-1mm]\arrow[r, hookrightarrow]\arrow[rr, bend left=20, red] & K^+(\mathbf{A}) \arrow[r, "K(F)"]\arrow[d] & K^+(\mathbf{B})\arrow[d]\arrow[d, bend left=20, red]\\
+                                                                                                   & D^+(\mathbf{A})\arrow[ul, yshift=1mm]\arrow[ul, bend left=20, red]\arrow[r, red, "RF" below, dashed] & B^+(\mathbf{B})
   \end{tikzcd}\end{center}
-  {\large\color{red}ZDJĘCIE}
 \end{definition}
+%$RF$ dla $A^*\in\ob D^+(\mathbf{A})$ znajduje qis $A^*\to I^*$ i bierze kompleks $F(I^*$)
 
-\begin{fact}
+\begin{fact}\label{RF dokladny}
   Funktor $RF$ jest dokładny, tzn. przeprowadza trójkąty wyróżnione w $D^+(\mathbf{A})$ na trójkąty wyróżnione w $D^+(\mathbf{B})$.
 \end{fact}
+\begin{proof}
+  Dowód za tydzień.
+\end{proof}
 
 \begin{definition}[wyższe funktory pochodne]
   Dla obiektu $A\in\ob\mathbf{A}$ ciąg obiektów
@@ -244,11 +249,22 @@ Dowodzi się to polowaniem po diagramie, które jest prawdziwe nawet dla sformu�
     0\arrow[r] & A\arrow[r] & B\arrow[r] & C\arrow[r] & 0 
   \end{tikzcd}\end{center}
   jest dokładny w $\mathbf{A}$, to wtedy
-  \begin{center}\begin{tikzcd}
-    0\arrow[r] & FA\arrow[r] & FB\arrow[r] & FC\arrow[r] & R^1FA\arrow[r] & R^1FB\arrow[r] & R^1FC\arrow[r] & R^2FA\arrow[r] &...
+  \begin{center}\begin{tikzcd}[row sep=small]
+    0\arrow[r] & FA\arrow[r] & FB\arrow[r] & FC\arrow[r]\arrow[d, phantom, ""{coordinate, name=Z}] & R^1FA\arrow[rounded corners, dlll,
+    to path={ -- ([xshift=2ex]\tikztostart.east)
+      |- ([xshift=2ex, yshift=-3ex]\tikztostart.east)
+-| ([xshift=-2ex]\tikztotarget.west)
+-- (\tikztotarget)}]
+    \\ 
+               & R^1FB\arrow[r] & R^1FC\arrow[r] & R^2FA\arrow[r] &...
   \end{tikzcd}\end{center}
+  również jest dokładny
 \end{fact}
 
 \begin{proof}
-  {\large\color{red}ZDJĘCIE}
+  Dla ciągu dokładnego $0\to A\to B\to C\to 0$ mamy trójkąt wyróżniony
+  $$\Delta:\;A\to B\to C\to A[1]$$
+  a ponieważ $RF$ jest dokładny (\ref{RF dokladny}), to mamy też trójkąt wyróżniony
+  $$RF(A)\to RF(B)\to RF(C)\to RF(A)[1]$$
+  i długi ciąg $H^*$ związany z przeniesonym $\Delta$, który daje nam już bezpośrednio tezę.
 \end{proof}
