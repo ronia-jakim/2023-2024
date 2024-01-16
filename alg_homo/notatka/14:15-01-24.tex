@@ -1,0 +1,149 @@
+\section{15.01.24 : Ciąg spektralny kompleksu podwójnego }
+
+$(C^{p,q})_{p,q\geq0}$ to podwójny kompleks o elementach w grupie abelowej. W tym kompleksie są różniczki poziome $d_{\to}$ i różniczki pionowe $d_{\uparrow}$. Mamy kwadrat $D=d_{\to}+(-1)^pd_{\uparrow}$ i chcemy, żeby $D^2=0$, stąd możemy napisać $d_I=d_{\to}$ i $d_{II}=(-1)^pd_{\uparrow}$, wtedy $D=d_I+d_{II}$.
+
+  Oznaczamy $T^n=Ton^n(C^{*,*})=\bigoplus_{i+j=n} C^{i,j}$, wtedy $D:T^n\to T^{n+1}$. Chcemy badać $H^n(T^*, D)$.
+
+    Książka [ang. page] $(E_r^{p,q})_{r\geq 0, p,q\geq 0}$ o stronach $E_0$, $E_1$,..., gdzie strona $E_r$ to $(E_r^{p,q})$ z różniczką $d_R:E_r^{p,1}\to E_r^{p+r, q-r+1}$. $E_0^{p,q}=C^{p,q}$, $d_0=d_{II}$ i każdy kolejny to $E_{r+1}=H^*(E_r, d_r)$. 
+
+    W pewnym momencie $E_r^{p,q}$ stabilizują się, bo różniczki albo idą w $0$ grupy albo z takich grup przychodzą.
+
+    Mamy też "tylną okładkę", czyli $E_\infty^{p,q}$ trzymającą stabilne wartości we wszystkich miejscach.
+
+    Filtracja na $T^n$ to 
+    $$F^pT^n=\bigoplus_{i+j=n, i\geq p}C^{i,j}.$$
+    i $F^pT^*$ jest podkompleksem $T^*$. {\large\color{red}ZDJĘCIE}
+    $$T^*=F^0T^*\supseteq F^1T^*\supseteq F^2T^*\supseteq...$$
+    
+
+    Grupę $C^{p,1}$ można opisać jako $F^pT^{p,q}/F^{p+1}T^{p+q}$.
+
+    Taka filtracja daje też filtrację homologii kompleksu totalnego $H^n(T^*)$, bo $F^pT^*\hookrightarrow T^*$, czyli istnieje $H^n(F^pT^*)\to H^n(T^*)$. Obraz tej strzałki oznaczamy $^{(p)}H^n(T^*)$. Iloraz tych homologii to $H^{(p)}H^n(T^*)/^{(p+1)}H^n(T^*)=E^{p. n-p}_\infty$
+
+\begin{definition}[cykle]
+  $Z^{p, n-p}_r$ to te $\alpha\in F^pT^n/F^{p+1}T^n$, które mają reprezentanta $a\in F^pT^n$ takiego, że $Da\in F^{p+r}T^{n+1}$.
+
+  \begin{center}\begin{tikzpicture}
+    \draw (0, -1)--(0,4);
+    \draw (-1, 0)--(6, 0);
+    \node at (-0.5, 3) {$q$};
+    \node at (2, -0.5) {$p$};
+    \draw[dashed] (0, 3)--(2, 3);
+    \draw[dashed] (2, 0)--(2, 3);
+    \draw[blue](2, 3)--(6, 0);
+    \draw[green] (4, 0)--(4, 3.5);
+
+    \node at (4, -0.5) {$\color{green}p+r$};
+  \filldraw (4, 1.5) circle (1pt);
+  \end{tikzpicture}\end{center}
+
+  $$E_0=Z_0\supseteq Z_1\supseteq Z_2\supseteq ...\supseteq Z_N=Z_{N+1}=...=Z_\infty/$$
+  $$Z_N^{p, n-p}=Z^n(F^pT^*)/Z^n(F^{p+1}T^*)$$
+\end{definition}
+
+\begin{definition}[brzegi]
+  $B_r^{p, n-p}$ to te $\alpha\in F^pT^n/F^{p+1}T^n$, które mają reprezentanta $a\in F^pT^n$ takiego, że istnieje $b\in F^{p-r+1}T^{n-1}$ takiego, że $Db=a$.
+
+  \begin{center}\begin{tikzpicture}
+    \draw (0, -1)--(0, 4);
+    \draw(-1, 0)--(6, 0);
+
+    \draw (3, 0)--(3, 3);
+    \node at (3, -0.5) {$p$};
+    \filldraw (3, 2) circle (1pt) node [above left] {$\alpha$};
+    \draw[blue] (3, 2)--(6, 0) node [midway, above right] {$a$};
+    
+    \draw[green] (1.5, 0)--(1.5, 3);
+    \node at (1.5, -0.5) {$\color{green}p-r$};
+    \draw[orange] (5.5, 0)--(1.5, 2.7) node [midway, below] {$b$};
+  \end{tikzpicture}\end{center}
+
+  $$0=B_0\subseteq B_1\subseteq B_2\subseteq ... \subseteq B_N=B_{n+!}=...=B_\infty$$
+  Czyli 
+  $$B_{N}^{p, n-p}=\frac{B^nT^*\cap F^pT^n}{B^nT^*\cap F^{p+1}T^n}$$
+\end{definition}
+
+\begin{definition}
+  $$E_r^{p,q}=Z_r^{p,q}/B_r^{p,q}$$
+  $$d_r:E_r^{p,q}\to E_r^{p+r, q-r+1}$$
+
+  Niech $\alpha\in E_r^{p,1}$. Wybieramy reprezentanta $\alpha'\in Z_r^{p,q}$ i reprezentanta tego $\alpha'$ $a\in F^pT^n$ takiego, że $Da\in F^{p+r}T^{n+1}$ przychodzącego z definicji $Z_r^{p,q}$. Piszemy
+  $$d_r\alpha=[Da]$$
+\end{definition}
+
+\begin{fact}
+  Różniczka zdefiniowana wyżej jest dobrze określone i $d_r^2$.
+\end{fact}
+
+\begin{proof}
+  Oczywistą częścią jest $d_r^2=0$, bo w definicji braliśmy element i nakładaliśmy na niego rózniczkę. Aby dostać $d_r^2$ robimy to nakładanie dwa razy - oczywiście dostajemy $0$.
+
+  {\large\color{red}ZDJĘCIE dla dobrej określoności}
+\end{proof}
+
+\begin{fact}
+  $$H(E_r, d_r)=E_{r+1}$$
+\end{fact}
+
+\begin{proof}
+  Zaczynamy od zrozumienia, czym jest cykl w $E_r^{p,1}$ względem $d_r$. Powiedzmy, że $\alpha$ jest takie, że $d_r\alpha=0$:
+  {\large\color{red}ZDJĘCIE}
+
+  Pokazaliśmy, że jeśli $d_r\alpha=0$, to $\alpha$ jest reprezentowalnym elementem $Z_{r+1}$, czyli mamy odwzorowanie $Z_{r+1}\to E_{r+1}$. Pozostaje pokazać, że jądrem tego odwzorowania są dokładnie brzegi $B_r$.
+
+  {\large\color{red}KOLEJNY RYSUNEK}
+\end{proof}
+
+\begin{fact}
+  $$E_\infty^{p,n-p}=^{(p)}H^n(T^*)/^{(p+1)}H^n(T^*)$$
+\end{fact}
+
+\begin{proof}
+  $$Z_\infty ^{p,n-p}=Z^n(F^pT^*)/Z^n(F^{p+1}T^*)$$
+  $$G_\infty^{p, n-p}=\frac{B^nT^*\cap F^pT^n}{B^nT^n\cap F^{p+1}T^n}$$
+  $$^{(p)}H^n(T^*)=Z^n(F^pT^*)/B^nT^*\cap F^{p}T^*$$
+  $$^{(p+1)}H^n(T^*)=Z^n(F^{p+1}T^*)/B^nT^*\cap F^{p+1}T^*$$
+\end{proof}
+
+\begin{uwaga}$ $
+
+  \begin{enumerate}
+    \item Mówimy, że ciąg spektralny $E_r^{p,q}$ zbiega do homologii kompleksu totalnego $H^n(T^*)$.
+    \item Zwykle najsensowaniejszą stroną jest $E_2$:
+      $$E_2^{p,q}\to H^{p+1}(T^*)$$
+    \item $E_0^{p,q}$ $d_0=\uparrow=d_{II}$,
+
+      $E_q^{p,1}=H^q(E_0^{p, *}, d_{II})=H_{II}^q(E_0^p)$, $d_1=E_1^{p,q}\to E_1^{p+1, q}$
+      
+      $E_q^{p,q}=H_I^p(H_{II}^q(E_0^{*,*})$ i o różniczce $d_2$ nic tak przyjemnego powiedzieć nie umiemy.
+  \end{enumerate}
+\end{uwaga}
+
+\subsection{Składanie funktorów}
+
+\begin{theorem}
+  Przy założeniach twierdzenia o składaniu funktorów pochodnych
+
+  Dla każdego $A^*\in Kom^+(\mathbf{A})$ istnieje ciąg spektralny
+  $$E_q^{p,q}=R^pF(R^qG(A^*))\to R^{p+1}(F\circ G)(A^*)$$
+\end{theorem}
+
+\begin{example}
+\item {\large\color{red}ZDJĘCIE}
+
+  $Sh_{\mathbf{Ab}}(E)$ -> kategoria snopów nad $E$. $\Gamma_E$ - funktor cięć globalnych nad $E$
+\end{example}
+
+\begin{proof}
+  Ponoć jest interesujące nawet gdy $G=Id$. Wtedy pokażemy 
+  $$(\star) \; R^pF(H^qA^*)\to R^{p+q}F(A^*).$$
+
+  Ponieważ $A^*\cong I^*$ przez qis, to
+  $$R^n(F\circ g)A^*=H^n(R(F\circ g)(A^*))=H^n(RF(RG(A^*)))=H^n(RF(G(I^*)))=R^nF(G(I^*))$$
+  a z drugiej strony
+  $$R^pF(R^qG(A^*))=R^pF(H^q(RG(A^*)))=R^pF(H^q(G(I^*)))$$
+  jeśli $G(I^*)$ będzie nowym $A^*$, to wystarczy podstawić do $(\star)$.
+
+  Dowód $(\star)$ polega na użyciu rezolwenty C.E. {\large\color{red}ZDJĘĘĘCIEEEEE} Tutaj użuwa się innej filtracji niż była, takiej że bierzemy wiersze.
+
+\end{proof}
