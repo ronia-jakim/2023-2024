@@ -24,7 +24,7 @@ $$V=\chi(X)+\frac{1}{3}E\leq \chi(X)+\frac{V(V-1)}{6}$$
 dla $\R P^2$ dostajemy więc ograniczenie
 $$V\leq 1+\frac{V(V-1)}{6}$$
 $$6\geq 6V-V^2+V=V(7-V)$$
-Powyższa nierówność dla $V=6$ staje się równością. Tak samo dla $V=1$ mamy równość, ale z oczywistego powodu nie ma jednowierzchołkowej triangulacji na $\R P^2$. Pozostałe liczby naturalne z przedziału $(0, 7)$ nie mają szansy spełniać powyższe równanie
+Powyższa nierówność dla $V=6$ staje się równością. Tak samo dla $V=1$ mamy równość, ale z oczywistego powodu nie ma jednowierzchołkowej triangulacji na $\R P^2$. Pozostałe liczby naturalne z przedziału $(0, 7)$ nie mają szansy spełniać powyższe równanie (widać na obrazku)
 \begin{center}
   \begin{tikzpicture}
   \begin{axis}[
@@ -49,7 +49,12 @@ Powyższa nierówność dla $V=6$ staje się równością. Tak samo dla $V=1$ ma
 
 Z listy 1 wiemy, że $6$ wierzchołkowa triangulacja $\R P^2$ jest jedyna z dokładnością do izomorfizmu, czyli nie musimy się martwić którą triangulacje opisujemy.
 
-Działając podobnie jak przy próbie skonstruowania triangulacji na butelce Klein, zauważmy, że $\R P^2$ to $S^2$ wydzielona przez działanie $x\sim -x$. Żeby dostać $6$ wierzchołkową triangulację na $\R P^2$ możemy więc zacząć od znalezienia $12$ wierzchołkowej triangulacji na $S^2$, którą będzie np. dwunastościan:
+Działając podobnie jak przy próbie skonstruowania triangulacji na butelce Klein, zauważmy, że $\R P^2$ to $S^2$ wydzielona przez antypodyczne działanie $\Z_2$. W takim razie, $6$ wierzchołkowa triangulacja na $\R P^2$ przychodzi od triangulacji na $S^2$. Dodecahedron ma $12$ ścian i $20$ wierzchołków, ale pysiek do niego dualny istnieje i ma $12$ wierzchołków ($20$ ścian) i nazywa się D20 lub dla osób niegrających w D\&D - icosahedron. 
+
+Tutaj od razu zaznaczę, że nie będę tych dwóch brył nazywać po polsku, bo obie mają długie nazwy zaczynające się na "d", a po angielsku przynajmniej pierwsze litery się różnią.
+
+Z dodecahedronu możemy dostać icosahedron - wystarczy postawić wierzchołek na każdej ścianie i połączyć odpowiednio wierzchołkami. W ten sam sposób można z icosahedronu wrócić do dodecahedronu. Stąd grupy automorfizmów obu tych brył będą równe i wystarczy popatrzeć na dodecahedron $D$:
+
 \begin{wrapfigure}{l}{7cm}
 \tdplotsetmaincoords{70}{110}
 \begin{tikzpicture}[tdplot_main_coords]
@@ -138,14 +143,42 @@ Działając podobnie jak przy próbie skonstruowania triangulacji na butelce Kle
 
 \end{wrapfigure}
 
-Zaczniemy od uzasadnienia, że $Aut(\text{20-ścian})=A_5\times \Z_2$ (bo Wikipedia nie jest tutaj uważanym źródłem informacji \frownie). 
+Uzasadnimy teraz to, co prawi Wikipedia, mianowicie, że $Aut(D)=A_5\times \Z_2$.
 
-Oznaczmy $20$-ścian przez $D$. Wiemy, że jeśli $v$ jest dowolnym wierzchołkiem $D$, to $|Orb(v)=20|$, bo wierzchołek może przejść na dowolny inny. Pozostaje znaleźć $|Stab(v)|$. W $Stab(v)$ mamy permutacje wierzchołków przyległych do $v$, czyli permutacje zbioru o $3$ elementach. W takim razie $|Stab(v)|=|S_3|=6$. Daje to $|Aut(D)|=|Orb(v)||Stab(v)|=20\cdot 6=120$. Jak na razie zgadza się.
+\textbf{Czy zgadza się rząd?}
 
-Zauważmy, że automorfizmem $D$ są zwykłe obroty i rotacje, ale też symetria przez punkt w samym środku (odwzorowanie antypodalne, co jest przyjemne). Ten drugi automorfizm powinien odpowiadać za czynnik $\Z_2$ - to chyba on mówi czy sąsiedzi wierzchołka są ponumerowani zgodnie z ruchem wskazówek zegara czy też przeciwnie. W takim razie wystarczy pokazać, że symetrie i obroty $D$ tworzą grupę $A_5$.
+Niech $v\in D$ będzie wierzchołkiem dodecahedronu (odpowiada ścianie icosahedronu). 
+\begin{itemize}
+  \item $|Obr(v)|=20$, bo automorfizm może posłać wierzchołek na dowolny inny spośród $20$ które $D$ posiada.
+  \item $|Stab(v)| = 3!=6$, gdyż są to permutacje $3$ sąsiadów tego wierzchołka przy trzymaniu $v$ w miejscu.
+\end{itemize}
+W takim razie dostajemy
+$$|Aut(D)|=|Orb(v)|\cdot|Stab(v)|=20\cdot 6=120=|A_5\times \Z_2|.$$
 
-Sztuczką na pokazanie, że symetrie $D$ to $A_5$ jest zauważenie $5$ sześcianów w środku $D$. Sześciany możemy wyciągnąć biorąc dowolną krawędź i łącząc wszystkich sąsiadów końców tej krawędzi. Powtarzając tę samą akcję z krawędzią po przeciwnej stronie $D$ dostajemy drugą ścianę i wystarczy je teraz połączyć. Jeden sześcian możemy otrzymać na $6$ sposobów, a w $D$ jest $30$ krawędzi. Mamy więc $5$ grup krawędzi, które dają ten sam sześcian.
+\textbf{Pozbycie się $\Z_2$}
 
-Ponumerujmy sześciany od $1$ do $5$ - możemy teraz je permutować. Najbardziej leniwym sposobem na zauważenie, że grupa uzyskana przez porządne permutacje tych sześcianów to $A_5$ jest podzielenie $|Aut(D)|=120$ przez $2$, które oznacza, że wyrzucamy symetrię względem punktu w środku $D$ (element rzędu $2$). Zostawia to nam $60$ automorfizmów, które będą permutować te sześciany i które powinniśmy móc włożyć w $S_5$. Jedyna (z dokładnością do izomorfizmu) podgrupa $S_5$ o $60$ elementach to $A_5$.
+Wśród automorfizmów dodecahedronu $D$ mamy dwa "rodzaje" odwzorowań
+\begin{itemize}
+  \item rotacje i symetrie, które zachowują ruch wskazówek zegara przy numerowaniu sąsiadów dowolnego wierzchołka,
+  \item odwzorowanie antypodyczne tudzież symetria względem punktu w samym środku $D$, która przewraca tę kolejność do góry nogami.
+\end{itemize}
+Ten drugi rodzaj odwzorowania będzie odpowiadać za czynnik $\Z_2$ w $Aut(D)$. Wystarczy więc zająć się samą grupą symetrii i rotacji i pokazać, że to $A_5$.
+
+\textbf{Symetrie i obroty}
+
+Sztuczką na pokazanie, że symetrie $D$ to $A_5$ jest zauważenie $5$ sześcianów w środku $D$. Sześciany możemy narysować idąc krokami:
+\begin{itemize}
+  \item weź krawędź w $D$
+  \item połącz wszystkie sąsiady tej krawędzi w ścianę
+  \item weź krawędź po przeciwnej stronie $D$
+  \item połącz jej wszystkie sąsiady w ścianę
+  \item połącz te dwie ściany w sześcian.
+\end{itemize}
+Z tej metody wytwarzania sześcianów można od razu wywnioskować, że automorfizm przeprowadza sześciany na sześciany, ponieważ sąsiedztwo wierzchołków musi być zachowane, a to ono było podstawą wyciskania sześcianów z $D$.
+
+Ponumerujmy sześciany od $1$ do $5$ - możemy teraz je permutować. Najbardziej leniwym sposobem na zauważenie, że grupa uzyskana przez porządne permutacje tych sześcianów to $A_5$ jest podzielenie $|Aut(D)|=120$ przez $2$, które oznacza, że wyrzucamy antypodyzm (element rzędu $2$). Zostawia to nam $60$ automorfizmów, które będą permutować te sześciany i które powinniśmy móc włożyć w $S_5$. Jedyna (z dokładnością do izomorfizmu) podgrupa $S_5$ o $60$ elementach jest $A_5$ tak jak chcieliśmy.
+
+Uzasadniliśmy, że $A_5\times\Z_2=Aut(\text{\emph{dodecahedron}})=Aut(\text{\emph{icosahedron}})$ bo tak jak już wspomniałam, bryły te są dualne. Po wydzieleniu $S^2$ z triangulacją będącą icosahedronem przez działanie antypodyczne dostajemy grupę automorfizmów triangulacji $\Delta \R P^2$ o $6$ wierzchołkach: 
+$$Aut(\Delta\R P^2)=A_5\times\Z_2/\Z_2=A_5$$
 
 \end{document}
