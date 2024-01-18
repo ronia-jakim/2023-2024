@@ -15,9 +15,17 @@
 
 \textbf{\large\color{orange}Zadanie 1.} Opisz grupę automorfizmów triangulacji $\R P^2$ o najmniejszej liczbie wierzchołków.
 
+{\large\color{red}usunąć kolokwializmy, pokazać, że jądro $Aut(D)\to S_5=\Z_2$, na początku uzasadnić $2E=3T$, ładniej pokazać, że sześciany są trzymane przez automorfizmy}
+
+\textbf{Ile wierzchołków?}
+
+Zacznijmy od obserwacji, że każdy $m$-sympleks $\sigma^m$ zawiera dokładnie $\binom{m+1}{n+1}$ $n$-sympleksów. W takim razie, jeśli $K$ jest kompleksem symplicjalnym, a $f_m(K)$ oznacza liczbę $m$-sympleksów w $K$, to wówczas
+$$deg_m(n)\cdot f_n(K)=\frac{m+1}{n+1}f_m(K),$$
+gdzie $deg_m(n)$ mówi do ilu $m$-sympleksów może należeć $n$-sympleks w kompleksie $K$. Jeśli rozważamy $K$ będące triangulacją $2$-rozmaitości oraz $m=2$, $n=1$, to wtedy $deg_2(1)=2$, tzn. $2 f_1(K)=3f_2(K)$. Oznacza to, że na płaszczyźnie krawędź należy do $2$ trójkątów, a każdy trójkąt ma $3$ krawędzie.
+
 Wiemy, że jeśli $X$ ma triangulację o $V$ wierzchołkach, $E$ krawędziach i $T$ trójkątach, to 
-$$\chi(X)=V-E+T$$
-a ponieważ $2E=3T$, to możemy podstawić
+$$\chi(X)=V-E+T.$$
+Krawędzie to $1$-sympleksy, a trójkąty to $2$-sympleksy. Mamy więc $2E=2f_1(K)=3f_2(K)=3T$, co po podstawieniu daje
 $$\chi(X)=V-E+\frac{2}{3}E=V-\frac{1}{3}E.$$
 Ilość krawędzi szacujemy od góry przez ilość krawędzi w grafie pełnym: $E\leq \binom{V}{2}$ czyli
 $$V=\chi(X)+\frac{1}{3}E\leq \chi(X)+\frac{V(V-1)}{6}$$
@@ -49,9 +57,11 @@ Powyższa nierówność dla $V=6$ staje się równością. Tak samo dla $V=1$ ma
 
 Z listy 1 wiemy, że $6$ wierzchołkowa triangulacja $\R P^2$ jest jedyna z dokładnością do izomorfizmu, czyli nie musimy się martwić którą triangulacje opisujemy.
 
-Działając podobnie jak przy próbie skonstruowania triangulacji na butelce Klein, zauważmy, że $\R P^2$ to $S^2$ wydzielona przez antypodyczne działanie $\Z_2$. W takim razie, $6$ wierzchołkowa triangulacja na $\R P^2$ przychodzi od triangulacji na $S^2$. Dodecahedron ma $12$ ścian i $20$ wierzchołków, ale pysiek do niego dualny istnieje i ma $12$ wierzchołków ($20$ ścian) i nazywa się D20 lub dla osób niegrających w D\&D - icosahedron. 
+\textbf{Plan działania}
 
-Tutaj od razu zaznaczę, że nie będę tych dwóch brył nazywać po polsku, bo obie mają długie nazwy zaczynające się na "d", a po angielsku przynajmniej pierwsze litery się różnią.
+Płaszczyzna rzutowa $\R P^2$ to $S^2$ wydzielona przez antypodyczne działanie $\Z_2$. W takim razie, $6$ wierzchołkowa triangulacja na $\R P^2$ przychodzi od triangulacji na $S^2$. Dwudziestościan ma $12$ wierzchołków i $20$ ścian i jest to interesująca nas triangulacja sfery. Łatwiejsze jest jednak badanie grupy automorfizmów bryły dualnej do dwudziestościanu - dwunastościanu o $12$ ścianach i $20$ wierzchołkach.
+
+{\large\color{red}narysować na sferze z osiami symetrii}
 
 Z dodecahedronu możemy dostać icosahedron - wystarczy postawić wierzchołek na każdej ścianie i połączyć odpowiednio wierzchołkami. W ten sam sposób można z icosahedronu wrócić do dodecahedronu. Stąd grupy automorfizmów obu tych brył będą równe i wystarczy popatrzeć na dodecahedron $D$:
 
