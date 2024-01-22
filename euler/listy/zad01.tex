@@ -1,0 +1,177 @@
+\textbf{\large\color{orange}Zadanie 1.} Opisz grupę automorfizmów triangulacji $\R P^2$ o najmniejszej liczbie wierzchołków.
+
+{\large\color{red}usunąć kolokwializmy, pokazać, że jądro $Aut(D)\to S_5=\Z_2$, na początku uzasadnić $2E=3T$, ładniej pokazać, że sześciany są trzymane przez automorfizmy}
+
+\textbf{Ile wierzchołków?}
+
+Zacznijmy od obserwacji, że każdy $m$-sympleks $\sigma^m$ zawiera dokładnie $\binom{m+1}{n+1}$ $n$-sympleksów. W takim razie, jeśli $K$ jest kompleksem symplicjalnym, a $f_m(K)$ oznacza liczbę $m$-sympleksów w $K$, to wówczas
+$$deg_m(n)\cdot f_n(K)=\frac{m+1}{n+1}f_m(K),$$
+gdzie $deg_m(n)$ mówi do ilu $m$-sympleksów może należeć $n$-sympleks w kompleksie $K$. Jeśli rozważamy $K$ będące triangulacją $2$-rozmaitości oraz $m=2$, $n=1$, to wtedy $deg_2(1)=2$, tzn. $2 f_1(K)=3f_2(K)$. Oznacza to, że na płaszczyźnie krawędź należy do $2$ trójkątów, a każdy trójkąt ma $3$ krawędzie.
+
+Wiemy, że jeśli $X$ ma triangulację o $V$ wierzchołkach, $E$ krawędziach i $T$ trójkątach, to 
+$$\chi(X)=V-E+T.$$
+Krawędzie to $1$-sympleksy, a trójkąty to $2$-sympleksy. Mamy więc $2E=2f_1(K)=3f_2(K)=3T$, co po podstawieniu daje
+$$\chi(X)=V-E+\frac{2}{3}E=V-\frac{1}{3}E.$$
+Ilość krawędzi szacujemy od góry przez ilość krawędzi w grafie pełnym: $E\leq \binom{V}{2}$ czyli
+$$V=\chi(X)+\frac{1}{3}E\leq \chi(X)+\frac{V(V-1)}{6}$$
+dla $\R P^2$ dostajemy więc ograniczenie
+$$V\leq 1+\frac{V(V-1)}{6}$$
+$$6\geq 6V-V^2+V=V(7-V)$$
+Powyższa nierówność dla $V=6$ staje się równością. Tak samo dla $V=1$ mamy równość, ale z oczywistego powodu nie ma jednowierzchołkowej triangulacji na $\R P^2$. Pozostałe liczby naturalne z przedziału $(0, 7)$ nie mają szansy spełniać powyższe równanie (widać na obrazku)
+\begin{center}
+  \begin{tikzpicture}
+  \begin{axis}[
+    axis x line=center,
+    axis y line=center,
+    xtick={0, 2, 4, 6, 8},
+    ytick={0, 2, 4, 6, 8, 10, 12},
+    xlabel={$x$},
+    ylabel={$y$},
+    xlabel style={below right},
+    ylabel style={left},
+    xmin=-1.5,
+    xmax=8.5,
+    ymin=-1.5,
+    ymax=13.5]
+  \addplot [mark=none,domain=-1:7] {x*(7-x)};
+  \addplot [domain=-1:7, dashed] {6};
+  \addplot [dashed] coordinates {(6, -0.5) (6, 12)};
+  \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+Z listy 1 wiemy, że $6$ wierzchołkowa triangulacja $\R P^2$ jest jedyna z dokładnością do izomorfizmu, czyli nie musimy się martwić którą triangulacje opisujemy.
+
+\textbf{Plan działania}
+
+Płaszczyzna rzutowa $\R P^2$ to $S^2$ wydzielona przez antypodyczne działanie $\Z_2$. W takim razie, $6$ wierzchołkowa triangulacja na $\R P^2$ przychodzi od triangulacji na $S^2$. Dwudziestościan ma $12$ wierzchołków i $20$ ścian i jest to interesująca nas triangulacja sfery. Łatwiejsze jest jednak badanie grupy automorfizmów bryły dualnej do dwudziestościanu - dwunastościanu o $12$ ścianach i $20$ wierzchołkach.
+
+{\large\color{red}narysować na sferze z osiami symetrii}
+
+Z dodecahedronu możemy dostać icosahedron - wystarczy postawić wierzchołek na każdej ścianie i połączyć odpowiednio wierzchołkami. W ten sam sposób można z icosahedronu wrócić do dodecahedronu. Stąd grupy automorfizmów obu tych brył będą równe i wystarczy popatrzeć na dodecahedron $D$:
+
+\begin{wrapfigure}{l}{7cm}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[tdplot_main_coords]
+	% Change the value of the number at {\escala}{##} to scale the figure up or down
+	\pgfmathsetmacro{\escala}{2}
+	% Coordinates of the vertices
+%  \node(1) at (-\escala*1.37638, \escala*0., \escala*0.262866) {1};
+%  \node(2) at (\escala*1.37638, \escala*0., -\escala*0.262866) {2};
+%  \node(3) at (-\escala*0.425325, -\escala*1.30902, \escala*0.262866) {3};
+%  \node(4) at (-\escala*0.425325, \escala*1.30902, \escala*0.262866) {4};
+%  \node(5) at (\escala*1.11352, -\escala*0.809017, \escala*0.262866) {5};
+%  \node(6) at (\escala*1.11352, \escala*0.809017, \escala*0.262866) {6};
+%  \node(7) at (-\escala*0.262866, -\escala*0.809017, \escala*1.11352) {7};
+%  \node(8) at (-\escala*0.262866, \escala*0.809017, \escala*1.11352) {8};
+%  \node(9) at (-\escala*0.688191, -\escala*0.5, -\escala*1.11352) {9};
+%  \node(10) at (-\escala*0.688191, \escala*0.5, -\escala*1.11352) {10};
+%	%
+%  \node(11) at (\escala*0.688191, -\escala*0.5, \escala*1.11352) {11};
+%  \node(12) at (\escala*0.688191, \escala*0.5, \escala*1.11352) {12};
+%  \node(13) at (\escala*0.850651, \escala*0., -\escala*1.11352) {13};
+%  \node(14) at (-\escala*1.11352, -\escala*0.809017, -\escala*0.262866) {14};
+%  \node(15) at (-\escala*1.11352, \escala*0.809017, -\escala*0.262866) {15};
+%  \node(16) at (-\escala*0.850651, \escala*0., \escala*1.11352) {16};
+%  \node(17) at (\escala*0.262866, -\escala*0.809017, -\escala*1.11352) {17};
+%  \node(18) at (\escala*0.262866, \escala*0.809017, -\escala*1.11352) {18};
+%  \node(19) at (\escala*0.425325, -\escala*1.30902, -\escala*0.262866) {19};
+%  \node(20) at (\escala*0.425325, \escala*1.30902, -\escala*0.262866) {20};
+	% Faces of the dodecahedron
+ 
+	\coordinate(1) at (-\escala*1.37638, \escala*0., \escala*0.262866);
+	\coordinate(2) at (\escala*1.37638, \escala*0., -\escala*0.262866);
+	\coordinate(3) at (-\escala*0.425325, -\escala*1.30902, \escala*0.262866);
+	\coordinate(4) at (-\escala*0.425325, \escala*1.30902, \escala*0.262866);
+	\coordinate(5) at (\escala*1.11352, -\escala*0.809017, \escala*0.262866);
+	\coordinate(6) at (\escala*1.11352, \escala*0.809017, \escala*0.262866);
+	\coordinate(7) at (-\escala*0.262866, -\escala*0.809017, \escala*1.11352);
+	\coordinate(8) at (-\escala*0.262866, \escala*0.809017, \escala*1.11352);
+	\coordinate(9) at (-\escala*0.688191, -\escala*0.5, -\escala*1.11352);
+	\coordinate(10) at (-\escala*0.688191, \escala*0.5, -\escala*1.11352);
+	%
+	\coordinate(11) at (\escala*0.688191, -\escala*0.5, \escala*1.11352);
+	\coordinate(12) at (\escala*0.688191, \escala*0.5, \escala*1.11352);
+	\coordinate(13) at (\escala*0.850651, \escala*0., -\escala*1.11352);
+	\coordinate(14) at (-\escala*1.11352, -\escala*0.809017, -\escala*0.262866);
+	\coordinate(15) at (-\escala*1.11352, \escala*0.809017, -\escala*0.262866);
+	\coordinate(16) at (-\escala*0.850651, \escala*0., \escala*1.11352);
+	\coordinate(17) at (\escala*0.262866, -\escala*0.809017, -\escala*1.11352);
+	\coordinate(18) at (\escala*0.262866, \escala*0.809017, -\escala*1.11352);
+	\coordinate(19) at (\escala*0.425325, -\escala*1.30902, -\escala*0.262866);
+	\coordinate(20) at (\escala*0.425325, \escala*1.30902, -\escala*0.262866);
+
+%	\draw[thick,cyan, opacity=0.75]  (2) -- (6) -- (12) -- (11) -- (5) -- (2);
+%	\draw[thick,cyan, opacity=0.75]  (5) -- (11) -- (7) -- (3) -- (19) -- (5);
+%	\draw[thick,cyan, opacity=0.75]  (11) -- (12) -- (8) -- (16) -- (7) -- (11);
+%	\draw[thick,cyan, opacity=0.75]  (12) -- (6) -- (20) -- (4) -- (8) -- (12);
+%	%
+%	\draw[thick,cyan, opacity=0.75]  (6) -- (2) -- (13) -- (18) -- (20) -- (6);
+%	\draw[thick,cyan, opacity=0.75]  (2) -- (5) -- (19) -- (17) -- (13) -- (2);
+%	\draw[thick,cyan, opacity=0.75]  (4) -- (20) -- (18) -- (10) -- (15) -- (4);
+%	\draw[thick,cyan, opacity=0.75]  (18) -- (13) -- (17) -- (9) -- (10) -- (18);
+%	\draw[thick,cyan, opacity=0.75]  (17) -- (19) -- (3) -- (14) -- (9) -- (17);
+%	%
+%	\draw[thick,cyan, opacity=0.75]  (3) -- (7) -- (16) -- (1) -- (14) -- (3);
+%	\draw[thick,cyan, opacity=0.75]  (16) -- (8) -- (4) -- (15) -- (1) -- (16);
+%	\draw[thick,cyan, opacity=0.75]  (15) -- (10) -- (9) -- (14) -- (1) -- (15);
+	%	
+
+  \draw[orange, thick] (19)--(7)--(1)--(9)--(19);
+  \draw[orange, thick, dashed] (18)--(2)--(12)--(4)--(18);
+  \draw[orange, thick] (9)--(18)--(4)--(1);
+  \draw[dashed, orange, thick] (7)--(12);
+  \draw[dashed, orange, thick] (19)--(2);
+
+  \draw[dashed, thick] (20)--(6)--(2)--(13);
+  \draw[dashed, thick] (6)--(12)--(11)--(5)--(2)--(6);
+  \draw[dashed, thick] (12)--(8);
+  \draw[dashed, thick] (7)--(11);
+  \draw[dashed, thick] (5)--(19);
+  \draw[thick] (7)--(16)--(1)--(14)--(3)--(7);
+  \draw[thick] (16)--(8)--(4)--(15)--(1);
+  \draw[thick] (14)--(9)--(10)--(15);
+  \draw[thick] (3)--(19)--(17)--(9);
+  \draw[thick] (17)--(13)--(18)--(10);
+  \draw[thick] (18)--(20)--(4);
+\end{tikzpicture}
+
+\end{wrapfigure}
+
+Uzasadnimy teraz to, co prawi Wikipedia, mianowicie, że $Aut(D)=A_5\times \Z_2$.
+
+\textbf{Czy zgadza się rząd?}
+
+Niech $v\in D$ będzie wierzchołkiem dodecahedronu (odpowiada ścianie icosahedronu). 
+\begin{itemize}
+  \item $|Obr(v)|=20$, bo automorfizm może posłać wierzchołek na dowolny inny spośród $20$ które $D$ posiada.
+  \item $|Stab(v)| = 3!=6$, gdyż są to permutacje $3$ sąsiadów tego wierzchołka przy trzymaniu $v$ w miejscu.
+\end{itemize}
+W takim razie dostajemy
+$$|Aut(D)|=|Orb(v)|\cdot|Stab(v)|=20\cdot 6=120=|A_5\times \Z_2|.$$
+
+\textbf{Pozbycie się $\Z_2$}
+
+Wśród automorfizmów dodecahedronu $D$ mamy dwa "rodzaje" odwzorowań
+\begin{itemize}
+  \item rotacje i symetrie, które zachowują ruch wskazówek zegara przy numerowaniu sąsiadów dowolnego wierzchołka,
+  \item odwzorowanie antypodyczne tudzież symetria względem punktu w samym środku $D$, która przewraca tę kolejność do góry nogami.
+\end{itemize}
+Ten drugi rodzaj odwzorowania będzie odpowiadać za czynnik $\Z_2$ w $Aut(D)$. Wystarczy więc zająć się samą grupą symetrii i rotacji i pokazać, że to $A_5$.
+
+\textbf{Symetrie i obroty}
+
+Sztuczką na pokazanie, że symetrie $D$ to $A_5$ jest zauważenie $5$ sześcianów w środku $D$. Sześciany możemy narysować idąc krokami:
+\begin{itemize}
+  \item weź krawędź w $D$
+  \item połącz wszystkie sąsiady tej krawędzi w ścianę
+  \item weź krawędź po przeciwnej stronie $D$
+  \item połącz jej wszystkie sąsiady w ścianę
+  \item połącz te dwie ściany w sześcian.
+\end{itemize}
+Z tej metody wytwarzania sześcianów można od razu wywnioskować, że automorfizm przeprowadza sześciany na sześciany, ponieważ sąsiedztwo wierzchołków musi być zachowane, a to ono było podstawą wyciskania sześcianów z $D$.
+
+Ponumerujmy sześciany od $1$ do $5$ - możemy teraz je permutować. Najbardziej leniwym sposobem na zauważenie, że grupa uzyskana przez porządne permutacje tych sześcianów to $A_5$ jest podzielenie $|Aut(D)|=120$ przez $2$, które oznacza, że wyrzucamy antypodyzm (element rzędu $2$). Zostawia to nam $60$ automorfizmów, które będą permutować te sześciany i które powinniśmy móc włożyć w $S_5$. Jedyna (z dokładnością do izomorfizmu) podgrupa $S_5$ o $60$ elementach jest $A_5$ tak jak chcieliśmy.
+
+Uzasadniliśmy, że $A_5\times\Z_2=Aut(\text{\emph{dodecahedron}})=Aut(\text{\emph{icosahedron}})$ bo tak jak już wspomniałam, bryły te są dualne. Po wydzieleniu $S^2$ z triangulacją będącą icosahedronem przez działanie antypodyczne dostajemy grupę automorfizmów triangulacji $\Delta \R P^2$ o $6$ wierzchołkach: 
+$$Aut(\Delta\R P^2)=A_5\times\Z_2/\Z_2=A_5$$
