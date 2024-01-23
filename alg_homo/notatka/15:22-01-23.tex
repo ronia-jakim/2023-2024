@@ -1,6 +1,7 @@
-\section{22.01.24 : }
+\section{22.01.24 : Snopki ($R$-modułów)}
 
-\emph{\large\color{red}tutaj można dać przypomnienie co to presnop}
+  \buff{Presnopem} na kategorii $\mathbf{C}$ nazywamy dowolny funktor
+  $$F:\mathbf{C}^{op}\to\mathbf{Set}$$
 
 Snop na $X$ to presnop $F$, który dodatkowo spełnia:
 \begin{align*}
@@ -9,7 +10,8 @@ Snop na $X$ to presnop $F$, który dodatkowo spełnia:
 \end{align*}
 
 \subsection{Usnopienie (sheafification)}
-Niech $F$ będzie snopem na $X$. Źdźbło $F$ w $x\in X$ to $\color{red}F_x=\lim_{\to U\in x}F(U)$. Dla funkcji będzie to zgodność na pewnym otoczeniu $x\in X$. Dla $s\in F(U)$ i $x\in U$ oznaczamy przez $s_x$ obięcie $s$ w tej granicy - \emph{kiełek $s$ w $x$}.
+Niech $F$ będzie snopem na $X$. Źdźbło $F$ w $x\in X$ to 
+$$F_x=\lim\limits_{\substack{\longrightarrow\\ U\ni x}}F(U).$$ Dla funkcji będzie to zgodność na pewnym otoczeniu $x\in X$. Dla $s\in F(U)$ i $x\in U$ oznaczamy przez $s_x$ obięcie $s$ w tej granicy - \emph{kiełek $s$ w $x$}.
 
 Niech 
 $$Et(F)=\bigsqcup_{x\in X} F_x$$ 
@@ -66,6 +68,8 @@ $$\overline{F}(U)=\{f:U\to Et(F)\;:\;f\text{ - ciągłe}, \pi\circ f=id_U\}.$$
   Ćwiczenie
 \end{proof}
 
+\subsection{Własności snopów i kategorii snopów}
+
 \begin{fact}
   Niech $F, G$ to snopy na $X$, a $f,g:F\to G$. Wtedy
   \begin{enumerate}
@@ -79,12 +83,12 @@ $$\overline{F}(U)=\{f:U\to Et(F)\;:\;f\text{ - ciągłe}, \pi\circ f=id_U\}.$$
 \item Nie prawdą jest, że jeśli $f$ jest epimorfizmem na źdźbłach, to $f$ też jest epimorfizmem. Niech $X=\C\setminus\{0\}$. Mamy
   $$O_X\xrightarrow{\partial z} O_X$$
   i dla $U\subseteq \C\setminus\{0\}$ 
-  \begin{center}\begin{tikzcd}
+  \begin{center}\begin{tikzcd}[row sep=small]
     O(U)\arrow[r] & O(U)\\ 
-    f\arrow[u, phantom, sloped, "\in"] \arrow[r] & f'\arrow[u, sloped, phantom]
+    f\arrow[u, phantom, sloped, "\in"] \arrow[r] & f'\arrow[u, sloped, phantom, "\in"]
   \end{tikzcd}\end{center}
   to odwzorowanie jest epimorfizmem na źdźbłach. Ale jeśli popatrzymy na Cały obraz, to mamy funkcję $\frac{1}{z}$:
-  \begin{center}\begin{tikzcd}
+  \begin{center}\begin{tikzcd}[row sep=small]
     O(X)\arrow[r, "\partial_z"] & O(X)\\ 
     \log z\arrow[u, phantom, sloped, "\notin"] \arrow[r] & \frac{1}{z}\arrow[u, phantom, sloped, "\in"]
   \end{tikzcd}\end{center}
@@ -173,6 +177,8 @@ Nie wiemy o jedyności tej strzałki w górę, ale jeśli spojrzymy na źdźbła
                & \bigsqcap I_x
   \end{tikzcd}\end{center}
 \end{proof}
+
+\subsection{Flabby sheaf}
 
 \begin{definition}[kohomologie snopa] 
   Funktor cięć globalnych $\Gamma:Sh_R(X)\to R-mod$ przypisuje
