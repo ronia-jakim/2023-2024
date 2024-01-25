@@ -1,0 +1,18 @@
+\textbf{\large\color{orange}Zadanie 6.} Niech $\mathds{K}$ będzie ciałem. Grassmannian $Gr_{\mathds{K}}(k,n)$ to przestrzeń $k$-wymiarowych podprzestrzeni $\mathds{K}^n$. Jeśli $\mathds{K}=\R,\C$ to jest to rozmaitość. Oblicz charakterystykę Eulera Grassmannianu $Gr_{\C}(k,n)$ korzystając z uogólnionej formuły Riemanna-Hurwitza i działania torusa $T^n$ na $\C^n$.
+
+\dotfill 
+
+Torus $T^n$ działa na $\C^n$ przez macierze diagonalne o wyrazach $a\in\C$ takich, że $|a|=1$.
+Torus $T^n$ ma charakterystykę Eulera równą $-2n$.
+
+Każdą $k$-wymiarową podprzestrzeń $\C^n$ możemy przekształcić na inną $k$-wymiarową podprzestrzeń $\C^n$ taką, że jej wektory są ortogonalne. Dostajemy wtedy macierz $n\times n$ rzędu $k$ ($k$ lnz. kolumn).
+
+Możemy więc zdefiniować działanie $T^n$ na Grassmannianie - macierz diagonalna $A$ działa na podprzestrzeń utożsamioną z macierzą $V$ poprzez sprzężenie $AVA^{-1}$. Jest to dobrze określone, bo 
+$$(AB)V(AB)^{-1}=(AB)V(B^{-1}A^{-1})=A(BVB^{-1})A^{-1}.$$
+Możemy teraz określić odwzorowanie $\pi:Gr_{\C}(k,n)\to Gr_{\C}(k,n)/T^n$, które punktowi przypisuje orbitę. 
+
+Zauważmy teraz, że jeśli podprzestrzeń $k$ wymiarowa ma nietrywialną orbitę, to tak naprawdę ta orbita wygląda jak suma $n$ okręgów, czyli ma charakterystykę Eulera równą $0$. Interesują nas więc tylko te przestrzenie, które mają trywialną orbitę, tzn. są punktami stałymi działania torusa.
+
+Aby macierz była punktem stałym, musi zachodzić
+$$AVA^{-1}=V\implies AV=VA^{-1}$$
+ponieważ $A$ jest diagonalna i ma wyrazy zespolone o module $1$, to $A$ jest macierzą unitarną. Jeśli $V$ jest macierzą diagonalną, to warunek wyżej mówi, że $V$ jest macierzą hermitowską, czyli $V=\overline{V^T}$. To z kolei znaczy, że $V\overline{V^T}=Id_{k\times k}$, czyli $V$ na przekątnej ma zera i $1$. Takich macierzy możemy wyprodukować $\binom{n}{n-k}=\binom{n}{k}$, wybierając które miejsca na przekątnej będą zerami. To oznacza, że $\chi(Gr_{\C}(k,n))=\binom{n}{k}$. 

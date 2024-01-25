@@ -40,5 +40,19 @@ Policz charakterystykę Eulera $Gr_{\C}(k, n)$ zliczając te komórki
 
     Pokazaliśmy, że jeśli możemy dokonać $m$ przesunięć groszków, to takie ustawienie możemy zapisać jako przestrzeń liniową przy pomocy $m$ parametrów.
 
-  \item 
+  \item W tym podpunkcie pytamy tak naprawdę, na ile możliwości możemy dojść do "trywialnego" ułożenia zaczynając w ułożeniu $A$. Każde ułożenie pośrednie będziemy ewaluować $1$ lub $(-1)$ w zależności od tego, czy jest izomorficzne z $\C^{2k}$ (wtedy $+1$) czy z $\C^{2k+1}$ (wówczas $-1$).
+
+    %Ułożenie groszków jest jednoznacznie wyznaczone przez rozmieszczenia groszków $m_1$,..., $m_k$. Naszym celem jest zliczenie na ile sposobów możemy odejmować od pojedynczych $m_i$ liczbę $1$ tak, by cały czas był zachowany porządek $m_1<...<m_k$ i aby końcowym wynikiem było $m_1=1<m_2=2<...<m_k=k$.
+
+    %Możemy ten problem widzieć też jako $k$ sztuk szufladek tak, że w pierwszej jest $m_1$ groszków, $m_2$ jest $m_2-m_1$ groszków i tak dalej. W ostatniej, $k$-tej szufladce jest $0$ groszków -> naszym celem jest wrzucenie do $k$-tej szufladki wszystkich $(m_k-k)$ groszków, przesuwając je o jedno w prawo.
+
+    Ułożenie $k$ groszków w $n$ szufladkach jest jednoznacznie wyznaczane przez położenia $m_1<m_2<...<m_k$ kolejnych groszków. Z takiego ułożenia możemy otrzymać inne przez przesuwanie w lewo dowolne ustawienie, w której na pozycjach $>m_{k-1}$ jest co najwyżej jeden groszek, na pozycjach $>m_{k-2}$ - co najwyżej dwa groszki i tak dalej.
+
+    Możemy ułożyć $m_k$ zer w ciągu i $k$ spomiędzy nich zamienić na jedynki, symbolujące położenie groszków, i zastanawiać się, które ułożenia są niedozwolone. $k$ jedynki możemy wybrać bez restrykcji na $\binom{m_k}{k}$ sposobów. 
+
+    Niedozwolone ułożenia posiadają co najmniej $(i+1)$ groszków na pozycjach $m_{k-i}$. Takich ułożeń jest $\binom{m_k-m_{k-i}}{i+1}\cdot\binom{m_k-i-1}{k-i-1}$. Dostajemy z zasady włączeń i wyłączeń wzór
+    $$\sum_{i=0}(-1)^i\binom{m_k-m_{k-i}}{i+1}\cdot\binom{m_k-i-1}{k-i-1}$$
+    na ilość możliwych przesunięć w lewo groszków z ustawienia $m_1<m_2<...<m_k$.
+
+    Teoretycznie charakterystyka Eulera powinna wyjść $\binom{n}{k}$, czyli na ile sposobów możemy ułożyć $k$ groszków w $n$ szufladkach. Jest to równe ilości wierzchołków w grafie, który od $k$ groszków ustawionych skrajnie po prawej stronie przechodzi do $k$ groszków ustawionych skrajnie po lewej stronie na wszystkie możliwe sposoby.
 \end{enumerate}

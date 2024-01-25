@@ -1,0 +1,57 @@
+\textbf{\large\color{orange}Zadanie 5.} Mapą na powierzchni $M$ nazywamy podział powierzchni na komórki homeomorficzne z dyskami, których przekroje są zawarte w ich brzegach. Z takim podziałem
+mamy związany graf dualny, którego wierzchołki, to komórki, a krawędź istnieje
+pomiędzy wierzchołkami, gdy odpowiadające im komórki mają niepusty przekrój.
+Kolorowaniem mapy nazywać będziemy funkcję ze zbioru komórek w pewien skończony zbiór kolorów, która przyjmuje różne wartości na krojących się niepusto
+komórkach.
+\begin{enumerate}[label=(\alph*)]
+  \item Jak mogą wyglądać mapy na powierzchniach? Czy da się uprościć je tak, by
+graf dualny był $1$-szkieletem triangulacji? Rozważyć mapę o sześciu krajach
+na butelce Kleina.
+\item Twierdzenie o $k$ barwach dla powierzchni $M$ mówi, że każdą mapę na powierzchni $M$ można pokolorować co najwyżej $k$ kolorami. Udowodnić twierdzenie o $5$ barwach dla sfery $S^2$, o $6$ barwach dla $RP^2$ o $7$ barwach dla torusa
+$T^2$ i o $6$ barwach dla butelki Kleina.
+\end{enumerate}
+
+\dotfill 
+
+\begin{enumerate}[label=\texbtf{(\alph*)}]
+  \item Później
+  \item 
+
+    \textbf{Torus} \dotfill
+
+    Jeżeli mapa ma $\leq 7$ krajów to nie ma problemu z jej kolorowaniem. 
+
+    Załóżmy teraz, że mamy mapę o $(n+1)$ krajach na torusie i chcemy ją pokolorować. Graf dualny do tej mapy jest planarny, ale niekoniecznie jest triangulacją. Dodajmy mu krawędzi tak, by nietrójkątne ściany wymienić na ściany mające po $3$ krawędzie. To tylko utrudni nasz dowód, więc możemy zrobić to legalnie.
+
+    Z faktu, że działamy na dwuwymiarowej powierzchni wiemy, że 
+    $$\frac{2}{3}E=T,$$
+    a łącząc to z formułą Gaussa-Bonnet dostajemy
+    $$0=V-E+T=\sum_{v\in V}(1-\frac{e_v}{6})$$
+    $$0=\sum_{v\in V}(6-e_v)$$
+    Jeżeli wszystkie wierzchołki mają więcej niż $6$ sąsiadów, to mamy sprzeczność, bo po prawej stronie dodajemy tylko ujemne liczby, a po lewej mamy $0$. W takim razie musimy mieć co najmniej jeden wierzchołek stopnia $\leq 6$, który wyjmujemy. Graf bez wyjętego wierzchołka ma $n$ wierzchołków i możemy go pokolorować $7$ kolorami na mocy założenia indukcyjnego. Jego $\leq 6$ sąsiadów nie używa wszystkich dozwolonych kolorów, więc bez problemu dorzucimy wyjęty wierzchołek pokolorowany na jeden z nieużytych kolorów.
+
+    \texbtf{$\mathbf{\R P^2}$} \dotfill
+
+    Dalej mamy rozmaitość $2$ wymiarową, więc $2E=3T$. Z formuły Gaussa-Bonneta dostajemy
+    $$1=\sum_{v\in V}(1-\frac{e_v}{v})=V-\frac{1}{3}E.$$
+
+    Mapy mające $\leq 6$ krajów nie są problemem, więc weźmy mapę o $(n+1)$ krajach. Znowu, robimy z niej graf dualny, który musi być planarny. Możemy więc odrysować krawędzie tak, by otrzymać triangulację. Wiemy, że w grafie zachodzi
+    $$E=\frac{1}{2}\sum_{v\in V}deg(v).$$
+    Co, jeśli nasz $(n+1)$ wierzchołkowy graf ma tylko wierzchołki stopnia $6$ lub więcej? Wtedy
+    $$E\geq \frac{1}{2}\sum_{v\in V}6=\frac{1}{2}\cdot 6V=3V.$$
+    Wracając z tym szacowaniem do formuły G-B dostalibyśmy
+    $$1=V-\frac{1}{3}E\leq V-\frac{1}{3}\cdot 3V=V-V=0$$
+    co jest zdecydowaną sprzecznością. Stąd musi istnieć wierzchołek stopnia $5$ lub mniej i możemy go wyciąć, pomalować resztę i wybrać mu kolor różny od koloru użytego przez co najwyżej $5$ jego sąsiadów.
+
+    \textbf{Sfera $\mathbf{S^2}$} \dotfill
+
+    Oczywiście mapy o co najwyżej $5$ wierzchołkach nas nie interesują. Rozważmy więc mapę o $(n+1)$ wierzchołkach, której graf dualny uzupełnimy do triangulacji. Podobnie jak wcześniej, mamy
+    $$2=V-\frac{1}{3}E$$
+    i załóżmy, że wszystkie wierzchołki mają stopień $5$ lub więcej. Wtedy
+    $$E=\frac{1}{2}\sum_{v\in V}deg(v)\geq \frac{1}{2}\sum_{v\in V}5=\frac{5}{2}V.$$
+    Wstawiając to z powrotem do G-B
+    $$2=V-\frac{1}{3}E\leq V-\frac{5}{2}V=-\frac{3}{2}V,$$
+    co jest sprzeczne z tym, że $V=n+1>5$. W takim razie mamy wierzchołek o $4$ lub mniej sąsiadach, wyjmujemy, kolorujemy resztę i wstawiamy go z powrotem.
+
+
+\end{enumerate}
