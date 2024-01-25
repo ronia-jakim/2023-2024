@@ -3,8 +3,7 @@
   \item Pokaż, że konkretne rozmieszczenie groszków w szufladach reprezentuje przestrzeń $k$-wymiarowych podprzestrzeni $\C^n$ izomorficzna z $\C^m$, gdzie $m$ to liczba przesunięć groszków w lewo o jedną szufladkę dopóki to możliwe.
   \item Przestrzeń $\C^m$ z poprzedniego podpunktu to otwarta komórka wspomnianego rozkładu. Komórka odpowiadająca rozmieszczeniu groszków $A$ zawiera się w
 domknięcu komórki odpowiadającej rozmieszczeniu $B$, gdy $A$ można otrzymać z $B$ poprzez kolejne przesunięcia groszków w lewo o jedną szufladkę.
-Domknięcie komórki odpowiadającej rozmieszczeniu $A$ nazywamy $(A)$ roz-
-maitością Schuberta. Policz charakterystykę Eulera rozmaitości Schuberta.
+Domknięcie komórki odpowiadającej rozmieszczeniu $A$ nazywamy $(A)$ rozmaitością Schuberta. Policz charakterystykę Eulera rozmaitości Schuberta.
 Policz charakterystykę Eulera $Gr_{\C}(k, n)$ zliczając te komórki
 \end{enumerate}
 
@@ -18,7 +17,28 @@ Policz charakterystykę Eulera $Gr_{\C}(k, n)$ zliczając te komórki
       &...\\ 
       &a_1^ke_1+a_2^ke_2+...+e_k
     \end{align*}
-    możemy skasować wektory z poprzedniej linijki, by dostać $e_1, e_2, ...,e_k$. Nie mamy żadnego parametru, więc jest to izomorficzne z punktem $(1, 1, 1, ..., 1)$, czyli o ile to ma sens, to jest to izomorficzne z przestrzenią $\C^0$.
+    Interesuje nas przestrzeń rozpinana przez takie wektory, więc w $i$-tym wektorze możemy usunąć część przychodzącą z $j<i$ wektorami. W ten sposób dostaniemy przestrzeń rozpiętą przez $e_1, e_2, ...,e_k$. Nie mamy żadnego parametru, więc jest to izomorficzne z punktem, czyli z $\C^0$.
 
-    Powiedzmy teraz, że możemy $m$ razy przesunąć groszki. 
+    Załóżmy, że mamy $k$ groszków umieszczonych odpowiednio w szufladkach o numerze $m_1$, $m_2$, ..., $m_k$. Dzięki pierwszemu groszkowi możemy do naszej $k$-wymiarowej podprzestrzeni $\C^n$ wybrać wektor
+    $$a_1^{m_1}e_1+a_2^{m_1}e_2+...+e_{m_1}.$$
+    Kolejny groszek, na $m_2\neq m_1$ miejscu pozwoli nam dołożyć wektor
+    $$a_1^{m_2}e_1+a_2^{m_2}e_2+...+a_{m_1}^{m_2}+...+e_{m_2}.$$
+    Ze współczynników pojawiających się przy kolejnych $e_i$ możemy stworzyć macierz
+    $$
+    \begin{bmatrix}
+      a_1^{m_1} & a_2^{m_1} & ... & 1 & 0 & ... & 0 & ... & 0\\ 
+      a_1^{m_2} & a_2^{m_2} & ... & a_{m_1}^{m_2} & ... & ... & 1 & 0 & ...\\ 
+      \vdots & \vdots & \vdots & \vdots & \vdots\\ 
+      a_1^{m_k} & a_2^{m_k} & ... & a_{m_1}^{m_k} & ... & ... & ... & ... & 1 
+    \end{bmatrix}
+    $$
+    która ma $m_k$ kolumn i $k$ wierszy. Możemy skorzystać z algorytmu eliminacji Gaussa, by dostać w pierwszych $k$ kolumnach kwadratową macierz górnotrójkątną z $1$ na przekątnej. 
+
+    W pierwszym wierszu zostaje nam $(m_1-1)$ zmiennych, w drugim wierszu mamy $(m_2-2)$ nowych zmiennych i tak dalej. Sumarycznie dostajemy
+    $$\sum_{i=1}^k(m_i-i)$$
+    parametrów w takiej macierzy, co jest równe ilości potencjalnych przesunięć groszków: $i$-ty groszek może przejść przez co najwyżej $(m_i-i)$ szufladek, niekoniecznie za jednym zamachem.
+
+    Pokazaliśmy, że jeśli możemy dokonać $m$ przesunięć groszków, to takie ustawienie możemy zapisać jako przestrzeń liniową przy pomocy $m$ parametrów.
+
+  \item 
 \end{enumerate}
