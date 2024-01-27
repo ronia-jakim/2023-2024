@@ -205,20 +205,93 @@ marr/.style={
 
   \item 
 
-    \textbf{Torus} \dotfill
+    \textbf{Torus} $\mathbf{T^2}$\dotfill
 
     Zacznijmy od tego, że $7$ kolorów na torusie jest koniecznych. Wynika to z faktu, że triangulacja torusa o minimalnej ilości wierzchołków to $K_7$.
 
     Po pierwsze, minimalna ilość wierzchołków w triangulacji na torusie to $7$. Ponieważ torus jest rozmaitością $2$ wymiarową, to
     $$2E=3T$$
-    $$E=\frac{3}{2}T$$
+    $$\frac{2}{3}E=T$$
     z formuły Gaussa-Bonnet wiemy, że
-    $$0=V-E+F=V-E+\frac{3}{2}=V-\frac{1}{2}E.\quad (\star)$$
+    $$0=V-E+F=V-E+\frac{2}{3}E=V-\frac{1}{3}E.\quad (\star)$$
     Górne szacowanie na ilość wierzchołków to
     $$E\leq \binom{V}{2}=\frac{V(V-1)}{2},$$
     co po podstawieniu do $(\star)$ daje
-    $$0=V-\frac{1}{2}E\geq V-\frac{V(V-1)}{4}=\frac{7V-V^2}{4}=\frac{V(7-V)}4{}$$
+    $$0=V-\frac{1}{3}E\geq V-\frac{V(V-1)}{6}=\frac{7V-V^2}{6}=\frac{V(7-V)}{6}$$
     co implikuje, że $V\geq 7$.
+
+    \begin{center}\begin{tikzpicture}[
+line cap=round,
+marr/.style={
+  decoration={
+    markings,
+    mark=at position 0.5 with {#1}
+    },
+  postaction={decorate}
+}
+] 
+\path
+  coordinate (n1) at (-2,-2)
+  coordinate (n2) at (-2,2)
+  coordinate (n3) at (2,-2)
+  coordinate (n4) at (2,2);
+\foreach \from/\to in {n1/n3,n2/n4}
+    \draw[marr=\Singlearrow] (\from) -- (\to);
+\foreach \from/\to in {n1/n2,n3/n4}
+    \draw[marr=\Doublearrow] (\from) -- (\to);
+
+
+\coordinate (A1) at (-2, -2);
+\coordinate (A2) at (-2, 2);
+\coordinate (A3) at  (2, -2);
+\coordinate (A4) at (2,2);
+
+\coordinate (B1) at (-2, {2-4/3});
+\coordinate (B2) at (2, {2-4/3});
+
+\coordinate (C1) at (-2, {-2+4/3});
+\coordinate (C2) at (2, {-2+4/3});
+
+\coordinate (D1) at ({2-4/3}, 2);
+\coordinate (D2) at ({2-4/3}, -2);
+
+\coordinate (E1) at ({-2+4/3}, 2);
+\coordinate (E2) at ({-2+4/3}, -2);
+
+\coordinate (F) at ({2-4/3}, {2-4/3});
+\coordinate (G) at ({-2+4/3}, {-2+4/3});
+
+\draw (A1)--(G)--(F)--(A4);
+\draw (D1)--(F)--(B2);
+\draw (C1)--(G)--(E2);
+
+\draw (C2)--(D2)--(G)--(B2);
+\draw (D2)--(B2);
+
+\draw (F)--(C1)--(E1)--(B1);
+\draw (F)--(E1);
+
+    \fill[green] (-2, -2) circle (3pt);
+    \fill[green] (-2, 2) circle (3pt);
+    \fill[green] (2, -2) circle (3pt);
+    \fill[green] (2,2) circle (3pt);
+
+    \fill[orange] (-2, {2-4/3}) circle (3pt);
+    \fill[blue] (-2, {-2+4/3}) circle (3pt);
+
+    \fill[orange] (2, {2-4/3}) circle (3pt);
+    \fill[blue] (2, {-2+4/3}) circle (3pt);
+
+    \fill[pink] ({2-4/3}, 2) circle (3pt);
+    \fill ({-2+4/3}, 2) circle (3pt);
+
+    \fill[pink] ({2-4/3}, -2) circle (3pt);
+    \fill ({-2+4/3}, -2) circle (3pt);
+
+    \fill[yellow] ({2-4/3}, {2-4/3}) circle (3pt);
+    \fill[purple] ({-2+4/3}, {-2+4/3}) circle (3pt);
+
+    \end{tikzpicture}\end{center}
 
     Pokażemy teraz, przy pomocy indukcji po ilości wierzchołków, że dla każdego grafu $G$ na torusie wystarczy $7$ kolorów, by go pomalować. 
 
@@ -231,50 +304,99 @@ marr/.style={
         Na mocy założenia indukcyjnego graf $G'$ możemy pokolorować $7$ kolorami. Sąsiedzi wierzchołka $v$, jako że było ich $6$ sztuk, korzystają z maksymalnie $6$ kolorów. Możemy więc wybrać kolor, który nie jest przez nich użyty i pomalować nim $v$.
 
       \item Jeśli wszystkie wierzchołki mają stopień co najmniej $7$, to wtedy mamy 
-        $$E=\frac{1}{2}\sum_{v\in V}\deg(v)\geq \frac{7V}{2}$$ 
-        krawędzi. Graf $G$ niekoniecznie jest triangulacją, ale na pewno nie zawiera przecinających się krawędzi. Możemy więc nieco zmodyfikować to, co wiemy o zależności między liczbą krawędzi a liczbą ścian. Jesteśmy na rozmaitości dwuwymiarowej, więc jedna krawędź trafia do dwóch ścian. Każda ściana z kolei ma co najmniej $3$ krawędzie. Dostajemy więc zależność
-        $$2E\geq 3T.$$
+        $$E=\frac{1}{2}\sum_{v\in V}\deg(v)\geq \frac{7V}{2}\implies \frac{2}{7}E\geq V$$ 
+        krawędzi. 
 
+        Graf $G$ niekoniecznie jest triangulacją, ale na pewno nie zawiera przecinających się krawędzi. Możemy więc nieco zmodyfikować to, co wiemy o zależności między liczbą krawędzi a liczbą ścian. Jesteśmy na rozmaitości dwuwymiarowej, więc jedna krawędź trafia do dwóch ścian. Każda ściana z kolei ma co najmniej $3$ krawędzie. Dostajemy więc zależność
+        $$2E\geq 3T\implies \frac{2}{3}E\geq T.$$
+
+        Charakterystyka Eulera torusa wynosi $0$, więc możemy użyć formuły Gaussa-Bonneta
+        \begin{align*}
+          0&=V-E+T\leq V-E+\frac{2}{3}E=\\ 
+                 &=V-\frac{1}{3}E\leq\frac{2}{7}E-\frac{1}{3}E=\\ 
+                 &=\frac{6-7}{21}E=-\frac{E}{21}
+        \end{align*}
+        z tego wynika, że
+        $$0\geq {E}$$
+        co daje sprzeczność z $E>0$. W takim razie w grafie narysowanym na torusie zawsze znajdziemy wierzchołek stopnia $\leq 6$.
     \end{enumerate}
 
+    \textbf{Płaszczyzna rzutowa $\boldsymbol{\R}\mathbf{ P^2}$} \dotfill
 
+    Zaczniemy znowu od pokazania, że istnieje na $\R P^2$ graf, który potrzebuje $6$ kolorów do bycia pomalowanym.
 
+    Triangulacja $\R P^2$ o najmniejszej liczbie wierzchołków to $K_6$. Wnioskujemy to z formuły Gaussa-Bonnet uzupełnionej o fakt, że $\R P^2$ jest rozmaitością wymiaru $2$
+    $$1=V-E+T=V-\frac{1}{3}E$$
+    dokładamy jeszcze górne ograniczenie na liczbę krawędzi, czyli $E\leq\binom{V}{2}$, by dostać
+    $$1=V-\frac{1}{3}E\geq V-\frac{V(V-1)}{6}=\frac{V(7-V)}{6}$$
+    $$0\leq \frac{6+V(V-7)}{6}$$
+    $V=6$ jest najmniejszym dodatnim rozwiązaniem tej nierówności.
 
-    Jeżeli mapa ma $\leq 7$ krajów to nie ma problemu z jej kolorowaniem. 
+    Dla $V=6$ wymagamy $E=15$, czyli $6$-wierzchołkowa triangulacja $\R P^2$ jest grafem $K_6$:
+    %\def{\v1}{pink}\def{\v2}{green}\def{\v3}{blue}\def{\v4}{pink}\def{\v5}{green}\def{\v6}{blue}
+    \begin{center}\begin{tikzpicture}
+      \draw[->, thick] (-2, 0) arc (180:0:2);
+      \draw[->, thick] (2, 0) arc (0:-180:2);
 
-    Załóżmy teraz, że mamy mapę o $(n+1)$ krajach na torusie i chcemy ją pokolorować. Graf dualny do tej mapy jest planarny, ale niekoniecznie jest triangulacją. Dodajmy mu krawędzi tak, by nietrójkątne ściany wymienić na ściany mające po $3$ krawędzie. To tylko utrudni nasz dowód, więc możemy zrobić to legalnie.
+      \foreach \c [count=\i] in {orange, green, yellow, orange, green, yellow} {
+        \fill[\c] (\i*360/6+360/12:2) circle (2pt); 
+        \coordinate (n\i) at (\i*360/6+360/12:2);
+      }
 
-    Z faktu, że działamy na dwuwymiarowej powierzchni wiemy, że 
-    $$\frac{2}{3}E=T,$$
-    a łącząc to z formułą Gaussa-Bonnet dostajemy
-    $$0=V-E+T=\sum_{v\in V}(1-\frac{e_v}{6})$$
-    $$0=\sum_{v\in V}(6-e_v)$$
-    Jeżeli wszystkie wierzchołki mają więcej niż $6$ sąsiadów, to mamy sprzeczność, bo po prawej stronie dodajemy tylko ujemne liczby, a po lewej mamy $0$. W takim razie musimy mieć co najmniej jeden wierzchołek stopnia $\leq 6$, który wyjmujemy. Graf bez wyjętego wierzchołka ma $n$ wierzchołków i możemy go pokolorować $7$ kolorami na mocy założenia indukcyjnego. Jego $\leq 6$ sąsiadów nie używa wszystkich dozwolonych kolorów, więc bez problemu dorzucimy wyjęty wierzchołek pokolorowany na jeden z nieużytych kolorów.
+      \foreach \i in {1,...,3} {
+        \fill (\i*360/3 + 30:0.7) circle (2pt);
+        \coordinate (m\i) at (\i * 120 + 30:0.7);
+      }
 
-    \textbf{$\mathbf{\R P^2}$} \dotfill
+      \draw (m1)--(m2)--(m3)--(m1);
+      \draw (m1)--(n1)--(m3);
+      \draw (m1)--(n3)--(m2);
+      \draw (m2)--(n5)--(m3);
+      \draw (m1)--(n2);
+      \draw (m2)--(n4);
+      \draw (m3)--(n6);
 
-    Dalej mamy rozmaitość $2$ wymiarową, więc $2E=3T$. Z formuły Gaussa-Bonneta dostajemy
-    $$1=\sum_{v\in V}(1-\frac{e_v}{v})=V-\frac{1}{3}E.$$
+      \foreach \c [count=\i] in {orange, green, yellow, orange, green, yellow} 
+        \fill[\c] (\i*360/6+360/12:2) circle (3pt); 
 
-    Mapy mające $\leq 6$ krajów nie są problemem, więc weźmy mapę o $(n+1)$ krajach. Znowu, robimy z niej graf dualny, który musi być planarny. Możemy więc odrysować krawędzie tak, by otrzymać triangulację. Wiemy, że w grafie zachodzi
-    $$E=\frac{1}{2}\sum_{v\in V}deg(v).$$
-    Co, jeśli nasz $(n+1)$ wierzchołkowy graf ma tylko wierzchołki stopnia $6$ lub więcej? Wtedy
-    $$E\geq \frac{1}{2}\sum_{v\in V}6=\frac{1}{2}\cdot 6V=3V.$$
-    Wracając z tym szacowaniem do formuły G-B dostalibyśmy
-    $$1=V-\frac{1}{3}E\leq V-\frac{1}{3}\cdot 3V=V-V=0$$
-    co jest zdecydowaną sprzecznością. Stąd musi istnieć wierzchołek stopnia $5$ lub mniej i możemy go wyciąć, pomalować resztę i wybrać mu kolor różny od koloru użytego przez co najwyżej $5$ jego sąsiadów.
+      \foreach \c [count=\i] in {pink!70!purple, blue, black} 
+      \fill[\c] (\i*360/3 + 30:0.7) circle (3pt);
+    \end{tikzpicture}\end{center}
 
+    Załóżmy teraz, że wszystkie grafy o co najwyżej $n$ wierzchołkach narysowane na $\R P^2$ potrafimy pomalować używając $6$ kolorów. Niech $G$ będzie grafem o $(n+1)$ wierzchołkach. 
+    \begin{enumerate}[label=\arabic*.]
+      \item Jeśli istnieje wierzchołek $v\in G$ taki, że $\deg(v)\leq 5$, to podobnie jak w przypadku torusa, możemy ten wierzchołek wyjąć, pokolorować graf $G'=G\setminus v$ i znajdziemy dla $v$ kolor niewykorzystywany przez jego sąsiadów.
+      \item W tym przypadku zakładamy, że wszystkie wierzchołki $v\in G$ mają stopień $\deg(v)\geq 6$. Tak jak i wcześniej, mamy
+        $$2E\geq 3T$$
+        $$2E\geq 6V.$$
+        Płaszczyzna rzutowa ma charakterystykę Eulera $1$, w takim razie
+        $$1=V-E+T$$
+        $$3=3V-3E+3T\leq E-3E+2E=0$$
+        co jest sprzecznością. W takim razie w grafie narysowanym na $\R P^2$ zawsze znajdziemy wierzchołek $\deg(v)\leq 5$ i wykonamy kroki z pierwszego punktu.
+    \end{enumerate}
+%    Dalej mamy rozmaitość $2$ wymiarową, więc $2E=3T$. Z formuły Gaussa-Bonneta dostajemy
+%    $$1=\sum_{v\in V}(1-\frac{e_v}{v})=V-\frac{1}{3}E.$$
+%
+%    Mapy mające $\leq 6$ krajów nie są problemem, więc weźmy mapę o $(n+1)$ krajach. Znowu, robimy z niej graf dualny, który musi być planarny. Możemy więc odrysować krawędzie tak, by otrzymać triangulację. Wiemy, że w grafie zachodzi
+%    $$E=\frac{1}{2}\sum_{v\in V}deg(v).$$
+%    Co, jeśli nasz $(n+1)$ wierzchołkowy graf ma tylko wierzchołki stopnia $6$ lub więcej? Wtedy
+%    $$E\geq \frac{1}{2}\sum_{v\in V}6=\frac{1}{2}\cdot 6V=3V.$$
+%    Wracając z tym szacowaniem do formuły G-B dostalibyśmy
+%    $$1=V-\frac{1}{3}E\leq V-\frac{1}{3}\cdot 3V=V-V=0$$
+%    co jest zdecydowaną sprzecznością. Stąd musi istnieć wierzchołek stopnia $5$ lub mniej i możemy go wyciąć, pomalować resztę i wybrać mu kolor różny od koloru użytego przez co najwyżej $5$ jego sąsiadów.
+%
     \textbf{Sfera $\mathbf{S^2}$} \dotfill
 
-    Oczywiście mapy o co najwyżej $5$ wierzchołkach nas nie interesują. Rozważmy więc mapę o $(n+1)$ wierzchołkach, której graf dualny uzupełnimy do triangulacji. Podobnie jak wcześniej, mamy
-    $$2=V-\frac{1}{3}E$$
-    i załóżmy, że wszystkie wierzchołki mają stopień $5$ lub więcej. Wtedy
-    $$E=\frac{1}{2}\sum_{v\in V}deg(v)\geq \frac{1}{2}\sum_{v\in V}5=\frac{5}{2}V.$$
-    Wstawiając to z powrotem do G-B
-    $$2=V-\frac{1}{3}E\leq V-\frac{5}{2}V=-\frac{3}{2}V,$$
-    co jest sprzeczne z tym, że $V=n+1>5$. W takim razie mamy wierzchołek o $4$ lub mniej sąsiadach, wyjmujemy, kolorujemy resztę i wstawiamy go z powrotem.
+    W przypadku sfery próżno szukać grafu, którego nie pokolorujemy $4$ kolorami - prawdziwe jest twierdzenie o $4$ barwach.
 
-    \textbf{Butelka Kleina}
+    Oczywiście grafy, które mają nie więcej niż $5$ wierzchołków pokolorujemy bez problemu. Załóżmy więc, że każdy graf o co najwyżej $n$ wierzchołkach możemy pokolorować i niech $G$ będzie $(n+1)$-wierzchołkowym grafem.
+
+    \begin{enumerate}[label=\arabic*]
+      \item Jeśli znajdziemy wierzchołek stopnia $\leq 4$ lub mniej to robimy to co w przypadku torusa i płaszczyzny rzutowej.
+      \item Jeśli każdy wierzchołek jest stopnia $\geq 5$.
+    \end{enumerate}
+
+    \textbf{Butelka Kleina} \dotfill
 
 %    Tutaj zauważmy, że butelka Kleina to sklejony na pół torus:
 %    \begin{center}\begin{tikzpicture}
@@ -303,7 +425,7 @@ marr/.style={
 
   %Jeśli taki wierzchołek nie istnieje, to wszystkie wierzchołki muszą być stopnia $6$. Badamy teraz grafy, które mają co najmniej $7$ wierzchołków, każdy stopnia $6$. To znaczy, że znajdziemy w takim grafie podgraf izomorficzny z $K_7$. Tutaj dochodzimy do sprzeczności z faktem, że $K_7$ nie da się włożyć w butelkę Kleina.
 
-  Rozważmy graf $G$ na butelce Kleina. Jeśli $|G|\leq 6$, to bez problemy pokolorujemy go $6$ kolorami.
+  Rozważmy graf $G$ na butelce Kleina. Jeśli $|G|\leq 6$, to bez problemy pokolorujemy go $6$ kolorami (fakt, że potrzebujemy co najmniej $6$ kolorów wynika z rysunku w ptk (a) zadania). 
 
   Niech więc $G$ będzie grafem na Kleinie takim, że $|G|=n+1$. Uzupełnijmy $G$ do triangulacji, wtedy
   $$0=\sum_{v\in V}(6-\deg(v))$$
