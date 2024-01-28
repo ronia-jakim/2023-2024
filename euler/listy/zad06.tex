@@ -2,17 +2,54 @@
 
 \dotfill 
 
-Torus $T^n$ działa na $\C^n$ przez macierze diagonalne o wyrazach $a\in\C$ takich, że $|a|=1$.
-Torus $T^n$ ma charakterystykę Eulera równą $-2n$.
+Każdą $k$-wymiarową podprzestrzeń $\C^n$ możemy utożsamić z macierzą rzutu ortogonalnego na tę podprzestrzeń, która ma rząd $k$. Jeśli $V\in Gr_{\C}(k,n)$, to macierz z nią utożsamioną będziemy oznaczać $A_V$.
 
-Każdą $k$-wymiarową podprzestrzeń $\C^n$ możemy przekształcić na inną $k$-wymiarową podprzestrzeń $\C^n$ taką, że jej wektory są ortogonalne. Dostajemy wtedy macierz $n\times n$ rzędu $k$ ($k$ lnz. kolumn).
+\textbf{\color{green}Działanie torusa - definicja}
 
-Możemy więc zdefiniować działanie $T^n$ na Grassmannianie - macierz diagonalna $A$ działa na podprzestrzeń utożsamioną z macierzą $V$ poprzez sprzężenie $AVA^{-1}$. Jest to dobrze określone, bo 
-$$(AB)V(AB)^{-1}=(AB)V(B^{-1}A^{-1})=A(BVB^{-1})A^{-1}.$$
-Możemy teraz określić odwzorowanie $\pi:Gr_{\C}(k,n)\to Gr_{\C}(k,n)/T^n$, które punktowi przypisuje orbitę. 
+Działanie torusa $T^n$ na $\C^n$ to mnożenie przez macierze diagonalne z wyrazami długości $1$ na przekątnej. Możemy to działanie przenieść na Grassmannian - torus będzie działał na podprzestrzeń $k$-wymiarową $V$ macierzą $T$:
+$$TVT^{-1}.$$
 
-Zauważmy teraz, że jeśli podprzestrzeń $k$ wymiarowa ma nietrywialną orbitę, to tak naprawdę ta orbita wygląda jak suma $n$ okręgów, czyli ma charakterystykę Eulera równą $0$. Interesują nas więc tylko te przestrzenie, które mają trywialną orbitę, tzn. są punktami stałymi działania torusa.
+\textbf{\color{green}Macierze ortogonalne są hermitowskie}
 
-Aby macierz była punktem stałym, musi zachodzić
-$$AVA^{-1}=V\implies AV=VA^{-1}$$
-ponieważ $A$ jest diagonalna i ma wyrazy zespolone o module $1$, to $A$ jest macierzą unitarną. Jeśli $V$ jest macierzą diagonalną, to warunek wyżej mówi, że $V$ jest macierzą hermitowską, czyli $V=\overline{V^T}$. To z kolei znaczy, że $V\overline{V^T}=Id_{k\times k}$, czyli $V$ na przekątnej ma zera i $1$. Takich macierzy możemy wyprodukować $\binom{n}{n-k}=\binom{n}{k}$, wybierając które miejsca na przekątnej będą zerami. To oznacza, że $\chi(Gr_{\C}(k,n))=\binom{n}{k}$. 
+Macierze rzutu zawsze spełniają $A^2=A$. Jeśli ten rzut jest ortogonalny, to dodatkowo wymagamy, aby $A^T=A$. Macierz rzutu ortogonalnego na zespolonej przestrzeni wektorowej jest jednocześnie macierzą hermitowską, tzn. dla wszystkich $x,y$ spełnia $\langle x, Ay\rangle = \langle Ax, y\rangle$:
+\begin{align*}
+  \langle Ax, y\rangle -\langle x, Ay\rangle &= \langle Ax, y\rangle -\langle x-Ax+Ax, Ay\rangle=\\ 
+  &=\langle Ax, y\rangle -\langle Ax, Ay\rangle + \langle Ax-x, Ay\rangle=\\ 
+  &=\langle Ax, (I-A)y\rangle + \langle (A-I)x, Ay\rangle=0,
+\end{align*}
+bo dla $A$ ortogonalnej $\langle Ax, (I-A)y\rangle =0$. Skoro wiemy już, że $A_V$ jest zawsze macierzą hermitowską, to wiemy, że $\overline{A_V^T}=A_V^T$.
+
+\textbf{\color{green}Działanie torusa jest dobrze określone}
+
+Wiemy też, że każda hermitowska macierz jest diagonalizowalna przez unitarne macierze z rzeczywistymi wartościami własnymi. Dzięki tej własności macierzy hermitowskich działanie torusa zdefiniowane wcześniej jest dobrze określone.
+
+Jeśli $V\in Gr_{\C}(k,n)$ i $A_V=PDP^{-1}$, to po działaniu na $A_V$ macierzą z torusa też jest diagonalizowalna przez macierze unitarne:
+$$TA_VT^{-1}=TPDP^{-1}T^{-1}=(TP)D(TP)^{-1},$$
+gdyż $T$ również jest macierzą unitarną, czyli $TP$ też takie jest.
+
+\textbf{\color{green}Orbity działania torusa i $\boldsymbol{\chi}$}
+
+Torus $T^n$ jest produktem $n$ okręgów $S^1$. Jeśli działamy okręgiem na przestrzeni, to punkty mają albo trywialny stabilizator, albo trywialną orbitę. Stąd, jeśli $T^n$ działa na $Gr_{\C}(k,n)$ to punkty mają albo trywialną orbitę, albo ich orbita to produkt okręgów.
+
+Jeśli więc określimy odwzorowanie $f:Gr_{\C}(k,n)\to Gr_{\C}(k,n)/T^n$, to wzór Riemanna-Hurwitza podpowiada, że tylko punkty stacjonarne liczą się do charakterystyki Eulera Grassmannianu:
+$$\chi(Gr_{\C}(k,n)=\int_{Gr_{\C}(k,n)/T^n}\chi(f^{-1}(X))d\chi(X)$$
+będzie zerować się na podzbiorach będących okręgami, bo $\chi(S^1)=0$. Natomiast punkty stałe, których orbity są punktami, będą liczyć się do charakterystyki Eulera po jeden raz. Stąd
+$$\chi( Gr_{\C}(k,n))=\#\{\text{punkty stałe działania }T^n\}$$
+
+\textbf{\color{green}Ile jest punktów stałych?}
+
+Punkt stały działania torusa musi spełniać
+$$TA_VT^{-1}=A_V$$
+$$TA_V=A_VT$$
+dla wszystkich możliwych $T$.
+
+Macierze hermitowskie, które nie są diagonalne będą miały niediagonalną macierz unitarną $P$ w diagonalizacji $PDP^{-1}$. Aby takie macierze były punktami stałymi, to dla dowolnej $T$ musi zachodzić
+$$TPDP^{-1}T^{-1}=PDP^{-1}$$
+$$D=(P^{-1}TP)D(P^{-1}TP)^{-1}$$
+dla $T\neq Id$ powyższa równość będzie zachodzić niezmiernie rzadko. 
+
+Wszystkie macierze diagonalne $A_V$ mające $k$ jedynek i $(n-k)$ zer na przekątnej będą punktami stałymi działania torusa. Macierz 
+$$TA_V$$ 
+to "obcięcie" $T$ do $k$ wyrazów na przekątnej, a domnożenie do tego $T^{-1}$ zwróci $1$ w kolumnach, które zostały zachowane oryginalnie przez $A_V$. Stąd 
+$$TA_VT^{-1}=A_V.$$
+Takich macierzy jest $\binom{n}{k}$, bo wybieramy $k$ miejsc na $1$ spośród $n$ miejsc na przekątnej.

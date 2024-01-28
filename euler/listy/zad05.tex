@@ -393,47 +393,100 @@ marr/.style={
 
     \begin{enumerate}[label=\arabic*]
       \item Jeśli znajdziemy wierzchołek stopnia $\leq 4$ lub mniej to robimy to co w przypadku torusa i płaszczyzny rzutowej.
-      \item Jeśli każdy wierzchołek jest stopnia $\geq 5$.
+      \item Jeśli istnieje wierzchołek $v\in G$ stopnia $5$.
+        \begin{enumerate}
+          \item 
+        Jeśli $v$ ma $2$ sąsiadów, którzy nie są ze sobą połączeni, wtedy po wyjęciu $v$ możemy złączyć ich w jeden wierzchołek:
+        \begin{center}\begin{tikzpicture}
+        \foreach \i in {1,...,5} {
+          \fill (\i*72+18:1.5) circle (3pt);
+          \draw (0,0)--(\i*72+18:1.5);
+        \draw (\i*72+18:1.5)--(\i*72+18:2);
+        \draw (\i*72+18:1.5)--(\i*72+10:2);
+        \draw (\i*72+18:1.5)--(\i*72+26:2);
+        }
+
+        \fill[orange] (18:1.5) circle (3.01pt);
+        \fill[orange] (18-2*72:1.5) circle (3.01pt);
+
+
+          \fill[green] (0,0) circle (3pt);
+          \node[green] at (0.3, -0.1) {$v$};
+
+          \draw[style={decorate, decoration=snake}, ->] (1.8, 0)--(2.7, 0);
+
+          \begin{scope}[shift={(4.5, 0)}]
+            \foreach \i in {1,...,5} {
+              \fill (\i*72+18:1.5) circle (3pt);
+              \draw[dashed] (0,0)--(\i*72+18:1.5);
+        \draw (\i*72+18:1.5)--(\i*72+18:2);
+        \draw (\i*72+18:1.5)--(\i*72+10:2);
+        \draw (\i*72+18:1.5)--(\i*72+26:2);
+            }
+            \draw[thick] (18:1.5)--(18-2*72:1.5);
+          \end{scope}
+
+          \draw[style={decorate, decoration=snake}, ->] (6.3, 0)--(7.2, 0);
+          
+          \begin{scope}[shift={(9, 0)}]
+            \foreach \i in {1,...,2} {
+              \fill (\i*72+18:1.5) circle (3pt);
+              \draw[dashed] (0,0)--(\i*72+18:1.5);
+        \draw (\i*72+18:1.5)--(\i*72+18:2);
+        \draw (\i*72+18:1.5)--(\i*72+10:2);
+        \draw (\i*72+18:1.5)--(\i*72+26:2);
+            }
+          \fill (18-72:1.5) circle (3pt);
+          \draw [dashed] (18-2*72:1.5)--(0,0)--(18:1.5);
+          \draw[dashed] (18:1.5) circle (3pt);
+          \draw[dashed] (18-2*72:1.5) circle (3pt);
+            \draw[thick, dotted] (18:1.5)--(18-2*72:1.5);
+          %\fill(18-72:0.45) circle (3pt);
+
+          \begin{scope}[shift={(18-72:0.45)}]
+          \fill (0,0) circle (3pt);
+          \draw (0,0)--(72-35:0.5);
+          \draw (0,0)--(104-35:0.5);
+          \draw (0,0)--(40-35:0.5);
+
+          \draw (0,0)--(72-35+180:0.5);
+          \draw (0,0)--(104-35+180:0.5);
+          \draw (0,0)--(40-35+180:0.5);
+          \end{scope}
+
+        \draw (18-72:1.5)--(-72+18:2);
+        \draw (-72+18:1.5)--(-72+10:2);
+        \draw (-72+18:1.5)--(-72+26:2);
+          \end{scope}
+        \end{tikzpicture}\end{center}
+        Po takiej operacji nadal mamy graf narysowany na $S^2$, bo tylko wciągnęliśmy w pustkę pozostawioną przez $v$ krawędzie.
+
+        Taki graf jak na skrajnie prawym rysunku ma $(n-2)$ wierzchołki, więc możemy go pomalować $5$ kolorami. Dwóch sąsiadów $v$ zlepiliśmy w jedno i pokolorowaliśmy tym samym kolorem, więc po ich rozczepieniu nadal mogą mieć ten sam kolor. $v$ miało $5$ sąsiadów, którzy używają nie więcej niż $4$ kolorów - możemy pozostały kolor użyć na $v$.
+
+      \item Jeśli wszyscy sąsiedzi $v$ są ze sobą połączeni, to wtedy $G$ ma podgraf będący $K_5$. 
+
+        Sfera to tak naprawdę punkt z doczepionym dyskiem $D^2$, czyli jeśli wytniemy wokół $v$ dysk zawierający wszystkich jego sąsiadów, to możemy go rozprostować i patrzeć na ten podgraf narysowany na płaszczyźnie. Jednak twierdzenie Kuratowskiego (o grafach) mówi, że na płaszczyźnie możemy narysować graf $\iff$ nie zawiera podgrafu izomorficznego z $K_5$ ani z $K_{3,3}$. Stąd ten przypadek jest niemożliwy.
+    \end{enumerate}
+  \item Jeśli każdy wierzchołek $v\in G$ ma stopień $>5$, to dostaniemy sprzeczność z formułą Gaussa-Bonnet. Ilość krawędzi szacujemy z jeden strony przez stopień wierzchołków:
+    $$2E=\sum_{v\in V}\deg(v)\geq\sum_{v\in V}6=6V$$
+    $$E\geq 3V$$
+    a z drugiej przez fakt, że każda krawędź leży w dwóch ścianach, a każda ściana ma co najmniej $3$ krawędzie:
+    $$2E\geq 3T.$$
+    Wstawiając to do formuły Gaussa-Bonnet z pamięcią, że $\chi(S^2)=2$, dostajemy
+    $$2=V-E+T$$
+    $$6=3V-3E+3T\leq E-3E+2E=0$$
+    czyli sprzeczność.
     \end{enumerate}
 
     \textbf{Butelka Kleina} \dotfill
 
-%    Tutaj zauważmy, że butelka Kleina to sklejony na pół torus:
-%    \begin{center}\begin{tikzpicture}
-%      \draw[very thick, <-, orange] (2, -2)--(2, -4);
-%      \draw[very thick, orange] (2, -2)--(2, 0);
-%
-%      \draw[->, very thick] (0,0)--(0,-2);
-%      \draw[very thick]     (0, -2)--(0,-4);
-%
-%      \draw[->, very thick] (4, 0)--(4, -2);
-%      \draw[very thick]     (4, -2)--(4, -4);
-%
-%      \draw[->>, very thick] (0,0)--(2.1,0);
-%      \draw[very thick] (2.1, 0)--(4, 0);
-%      
-%      \draw[->>, very thick] (0,-4)--(2.1, -4);
-%      \draw[very thick] (2.1, -4)--(4, -4);
-%    \end{tikzpicture}\end{center}
-%
-%    Narysujmy teraz mapę o $(n+1)$ krajach na butelce. Graf dualny do tej mapy możemy uzupełnić do triangulacji o $(n+1)$ wierzchołkach. 
-%
-%    Butelka Kleina ma charakterystykę Eulera $0$, czyli dla butelki Kleina mamy równania bardzo podobne do tych, które tyczą się torusa:
-%    $$0=\sum_{v\in V}(6-e_v)$$
-%
-    %Oczywiście, nie mamy problemu z grafami o co najwyżej $6$ wierzchołkach narysowanych na butelce Kleina. Rozważmy więc graf o $(n+1)$ wierzchołkach i dopełnijmy go do triangulacji. Jeśli mamy w tym grafie co najmniej jeden wierzchołek stopnia $5$, to możemy go wyciąć, pokolorować resztę i jego sąsiedzi używają co najwyżej $5$ kolorów - zostaje nam jeden kolor, który możemy użyć na wyciętym wierzchołku.
-
-  %Jeśli taki wierzchołek nie istnieje, to wszystkie wierzchołki muszą być stopnia $6$. Badamy teraz grafy, które mają co najmniej $7$ wierzchołków, każdy stopnia $6$. To znaczy, że znajdziemy w takim grafie podgraf izomorficzny z $K_7$. Tutaj dochodzimy do sprzeczności z faktem, że $K_7$ nie da się włożyć w butelkę Kleina.
-
   Rozważmy graf $G$ na butelce Kleina. Jeśli $|G|\leq 6$, to bez problemy pokolorujemy go $6$ kolorami (fakt, że potrzebujemy co najmniej $6$ kolorów wynika z rysunku w ptk (a) zadania). 
 
-  Niech więc $G$ będzie grafem na Kleinie takim, że $|G|=n+1$. Uzupełnijmy $G$ do triangulacji, wtedy
-  $$0=\sum_{v\in V}(6-\deg(v))$$
-  mówi nam, że albo wszystkie wierzchołki są stopnia $6$, albo istnieje wierzchołek stopnia $>6$ rekompensowany przez wierzchołek stopnia $<6$.
+  Niech więc $G$ będzie grafem na butelce Kleina. 
+  \begin{enumerate}[label=\arabic*]
+    \item Jeśli istnieje wierzchołek $v\in G$ taki, że $\deg(v)\leq 5$, to możemy ten wierzchołek wyjąć, pokolorować $6$ kolorami graf $G\setminus \{v\}$, wierzchołek $v$ pomalować kolorem, który nie pojawia się wśród jego $\leq 5$ sąsiadów i włożymy go z powrotem do $G$ nie psując kolorowania.
 
-  Jeśli istnieje wierzchołek $v\in G$ taki, że $\deg(v)\leq 5$, to możemy ten wierzchołek wyjąć, pokolorować $6$ kolorami graf $G\setminus \{v\}$, wierzchołek $v$ pomalować kolorem, który nie pojawia się wśród jego $\leq 5$ sąsiadów i włożymy go z powrotem do $G$ nie psując kolorowania.
-
-  Zadanie komplikuje się natomiast, jeśli $G$ jest $6$-regularny. Wybierzmy wierzchołek $v\in G$. Ma on $6$ sąsiadów, czyli jest wierzchołkiem $6$ trójkątów w triangulacji którą stał się $G$:
+    \item Zadanie komplikuje się natomiast, jeśli $G$ jest $6$-regularny. Wybierzmy wierzchołek $v\in G$. Ma on $6$ sąsiadów, czyli jest wierzchołkiem $6$ trójkątów w triangulacji którą stał się $G$:
   \begin{center}\begin{tikzpicture}
     \draw (-1.5, 0)--({-1.5*cos(60)}, {1.5*sin(60)})--(0,0)--({1.5*cos(60)}, {1.5*sin(60)})--(1.5, 0)--(0,0)--({1.5*cos(60)}, {-1.5*sin(60)})--({-1.5*cos(60)}, {-1.5*sin(60)})--(0,0)--cycle;
     \draw ({-1.5*cos(60)}, {1.5*sin(60)})--({1.5*cos(60)}, {1.5*sin(60)});
@@ -454,6 +507,14 @@ marr/.style={
   Jeżeli istnieje para sąsiadów, która nie jest ze sobą połączona, to możemy pomalować je na jeden kolor. Wtedy sąsiedzi $v$ wykorzystują tylko $5$ kolorów i ostatni, szósty, pozostaje wolny do kolorowania $v$. 
 
   Jeśli natomiast wszyscy sąsiedzi $v$ są ze sobą połączeni, to oznacza, że mamy $K_7$ zanurzone w $G$, które z kolei jest narysowane na butelce Kleina. Wiemy, że $K_7$ nie można narysować na butelce Kleina, więc dochodzimy do sprzeczności w tym punkcie.
+\item Jeśli wszystkie wierzchołki $v\in G$ mają stopień $\deg(v)>6$, to możemy użyć Gaussa-Bonnet, by dostać sprzeczność.
 
-  To pokazuje, że przy pomocy indukcji możemy pokonać butelkę Kleina używając tylko $6$ kolorów farb.
+  Tak jak wcześniej, szacujemy ilość krawędzi na dwa sposoby:
+  $$2E\geq \sum_{v\in V}7=7V$$
+  $$2E\geq 3T$$
+  wstawiamy to do formuły Gaussa-Bonneta i dostajemy
+  $$0=V-E+T$$
+  $$0=21V-21E+21T\leq 6E-21E+14E=-E$$
+  co jest sprzeczne z $E>0$.
+\end{enumerate}
 \end{enumerate}
