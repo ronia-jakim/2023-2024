@@ -85,27 +85,53 @@ let move_back (b : background) =
   =============================
 *)
 
+module Kot = struct
+
+type stanKotka = 
+  | Jump
+  | Fall
+  | Stationary
+
 type kotek = {
   x : float;
   y : float;
 
   static_texture  : Raylib.Texture2D.t' Raylib.ctyp;
 
-  jump : bool;
-  fall : bool;
+  jump : stanKotka;
 
   speed : float;
+
+  collider : Raylib.Rectangle.t' Raylib.ctyp;
 }
 
+let create_kotek kY kX texture j sp = 
+  let w = (Float.of_int (Raylib.Texture2D.width texture)) *. 0.03
+  in 
+  let h = (Float.of_int (Raylib.Texture2D.height texture)) *. 0.03
+  in 
+
+  let coll = Raylib.Rectangle.create kX kY w h in 
+  let kot = 
+    {
+      y = kY;
+      x = kX;
+
+    static_texture = texture;
+
+    jump = j;
+
+    speed = sp;
+
+    collider = coll
+  } in
+  kot
+
 let move_kotek player = 
-  let new_y = 
-    if player.jump 
-    then 
-      player.y -. player.speed
-    else if player.fall 
-    then 
-      player.y +. player.speed
-    else player.y 
+  let new_y = match player.jump with 
+  | Jump -> player.y -. ( 1.25 *. player.speed  )
+  | Fall -> player.y +. player.speed
+  | Stationary -> player.y
   in 
 
   let pos_vec = Raylib.Vector2.create
@@ -120,19 +146,227 @@ let move_kotek player =
     0.03
     Raylib.Color.white; 
 
-  let new_player = 
-    {
-      x = player.x;
-      y = new_y;
+  let new_jump = match player.jump with 
+      | Jump -> 
+          if new_y > (Float.of_int (Raylib.get_screen_height () / 3))
+          then 
+            Jump 
+          else 
+            Fall 
+      | Fall -> 
+          if new_y >= 2.0 *. (Float.of_int (Raylib.get_screen_height () / 3))
+          then 
+            Stationary 
+          else 
+            Fall 
+      | Stationary -> Stationary
+  in
 
-      static_texture = player.static_texture;
-
-      jump = player.jump && (new_y > (Float.of_int (Raylib.get_screen_height () / 3)) );
-      fall = player.fall;
-
-      speed = player.speed;
-    } in 
+  let new_player = create_kotek new_y player.x player.static_texture new_jump player.speed 
+  in 
   new_player
+
+
+let check_jump player = 
+  match player.jump with 
+    | Jump -> Jump 
+    | Fall -> Fall 
+    | Stationary -> 
+        if (Raylib.is_key_pressed Raylib.Key.Space) 
+        then 
+          Jump 
+        else
+          Stationary 
+
+let return_x player = player.x 
+let return_y player = player.y
+
+let return_width player = 
+  (Float.of_int (Raylib.Texture2D.width player.static_texture)) *. 0.03
+let return_height player = 
+  (Float.of_int (Raylib.Texture2D.height player.static_texture)) *. 0.03
+
+let return_collider player = player.collider
+    
+
+end
+
+(*
+  =============================
+  
+  PIESKI
+  
+  =============================
+*)
+
+module Pies = struct
+
+type piesek = {
+  start_y : float;
+
+  x : float;
+  y : float;
+
+  upwards : bool;
+
+  static_texture : Raylib.Texture2D.t' Raylib.ctyp;
+
+  speed_x : float;
+  speed_y : float;
+
+  move : bool;
+
+  collider : Raylib.Rectangle.t' Raylib.ctyp;
+}
+
+let create_piesek up init_y sx sy txt pos_y pos_x mv = 
+  let w = (Float.of_int (Raylib.Texture2D.width txt)) *. 0.09
+  in 
+  let h = (Float.of_int (Raylib.Texture2D.height txt)) *. 0.09 
+  in 
+
+  let coll = Raylib.Rectangle.create pos_x pos_y w h  
+  in 
+
+  let p = {
+    upwards = up;
+
+    start_y = init_y;
+
+    speed_x = sx;
+    speed_y = sy;
+
+    static_texture = txt;
+
+    y = pos_y;
+    x = pos_x;
+
+    move = mv;
+
+    collider = coll;
+  }
+  in p
+
+let init_piesek nr mv = 
+  Random.self_init ();
+
+  let txt = Raylib.load_texture "./img/piesek.png"
+  in
+
+  let y1 =  Float.of_int (Random.int (Raylib.get_screen_height ()) - 60) +. 30.0
+  in 
+
+  let right_of_screen = (Float.of_int (Raylib.get_screen_width ())) +. 100.0 +. (100.0 *. (Float.of_int nr))
+  in 
+
+  Random.self_init();
+
+  let speed = 1.5 +. (Float.of_int (Random.int 3))
+  in 
+  
+  let w = (Float.of_int (Raylib.Texture2D.width txt)) *. 0.09
+  in 
+
+  let h = (Float.of_int (Raylib.Texture2D.height txt)) *. 0.09
+  in 
+
+  let coll = Raylib.Rectangle.create right_of_screen y1 w h 
+  in
+    
+  let p = 
+    {
+      start_y = y1;
+
+      y = y1; 
+      x = right_of_screen;
+
+      upwards = true; 
+
+      static_texture = txt;
+
+      speed_x = speed;
+      speed_y = 0.8;
+
+      move = mv;
+      
+      collider = coll;
+    }
+  in p
+
+let move_piesek pies = 
+  let new_y = match pies.upwards with 
+  | false -> 
+      pies.y +. pies.speed_y;
+  | true ->
+      pies.y -. pies.speed_y;
+  in
+
+  let new_upwards = 
+    if pies.upwards && (new_y <= pies.start_y -. (Float.of_int (Raylib.get_screen_height () / 20)))
+    then false 
+    else if (not pies.upwards) && (new_y >= pies.start_y +. (Float.of_int (Raylib.get_screen_height () / 20)))
+    then true 
+    else pies.upwards
+  in
+
+  Random.self_init ();
+
+  let rand_bool = Random.int 2
+  in 
+
+  let new_move = if pies.x < -60.0 then rand_bool == 1 else pies.move
+  in
+  
+  (* new_start_y, new_y, new_speed, new_x *)
+  let lst = 
+    if pies.x < -60.0 
+    then 
+      let y_help = (Float.of_int (Random.int (Raylib.get_screen_height () - 60))) +. 30.0
+      in 
+      [ y_help ; 
+        y_help ; 
+        Float.of_int (Random.int 2) +. 1.5;
+        (Float.of_int (Raylib.get_screen_width ())) +. 100.0;
+      ]
+    else 
+      [
+        pies.start_y;
+        new_y; 
+        pies.speed_x;
+        pies.x -. pies.speed_x;
+      ]
+  in
+
+
+  let pos_vec = Raylib.Vector2.create
+    (List.nth lst 3)
+    (List.nth lst 1)
+  in 
+
+  Raylib.draw_texture_ex 
+    pies.static_texture 
+    pos_vec
+    0.0
+    0.09
+
+    Raylib.Color.white; 
+
+  let new_pies = create_piesek 
+                    new_upwards 
+                    (List.nth lst 0) 
+                    (List.nth lst 2) 
+                    pies.speed_y 
+                    pies.static_texture 
+                    (List.nth lst 1) 
+                    (List.nth lst 3) 
+                    new_move 
+  in 
+  
+  new_pies
+
+  let return_collider pies = pies.collider
+end 
+
 
 
 (*
@@ -158,65 +392,79 @@ let setup () =
     texture_fore = Raylib.load_texture "img/foreground.png"
   } in
 
-  let player = {
-    y = 2.0 *. (Float.of_int (Raylib.get_screen_height () / 3) );
-    x = 80.0;
+  let txt = Raylib.load_texture "img/cat.png"
+  in
 
-    static_texture = Raylib.load_texture "img/cat.png";
+  let player = Kot.create_kotek (2.0 *. (Float.of_int (Raylib.get_screen_height () / 3))) 80.0 txt Stationary 3.0
+  in
 
-    jump = false;
-    fall = false;
+  Random.self_init ();
 
-    speed = 2.0
-  } in
-
+  let pies_list = [
+    Pies.init_piesek 0 true ; Pies.init_piesek 1 true ; Pies.init_piesek 2 true ;
+  ]
+  in 
 
   Raylib.set_target_fps 60;
 
-  (false, back_image, player)
+  (false, back_image, player, pies_list)
 
-let rec loop (pause, back_img, player) =
+
+
+
+let helper player prev r = 
+  prev || (Raylib.check_collision_recs (Kot.return_collider player) (Pies.return_collider r))
+
+let rec loop (pause, back_img, player, pies_list) =
   match Raylib.window_should_close () with 
   | true -> Raylib.close_window () 
   | false ->
-    if pause 
-    then 
-        Raylib.draw_text 
-          "Game is paused"
-          ((Raylib.get_screen_width () / 2) - (Raylib.measure_text "Game is paused" 20 / 2))
-          ((Raylib.get_screen_height () / 2))
-          20 Raylib.Color.black; 
-  
+ 
   
     let pause = if Raylib.is_key_pressed Raylib.Key.P then not pause else pause in
   
     Raylib.begin_drawing();
     Raylib.clear_background Raylib.Color.raywhite;
 
+
+    let new_jump = Kot.check_jump player 
+    in
+
+    let player = Kot.create_kotek player.y player.x player.static_texture new_jump player.speed
+    in
+
     let back_img = move_back back_img in
+    let player = Kot.move_kotek player in
+    let pies_list = List.map Pies.move_piesek pies_list
+    in
 
-    let player = {
-      x = player.x;
-      y = player.y;
+    if List.fold_left (helper player) false pies_list
+    then 
+      Raylib.draw_text 
+        "They be touchin"
+        ((Raylib.get_screen_width () / 2) - (Raylib.measure_text "Game is paused" 20 / 2))
+        ((Raylib.get_screen_height () / 2))
+        20 Raylib.Color.black
+    else 
+      Raylib.draw_text 
+        "They not be touchin"
+        ((Raylib.get_screen_width () / 2) - (Raylib.measure_text "Game is paused" 20 / 2))
+        ((Raylib.get_screen_height () / 2))
+        20 Raylib.Color.black;
 
-      static_texture = player.static_texture;
+    if pause 
+    then 
+        Raylib.draw_text 
+          "Game is paused"
+          ((Raylib.get_screen_width () / 2) - (Raylib.measure_text "Game is paused" 20 / 2))
+          ((Raylib.get_screen_height () / 2))
+          20 Raylib.Color.black;
 
-      fall = player.fall;
-      jump = 
-        if (Raylib.is_key_pressed Raylib.Key.Space) && (not player.jump)
-        then 
-          true 
-        else 
-          player.jump;
-
-      speed = player.speed
-    } in
-
-    let player = move_kotek player in
 
     Raylib.end_drawing ();
   
-    loop (pause, back_img, player)
+    loop (pause, back_img, player, pies_list)
     
 
-let () = setup () |> loop 
+let () = 
+setup () |> loop 

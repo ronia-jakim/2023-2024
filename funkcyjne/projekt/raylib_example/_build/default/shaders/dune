@@ -1,0 +1,9 @@
+(executable
+ (name shaders_raymarching)
+ (modules Shaders_raymarching)
+ (libraries raylib))
+
+(executable
+ (name shaders_mesh_instanced)
+ (modules Shaders_mesh_instanced Rlights)
+ (libraries raylib))
