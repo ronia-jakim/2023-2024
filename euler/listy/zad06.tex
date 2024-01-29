@@ -36,20 +36,36 @@ $$\chi(Gr_{\C}(k,n)=\int_{Gr_{\C}(k,n)/T^n}\chi(f^{-1}(X))d\chi(X)$$
 będzie zerować się na podzbiorach będących okręgami, bo $\chi(S^1)=0$. Natomiast punkty stałe, których orbity są punktami, będą liczyć się do charakterystyki Eulera po jeden raz. Stąd
 $$\chi( Gr_{\C}(k,n))=\#\{\text{punkty stałe działania }T^n\}$$
 
-\textbf{\color{green}Ile jest punktów stałych?}
+\textbf{\color{green}Jak wyglądają punkty stałe?}
 
 Punkt stały działania torusa musi spełniać
 $$TA_VT^{-1}=A_V$$
 $$TA_V=A_VT$$
 dla wszystkich możliwych $T$.
 
-Macierze hermitowskie, które nie są diagonalne będą miały niediagonalną macierz unitarną $P$ w diagonalizacji $PDP^{-1}$. Aby takie macierze były punktami stałymi, to dla dowolnej $T$ musi zachodzić
+{\slshape Macierz $A_V$ jest punktem stałym działania torusa $\iff$ jest macierzą diagonalną o $k$ jedynkach i $(n-k)$ zerach na przekątnej.
+}
+
+$\implies$
+
+Załóżmy nie wprost, że istnieje macierz $A_V$ hermitowska, która nie jest diagonalna, ale jest punktem stałym działania $T^n$. Taka macierz musi posiadać niediagonalną macierz unitarną $P$ w diagonalizacji $A_V=PDP^{-1}$. 
+Jako, że $A_V$ jest punktem stałym, to dla każdego $T$ przychodzącego z torusa musi zachodzić
 $$TPDP^{-1}T^{-1}=PDP^{-1}$$
-$$D=(P^{-1}TP)D(P^{-1}TP)^{-1}$$
-dla $T\neq Id$ powyższa równość będzie zachodzić niezmiernie rzadko. 
+$$D=(P^{-1}TP)D(P^{-1}TP)^{-1}.$$
+Ostatnia równość nie ma szans być spełniona dla wszystkich unitarnych, diagonalnych $T$ - sprzeczność.
+
+$\impliedby$
 
 Wszystkie macierze diagonalne $A_V$ mające $k$ jedynek i $(n-k)$ zer na przekątnej będą punktami stałymi działania torusa. Macierz 
 $$TA_V$$ 
 to "obcięcie" $T$ do $k$ wyrazów na przekątnej, a domnożenie do tego $T^{-1}$ zwróci $1$ w kolumnach, które zostały zachowane oryginalnie przez $A_V$. Stąd 
 $$TA_VT^{-1}=A_V.$$
-Takich macierzy jest $\binom{n}{k}$, bo wybieramy $k$ miejsc na $1$ spośród $n$ miejsc na przekątnej.
+
+\textbf{\color{green}Ile jest punktów stałych?}
+
+Jeśli macierz rzutu ortogonalnego jest macierzą diagonalną, to musi ona mieć tylko $1$ i $0$ na przekątnej. Z jej macierzy możemy wywnioskować, że jeśli $i_1,...,i_k$ to numery kolumn, które mają niezerowy wyraz, to przestrzeń na którą jest wykonywany rzut wynosi 
+$$Lin\{e_{i_1},...,e_{i_k}\}.$$ 
+W takim razie, obrazem wektorów $e_{i_j}$ musi być on sam. Czyli na przekątnej będą $1$ tam, gdzie jest kolumna odpowiadająca wektorom z bazy przestrzeni i $0$ dla pozostałych wektorów.
+
+Stąd, albo przestrzeń z Grassmannianu jest punktem stałym działania, albo nie jest diagonalna. Macierzy z $k$ jedynkami i $(n-k)$ zerami na przekątnej jest $\binom{n}{k}$, czyli charakterystyka Eulera Grassmannianu wynosi
+$$\chi(Gr_{\C}(k,n))=\binom{n}{k}.$$

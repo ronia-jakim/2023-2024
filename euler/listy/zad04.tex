@@ -9,18 +9,28 @@ Oblicz charaketrystykę Eulera $\conf_n(\mathbf{Y})$, gdzie $\mathbf{Y}$ to drze
 
 \textbf{$\mathbf{n=2}$}
 
-Zauważmy, że w każdym punkcie $\Conf_n(\mathbf{Y})$ leży niemalże identyczna kopia $\mathbf{Y}$ z tym, że brakuje w niej jednego punktu -> tego, który miałby obie współrzędne równe. Korzystając z addytywnej definicji charakterystyki Eulera, graf $\mathbf{Y}$ ma charakterystykę $\chi(\mathbf{Y})=1$. W takim razie, jeśli wyjmiemy z niego punkt to dostajemy graf z $\chi(\mathbf{Y}-\bullet)=1-1=0$.
+%Zauważmy, że w każdym punkcie $\Conf_2(\mathbf{Y})$ leży niemalże identyczna kopia $\mathbf{Y}$ z tym, że brakuje w niej jednego punktu -> tego, który miałby obie współrzędne równe. Korzystając z addytywnej definicji charakterystyki Eulera, graf $\mathbf{Y}$ ma charakterystykę $\chi(\mathbf{Y})=1$. W takim razie, jeśli wyjmiemy z niego punkt to dostajemy graf z $\chi(\mathbf{Y}-\bullet)=1-1=0$.
 
-Formuła Riemanna-Hurwitza mówi, że jeśli mamy funkcję $f:\Conf_n(\mathbf{Y})\to \mathbf{Y}$, to wtedy
-$$\chi(\Conf_n(\mathbf{Y}))=\int_{\mathbf{Y}}\chi(f^{-1}(X))d\chi(X)$$
+Formuła Riemanna-Hurwitza mówi, że jeśli mamy funkcję $f:\Conf_2(\mathbf{Y})\to \mathbf{Y}$, to wtedy
+$$\chi(\Conf_2(\mathbf{Y}))=\int_{\mathbf{Y}}\chi(f^{-1}(X))d\chi(X).$$
 W tym konkretnym przypadku od razu w oczy rzuca się funkcja
 $$f(x, y)=x,$$
-w której przeciwobrazem dowolnego punktu jest $\mathbf{Y}$ bez punktu. W takim razie 
-$$\chi(\Conf_n(\mathbf{Y}))=\chi(\mathbf{Y})\chi(\mathbf{Y}-\bullet)=1\cdot 0=0.$$
+w której przeciwobrazem dowolnego punktu jest $\mathbf{Y}$ bez punktu ($\mathbf{Y}-\bullet$). Charakterystyka Eulera $\mathbf{Y}$ wynosi $1$, więc jeśli korzystamy z addytywnej definicji, to 
+$$\chi(\mathbf{Y}-\bullet)=1-1=0.$$
+W takim razie 
+$$\chi(\Conf_2(\mathbf{Y}))=\chi(\mathbf{Y})\chi(\mathbf{Y}-\bullet)=1\cdot 0=0.$$
 
-Zauważmy, że teraz możemy napisać funkcję $g:\Conf_n(\mathbf{Y})\to \conf_n(\mathbf{Y})$ która "skleja" dwa punkty będące swoimi permutacjami. W takim razie nad dowolnym punktem w $\conf_n(\mathbf{Y})$ wiszą dwa punkty w $\Conf_n(\mathbf{Y})$. W takim razie 
-$$2\cdot\chi(\Conf_n(\mathbf{Y}))=\chi(\conf_n(\mathbf{Y}))$$
-i $\chi(\conf_n(\mathbf{Y}))=0$.
+%Zauważmy, że teraz możemy napisać funkcję $g:\Conf_2(\mathbf{Y})\to \conf_2(\mathbf{Y})$ która "skleja" dwa punkty będące swoimi permutacjami. W takim razie nad dowolnym punktem w $\conf_2(\mathbf{Y})$ wiszą dwa punkty w $\Conf_2(\mathbf{Y})$. W takim razie 
+%$$2\cdot\chi(\Conf_n(\mathbf{Y}))=\chi(\conf_n(\mathbf{Y}))$$
+%i $\chi(\conf_n(\mathbf{Y}))=0$.
+%\bigskip
+
+Kolejną funkcją, którą użyjemy do liczenia $\conf_2(\mathbf{Y})$, będzie przypisanie punktowi jego orbity, czyli funkcja
+$$g:\Conf_2(\mathbf{Y})\to \Conf_2(\mathbf{Y})/S_2.$$
+Dowolny punkt $(x, y)\in \Conf_2(\mathbf{Y})$ posiada orbitę dwuelementową: $\{(x, y), (y, x)\}$. W takim razie, formuła Riemanna-Hurwitza mówi, że
+$$\chi(\Conf_2(\mathbf{Y}))=\int_{\conf_2(\mathbf{Y})}\chi(f^{-1}(X))d\chi(X)=2\cdot\chi(\conf_2(\mathbf{Y}))$$
+$$\chi(\conf_2(\mathbf{Y}))=\frac{1}{2}\chi(\Conf_2(\mathbf{Y}))=\frac{1}{2}\cdot 0=0.$$
+
 \bigskip
 
 $\mathbf{n=3}$ \dotfill
@@ -29,9 +39,13 @@ Rozważmy teraz funkcję
 $$f:\Conf_3(\mathbf{Y})\to \Conf_2(\mathbf{Y})$$ 
 taką, że 
 $$f(x, y, z)=(x, y).$$
-Teraz nad każdym punktem $\Conf_2(\mathbf{Y})$ wisi kopia $\mathbf{Y}$ bez dwóch punktów. Charakterystyka $\mathbf{Y}$ bez dwóch punktów to $-2$, mamy więc
-$$\chi(\Conf_3(\mathbf{Y}))=\int_{\Conf_2(\mathbf{Y})}\chi(f^{-1}(X))d\chi(X)=\chi(\Conf_2(\mathbf{Y}))\cdot\chi(\mathbf{Y}-\bullet-\bullet)=-2\cdot0=0.$$
-Oczywiste jest również odwzorowanie $g:\Conf_3(\mathbf{Y})\to \conf_3(\mathbf{Y})$, które skleja $6$ punktów mających te same współrzędne w jeden punkt. W takim razie
+W tym przypadku charakterystyką Eulera dowolnego punktu w $\Conf_2(\mathbf{Y})$ jest $\mathbf{Y}$ bez dwóch punktów - $z$ nie może przyjąć wartości $x$ ani $y$. Charakterystyka Eulera takiego przeciwobrazu to 
+$$\chi(\mathbf{Y}-\bullet-\bullet)=\chi(\mathbf{Y}-\bullet)-1=0-1=-1.$$
+Używając wzoru Riemanna-Hurwitza dostajemy
+$$\chi(\Conf_3(\mathbf{Y}))=\int_{\Conf_2(\mathbf{Y})}\chi(f^{-1}(X))d\chi(X)=\chi(\Conf_2(\mathbf{Y}))\cdot\chi(\mathbf{Y}-\bullet-\bullet)=-1\cdot0=0.$$
+Oczywiste jest również odwzorowanie $g:\Conf_3(\mathbf{Y})\to \conf_3(\mathbf{Y})$, w którym przeciwobrazem dowolnego punktu z $\conf_3(\mathbf{Y})$ jest dowolna permutacja współrzędnych reprezentanta wybranej orbity. Każdy reprezentant ma $3$ współrzędne, więc przeciwobraz punktu ma moc $3!=6$.
+
+Stosując do tego odwzorowanie Riemanna-Hurwitza dostajemy
 $$\chi(\conf_3(\mathbf{Y}))=\frac{1}{4}\chi(\Conf_3(\mathbf{Y}))=\frac{1}{4}\cdot 0=0.$$
 \bigskip
 

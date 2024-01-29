@@ -5,6 +5,7 @@
 \usepackage{tikz-3dplot}
 
 \usepackage{wrapfig}
+\usetikzlibrary{calc,intersections}
 
 \DeclareMathOperator{\Conf}{Conf}
 \DeclareMathOperator{\conf}{conf}
@@ -23,17 +24,26 @@
 \def\Doublearrow{{\arrow[scale=1.5,xshift=1.35pt +2.47\pgflinewidth]{>>}}}
 \def\Triplearrow{{\arrow[scale=1.5,xshift=1.75pt +2.47\pgflinewidth]{>>>}}}
 
+\newcommand{\groszki}[2]{
+  \begin{scope}[shift={#1}]
+      \draw (0, 0)--(2.5, 0);
+      \draw (0, -0.5)--(2.5, -0.5);
+      \foreach \i in {0, 1, 2, 3, 4, 5} \draw (\i/2, 0)--(\i/2, -0.5);
+      \foreach \j in {#2} \fill[green!80!orange] (\j/2+0.25, -0.25) circle (3pt);
+ \end{scope}
+}
+
 \begin{document}
 \maketitle
 
-%\input{zad01.tex}
+\input{zad01.tex}
 
-%\input{zad04.tex}
+\input{zad04.tex}
 
-%\input{zad05.tex}
+\input{zad05.tex}
 
 \input{zad06.tex}
 
-%\input{zad07.tex}
+\input{zad07.tex}
 
 \end{document}
