@@ -1,5 +1,0 @@
-(
- library 
- (name player)
- (libraries raylib sprite)
-)

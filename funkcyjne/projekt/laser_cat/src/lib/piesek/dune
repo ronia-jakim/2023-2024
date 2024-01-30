@@ -1,5 +1,0 @@
-(
- library 
- (name piesek)
- (libraries raylib sprite)
-)
