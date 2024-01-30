@@ -1,0 +1,5 @@
+(
+ library 
+ (name lib)
+ (libraries raylib sprite player back piesek money)
+)
