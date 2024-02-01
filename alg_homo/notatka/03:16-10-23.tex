@@ -9,7 +9,7 @@ Uogólniając obserwację wyżej, w dowolnej kategorii $\mathbf{C}$ obiektowi $X
     $$h_X(Y)=Hom_{\mathbf{C}}(Y, X) \; (\star)$$
     gdzie $(\star)$ zapisujemy czasem jako $X(Y)$.
 
-    Ponieważ nie we wszystkich kategoriach istnieje odpowiednich singletona $1$, musimy rozważać wszystkie obiekty $Y$ i morfizmy:
+    Ponieważ nie we wszystkich kategoriach istnieje odpowiednik singletona $1$, musimy rozważać wszystkie obiekty $Y$ i morfizmy:
     
     \begin{center}\begin{tikzcd}[column sep = large]
       %Y \arrow[r, "f"] & Y' \arrow[r, rightsquigarrow] & h_X(Y') \arrow[r, "h_X(f)"] & h_X(Y')
@@ -20,7 +20,7 @@ Uogólniając obserwację wyżej, w dowolnej kategorii $\mathbf{C}$ obiektowi $X
 
     %Tutaj równanie $(\star)$ można również zapisać jako $X(Y)$, czyli rozumieć jako $Y$-punkty obiektu $X$.
 
-    Oczywiście, możemy też definiować funktor kowariantny $g:\mathbf{C}\to\mathbf{Set}$ taki, że $g_X(Y)=Hom_{\mathbf{C}}(X, Y)$.
+    Możemy też definiować funktor kowariantny $g:\mathbf{C}\to\mathbf{Set}$ taki, że $g_X(Y)=Hom_{\mathbf{C}}(X, Y)$.
 
 \begin{definition}[Kategoria funktorów i funktory reprezentowalne]
   \acc{Kategorię funktorów} $(C^{op},\mathbf{Set})$, której obiektami są $h_X$ jak w przykładzie wyżej, oznaczamy $\hat{\mathbf{C}}$. 
@@ -51,26 +51,39 @@ dla $\alpha\in Hom_{\mathbf{C}}(-, X)$
     %{\large\color{red}co tutaj mają do roboty wiązki styczne?} $Vect_n(X)=[X,C^\infty]$????
 \end{example}
 
-Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają w oczywisty sposób funktor $h:\mathbf{C}\to\mathbf{\hat{C}}$.
+Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ indukują funktor $h:\mathbf{C}\to\mathbf{\hat{C}}$.
 
 \begin{lemma}[Yoneda lemma]
   Przyporządkowanie $h:\mathbf{C}\to\mathbf{\hat{C}}$ zadaje równoważność kategorii $\mathbf{C}$ z pełną podkategorią kategorii $\mathbf{\hat{C}}$, której obiektami są funktory reprezentowalne.
 \end{lemma}
 
 \begin{proof}
-  Wystarczy pokazać, że $h$ jest funktorem wiernym, pełnym i w zasadzie surjektywnym.
+  Wystarczy pokazać, że $h$ jest funktorem wiernym, pełnym i w zasadzie surjektywnym. To znaczy, mając diagram
 
   \begin{center}\begin{tikzcd}[column sep=large]
     X\arrow[d, "\phi" left]\arrow[r, "h(X)"] & h_X=Hom_{\mathbf{C}}(-, X)\arrow[d, "h_\phi"]\\ 
     X'\arrow[r, "h(X')"] & h_{X'}=Hom_{\mathbf{C}}(-, X')
   \end{tikzcd}\end{center}
-
-  Chcemy pokazać, że przekształcenie $h$
+  
+  $h_\phi$ jest w jednoznaczny sposób przypisane do $\phi$.
+  
+  Inaczej: chcemy pokazać, że $h$ 
   \begin{center}\begin{tikzcd}[column sep=large]
     Hom_{\mathbf{C}}(X, X')\arrow[r] & Hom_{\hat{\mathbf{C}}}(h_X, h_{X'})\\ 
     \phi\arrow[r, blue, "h"]\arrow[u, phantom, sloped, "\in"] & h_\phi\arrow[u, phantom, sloped, "\in"]
   \end{tikzcd}\end{center}
   jest bijekcją.
+
+  Jeśli dwa morfizmy $\phi,\psi\in Hom_{\mathbf{C}}(X, X')$ przechodzą na to samo, tzn. $h_\phi=h_\psi$ to wówczas dla dowolnego $Y$ i dowolnego $\alpha\in Hom_{\mathbf{C}}(Y, X)$ zachodzi $\phi\circ \alpha=\psi\circ\alpha\in Hom_{\mathbf{C}}(Y, X')$. W szczególności dla $Y=X$ oraz $\alpha=id_X$ mamy 
+  $$\phi\circ id_X=\psi\circ id_X\implies \phi=\psi.$$
+  Weźmy teraz dowolny $h_\phi\in Hom_{\mathbf{\hat{C}}}(h_X, h_{X'})$. Tak jak wcześniej, ustalając $Y$ i $\alpha$ dostajemy 
+  $$h_\phi(\alpha):h_X(Y)\to h_{X'}(Y).$$
+  Jeśli $Y=X$ i $\alpha=id_X$, to $h_\phi(id_X):h_X(X)\to h_{X'}$ jest morfizmem $h_\phi(id_X):X\to X'$. Jest to potencjalny element $h_\phi(id_X)=\psi$, który przechodzi na $h_\phi$ przez funktor $h$. Wystarczy sprawdzić, że 
+  $$h_\psi(\alpha)=h_\phi(\alpha)$$
+  dla dowolnego $Y$ i $\alpha :Y\to X$.
+  $$h_\psi(\alpha)=\psi\circ\alpha=(\phi\circ id_X)\circ \alpha=\phi\circ (id_X\circ \alpha)=\phi\circ \alpha=h_\phi(\alpha).$$
+
+  W zasadzie surjektywność tego funktora wynika z definicji funktora reprezentowalnego, która wymaga by przychodził on z obiektem z kategorii $\mathbf{C}$.
 
 %
 %
@@ -104,7 +117,7 @@ Przyporządkowania $X\mapsto h_X$ oraz $\phi\mapsto h_\phi$ dają w oczywisty sp
 %     h_X(X)\ni id_X\arrow[r, bend left=30, "h_\phi"]\arrow[r, bend right=30, "f"] & h_{X'}(X)
 %  \end{tikzcd}\end{center}
 %
-  {\large\color{red}DOKOŃCZYĆ}
+  %{\large\color{red}DOKOŃCZYĆ}
 
 \end{proof}
 
@@ -134,7 +147,7 @@ Czyli o granicach odwrotnych [granica] i prostych [kogranica].
 Niech $I$ będzie małą kategorią, a $F:I\to\mathbf{C}$ będzie funktorem.
 
 \begin{definition}[granica funktora $F$]
-  Obiekt $X$ z rodziną odwzorowań (zbioru morfizmów) $\Pi_i:X\to F(i)$ dla $X\in Ob\mathbf{C}$ , które spełniają
+  Obiekt $X$ z rodziną odwzorowań (zbiorem morfizmów) $\Pi_i:X\to F(i)$ dla $X\in Ob\mathbf{C}$ , które spełniają
   \begin{itemize}
     \item \acc{[zgodność]} dla dowolnych $i\xrightarrow{\alpha}j$ w $I$ diagram
       \begin{center}\begin{tikzcd}
@@ -172,7 +185,7 @@ Granica funktora może nie istnieć, ale zawsze gdy istnieje, to jest jedyna z d
   nazywamy granicą odwrotną i oznaczamy $\color{blue}\colim F$, jeśli spełnia ona warunek uniwersalności, tzn. jeśli istnieje $X'$ oraz przekształcenia $\Pi$, to istnieje dokładnie jeden morfizm $\lambda:X'\to X$:
   \begin{center}\begin{tikzcd}
     & F(i) \arrow[dr, "\Pi_i"] \arrow[dl, "\Pi_i'" above left] \\ 
-    X & & \arrow[ll, "\exists!\lambda" below, dashed] X'
+    X \arrow[rr, "\exists!\lambda" below, dashed] & & X'
   \end{tikzcd}\end{center}
 \end{definition}
 

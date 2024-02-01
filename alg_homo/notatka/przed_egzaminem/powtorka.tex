@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{../../../template}
+\usetikzlibrary{tikzmark}
+\usetikzlibrary{fit}
+
+\usepackage{wrapfig}
+\usepackage{multicol}
+
+\geometry{
+%  showframe,
+  b3paper,
+  total={30cm, 50cm}, 
+  top=20mm, 
+  marginpar={0mm},
+  left={12mm},
+  %right={26mm},
+  headsep=5mm
+}
+\tikzcdset{scale cd/.style={every label/.append style={scale=#1},
+    cells={nodes={scale=#1}}}}
+\pdfcompresslevel=0
+
+
+\renewcommand{\contentsname}{Spis rozmaitości treściowalnych}
+
+\usepackage{titlesec}
+\usepackage[dotinlabels]{titletoc}
+
+\title{Algebra homologiczna - powtórka} 
+\author{}
+\date{}
+
+\begin{document}
+\maketitle 
+
+\begin{multicols}{4}
+
+\begin{deff}[Podkategoria pełna]
+  \label{podkategoria pelna}
+  Podkategoria $\mathbf{C}'$ kategorii $\mathbf{C}$ jest pełna, jeśli dla wszystkich $X,Y\in\mathbf{C}'$ $Hom_{\mathbf{C}'}(X, Y)=Hom_{\mathbf{C}}(X, Y)$.
+\end{deff}
+
+\begin{deff}[Funktor wierny, pełny]
+  \label{funktor wierny,pelny}
+  Funktor $F:\mathbf{C}\to\mathbf{D}$ jest wierny, jeśli $
+\end{deff}
+
+\end{multicols}
+
+\end{document}
+

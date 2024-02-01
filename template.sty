@@ -242,6 +242,27 @@
   style=defbox
 ]{definition}
 
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{green!80!black},
+    bodyfont=\normalfont,
+    notebraces={: }{},
+    notefont=\color{green},
+    headformat=\NAME$\;$\NUMBER\NOTE,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=green, backgroundcolor=yellow!5,
+        skipabove=3mm, skipbelow=3mm
+    }
+]{defbox2}
+
+\declaretheorem[
+  name=Definicja,
+  numbered=no,
+  style=defbox2
+]{deff}
+
 \newtheoremstyle{przykladziki}
   {3pt}
   {3pt}
