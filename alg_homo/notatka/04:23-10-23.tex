@@ -66,13 +66,41 @@
 \end{proof}
 
 \begin{fact}[funktory sprzężone zachowują granice (prostą/odwrotną)]\label{funktory sprzezone zachowuja granice}
-  Jeśli $L\dashv R$, to $R$ zachowuje granicę, a $L$ kogranicę.
+  Jeśli $L\dashv R$, to $R$ zachowuje granicę, a $L$ kogranicę ($L:\mathbf{C}\to\mathbf{D}$).
 \end{fact}
 
 \begin{proof}
-  {\large\color{red}OBRAZEK}
+  Pokażemy tylko, że prawy sprzężony funktor zachowuje granicę. 
 
-  Musimy wziąć dowolny obiekt $A\in \mathbf{A}$ i sprawdzić, czy $\Pi_i':A\to (R\circ F)(I)$ sfaktoryzuje się w jedyny możliwy sposób na $R\circ R(\Pi_i)$. Musimy wziąć obiekt $LA\in\mathbf{B}$ i tutaj dostajemy jedyną strzałkę $LA\to X$, gdyż $X$ jest granicą. Ale sprzężoność $R$ z $L$ mówi, że mamy jedyność odpowiadania strzałek między elementami $\mathbf{A}$ a elementami $\mathbf{B}$.
+  Wiemy, że $Hom_{\mathbf{C}}(A, RB)\cong Hom_{\mathbf{D}}(LA, B)$. Niech $F$ będzie diagramem w kategorii $\mathbf{D}$, a $G$ jego granicą. 
+
+  Ustalmy dowolny $A\in\ob\mathbf{C}$, który jest stożkiem granica diagramu $R\circ F$, tzn. komutuje diagram 
+  \begin{center}\begin{tikzcd}
+    & A\arrow[dl, "\Pi_i'" above left]\arrow[dr, "\Pi_j'"]\\ 
+    %& RG\arrow[dl, "R\Pi_i" above left] \arrow[dr, "R\Pi_j"]\\ 
+    RF(i) \arrow[rr, "RF(\alpha)" below] & & F(j) 
+  \end{tikzcd}\end{center}
+  W kategorii $\mathbf{D}$ obrazek wygląda następujące:
+  \begin{center}
+    \begin{tikzcd}
+      & LA \arrow[d, dashed, "\exists!\lambda"] \arrow[ddl, "L\Pi_i'" above left, bend right=20] \arrow[ddr, "L\Pi_j'" above right, bend left=20] \\ 
+      & G\arrow[dl, "\Pi_i" above left] \arrow[dr, "\Pi_j" above right]\\ 
+      F(i)\arrow[rr, "F(\alpha)"] & & F(j) 
+    \end{tikzcd}
+  \end{center}
+  Ze sprzężoności tych funktorów wiemy więc, że istnieje jedyna strzałka $A\to RG$ w kategorii $\mathbf{D}$. Czyli rysunek wygląda
+  \begin{center}
+    \begin{tikzcd}
+      & A \arrow[d, dashed, "\exists!\lambda;"] \arrow[ddl, "\Pi_i'" above left, bend right=20] \arrow[ddr, "\Pi_j'" above right, bend left=20] \\ 
+      & RG\arrow[dl, "R\Pi_i" above left] \arrow[dr, "R\Pi_j" above right]\\ 
+      RF(i)\arrow[rr, "RF(\alpha)"] & & RF(j) 
+    \end{tikzcd}
+  \end{center}
+  A więc $G$ po przeniesieniu przez $R$ nadal spełnia uniwersalną własność granicy, dla diagramu $R\circ F$.
+
+  %{\large\color{red}OBRAZEK}
+
+  %Musimy wziąć dowolny obiekt $A\in \mathbf{A}$ i sprawdzić, czy $\Pi_i':A\to (R\circ F)(I)$ sfaktoryzuje się w jedyny możliwy sposób na $R\circ R(\Pi_i)$. Musimy wziąć obiekt $LA\in\mathbf{B}$ i tutaj dostajemy jedyną strzałkę $LA\to X$, gdyż $X$ jest granicą. Ale sprzężoność $R$ z $L$ mówi, że mamy jedyność odpowiadania strzałek między elementami $\mathbf{A}$ a elementami $\mathbf{B}$.
 \end{proof}
 
 \subsection{Kategorie addytywne i abelowe}
@@ -148,8 +176,8 @@ Definicja wyżej często jest formułowana w inny, równoważny, sposób.
       \item \begin{tikzcd}K\arrow[r, "k"] & A\arrow[r, "f"] & B=0\end{tikzcd}
       \item Zachodzi własność uniwersalna:
         \begin{center}\begin{tikzcd}
-          \forall\;K'\arrow[r, "k'"]\arrow[d, "\exists!\;u"]\arrow[rr, "0", bend left=30] & A\arrow[r, "f"] & B\\
-          K\arrow[ur, "k"]\arrow[urr, "0" left, bend right=20]
+          \forall\;K'\arrow[r, "k'"]\arrow[d, "\exists!\;u" left]\arrow[rr, "0", bend left=30] & A\arrow[r, "f"] & B\\
+          K\arrow[ur, "k" below right]\arrow[urr, "0" below right, bend right=20]
         \end{tikzcd}\end{center}
     \end{enumerate}
   \item Kojądro $f$ to koekwalizator \begin{tikzcd}A\arrow[r, bend left=10, "f"]\arrow[r, bend right=10, "0" below] & B\end{tikzcd} jak w następującym diagramie:
@@ -194,12 +222,19 @@ Można pokazać, że jeśli $f$ jest monomorfizmem, to $\ker f=0$, a jeśli $f$ 
 \end{lemma}
 
 \begin{proof}
-  W przypadku jądra wystarczy zbadać diagram:
-  \begin{center}\begin{tikzcd}
+  W przypadku jądra wystarczy zbadać diagram gdy mamy $kg=0$:
+  \begin{center}\begin{tikzcd}[row sep=large]
     K\arrow[r, "k"] & A\arrow[r, "f"] & B\\
-    Z\arrow[u, "g" right]\arrow[u, "0" left, bend left=20, green]\arrow[ur, "0"]\arrow[urr, "0" right]
+    Z\arrow[u, "g" right]\arrow[u, "0" left, bend left=20, green]\arrow[ur, "0"]\arrow[urr, "0" below right]
   \end{tikzcd}\end{center}
-  i zauważyć, że jedyność odwzorowania $Z\to K$ wymaga, aby $g=0$.
+  i zauważyć, że jedyność odwzorowania $Z\to K$ wymaga, aby $g=0$. 
+
+  Dla kojądra $A\xrightarrow{f} B\xrightarrow{c}C$ zakładamy $sc=0$, czyli rysujemy z uniwersalności kojądra:
+  \begin{center}\begin{tikzcd}[row sep=large]
+    A\arrow[r, "f"] & B\arrow[r, "c"]\arrow[rd, "sc=0" below left] & C\arrow[d, "\exists! s" right] \\ 
+                    & & D
+  \end{tikzcd}\end{center}
+  Ponieważ $s$ jest jedyne takie, to $s=0$ a więc $c$ jest epimorfizmem.
 \end{proof}
 
 \begin{uwaga}\label{uwaga 5.1}
