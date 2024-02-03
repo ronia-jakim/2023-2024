@@ -1,0 +1,26 @@
+\frametitle{Przyjemności}
+\begin{itemize}
+    \item \lstinline{List.fold_left} bardzo fajnie działa do iterowania przez listę wrogów
+    \item \lstinline{raylib} jest przyjemniaśny
+    \item Mój ulubieniec:
+      \begin{lstlisting}[
+      language=caml,
+      frame=leftline,
+      rulecolor=\color{orange!40!black},
+      breaklines=true,
+      keywordstyle=\bfseries\color{orange!70!red},
+      commentstyle=\color{gray},
+      backgroundcolor=\color{lightgray!20},
+      ]
+type move_direction =
+  | Jump
+  | Fall
+  | Stationary
+      \end{lstlisting}
+  \end{itemize}
+
+  \begin{tikzpicture}[overlay, remember picture]
+    \node at (8, 0.5) {\rotatebox{-5}{\includegraphics[width=0.4\textwidth]{sassy_camel.png}}};
+    \node at (6, 2) {\rotatebox{10}{\includegraphics[width=0.1\textwidth]{green.png}}};
+    \node at (7, 2.5) {\rotatebox{-20}{\includegraphics[width=0.05\textwidth]{green.png}}};
+  \end{tikzpicture}
