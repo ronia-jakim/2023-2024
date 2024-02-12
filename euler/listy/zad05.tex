@@ -91,7 +91,7 @@ $T^2$ i o $6$ barwach dla butelki Kleina.
       \fill (B) circle (2pt);
       \fill (C) circle (2pt);
     \end{tikzpicture}\end{center}
-    Unikamy w ten sposób krawędzi wielokrotnych i dostajemy miejsce na dwuwymiarowy sympleks ($\triangle$).
+    Unikamy w ten sposób krawędzi wielokrotnych. % i dostajemy miejsce na dwuwymiarowy sympleks ($\triangle$).
 
 
     Niestety, nie każdy graf pochodzący od takich map na powierzchni da się rozszerzyć do triangulacji. Rozważmy na przykład mapę, do której graf dualny to $K_6$ na butelce Kleina:
@@ -507,14 +507,15 @@ marr/.style={
   Jeżeli istnieje para sąsiadów, która nie jest ze sobą połączona, to możemy pomalować je na jeden kolor. Wtedy sąsiedzi $v$ wykorzystują tylko $5$ kolorów i ostatni, szósty, pozostaje wolny do kolorowania $v$. 
 
   Jeśli natomiast wszyscy sąsiedzi $v$ są ze sobą połączeni, to oznacza, że mamy $K_7$ zanurzone w $G$, które z kolei jest narysowane na butelce Kleina. Wiemy, że $K_7$ nie można narysować na butelce Kleina, więc dochodzimy do sprzeczności w tym punkcie.
-\item Jeśli wszystkie wierzchołki $v\in G$ mają stopień $\deg(v)>6$, to możemy użyć Gaussa-Bonnet, by dostać sprzeczność.
+\item Jeśli w $G$ istnieje wierzchołek stopnia $7$ a pozostałe wierzchołki mają stopień $\deg(v)\geq6$, to możemy użyć Gaussa-Bonnet, by dostać sprzeczność.
 
   Tak jak wcześniej, szacujemy ilość krawędzi na dwa sposoby:
-  $$2E\geq \sum_{v\in V}7=7V$$
+  $$2E= \sum_{v\in V}\deg(v)\geq 6(V-1)+7=6V+1$$
   $$2E\geq 3T$$
   wstawiamy to do formuły Gaussa-Bonneta i dostajemy
   $$0=V-E+T$$
-  $$0=21V-21E+21T\leq 6E-21E+14E=-E$$
-  co jest sprzeczne z $E>0$.
+  $$0=6V-6E+6T\leq (2E-1)-6E+4E=6E-6E-1=-1$$
+  $$0\leq -1$$
+  co jest sprzecznością.
 \end{enumerate}
 \end{enumerate}

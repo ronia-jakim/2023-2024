@@ -43,7 +43,7 @@ Z listy 1 wiemy, że $6$ wierzchołkowa triangulacja $\R P^2$ jest jedyna z dok�
 
 \textbf{Plan działania}
 
-Płaszczyzna rzutowa $\R P^2$ to $S^2$ wydzielona przez antypodyczne działanie $\Z_2$. W takim razie, $6$ wierzchołkowa triangulacja na $\R P^2$ przychodzi od triangulacji na $S^2$. Dwudziestościan ma $12$ wierzchołków i $20$ ścian i jest to interesująca nas triangulacja sfery. Łatwiejsze jest jednak badanie grupy automorfizmów bryły dualnej do dwudziestościanu - dwunastościanu o $12$ ścianach i $20$ wierzchołkach.
+Płaszczyzna rzutowa $\R P^2$ to $S^2$ wydzielona przez antypodyczne działanie $\Z_2$. W takim razie, $6$ wierzchołkowa triangulacja na $\R P^2$ przychodzi od triangulacji $12$ wierzchołkowej na $S^2$. Dwudziestościan ma $12$ wierzchołków i $20$ ścian i jest to interesująca nas triangulacja sfery. Łatwiejsze jest jednak badanie grupy automorfizmów bryły dualnej do dwudziestościanu - dwunastościanu o $12$ ścianach i $20$ wierzchołkach.
 
 %{\large\color{red}narysować na sferze z osiami symetrii}
 
@@ -121,7 +121,7 @@ Ponieważ dwudziestościan i dwunastościan są bryłami dualnymi, to grupy ich 
 \draw[very thick, red] (149)--(15);
 \draw[very thick, red] (910)--(1);
 
-\draw[very thick, pink] (14)--(9)--(10)--(15)--(1)--(14); 
+\draw[very thick, blue] (14)--(9)--(10)--(15)--(1)--(14); 
 
 \end{scope}
 
@@ -133,8 +133,14 @@ Ponieważ dwudziestościan i dwunastościan są bryłami dualnymi, to grupy ich 
 \end{tikzpicture}
 \end{center}
 \end{wrapfigure}
-czerwone symetrie w dwunastościanie nakrywają się na krawędzie w dwudziestościanie, które również dają symetrie. Tak samo różowe krawędzie nakrywają się z wysokościami ścian w dwudziestościanie, które również dają osie symetrii. Czyli dwudziestościan i dwunastościan dzielą ze sobą osie symetrii.
-Oznaczmy dwunastościan przez $D$. Pokażemy, że $Aut(D)=A_5\times \Z_2$.
+
+odbicia dwunastościanu względem płaszczyzn przecinających wybraną ścianę (czerwone na rysunku) odpowiadają odbiciom dwudziestościanu względem płaszczyzn przecinających odpowiadającą krawędź tej bryły. Natomiast odbicia względem płaszczyzn przechodzących przez krawędzie dwunastościanu odpowiadają odbiciom względem prostych przecinających odpowiadającą tej krawędzi ścianę dwudziestościanu.
+
+%czerwone przekątne ściany dwunastościanu, które odpowiadają odbiciom względem prostych przez nie przechodzących, odpowiadają w dwudziestościanie odbiciom względem 
+
+
+%czerwone symetrie w dwunastościanie nakrywają się na krawędzie w dwudziestościanie, które również dają symetrie. Tak samo różowe krawędzie nakrywają się z wysokościami ścian w dwudziestościanie, które również dają osie symetrii. Czyli dwudziestościan i dwunastościan dzielą ze sobą osie symetrii.
+Oznaczmy dwunastościan przez $D$. Pokażemy, że $Aut(D)/\Z_2=A_5$.
 
 \textbf{Czy zgadza się rząd?}
 
@@ -244,30 +250,26 @@ Zauważmy, że w każdy dwudziestościan możemy włożyć $5$ kostek. Każda ko
   \item połączenie wierzchołków tej krawędzi w kolejny kwadrat
   \item połączenie obu kwadratów w sześcian.
 \end{itemize}
-Co więcej, każdy sześcian możemy ustawić tak, aby jedna jego krawędź była przekątną ściany dwudziestościanu, która patrzy w naszą stronę. Ponumerujmy teraz te sześciany wybierając jeden i idąc dalej po przekątnych ściany zgodnie z ruchem wskazówek zegara.
+Co więcej, każdy sześcian możemy ustawić tak, aby jedna jego krawędź była przekątną wybranej przez nas ściany dwunastościanu. Ponumerujmy teraz te sześciany wybierając jeden i idąc dalej po przekątnych ściany zgodnie z ruchem wskazówek zegara.
 
 \textbf{Odwzorowanie $\boldsymbol{Aut(D)\to S_5}$}
 
-Oś symetrii, która przechodzi przez przeciwległe wierzchołki sześcianu jest też osią symetrii dwudziestościanu. Taka symetria dwudziestościanu będzie trzymać sześciany, których jedna ściana jest przekątną wychodzącą z tego samego wierzchołka. Pozostałe $3$ sześciany będą permutować ze sobą. To pozwala nam napisać odwzorowanie 
+Obrót względem prostej, która przechodzi przez przeciwległe wierzchołki sześcianu jest też ob
+
+Prosta, która przechodzi przez przeciwległe wierzchołki sześcianu jest też prostą, która przechodzi przez przeciwległe wierzchołki dwudziestościanu. Obroty względem tej prostej o kąty $120$, $240$ i $360$ stopni są więc symetriami zarówno wpisanych sześcianów jak i dwudziestościanu.
+
+Co więcej, wspomniane obroty zawsze trzymają sześciany będące na przekątnej wychodzącej z przebitego wierzchołka, a pozostałe $3$ sześciany będą permutowane ze sobą. To pozwala nam napisać odwzorowanie 
 $$\phi:Aut(D)\to S_5$$
 które symetrii przypisuje odpowiadającą jej permutację $3$ sześcianów. Podgrupą $S_5$ generowaną przez wszystkie $3$-cykle jest podgrupa $S_5$ mająca $5\cdot 4\cdot 3=60$ elementów, która jest jedyna i wynosi $A_5$. Stąd 
 $$\img(\phi)=A_5.$$
 
-Pozostaje nam sprawdzić jądro tego odwzorowania. Aby odpowiedzieć na to pytanie, trzeba sprawdzić, jaki automorfizm zachowuje wszystkie sześciany. Oczywistym kandydatem jest identyczność, a drugim jest antypodyzm. Pozostałe automorfizmy muszą poruszyć dwudziestościan wzdłuż którejś osi symetrii przynajmniej raz, czyli indukuje permutację sześcianów. Stąd, 
+Pozostaje nam sprawdzić które odwzorowanie tworzą jądro tego odwzorowania. Aby odpowiedzieć na to pytanie, trzeba sprawdzić, jaki automorfizm zachowuje wszystkie sześciany. Oczywistym kandydatem jest identyczność, a drugim jest symetria względem środka dwudziestościanu. Pozostałe automorfizmy muszą poruszyć dwudziestościan wzdłuż którejś osi symetrii przynajmniej raz, czyli indukuje permutację sześcianów. Stąd, 
 $$\ker(\phi)=\{id, \text{antypodyzm}\}\cong \Z_2.$$
 
-Korzystając z twierdzeń o izomorfizmach, dostajemy
-$$Aut(D)\cong \img(\phi)\times \ker \phi\cong A_5\times \Z_2.$$
+Korzystając z twierdzenia o izomorfizmie grup, dostajemy
+$$Aut(D)/\ker(\phi)\cong Aut(D)/\Z_2\cong A_5$$
 
-Ponieważ dwudziestościan $D$ ma tę samą grupę automorfizmów co dwunastościan, to szukana grupa automorfizmów triangulacji $\R P^2$ wynosi
-$$Aut(D)/\Z_2=(A_5\times \Z_2)/\Z_2\cong A_5.$$
-
-
-
-
-
-
-
+W takim razie, $Aut(\triangle \R P^2)\cong Aut(D)/\Z_2\cong A_5$ tak jak chcieliśmy.
 
 
 
