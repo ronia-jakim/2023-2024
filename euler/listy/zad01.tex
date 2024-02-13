@@ -48,7 +48,7 @@ Płaszczyzna rzutowa $\R P^2$ to $S^2$ wydzielona przez antypodyczne działanie 
 %{\large\color{red}narysować na sferze z osiami symetrii}
 
 \tdplotsetmaincoords{70}{110}
-Ponieważ dwudziestościan i dwunastościan są bryłami dualnymi, to grupy ich automorfizmów są sobie równe. Grupa automorfizmów jest generowana przez antypodyzm i symetrie:
+Ponieważ dwudziestościan i dwunastościan są bryłami dualnymi, to grupy ich automorfizmów są sobie równe. Grupa automorfizmów jest generowana przez odwzorowanie $x\mapsto -x$ i symetrie:
 
 \begin{wrapfigure}{r}{6cm}
 \begin{center}
@@ -134,7 +134,7 @@ Ponieważ dwudziestościan i dwunastościan są bryłami dualnymi, to grupy ich 
 \end{center}
 \end{wrapfigure}
 
-odbicia dwunastościanu względem płaszczyzn przecinających wybraną ścianę (czerwone na rysunku) odpowiadają odbiciom dwudziestościanu względem płaszczyzn przecinających odpowiadającą krawędź tej bryły. Natomiast odbicia względem płaszczyzn przechodzących przez krawędzie dwunastościanu odpowiadają odbiciom względem prostych przecinających odpowiadającą tej krawędzi ścianę dwudziestościanu.
+odbicia dwunastościanu względem płaszczyzn przecinających wybraną ścianę (przekrój ściany z płaszczyzną zaznaczono na czerwono) odpowiadają odbiciom dwudziestościanu względem płaszczyzn przecinających odpowiadającą krawędź tej bryły. Natomiast odbicia względem płaszczyzn przechodzących przez krawędzie dwunastościanu odpowiadają odbiciom względem prostych przecinających odpowiadającą tej krawędzi ścianę dwudziestościanu.
 
 %czerwone przekątne ściany dwunastościanu, które odpowiadają odbiciom względem prostych przez nie przechodzących, odpowiadają w dwudziestościanie odbiciom względem 
 
@@ -242,7 +242,7 @@ $$|Aut(D)|=|Orb(v)|\cdot|Stab(v)|=20\cdot 6=120=|A_5\times \Z_2|.$$
 
 \textbf{Wpisywanie sześcianów}
 
-Zauważmy, że w każdy dwudziestościan możemy włożyć $5$ kostek. Każda kostka powstaje przez:
+Zauważmy, że w każdy dwunastościan możemy włożyć $5$ kostek. Każda kostka powstaje przez:
 \begin{itemize}
   \item wybranie krawędzi
   \item połączenie wierzchołków sąsiadujących z tę krawędzią w kwadrat
@@ -254,16 +254,16 @@ Co więcej, każdy sześcian możemy ustawić tak, aby jedna jego krawędź był
 
 \textbf{Odwzorowanie $\boldsymbol{Aut(D)\to S_5}$}
 
-Obrót względem prostej, która przechodzi przez przeciwległe wierzchołki sześcianu jest też ob
+% Obrót względem prostej, która przechodzi przez przeciwległe wierzchołki sześcianu jest też ob
 
-Prosta, która przechodzi przez przeciwległe wierzchołki sześcianu jest też prostą, która przechodzi przez przeciwległe wierzchołki dwudziestościanu. Obroty względem tej prostej o kąty $120$, $240$ i $360$ stopni są więc symetriami zarówno wpisanych sześcianów jak i dwudziestościanu.
+Prosta, która przechodzi przez przeciwległe wierzchołki sześcianu jest też prostą, która przechodzi przez przeciwległe wierzchołki dwunastościanu. Obroty względem tej prostej o kąty $120$, $240$ i $360$ stopni są więc symetriami zarówno wpisanych sześcianów jak i dwunastościanu.
 
 Co więcej, wspomniane obroty zawsze trzymają sześciany będące na przekątnej wychodzącej z przebitego wierzchołka, a pozostałe $3$ sześciany będą permutowane ze sobą. To pozwala nam napisać odwzorowanie 
 $$\phi:Aut(D)\to S_5$$
 które symetrii przypisuje odpowiadającą jej permutację $3$ sześcianów. Podgrupą $S_5$ generowaną przez wszystkie $3$-cykle jest podgrupa $S_5$ mająca $5\cdot 4\cdot 3=60$ elementów, która jest jedyna i wynosi $A_5$. Stąd 
 $$\img(\phi)=A_5.$$
 
-Pozostaje nam sprawdzić które odwzorowanie tworzą jądro tego odwzorowania. Aby odpowiedzieć na to pytanie, trzeba sprawdzić, jaki automorfizm zachowuje wszystkie sześciany. Oczywistym kandydatem jest identyczność, a drugim jest symetria względem środka dwudziestościanu. Pozostałe automorfizmy muszą poruszyć dwudziestościan wzdłuż którejś osi symetrii przynajmniej raz, czyli indukuje permutację sześcianów. Stąd, 
+Pozostaje nam sprawdzić które odwzorowania tworzą jądro tego odwzorowania. Aby odpowiedzieć na to pytanie, trzeba sprawdzić, jaki automorfizm zachowuje wszystkie sześciany. Oczywistym kandydatem jest identyczność, a drugim jest symetria względem środka dwudziestościanu. Pozostałe automorfizmy muszą obrócić dwudziestościan wzdłuż którejś osi symetrii przynajmniej raz, czyli indukują permutację sześcianów. Stąd, 
 $$\ker(\phi)=\{id, \text{antypodyzm}\}\cong \Z_2.$$
 
 Korzystając z twierdzenia o izomorfizmie grup, dostajemy

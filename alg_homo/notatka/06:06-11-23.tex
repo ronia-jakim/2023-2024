@@ -58,7 +58,7 @@ Na tym wykładzie trzymamy z tyłu głowy, że jesteśmy w kategorii abelowej.
     K\arrow[r, "k"]\arrow[dr, "g'k" below left, dashed]& Z\arrow[r, "f'"]\arrow[d, "g'"] & B\arrow[d, "g"]\\ 
                     & A\arrow[r, "f"] & C
   \end{tikzcd}\end{center}
-  gdzie $K\xrightarrow{k}Z$ jest jądrem $f'$, to wówczas $K\xrightarrow{g'k}A$ jest jądrem $f$.
+  gdzie $K\xrightarrow{k}Z$ jest jądrem $f'$. Wówczas $K\xrightarrow{g'k}A$ jest jądrem $f$.
 \end{lemma}
 
 \begin{proof}
@@ -77,13 +77,24 @@ Na tym wykładzie trzymamy z tyłu głowy, że jesteśmy w kategorii abelowej.
 
     \item $g'k$ spełnia uniwersalną własność jądra
 
-      Wyobraźmy sobie, że istnieje $U$ takie, że mamy diagram
-  \begin{center}\begin{tikzcd}
+      Niech $U$ będzie takie, że $fu=0$. Wtedy możemy narysować diagram z którego wynika, że $U$ jest stożkiem nad diagramem \begin{tikzcd}A\arrow[r, "f"] & C & \arrow[l, "g"] B\end{tikzcd}
+      \begin{center}\begin{tikzcd}[column sep=large, row sep=large]
+        U\arrow[r, "0" above]\arrow[d, "u" left]\arrow[dr, "fu=0" above right] & B\arrow[d, "g" right]\\ 
+        A\arrow[r, "f" below] & C
+      \end{tikzcd}\end{center}
+
+      Z uniwersalności $Z$ jako granicy diagramu \begin{tikzcd}A\arrow[r] & C & B\arrow[l]\end{tikzcd} możemy dostać jedyną strzałkę $\exists! u'U\to Z$, która daje diagram:
+
+      \begin{center}\begin{tikzcd}[column sep=large, row sep=large]
     K\arrow[r, "k"]& Z\arrow[r, "f'"]\arrow[d, "g'"] & B\arrow[d, "g"]\\ 
     U\arrow[r, "u" below] \arrow[ur, "\exists! u'" left]\arrow[u, "\exists! u''?", left, dashed] & A\arrow[r, "f" below] & C
   \end{tikzcd}\end{center}
 
-  {\large\color{red}DO DOKOŃCZENIA}
+  Wystarczy zauważyć, że $K$ jest jądrem strzałki $gf'$ oraz że $gf'u'=0$, czyli $u'$ faktoryzuje się przez $K$:
+  $$gfu'=fg'u'=fu=0.$$
+  Stąd mamy istnienie jedynej strzałki $u''$ jak na diagramie.
+
+  %{\large\color{red}DO DOKOŃCZENIA}
   \end{itemize}
 \end{proof}
 
@@ -93,11 +104,11 @@ Na tym wykładzie trzymamy z tyłu głowy, że jesteśmy w kategorii abelowej.
   Jeśli $\mathbf{A}$ jest kategorią abelową i $Y\in\ob \mathbf{A}$, to elementem $Y$ nazywamy \buff{klasę równoważności morfizmów} $X\xrightarrow{h}Y$ względem relacji
   \begin{center}\begin{tikzcd}[row sep=small, /tikz/column 2/.style={column sep=0.2mm}, /tikz/column 1/.style={column sep=0.2mm}]
     (X\xrightarrow{h}Y) & \sim \arrow[d, sloped, phantom, "\iff"] & (X'\xrightarrow[h'] Y) \\ 
-    (\exists u, u':Z\to X)& Z\arrow[r, "u"] & X\\ 
+    (\exists u, u':Z\twoheadrightarrow X)& Z\arrow[r, "u"] & X\\ 
                           & Z\arrow[r, "u'"] & X'\\ 
                       & hu=h'u'
   \end{tikzcd}\end{center}
-  to znaczy, że istnieją $u, u'$ takie, że komutuje diagram
+  to znaczy, że istnieją $u, u'$ epimorfizmy takie, że komutuje diagram
   \begin{center}\begin{tikzcd}
     & Z\arrow[dr, "u"]\arrow[dl, "u'" above left] \\ 
     X \arrow[dr, "h" below left] & & X'\arrow[dl,"h'"]\\ 
