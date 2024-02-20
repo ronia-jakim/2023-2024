@@ -1,5 +1,9 @@
 \documentclass[a5paper, twoside]{article}
 
+\usepackage{multicol}
+
+\usepackage{pgf}
+
 %\usepackage{showframe}
 
 %\usepackage[flowers]{../../template}
@@ -40,6 +44,10 @@
 \renewcommand\small{\@setfontsize\small{6pt}{6}}
 \makeatother
 
+\pgfmathsetseed{\number\pdfrandomseed}
+
+\usetikzlibrary{calc}
+
 \fancyhead[LE, RO]{\rightmark}
 
 \setheader{Funkcje analityczne R}
@@ -55,6 +63,7 @@
 %\includeonly{15:22-01-23.tex}
 
 \begin{document}
+
 \scalefont{0.8}
 
 

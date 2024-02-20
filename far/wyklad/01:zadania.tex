@@ -1,1 +1,139 @@
 \subsection{Zadania}
+
+\begin{problem}
+  Zapisać w postaci $x+iy$ podane liczby.
+  \begin{multicols*}{2}
+    $${\color{orange}(3+2i)-(4-i)}=-1+i$$
+    $${\color{orange}(1-i)^4}=1-4i-6+4i+1=-4$$
+    $${\color{orange}(2-3i)(-2+i)}=-1+8i$$
+    $${\color{orange}(3+i)(3-i)(\frac{2+i}{10})}=2+i$$
+    $${\color{orange}i(2-7i)}=7+2i$$
+    $${\color{orange}\frac{1+2i}{3-4i}+\frac{2-i}{5i}}=\frac{(1+2i)(3+4i)}{25}-\frac{5(1+2i)}{25}=\frac{-1}{5}$$
+    $${\color{orange}\frac{1+i}{2-i}}=\frac{(1+i)(2+i)}{5}=\frac{1}{5}+i\frac{3}{5}$$
+    $${\color{orange}\frac{2i}{(i-1)(i-2)(i-3)}}=\frac{2i(i+1)(i+2)(i+3)}{2\cdot 5\cdot 10}=-\frac{1}{5}$$
+  \end{multicols*}
+\end{problem}
+
+\begin{problem}
+  Rozwiązać równania
+  $$z^2-2z+2=0;\quad 3z^2+2z+1=0$$
+\end{problem}
+
+\begin{solution}
+  Uzupełniając pierwsze równanie do kwadratu
+  \begin{align*}
+    z^2-2z+1&=-1\\ 
+    (z-1)^2&=-1
+  \end{align*}
+  jeśli $w=z-1$, to $w^2+1=0$, czyli $w=i$ lub $w=-i$. W takim razie
+  $$z=1+i\quad\lor\quad z=1-i$$
+
+  Znowu uzupełniając do kwadratu
+  \begin{align*}
+    3z^2+2z+1&=0\\ 
+    3\left(z+\frac{1}{3}\right)^2+\frac{2}{3}&=0
+  \end{align*}
+  czyli dla $w=z+\frac{1}{3}$ mamy $w^2=-\frac{2}{9}$, a więc $w=\pm i\frac{\sqrt{2}}{3}$, co daje
+  $$z=-\frac{1}{3}+i\frac{\sqrt2}{3}\quad\lor\quad z=-\frac{1}{3}-i\frac{\sqrt2}{3}$$
+\end{solution}
+
+\begin{problem}
+  Uzasadnić, że jeśli $z_1z_2z_3=0$, to jeden z czynników jest równy zeru.
+\end{problem}
+
+\begin{solution}
+  %Niech $z_j=x_j+iy_j$ dla $j=1,2,3$. Wtedy 
+  %\begin{align*}
+  %  z_1z_2z_3&=(x_1+iy_1)(x_2+iy_2)(x_3+iy_3)=(x_1x_2-y_1y_2+i(x_1y_2+y_1x_2))(x_3+iy_3)=\\ 
+  %           &=(x_1x_2x_3-y_1y_2x_3-x_1y_2y_3-y_1x_2y_3+i(x_1y_2x_3+y_1x_2x_3+x_1x_2y_3-y_1y_2y_3))
+  %\end{align*}
+%
+  Niech $z_j=r_j(\cos\theta_j+i\sin\theta_j)$ dla $j=1,2,3$. Wtedy
+  $$0=z_1z_2z_3=r_1r_2r_3(\cos(\theta_1+\theta_2+\theta_3)+i\sin(\theta_1+\theta_2+\theta_3))$$
+  ponieważ nawias jest zawsze niezerowy, to co najmniej jedno z $r_j$ musi wynosić $0$.
+\end{solution}
+
+\begin{problem}
+  Uzasadnić zasady przemienności i łączności mnożenia:
+  $$z_1z_2=z_2z_1\quad z_1(z_2z_3)=(z_1z_2)z_3$$
+\end{problem}
+
+\begin{solution}
+  Niech $z_j=x_j+iy_j$ (chociaż korzystając z trygonometrycznej wersji byłoby zapewne szybciej). 
+
+  \begin{align*}
+    z_1z_2&=(x_1+iy_1)(x_2+iy_2)=x_1x_2-y_1y_2+i(x_1y_2+y_1x_2)=\\ 
+          &=x_2x_1-y_2y_1+i(y_2x_1+x_2y_1)=(x_2+iy_2)(x_1+iy_1)=\\ 
+          &=z_2z_1
+  \end{align*}
+
+\end{solution}
+
+\begin{problem}
+  Zaznaczyć na płaszczyźnie liczby $z_1$, $z_2$, $z_1+z_2$ oraz $z_1-z_2$.
+  \begin{enumerate}[label=\alph*)]
+    \item $z_1=-3+i$, $z_2=1+4i$
+    \item $z_1=3$, $z_2=-3+5i$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}$ $
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (-3, 0)--(3, 0);
+      \draw[->] (0, -3)--(0, 3);
+      \fill (-1.5, 0.5) circle (2pt);
+      \fill (0.5, 2) circle (2pt);
+      \node at (-1.5, 0.8) {$z_1$};
+      \node at (0.5, 2.3) {$z_2$};
+      \fill (-1, 2.5) circle (2pt);
+      \node at (-1, 2.8) {$z_1+z_2$}; 
+      \draw (-1.5, 0.5)--(0,0)--(0.5, 2);
+      \draw (0,0)--(-1, 2.5);
+      \draw[dashed] (-1.5, 0.5)--(-1, 2.5);
+      \draw[dashed] (0.5, 2)--(-1, 2.5);
+    \end{tikzpicture}
+  \end{center}
+
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (-3, 0)--(3, 0);
+      \draw[->] (0, -3)--(0, 3);
+      \fill (1.5, 0) circle (2pt);
+      \fill (-1.5, 2.5) circle (2pt);
+      \node at (1.5, 0.3) {$z_1$};
+      \node at (-1.5, 2.8) {$z_2$};
+      \fill (0, 2.5) circle (2pt);
+      \node at (0.5, 2.7) {$z_1+z_2$}; 
+      \draw (0,0)--(-1.5, 2.5);
+      \draw[dashed] (-1.5, 2.5)--(0, 2.5)--(1.5, 0);
+    \end{tikzpicture}
+  \end{center}
+\end{solution}
+
+\begin{problem}
+  Pokazać, że wektor przedstawiający sumę $z_1+z_2+z_3$ jest zamykającym bokiem czworokąta, o pozostałych bokach $z_1$, $z_2$ i $z_3$. Jaki jest kierunek tego wektora?
+\end{problem}
+
+\begin{solution}
+  Zaczynamy od rysunku
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (-3, 0)--(3, 0);
+      \draw[->] (0, -3)--(0, 3);
+        
+      \coordinate (z1) at ({random(-2.5, 2.5)}, {random(-2.5, 2.5)});
+      \coordinate (z2) at ({random(-2.5, 2.5)}, {random(-2.5, 2.5)});
+      \coordinate (z3) at ({random(-2.5, 2.5)}, {random(-2.5, 2.5)});
+      
+      \fill[orange] (z1) circle (2pt);
+      \fill[green] (z2) circle (2pt);
+      \fill[blue] (z3) circle (2pt);
+
+      \fill ($(z1) + (z2) + (z3)$) circle (2pt);
+    \end{tikzpicture}
+  \end{center}
+\end{solution}
