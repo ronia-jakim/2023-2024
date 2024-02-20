@@ -1,0 +1,185 @@
+\section{20.02.24 : Wprowadzenie do liczb zespolonych}
+
+\subsection{Liczby zespolone jako płaszczyzna}
+
+Liczby zespolone utożsamiamy z płaszczyzną: $(x,y)\iff x+iy$. Możemy wtedy pisać $\C=\R+i\R$. Ponieważ jest to pole wektorowe, to możemy dodawać liczby zespolone i mnożyć je przez liczby rzeczywiste. Dodatkowo, przy założeniu, że przez $i$ oznaczamy abstrakcyjne rozwiązanie równania $x^2+1=0$ (tzn. $i^2=-1$), możemy zdefiniować iloczyn wektorów jako 
+$$(x_1, y_1)(x_2, y_2)=(x_1x_2-y_1y_2, x_1y_2+x_2y_1)$$
+$$(x_1+iy_1)(x_2+iy_2)=x_1x_2-y_1y_2+i(x_1y_2+x_2y_1)$$
+Z dodawaniem oraz iloczynem $\C$ jest ciałem (przemiennym).
+
+Sprawdzamy, czy każdy element naprawdę jest odwracalny. Niech $z=x+iy$, gdzie $x\neq 0$ lub $y\neq 0$. Wtedy
+$$\frac{1}{z}=\frac{1}{x+iy}=\frac{x-iy}{x^2+y^2}=\frac{x}{x^2+y^2}+i\frac{-y}{x^2+y^2}.$$
+
+\begin{definition}[część rzeczywista, urojona]
+  Jeśli $z=x+iy$ jest liczbą zespoloną, to oznaczamy
+  $$x=\Re (z)$$
+  co jest \acc{częścią rzeczywistą} liczby $z$ oraz
+  $$y=\Im(z)$$
+  \acc{część urojona}.
+\end{definition}
+
+Chcemy umieć liczyć długość wektorów z $\C=\R+i\R$, czyli definiujemy
+\begin{definition}[sprzężenie (moduł)]
+  Dla liczby zespolonej $z=x+iy$ piszemy
+  $$\overline{z}=x-iy,$$
+  co nazywamy \acc{sprzężeniem} liczby $z$. Dzięki temu możemy też zdefiniować \acc{moduł} (długość) liczby zespolonej $z$:
+  $$|z|=\sqrt{x^2+y^2}=\sqrt{z\overline{z}}.$$
+\end{definition}
+Geometrycznie, o sprzężeniu możemy myśleć jako o odbiciu wzdłuż osi $OX$:
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (0, 0.5)--(0, 4);
+    \draw[->] (-0.5,2)--(4, 2);
+    \draw[orange](0,2)--(3.5, 3.5);
+    \node at (3, 3.5) {$\color{orange}z$};
+    \draw[green](0,2)--(3.5, 0.5);
+    \node at (3, 0.5) {$\color{green}\overline{z}$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{lemma}[własności sprzężenia]
+  Dla liczb zespolonych $z_1,z_2$ mamy:
+  $$\overline{z_1z_2}=\overline{z_1}\;\overline{z_2}.$$
+  Z tego wynika, że $|z_1z_2|=|z_1||z_2|$. Dalej,
+  $$\overline{\left(\frac{z_1}{z_2}\right)}=\frac{\overline{z_1}}{\overline{z_2}}$$
+  co daje nam $\left|\frac{z_1}{z_2}\right|=\frac{|z_1|}{|z_2|}$.
+\end{lemma}
+
+Dla liczb zespolonych zachodzi własność trójkąta, tzn. $|z_1+z_2|\leq |z_1|+|z_2|$, którą dowodzimy podnosząc obie strony do kwadratu:
+\begin{align*}
+  |z_1+z_2|^2&=(z_1+z_2)(\overline{z_1}+\overline{z_2})=|z_1|^2+z_1\overline{z_2}+\overline{z_1}z_2+|z_2|^2=\\ 
+             &=|z_1|^2+z_1\overline{z_2}+\overline{z_1\overline{z_2}}+|z_2|^2=|z_1|^2+2\Re(z_1\overline{z_2})+|z_2|^2\\ 
+  (|z_1|+|z_2|)^2&=|z_1|^2+2|z_1||z_2|+|z_2|^2\geq|z_1|^2+2|\Re(z_1\overline{z_2})|+|z_2|^2
+\end{align*}
+
+\subsection{Postać trygonometryczna i pierwiastki wielomianów}
+
+\begin{definition}[postać trygonometryczna]
+  Niech $z=x+iy$ będzie liczbą zespoloną. Geometrycznie, jest ona reprezentowana przez
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->](-0.5, 0)--(4, 0);
+      \draw[->](0, -0.5)--(0, 4);
+      \draw[orange] (0,0)--(60:4);
+      \node at (50:4.1) {$x+iy$};
+      \node at (65:2) {\rotatebox{60}{$\color{orange}r$}};
+      \draw[dashed] (60:4.1)--(0:{4*cos(60)});
+      \node at (40:3.08) {$y$};
+      \draw (0.5, 0) arc (0:60:0.5);
+      \node at (0.6, 0.35) {$\theta$};
+    \end{tikzpicture}
+  \end{center}
+
+  $$x=r\cos \theta\quad y=r\sin \theta$$
+  $$z=x+iy=r(\cos \theta+i\sin \theta).$$
+\end{definition}
+Wtedy mnożenie liczb zespolonych prezentuje się następująco:
+\begin{align*}
+  z_1z_2&=r_1(\cos\theta_1+i\sin\theta_2)r_2(\cos\theta_2+i\sin\theta_2)=\\ 
+        &=r_1r_2(\cos(\theta_1+\theta_2)+i\sin(\theta_1\theta_2)).
+\end{align*}
+Możemy to uogólnić na stwierdzenie, że \emph{przy mnożeniu liczb zespolonych mnożymy moduły i dodajemy kąty}.
+
+\begin{example}
+  \item Dla ustalonego $z$ chcemy znaleźć $z_0$ takie, że $z_0^n=z$. Korzystając z pierwszej definicji mnożenia lewa strona równania jest potworkiem. Jeśli jednak użyjemy postaci trygonometrycznej wraz ze \buff{wzorem de Moire'a} ($z^n=r^n(\cos(n\theta)+i\sin(n\theta)$), to dostaniemy 
+    $$z_0^n=r_0^n(\cos(n\theta_0)+i\sin(n\theta_0))=r(\cos\theta+i\sin\theta)$$
+    z czego wnioskujemy, że 
+    $$n\theta_0=\theta+2k\pi\implies \theta_0=\frac{\theta}{n}+\frac{2k\pi}{n}$$
+    wystarczy rozważać $k=0, 1,..., n-1$.
+
+    Dostajemy więc $n$ różnych rozwiązań równania.
+  \item Pierwiastki z $1$ to rozwiązania równania
+    $$z^n=1$$
+    czyli liczby postaci
+    $$z_k=\cos\frac{2k\pi}{n}+i\sin\frac{2k\pi}{n}$$
+    dla $k=0,...,n-1$. Jedno z tych rozwiązań jest specjalne, mianowicie
+    $$\omega=\cos\frac{2\pi}{n}+i\sin{2\pi}{n},$$
+    gdyż jej potęgowanie generuje pozostałe pierwiastki $1$.
+\end{example}
+
+\begin{theorem}[Zasadnicze twierdzenie algebry]
+  Wielomian 
+  $$w(z)=a_nz^n+...+a_1z+a_0,$$
+  gdzie $a_n\neq 0$, ma $n$ pierwiastków zespolonych wraz z krotnościami.
+\end{theorem}
+
+\begin{proof}
+  Żeby udowodnić twierdzenie wyżej wystarczy udowodnić, że wielomian $w(z)$ ma co przynajmniej jeden pierwiastek. Wtedy wielomian rozłoży się na $w(z)=(z-z_1)v(z)$.
+
+  Do dowodu tego twierdzenia wrócimy później.
+\end{proof}
+
+\subsection{Funkcje ciągłe}
+
+\begin{definition}[zbieżność ciągu]
+  Mówimy, że ciąg $z_n=x_n+iy_n$ jest zbieżny do $z=x+y$, jeśli $x_n\to x$ i $y_n\to y$. Równoważnie, możemy powiedzieć, że 
+  $$|z_n-z|\to 0,$$
+  co wynika wprost z nierówności trójkąta:
+  $$\begin{matrix}|x_n-x|\\|y_n-y|\end{matrix}\leq |z_n-z|\leq |x_n-x|+|y_n-y|.$$
+\end{definition}
+
+Rozważmy funkcję $f:\C\to \C$, np. $f(z)=z+1$ czy $f(z)=\frac{1}{z^2+1}$ dla $z\neq -i,i$. W zależności od wygody będziemy zamiennie stosować zapisy
+$$f(x, y):=f(x+iy)$$
+lub nawet
+$$f(x+iy)=u(x, y)+iv(x, y)$$
+gdzie $u(x, y)=\Re(f(x, y))$ i $v(x, y)=\Im(f(x, y))$. Na przykład dla funkcji $f(z)=z^2$ funkcja $u(x, y)=x^2-y^2$, a $v(x, y)=2xy$.
+
+  
+Korzystając z wiedzy o $\R$, możemy powiedzieć, że funkcja $f:\C\to\C$, $f=u+iv$, jest ciągła jako funkcja zespolona, jeśli jest ciągła jako funkcja z $\R^2$ do $\R^2$. To znaczy, że każda z funkcji $u$ i $v$ jest ciągła. Tak samo funkcja $f$ ma granicę, jeśli $u$ oraz $v$ mają granicę.
+
+\begin{definition}[granica funkcji]
+  Nie odwołując się do rozbicia $f$ na $u$ oraz $v$ i napisać, że funkcja $f(z)$ ma pewną granicę $g$ w punkcie $z_0$, jeśli
+  $$|f(z)-g|\xrightarrow[z\to z_0]{} 0.$$
+\end{definition}
+
+\begin{example}
+\item Chcemy przeliczyć
+  $$\lim\limits_{z\to i}\frac{z-i}{z^2+1}=\lim\limits_{z\to i}\frac{z-i}{(z-i)(z+i)}=\frac{1}{2i}$$
+  ale tutaj rozbiliśmy funkcję na iloczyn dwóch funkcji. Musimy więc udowodnić, że dla liczb zespolonych to naprawdę ma miejsce.
+  %i uwierzyliśmy, że
+  %$$\lim\limits_{z\to z_0}\frac{f(z)}{g(z)}=\frac{a+bi}{c+di},$$
+  %o ile $f\to a+bi$ i $g\to c+di\neq 0$.
+\end{example}
+
+\begin{lemma}
+  $$\lim\limits_{z\to z_0}\frac{f(z)}{g(z)}=\frac{a+bi}{c+di}$$
+  o ile $f\to a+bi$ i $g\to c+di\neq 0$.
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    \frac{f(z)}{g(z)}&=\frac{u_1+iv_1}{u_2+iv_2}=\frac{(u_1+iv_1)(u_2-iv_2)}{u_2^2+v_2^2}=\\ 
+                     &=\frac{u_1u_2+v_1v_2}{u_2^2+v_2^2}+i\frac{v_1u_2-v_2u_1}{u_2^2+v_2^2}\to\\ 
+                     &\to \frac{ac+bd}{c^2+d^2}+i\frac{bc-ad}{c^2+d^2}=\frac{a+bi}{c+di}.
+  \end{align*}
+\end{proof}
+
+\begin{definition}[ciągłość funkcji w punkcie]
+Mówimy, że $f$ jest ciągła w $z_0$, jeśli $f$ jest określona w pobliżu $z_0$ oraz 
+$$\lim\limits_{z\to z_0}f(z)=f(z_0).$$
+\end{definition}
+
+Suma, iloczyn i iloraz funkcji ciągłych w $z_0$ są funkcjami ciągłymi w $z_0$. 
+
+\begin{definition}[ciągłość funkcji w obszarze] 
+  Funkcja $f$ jest ciągła w obszarze otwartym $U\subseteq \C$ (to samo co obszar otwarty w $\R^2$), jeśli jest ciągła w każdym punkcie z $U$.
+
+  Funkcja $f$ jest ciągła w obszarze $U\subseteq \C$, jeśli jest ciągła w $Int(U)$ oraz dla $z_n\in U$ i $z_n\to z_0\in U$, to $f(z_n)\to f(z_0$.
+\end{definition}
+
+\begin{theorem}[Weierstrassa]
+  Jeśli $f(z)$ jest ciągła w domkniętym i ograniczonym obszarze $D\subseteq\C$, to $f(z)$ jest ograniczone dla $z\in D$. To znaczy, że istnieje stała $M$ takie, że dla wszystkich $z\in D$ $|f(z)|\leq M$.
+\end{theorem}
+
+Nie działa tutaj jednak wersja twierdzenia Weierstrassa o osiąganiu kresów dla funkcji $\R\to\R$, gdyż na $\C$ nie ma dobrego porządku.
+
+\begin{lemma}[ciągłość złożenia]
+  Można udowodnić, że jeśli $f(z)$ jest ciągła w $z_0$ oraz $g(w)$ jest ciągła w $w_0=f(z_0)$, to $g\circ f$ jest ciągła w $z_0$.
+\end{lemma}
+
+Co wynika z twierdzeń z analizy rzeczywistej.
+
+\begin{center}
+  \Large \textbf{NEXT TIME:} Pochodna zespolona.
+\end{center}

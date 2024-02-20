@@ -1,0 +1,73 @@
+\documentclass[a5paper, twoside]{article}
+
+%\usepackage{showframe}
+
+%\usepackage[flowers]{../../template}
+\usepackage{../../template}
+\usetikzlibrary{tikzmark}
+\usetikzlibrary{fit}
+
+\usepackage{wrapfig}
+
+\geometry{
+%  showframe,
+  a5paper, 
+  total={124.5mm, 165mm}, 
+  top=20mm, 
+  marginpar={0mm},
+  left={12mm},
+  %right={26mm},
+  headsep=5mm
+}
+\tikzcdset{scale cd/.style={every label/.append style={scale=#1},
+    cells={nodes={scale=#1}}}}
+\pdfcompresslevel=0
+
+
+\renewcommand{\contentsname}{Spis rozmaitości treściowalnych}
+
+\usepackage{titlesec}
+\usepackage[dotinlabels]{titletoc}
+\titleformat{\section}[hang]{\color{purple}\sffamily\bfseries\Large}{\color{purple}Wykład }{0.2em}{}
+\titlespacing*{\section}{0pt}{2\baselineskip}{1.25\baselineskip}
+\titleformat{\subsection}[hang]{\color{purple}\sffamily\bfseries\large}{\color{purple}\thesubsection}{0.4em}{}
+\titlespacing*{\subsection}{2em}{1\baselineskip}{1\baselineskip}
+
+\makeatletter %only needed in preamble
+\renewcommand\Large{\@setfontsize\Large{12pt}{9}}
+\renewcommand\large{\@setfontsize\large{10pt}{9}}
+\renewcommand\scriptsize{\@setfontsize\scriptsize{5pt}{5}}
+\renewcommand\small{\@setfontsize\small{6pt}{6}}
+\makeatother
+
+\fancyhead[LE, RO]{\rightmark}
+
+\setheader{Funkcje analityczne R}
+\setfoot{Szwarca}
+
+\fancyfoot[LE, RO]{\color{black!20}\scalefont{0.8} }%Weronika Jakimowicz}
+
+\title{Funkcje analityczne R}
+\author{}
+\date{Zima 2023-24}
+
+
+%\includeonly{15:22-01-23.tex}
+
+\begin{document}
+\scalefont{0.8}
+
+
+\maketitle
+\thispagestyle{empty} 
+\newpage
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+\pagestyle{fancy}
+
+\include{01:20-02-24.tex}
+
+\end{document}
