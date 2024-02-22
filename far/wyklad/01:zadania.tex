@@ -3,6 +3,7 @@
 \begin{problem}
   Zapisać w postaci $x+iy$ podane liczby.
   \begin{multicols*}{2}
+    \scalefont{0.8}
     $${\color{orange}(3+2i)-(4-i)}=-1+i$$
     $${\color{orange}(1-i)^4}=1-4i-6+4i+1=-4$$
     $${\color{orange}(2-3i)(-2+i)}=-1+8i$$
@@ -118,6 +119,9 @@
 \end{problem}
 
 \begin{solution}
+  Troszkę nie rozumiem o co pytają w tym zadaniu
+
+
   Zaczynamy od rysunku
 
   \begin{center}
@@ -134,6 +138,155 @@
       \fill[blue] (z3) circle (2pt);
 
       \fill ($(z1) + (z2) + (z3)$) circle (2pt);
+      \draw[dashed] (z1)--(z2)--(z3)--($(z1)+(z2)+(z3)$) --cycle;
     \end{tikzpicture}
   \end{center}
 \end{solution}
+
+\begin{problem}
+  Jaki punkt płaszczyzny przedstawia $\frac{1}{2}(z_1+z_2)$ w odniesieniu do punktów $z_1$ i $z_2$?
+\end{problem}
+
+\begin{solution}
+  Środek odcinka, który je łączy:
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (-3, 0)--(3, 0);
+      \draw[->] (0, -3)--(0, 3);
+        
+      \coordinate (z1) at ({random(-2.5, 2.5)}, {random(-2.5, 2.5)});
+      \coordinate (z2) at ({random(-2.5, 2.5)}, {random(-2.5, 2.5)});
+      
+      \fill[orange] (z1) circle (2pt);
+      \fill[green] (z2) circle (2pt);
+
+      \draw[dashed] (z1)-- coordinate (center) (z2);
+      \fill [blue] (center) circle (2pt);
+      \node[anchor=south] at (center) {$1/2(z_1+z_2)$};
+    \end{tikzpicture}
+  \end{center}
+\end{solution}
+
+\begin{problem}
+  Oblicz $\overline{z}$, $\Re(z)$, $\Im(z)$ oraz $|z|$.
+  $$z_1=3-4i,\quad z_2=-2i, \quad z_3=4, \quad z_4=2-2i$$
+\end{problem}
+
+\begin{solution}
+  Szybka sprawa:
+  $$
+    \begin{matrix}
+      \overline{z_1}=3+4i\\ 
+    \Re(z_1)=3\\ 
+    \Im(z_1)=-4\\
+    |z_1|=5\\ 
+    \overline{z_2}=2i\\ 
+    \Re(z_2)=0\\ 
+    \Im(z_2)=-2\\ 
+    |z_2|=2 
+  \end{matrix}\quad \; \quad \; \quad \; \quad
+    \begin{matrix}
+    \overline{z_3}=4\\  
+    \Re(z_3)=4\\ 
+    \Im(z_3)=0\\ 
+    |z_3|=4\\ 
+    \overline{z_4}=2+2i\\ 
+    \Re(z_4)=2\\ 
+    \Im(z_4)=-2\\ 
+    |z_4|=2\sqrt{2}
+    \end{matrix}
+  $$
+\end{solution}
+
+\begin{problem}
+  Wyprowadź podane wzory.
+  {\large\color{red}TO DO}
+\end{problem}
+
+\begin{problem}
+  Pokazać, że jeśli $z^2=(\overline{z})^2$, to $z$ jest rzeczywista lub czysto urojona
+\end{problem}
+
+\begin{solution}
+  Niech $z=x+iy$. Z założenia wiemy, że
+  \begin{align*}
+    (x+iy)^2=x^2+2yxi-y^2&=(x+iy)^2=z^2=(\overline{z})^2=(x-iy)^2=x^2-2xyi-y^2
+  \end{align*}
+  Czyli
+  $$x^2+2xyi-y^2=x^2-2xyi-y^2\implies 0=4xyi\implies x=0\;\lor\;y=0$$
+\end{solution}
+
+\begin{problem}
+  Podać algebraiczny dowód nierówności $|z_1-z_2|\geq ||z_1|-|z_2||$.
+\end{problem}
+
+\begin{solution}
+  Oczywiście, $|z_1-z_2|=|z_2-z_1|$. Możemy napisać
+  \begin{align*}
+    |z_1|+|z_2-z_1|&\geq|z_1+z_2-z_1|=|z_2|\\ 
+    |z_2|+|z_1-z_2|&\geq |z_2+z_1-z_2|=|z_1|
+  \end{align*}
+  Co daje nam
+  \begin{align*}
+    |z_1-z_2|&\geq |z_2|-|z_1|\\ 
+    |z_1-z_2|&\geq |z_1|-|z_2|,
+  \end{align*}
+  czyli $|z_1-z_2|\geq \max(|z_2|-|z_1|)=||z_2|-|z_1||$.
+\end{solution}
+
+\begin{problem}
+  Pokazać, że $|z|\geq (|x|+|y|)\sqrt{2}$.
+\end{problem}
+
+\begin{solution}
+  Tutaj zakładam, że chodzi o $z=x+iy$. Po przemnożeniu przez $\sqrt{2}$ i podniesieniu obu stron do kwadratu dostaniemy z lewej strony $2|z|^2$, a z prawej $|x|^2+|y|^2+2|xy|$. Rozpisując lewą stronę, dostajemy $2|z|^2=2(x^2+y^2)$, czyli
+  $$2x^2+2y^2\geq x^2+y^2+2|xy|$$
+  $$0\leq x^2-2|x||y|+y^2= (|x|-|y|)^2.$$
+\end{solution}
+
+\begin{problem}
+  Opisać położenie punktów 
+  $$(a)\;|z|=1\quad \quad (b)\;|z-2|=3\quad \quad (c) \Re(z)=\frac{1}{2}$$
+\end{problem}
+
+\begin{solution}
+  Pierwsze to oczywiście okrąg jednostkowy
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (-3, 0)--(3, 0);
+      \draw[->] (0, -3)--(0, 3);
+      
+      \draw[blue] (0,0) circle (1.5);
+    \end{tikzpicture}
+  \end{center}
+
+  Drugie to również okrąg, ale tym razem o środku $(2, 0)$ i promieniu $\sqrt{3}$.
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (-3, 0)--(3, 0);
+      \draw[->] (0, -3)--(0, 3);
+      
+      \draw[blue] (1.5,0) circle (1.2990);
+    \fill(1.5, 0) circle (1pt);
+    \end{tikzpicture}
+  \end{center}
+
+  W ostatnim przykładzie mamy prostą $x=\frac{1}{2}$:
+  
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (-3, 0)--(3, 0);
+      \draw[->] (0, -3)--(0, 3);
+      
+      \draw[blue] (1.5, 3)--(1.5, -3);
+    \end{tikzpicture}
+  \end{center}
+\end{solution}
+
+\begin{problem}
+  Opisać położenie punktów $z$ spełniających 
+  $$z\overline{z}-\overline{a}z-a\overline{z}+a\overline{a}=b\overline{b}$$
+  dla ustalonych liczb zespolonych $a$ i $b$.
+\end{problem}
