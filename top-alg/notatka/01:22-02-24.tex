@@ -1,0 +1,273 @@
+\section{22.02.24 : Wstęp - homotopijna równoważność, pojęcie grupy podstawowej}
+
+\subsection{Drogi, homotopijna równoważność}
+
+W przestrzeni topologicznej $X$ \buff{droga} między punktami $x_0$ a $x_1$ to ciągła funkcja $f:[0,1]\to X$ taka, że $f(0)=x_0$ oraz $f(1)=x_1$.
+
+\begin{definition}[homotopia]
+  Niech $f_t$ dla $t\in[0,1]$ będzie rodziną dróg między $x_0$ a $x_1$ w $X$ takich, że
+  \begin{itemize}
+    \item dla każdego $t\in[0,1]$ $f_t(0)=x_0$ oraz $f_t(1)=x_1$;
+    \item rodzina ta zależy w sposób ciągły od $t$, tzn. istnieje przekształcenie ciągłe $F:[0,1]\times[0,1]\to X$ takie, że $F(s, t)=f_t(s)$.
+  \end{itemize}
+  Przekształcenie $F$ nazywamy \buff{homotopią} między $f_0$ a $f_1$.
+\end{definition}
+
+Możemy to zobrazować albo jako ciągłe przeciąganie dwóch sznurków:
+\begin{center}
+  \begin{tikzpicture}
+    \fill (2, 1) circle (1pt);
+    \fill (0,0) circle (1pt);
+
+    \draw[red, thick] (0,0) to[out=80, in=150] (2, 1);
+    \draw[blue, thick] (0,0) to[out=-40, in=210] (1, 0) to[out=30, in=90] (1.3, -0.4) to[out=-90, in=-90] (2, 1);
+
+    \draw[dashed] (0,0) to[out=40, in=140] (1.3, 0.45) to[out=-40, in=-120] (2, 1);
+    \draw[dashed] (0,0) to[out=70, in=170] (1.4, 0.8) to[out=-10, in=190] (2, 1);
+    \draw[dashed] (0,0) to[out=10, in=200] (0.9, 0.2) to[out=20, in=120] (1.3, -0.1) to[out=-50, in=-100] (2, 1);
+  \end{tikzpicture}
+\end{center}
+lub, bardziej abstrakcyjnie, jako kwadrat, który $F$ przeprowadza w $X$:
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->, thick](0,0)--(0, 1.5);
+    \draw[thick] (0, 1.5)--(0, 3);
+    \draw[blue, thick] (0, 3)--(4, 3);
+    \draw[->, thick] (4, 0)--(4, 1.5);
+    \draw[thick](4, 1.5)--(4, 3);
+    \draw[red, thick](0,0)--(4, 0);
+
+    \foreach \i in {0, 1, ..., 6} {
+      \coordinate (z\i) at ({random(2, 18) * 1/5}, 0);
+      \draw[->] (z\i) -- ++(0, 1.5);
+      \draw (z\i) -- ++(0, 3);
+    } 
+    
+    \node at (-0.4, 1.3) {$f_0$};
+    \node at (4.4, 1.3) {$f_1$};
+
+    \node at (1, 3.5) {$\color{blue} x_1$};
+    \node at (1, -.5) {$\color{red} x_0$};
+
+    \draw[->] (4.5, 2) to [out=40, in=140] (6, 2);
+    \node at ({4.5 + 1.25}, 2.5) {$F$};
+    \node at (6.3, 1.7) {$X$};
+  \end{tikzpicture}
+\end{center}
+
+Jeśli za $X$ weźmiemy $\R^n$, to każde dwie drogi $f, g:[0,1]\to \R^n$ o wspólnym początku są homotopijne. Możemy np. napisać tzw. homotopię "liniową":
+$$F(x, t)=(1-t)f(s)+t\cdot g(s).$$
+To samo tyczy się dowolnego wypukłego podzbioru $A\subseteq\R^n$.
+
+\begin{fact}
+  Homotopijność dróg jest jest relacją równoważności na zbiorze wszystkich dróg od $x_0$ do $x_1$ w $X$.
+\end{fact}
+
+Jest więc sensownym rozważanie klas abstrakcji relacji homotopijnej równoważności dróg. Przez $\color{blue}\boldsymbol{[f]}$ będziemy zwykle rozumieć klasę dróg homotopijnych z $f$.
+
+\begin{proof}
+  Niech $f, g, h:[0,1]\to X$ będą drogami między $x_0$ a $x_1$ takimi, że $f$ jest homotopijna z $g$, a $g$ jest homotopijna z $h$.
+
+  \begin{enumerate}
+    \item Zwrotność: oczywista homotopia między $f$ a $f$ to identyczność: $F(t, s)=f(t)$.
+    \item Symetryczność: niech $F$ będzie homotopią między $f$ i $g$ (tzn. $F(t, 0)=f(t)$, $F(t, 1)=g(t)$). Wtedy $G(t, s)=F(t, 1-s)$ spełnia $G(t, 0)=F(t, 1)=g(t)$ oraz $G(t, 1)=F(t, 0)=f(t)$, czyli $G$ jest homotopią między $g$ a $f$. Ciągłość tego odwzorowania wynika z ciągłości $F$ oraz odwzorowania $x\mapsto 1-x$.
+    \item Przechodność: niech $F$ będzie homotopią miedzy $f$ i $g$, a $G$ - między $g$ a $h$. Wtedy 
+      $$H(t, s)=
+      \begin{cases}
+        F(t, 2\cdot s) & s\leq \frac{1}{2}\\ 
+        G(t, 2s-1) & s>\frac{1}{2}.
+      \end{cases}$$
+      Widać, że $H(t, 0)=F(t, 2\cdot 0)=f(t)$ oraz $H(t, 1)=G(t, 2-1)=h(t)$. Ciągłość może psuć się wyłącznie w $s=\frac{1}{2}$ i wystarczy zauważyć, że granica idąc od lewej i idąc od prawej wynosi $g(t)$.
+  \end{enumerate}
+\end{proof}
+
+Składając drogi chcemy, aby wynik tego działania nadal był drogą. W takim razie, musimy pilnować, aby koniec pierwszej drogi i początek drugiej były tym samym punktem, oraz aby złożenie było funkcją z $[0,1]$.
+
+\begin{definition}[złożenie dróg]
+  Niech $f,g:[0,1]\to X$ będą drogami takimi, że $f(1)=g(0)$. Wtedy 
+  $$fg(s):=\begin{cases}f(2s)&s\leq\frac{1}{2}\\ g(2s-1) & s>\frac{1}{2}\end{cases}$$
+  jest złożeniem dróg $f$ i $g$. Piszemy czasem $fg=f\cdot g$.
+\end{definition}
+
+\begin{fact}\label{fakt:1.2}
+  Jeśli $f\sim f'$ oraz $g\sim g'$ są parami homotopijnych dróg, $f(1)=g(0)$ oraz $f'(1)=g'(0)$, to $fg\sim f'g'$.
+\end{fact}
+
+Z tego wynika, że możemy mówić o \acc{składaniu klas homotopii}, tzn.: 
+$$\color{blue}\boldsymbol{[f][g]=[fg]}.$$
+
+\begin{lemma}[łączność]\label{lemma:1.3}
+  Działanie składania klas homotopii, o ile ma sens, jest działaniem łącznym. To znaczy, że 
+  $$[(fg)h]=([f][g])[h]=[f]([g][h])=[f(gh)].$$
+\end{lemma}
+
+\begin{proof}
+  Wystarczy pokazać, że $(fg)h\sim f(gh)$. Rysunkowo, wygląda to tak:
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle ++(4, 2);
+      \draw (2, 1.8)--(2, 2.2);
+      \draw (1, 1.8)--(1, 2.2);
+
+      \draw (2, 0.2)--(2, -0.2);
+      \draw (3, 0.2)--(3, -0.2);
+      
+      \draw (2, 0)--(1, 2);
+      \draw (3, 0)--(2, 2);
+
+      \node at (0.5, 2.3) {$f$};
+      \node at (1.5, 2.3) {$g$};
+      \node at (3, 2.3) {$h$};
+    
+      \node at (1, -.3) {$f$};
+      \node at (2.5, -.3) {$g$};
+      \node at (3.5, -.3) {$h$};
+
+      \draw[decorate, decoration={brace, amplitude=5pt, mirror, raise=4ex}] (0.5, 2) -- (0.5, 0);
+      \node at (-0.5, 1) {$t$};
+    \end{tikzpicture}
+  \end{center}
+  natomiast homotopia jawnie wyraża się
+  $$F(s, t)=\begin{cases}
+    f((4-2t)s)&s\leq \frac{1}{2(2-t)}\\ 
+    g(4s-(1+t))&\frac{1+t}{4}<s\leq \frac{2+t}{4}\\ 
+    h((2+2t)s-(1+2t))&\frac{1+2t}{2+2t}<s
+  \end{cases}$$
+\end{proof}
+
+\subsection{Grupa podstawowa}
+
+\begin{definition}[pętla]
+  Pętla w $X$ zbazowana w punkcie $x_0\in X$ to droga w $X$ o początku i końcu $x_0$.
+\end{definition}
+
+Złożenie pętli zawsze ma sens i zawsze daje pętle zbazowaną w $x_0$.
+
+\begin{theorem}[$\Pi_1(X, x_0)$]\label{twierdzenie:1.4}
+  Zbiór wszystkich klas abstrakcji pętli zbazowanych w $x_0$, oznaczany $\color{blue}\boldsymbol{\Pi_1(X, x_0)}$, z działaniem składania dróg jest grupą. 
+\end{theorem}
+
+Zbiór $\Pi_1(X, x_0)$ nazywamy \buff{grupą podstawową} $X$ z wyróżnionym punktem $x_0$.
+
+\begin{proof}
+  Łączność tego działania jest jasna z \ref{lemma:1.3}. Elementem neutralnym jest pętla stale równa $x_0$, którą oznaczamy $x_0:[0,1]\to X$, $x_0(s)=x_0$. Aby zauważyć, że dla dowolnej pętli $f$ zachodzi $f=fx_0=x_0f$, wystarczy zauważyć, że $fx_0$ oraz $x_0f$ jest po prostu zmianą parametryzacji $f$:
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle ++ (2, 2);
+      \draw[very thick, blue] (0,0)--(2,2);
+
+      \draw(3, 0) rectangle ++(2, 2);
+      \draw[very thick, blue](3, 0)--(4, 0)--(5, 2);
+
+      \draw (-3, 0) rectangle ++(2,2);
+      \draw[very thick, blue](-3, 0)--(-2, 2)--(-1, 2);
+
+      \node at (1, -0.3) {$f$};
+      \node at (4, -0.3) {$x_0f$};
+      \node at (-2, -0.3) {$fx_0$};
+    \end{tikzpicture}
+  \end{center}
+  czyli podobnie jak w dowodzie \ref{lemma:1.3} możemy napisać homotopię między tymi drogami.
+
+  Pozostaje sprawdzić, czy dowolna droga $f$ posiada element odwrotny. Rozważmy $f'(t)=f(1-t)$, czyli $f$ przechodzone "od tyłu". Rozważmy homotopię 
+  $$F(s, t)=\begin{cases}
+    f(2s) & s\leq \frac{1-t}{2}\\ 
+    f(1-t) & \frac{1-t}{2}<s\leq \frac{t+1}{2}\\ 
+    f(2-2s) & \frac{1+t}{2}\leq s
+  \end{cases}$$
+  która dla $t=0$ jest równa $F(s, 0)=ff'(s)$, a dla $t=1$ staje się funkcją stałą $F(s, 1)=x_0$. Graficznie, można to przedstawić jako
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle ++(2,2);
+      \draw[very thick, blue] (0,0)--(1, 2)--(2,0);
+
+      \draw (3, 0) rectangle ++(2,2);
+      \draw[very thick, blue] (3, 0)--(3.8, 1.6)--(4.2, 1.6)--(5, 0);
+
+      \draw (6, 0) rectangle ++(2,2);
+      \draw[very thick, blue] (6, 0)--(6.4, 0.8)--(7.6, 0.8)--(8, 0);
+
+      \draw (9, 0) rectangle ++(2, 2);
+      \draw[very thick, blue] (9, 0)--(11, 0);
+
+      \draw[->] (0, -0.3)--(11, -0.3);
+      \node at (5.5, -0.6) {$t$};
+
+      %\draw[->] (-.3, 0)--(-.3, 2);
+      %\node at (-.6, 1) {$s$};
+    \end{tikzpicture}
+  \end{center}
+\end{proof}
+
+\begin{example}
+  \item Dla dowolnego wypukłego podzbioru $A\subseteq\R^n$ i dowolnego punktu $x_0\in A$ grupa podstawowa $\Pi_1(A, x_0)=0$ jest trywialna, gdyż każde dwie drogi są homotopijnie równoważne.
+  \item Jeśli $X=S^1$, to bez względu na wybór $x_0\in X$ mamy $\Pi_1(X, x_0)=\Z$. Można to sobie wyobrazić jako zakręcanie $n$ pętli nad $S^1$:
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{axis} [
+          view={0}{30},
+          axis lines=none,
+          ymin=-2,
+          ymax=5,
+          xmin=-2,
+          xmax=2]
+      
+          \addplot3 [thick, blue, domain=3:7*pi, samples = 100, samples y=0] ({sin(deg(-x))}, {cos(deg(-x))}, {x});
+          \addplot3 [thick, domain=0:2*pi, samples = 100, samples y=0] ({sin(deg(x))}, {cos(deg(x))}, -3);
+          %\addplot3 [thick, only marks, blue, mark=o] ({sin(deg(-3))}, {cos(deg(-3)}, {3});
+
+          \addplot3[thick, blue] coordinates{ ({sin(deg(-3))}, {cos(deg(-3))}, 3) ({sin(deg(-7*pi))}, {cos(deg(-7*pi))}, 7*pi )};
+      \end{axis}
+      \end{tikzpicture}
+    \end{center}
+\end{example}
+
+Naturalne będzie teraz pytanie, jak bardzo $\Pi_1(X, x_0)$ zależy od wyboru punktu $x_0$? 
+
+\begin{lemma}\label{lemma:1.5}
+  Niech $h:[0,1]\to X$ będzie drogą od $x_0$ do $x_1$. Wówczas istnieje odwzorowanie 
+  $$\beta_h:\Pi_1(X, x_0)\to \Pi_1(X, x_1)$$
+  zadane przez 
+  $$\beta_h([f])=[hfh^{-1}],$$
+  które jest izomorfizmem grup.
+\end{lemma}
+
+\begin{proof}
+  Po pierwsze, jeśli $F$ jest homotopią dróg $f$ i $g$ w $\Pi_1(X, x_0)$, to $G(t, _)=hF(t,-)h^{-1}$ jest homotopią $hfh^{-1}$ oraz $hgh^{-1}$, czyli pętli zbazowanych w $x_1$. W takim razie, odwzorowanie jest dobrze zdefiniowane (klasy abstrakcji przechodzą na klasy abstrakcji).
+
+  $\beta_h$ jest też homomorfizmem grup, bo 
+  $$\beta_h[fg]=[h(fg)h^{-1}]=[(hfh^{-1})(hgh^{-1})]=[hfh^{-1}][hgh^{-1}]=\beta_h[f]\beta_h[g].$$
+  
+  Dodatkowo, $\beta_{h^{-1}}[f]=[h^{-1}fh]$ jest odwrotnością $\beta_h$:
+  $$\beta_h\beta_{h^{-1}}[f]=\beta_h[h^{-1}fh]=[h(h^{-1}fh)h^{-1}]=[f]$$
+  oraz podobnie $\beta_{h^{-1}}\beta_h[f]=[f]$.
+\end{proof}
+
+Przypomnijmy, że przestrzeń $X$ jest łukowo spójna, jeśli dla dowolnych dwóch punktów $x, y\in X$ istnieje droga między nimi.
+
+\begin{uwaga}
+  Na mocy \ref{lemma:1.5} wszystkie grupy podstawowe łukowo spójnej przestrzeni $X$ są parami izomorficzne. Możemy więc opuścić pamiętanie punktu bazowego i pisać po prostu $\Pi_1(X)$.
+\end{uwaga}
+
+\subsection{Homomorfizmy indukowane}
+
+Niech $X$ będzie przestrzenią topologiczną z wyróżnionym punktem $x_0$, a $Y$ - przestrzenią z wyróżnionym punktem $y_0$. Odwzorowanie ciągłe $\phi:X\to Y$, które zachowuje punkt wyróżniony (tzn. $\phi(x_0)=y_0$) zapisujemy czasem jako odwzorowanie 
+$$\phi:(X, x_0)\to (Y, y_0)$$
+
+\begin{fact}
+  Odwzorowanie ciągłe
+  $$\phi:(X, x_0)\to (Y, y_0)$$
+  wyznacza homomorfizm 
+  $$\phi_*:\Pi_1(X, x_0)\to \Pi_1(Y, y_0)$$
+  przez złożenie $\phi_*([f])=[\phi\circ f]$
+\end{fact}
+
+\begin{proof}
+  Ciągłość ścieżki $\phi\circ f$ wynika z ciągłości $\phi$ jak i $f$. Dobra określoność wynika z faktu, że jeśli $F$ było homotopią między $f$ i $g$, to $G(t, -)=\phi(F(t, -))$ jest homotopią między $\phi\circ f$ a $\phi\circ g$.
+
+  Pozostaje sprawdzić, że $\phi_*$ naprawdę jest homomorfizmem: 
+  $$\phi_*([fg])=[\phi(fg)]=[(\phi f)(\phi g)]=[\phi f][\phi g]=\phi_*([f])\phi_*([g])$$
+\end{proof}
+
+
+\input{01:zadania.tex}

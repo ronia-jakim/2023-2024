@@ -1,0 +1,38 @@
+\subsection{Zadania}
+
+Zakładamy, że wszystkie rozpatrywane przestrzenie topologiczne są drogowo spójne.
+
+\begin{problem}
+  Uzasadnij, że składanie dróg spełnia następujący warunek skreśleń: jeśli $f_0g_0\sim f_1g_1$ oraz $g_0\sim g_1$, to $f_0\sim f_1$.
+\end{problem}
+
+\begin{solution}
+  Niech $g_0$ będzie drogą o początku w $x_0$. Zauważmy, że podobnie jak w pętlach
+  $$f_0\sim f_0 x_0\sim f_0(g_0g_0^{-1})\sim (f_0g_0)g_0^{-1}.$$
+  Wiemy, że $(f_0g_0)\sim f_1g_1$. Z drugiej strony, skoro $g_0\sim g_1$, to idąc "od tyłu" po homotopii między tymi drogami, tzn. $G'(s, t)=G(1-s, t)$, dostajemy homotopię między $g_0^{-1}$ a $g_1^{-1}$. Czyli
+  $$f_0\sim f_0x_0\sim (f_0g_0)g_0^{-1}\sim (f_1g_1)g_1^{-1}\sim f_1(g_1g_1^{-1})\sim f_1x_0\sim f_1$$
+\end{solution}
+
+\begin{problem}
+  Pokaż bezpośrednio z definicji, że dla pętli $f,g$ w $X$ zbazowanych w $x_0\in X$ zachodzi równoważność $f\sim g\iff f g^{-1}\sim x_0$, gdzie $x_0$ to pętla stała zbazowana w $x_0$, zaś $g^{-1}$ to pętla odwrotna do $g$.
+\end{problem}
+
+\begin{solution}
+  $\implies$
+  
+  Zaczynamy od napisania homotopii 
+  $$fg^{-1} \sim gg^{-1},$$ 
+  czyli funkcji
+  $$G(s, t)=H(s, 1-t)g(1-s).$$ 
+  Potem, korzystając ze wzoru w dowodzie twierdzenia \ref{twierdzenie:1.4} dostajemy homotopię $gg^{-1}\sim x_0$. To daje nam 
+  $$fg^{-1}\sim gg^{-1}\sim x_0$$ 
+  tak jak chcieliśmy.
+
+  $\impliedby$
+
+  Niech $H(s, t)$ będzie homotopią między $fg^{-1}$ a $x_0$. Wtedy $H(s, t)g(s)$ będzie homotopią między $fg^{-1}g$ a $x_0g$, co po skorzystaniu ze wzoru użytego w twierdzeniu \ref{twierdzenie:1.4} daje
+  $$f\sim fg^{-1}g\sim x_0g.$$
+  Pozostaje napisać homotopię $x_0g\sim g$. Będzie to funkcja stale równa $x_0$ na odcinku $[0, (1-t)/2]$ oraz $g(s)$ na pozostałej długości przedziału $[0,1]$. Wzorem, wygląda to następująco:
+  $$G(s, t)=\begin{cases}
+  x_0&s\leq \frac{1-t}{2}\\ g\left(\left(s-\frac{1-t}{2}\right)\frac{2}{1+t}\right)&\frac{1-t}{2}<s\end{cases}$$
+\end{solution}
