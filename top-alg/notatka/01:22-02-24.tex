@@ -143,11 +143,11 @@ $$\color{blue}\boldsymbol{[f][g]=[fg]}.$$
 
 Złożenie pętli zawsze ma sens i zawsze daje pętle zbazowaną w $x_0$.
 
-\begin{theorem}[$\Pi_1(X, x_0)$]\label{twierdzenie:1.4}
-  Zbiór wszystkich klas abstrakcji pętli zbazowanych w $x_0$, oznaczany $\color{blue}\boldsymbol{\Pi_1(X, x_0)}$, z działaniem składania dróg jest grupą. 
+\begin{theorem}[$\pi_1(X, x_0)$]\label{twierdzenie:1.4}
+  Zbiór wszystkich klas abstrakcji pętli zbazowanych w $x_0$, oznaczany $\color{blue}\boldsymbol{\pi_1(X, x_0)}$, z działaniem składania dróg jest grupą. 
 \end{theorem}
 
-Zbiór $\Pi_1(X, x_0)$ nazywamy \buff{grupą podstawową} $X$ z wyróżnionym punktem $x_0$.
+Zbiór $\pi_1(X, x_0)$ nazywamy \buff{grupą podstawową} $X$ z wyróżnionym punktem $x_0$.
 
 \begin{proof}
   Łączność tego działania jest jasna z \ref{lemma:1.3}. Elementem neutralnym jest pętla stale równa $x_0$, którą oznaczamy $x_0:[0,1]\to X$, $x_0(s)=x_0$. Aby zauważyć, że dla dowolnej pętli $f$ zachodzi $f=fx_0=x_0f$, wystarczy zauważyć, że $fx_0$ oraz $x_0f$ jest po prostu zmianą parametryzacji $f$:
@@ -200,8 +200,8 @@ Zbiór $\Pi_1(X, x_0)$ nazywamy \buff{grupą podstawową} $X$ z wyróżnionym pu
 \end{proof}
 
 \begin{example}
-  \item Dla dowolnego wypukłego podzbioru $A\subseteq\R^n$ i dowolnego punktu $x_0\in A$ grupa podstawowa $\Pi_1(A, x_0)=0$ jest trywialna, gdyż każde dwie drogi są homotopijnie równoważne.
-  \item Jeśli $X=S^1$, to bez względu na wybór $x_0\in X$ mamy $\Pi_1(X, x_0)=\Z$. Można to sobie wyobrazić jako zakręcanie $n$ pętli nad $S^1$:
+  \item Dla dowolnego wypukłego podzbioru $A\subseteq\R^n$ i dowolnego punktu $x_0\in A$ grupa podstawowa $\pi_1(A, x_0)=0$ jest trywialna, gdyż każde dwie drogi są homotopijnie równoważne.
+  \item Jeśli $X=S^1$, to bez względu na wybór $x_0\in X$ mamy $\pi_1(X, x_0)=\Z$. Można to sobie wyobrazić jako zakręcanie $n$ pętli nad $S^1$:
     \begin{center}
       \begin{tikzpicture}
         \begin{axis} [
@@ -222,18 +222,18 @@ Zbiór $\Pi_1(X, x_0)$ nazywamy \buff{grupą podstawową} $X$ z wyróżnionym pu
     \end{center}
 \end{example}
 
-Naturalne będzie teraz pytanie, jak bardzo $\Pi_1(X, x_0)$ zależy od wyboru punktu $x_0$? 
+Naturalne będzie teraz pytanie, jak bardzo $\pi_1(X, x_0)$ zależy od wyboru punktu $x_0$? 
 
 \begin{lemma}\label{lemma:1.5}
   Niech $h:[0,1]\to X$ będzie drogą od $x_0$ do $x_1$. Wówczas istnieje odwzorowanie 
-  $$\beta_h:\Pi_1(X, x_0)\to \Pi_1(X, x_1)$$
+  $$\beta_h:\pi_1(X, x_0)\to \pi_1(X, x_1)$$
   zadane przez 
   $$\beta_h([f])=[hfh^{-1}],$$
   które jest izomorfizmem grup.
 \end{lemma}
 
 \begin{proof}
-  Po pierwsze, jeśli $F$ jest homotopią dróg $f$ i $g$ w $\Pi_1(X, x_0)$, to $G(t, _)=hF(t,-)h^{-1}$ jest homotopią $hfh^{-1}$ oraz $hgh^{-1}$, czyli pętli zbazowanych w $x_1$. W takim razie, odwzorowanie jest dobrze zdefiniowane (klasy abstrakcji przechodzą na klasy abstrakcji).
+  Po pierwsze, jeśli $F$ jest homotopią dróg $f$ i $g$ w $\pi_1(X, x_0)$, to $G(t, _)=hF(t,-)h^{-1}$ jest homotopią $hfh^{-1}$ oraz $hgh^{-1}$, czyli pętli zbazowanych w $x_1$. W takim razie, odwzorowanie jest dobrze zdefiniowane (klasy abstrakcji przechodzą na klasy abstrakcji).
 
   $\beta_h$ jest też homomorfizmem grup, bo 
   $$\beta_h[fg]=[h(fg)h^{-1}]=[(hfh^{-1})(hgh^{-1})]=[hfh^{-1}][hgh^{-1}]=\beta_h[f]\beta_h[g].$$
@@ -246,7 +246,7 @@ Naturalne będzie teraz pytanie, jak bardzo $\Pi_1(X, x_0)$ zależy od wyboru pu
 Przypomnijmy, że przestrzeń $X$ jest łukowo spójna, jeśli dla dowolnych dwóch punktów $x, y\in X$ istnieje droga między nimi.
 
 \begin{uwaga}
-  Na mocy \ref{lemma:1.5} wszystkie grupy podstawowe łukowo spójnej przestrzeni $X$ są parami izomorficzne. Możemy więc opuścić pamiętanie punktu bazowego i pisać po prostu $\Pi_1(X)$.
+  Na mocy \ref{lemma:1.5} wszystkie grupy podstawowe łukowo spójnej przestrzeni $X$ są parami izomorficzne. Możemy więc opuścić pamiętanie punktu bazowego i pisać po prostu $\pi_1(X)$.
 \end{uwaga}
 
 \subsection{Homomorfizmy indukowane}
@@ -258,7 +258,7 @@ $$\phi:(X, x_0)\to (Y, y_0)$$
   Odwzorowanie ciągłe
   $$\phi:(X, x_0)\to (Y, y_0)$$
   wyznacza homomorfizm 
-  $$\phi_*:\Pi_1(X, x_0)\to \Pi_1(Y, y_0)$$
+  $$\phi_*:\pi_1(X, x_0)\to \pi_1(Y, y_0)$$
   przez złożenie $\phi_*([f])=[\phi\circ f]$
 \end{fact}
 
@@ -269,5 +269,85 @@ $$\phi:(X, x_0)\to (Y, y_0)$$
   $$\phi_*([fg])=[\phi(fg)]=[(\phi f)(\phi g)]=[\phi f][\phi g]=\phi_*([f])\phi_*([g])$$
 \end{proof}
 
+\begin{fact}[własności homomorfizmów indukowanych] 
+     $$(\phi\circ\psi)_*=\phi_*\circ \psi_*$$
+     $$(id_{x_0})_*=id_{\pi_1(X, x_0)}$$
+\end{fact}
+
+Dzięki tym własnościom, grupę podstawową możemy zdefiniować jako \acc{funkor} $F$ z kategorii zbazowanych przestrzeni topologicznych, w której morfizmy to ciągłe odwzorowania między przestrzeniami topologicznymi zachowujące punkt bazowy, w kategorię grup i ich homomorfizmów:
+$$F(X, x_0)=\pi_1(X, x_0)$$
+$$F(f:(X, x_0)\to (Y, y_0))=f_*$$
+
+\begin{definition}[homotopia ogólniej]
+W ogólności, homotopią nazywamy rodzinę przekształceń $\{f_t:X\to Y\}_{t\in I}$ takich, że $F(s, t)=f_t(s)$ jest odwzorowaniem ciągłym dla każdego $t\in I$. Jeśli $X$ oraz $Y$ są przestrzeniami zbazowanymi, tzn. $x_0\in X$ oraz $y_0\in Y$ są wyróżnionymi punktami, to homotopia, dla której $f_t(x_0)=y_0$ zachowuje punkt bazowy.
+\end{definition}
+
+\begin{fact}[własności homotopii]
+  Niech $\phi:(X, x_0)\to (Y, y_0)$ będzie homotopią zachowującą punkt bazowy. Wówczas $(\phi_0)_*=(\phi_1)_*$.
+\end{fact}
+
+\begin{proof}
+  $$(\phi_0)_*[f]=[\phi_0 f]=[\phi_1 f]=(\phi_1)_*[f],$$
+  gdzie równość w środku wynika z faktu, że $\phi_t f$ jest homotopią między $\phi_0 f$ a $\phi_1 f$.
+\end{proof}
+
+\begin{fact}\label{fakt:1.10}
+  Jeśli $\phi:(X, x_0)\to (Y, y_0)$ jest homeomorfizmem przestrzeni topologicznych, to $\phi_*$ jest izomorfizmem grup.
+\end{fact}
+
+\begin{proof}
+  $$\phi_*(\phi^{-1})_*[f]=\phi_*[\phi^{-1}f]=[\phi\phi^{-1}f]=[f]$$
+  $$(\phi^{-1})_*\phi_*[f]=(\phi^{-1})_*[\phi f]=[\phi^{-1}\phi f]=[f]$$
+\end{proof}
+
+Z faktu \ref{fakt:1.10} wynika, że \acc{homeomorficzne przestrzenie zbazowane mają izomorficzne grupy podstawowe}. To samo się tyczy przestrzeni łukowo spójnych, które niekoniecznie muszą mieć wyróżniony punkt bazowy.
+
+\subsection{Inne własności grup podstawowych}
+
+Jeśli $(X, x_0)$ i $(Y, y_0)$ są przestrzeniami zbazowanymi, to ich produkt jest nadal przestrzenią zbazowaną: $(X\times Y, (x_0,y_0))$. Pętla $f$ w przestrzeni produktowej ma zawsze postać
+$$f=(g, h),$$
+gdzie $g$ to pętla w $(X, x_0)$ a $h$ - w $(Y,y_0)$. Co więcej, homotopia pętli $f_0$ i $f_1$ ma postać $f_t=(g_t, h_t)$.
+
+\begin{fact}
+  Odwzorowanie 
+  $$P:\pi_1(X, x_0)\times \pi_1(Y, y_0)\to \pi_1(X\times Y, (x_0,y_0))$$
+  zadane jako 
+  $$P([g], [h])=[(g, h)]$$
+  jest izomorfizmem.
+\end{fact}
+
+\begin{proof}
+  Dobra określoność odwzorowania jest oczywista. Z faktu, że każda pętla w $(X\times Y, (x_0,y_0))$ jest produktem pętli z $X$ i $Y$ wynika surjektywność tego odwzorowania. Injiektywność jest natomiast wnioskiem z postaci homotopii w produkcie, gdyż jeśli dwie pętle $(f, g)$ i $(f', g')$ są homotopijne w produkcie, to $f\sim f'$ i $g\sim g'$.
+
+  Wystarczy jeszcze sprawdzić czy to naprawdę jest homomorfizm
+  $$P([g],[h])P([g'],[h'])=[(g, h)][(g',h')]=[(gg', hh')]=P([gg'], [hh'])=P( ([g], [h])([g'], [h']) )$$
+\end{proof}
+
+\begin{conclusion}
+  Dla przestrzeni drogowo spójnych $X$, $Y$ istnieje izomorfizm
+  $$\pi_1(X\times Y)\cong \pi_1(X)\times\pi_1(Y)$$
+\end{conclusion}
+
+\begin{definition}[przestrzeń jednospójna]
+  Przestrzeń topologiczna jest \buff{jednospójna}, jeśli jest drogowo spójna i ma trywialną grupę podstawową ($\pi_1(X)=0$).
+\end{definition}
+
+Innymi słowy, przestrzeń jest jednospójna, jeśli każde dwa punkty możemy połączyć drogą i każde dwie drogi możemy w siebie przekształcić w sposób ciągły.
+
+\begin{definition}[przestrzeń ściągalna]
+  Przestrzeń $X$ jest ściągalna, gdy istnieje homotopia odwzorowania $id_X:X\to X$ z pewnym odwzorowaniem stałym.
+\end{definition}
+
+Przykładem przestrzeni ściągalnej jest drzewo czy $\R^n$
+
+\begin{fact}
+  Każda ściągalna przestrzeń jest jednospójna.
+\end{fact}
+
+\begin{proof}
+  Ćwiczenie.
+\end{proof}
+
+Implikacja w drugą stronę nie zachodzi: na przykład sfery $S^n$ dla $n\geq 2$ są jednospójne, ale nie są ściągalne.
 
 \input{01:zadania.tex}
