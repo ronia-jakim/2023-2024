@@ -56,6 +56,49 @@
 
 \pgfmathsetseed{\number\pdfrandomseed}
 
+\usetikzlibrary{shapes,shadows,calc}
+
+\newlength\TitleIndentLeft
+% Distance between right side of node and title text
+\newlength\TitleIndentRight
+% Total width for the node
+% the total width of the title is internally calculated
+% as \TitleWidth-\TitleIndentLeft-\TitleIndentRight
+\newlength\TitleWidth
+
+\setlength\TitleIndentLeft{0.25in}
+\setlength\TitleIndentRight{0pt}
+\setlength\TitleWidth{\dimexpr\textwidth+0.4in\relax}
+
+%\newcommand\SecTitle[1]{%
+%\begin{tikzpicture}
+%  \node[
+%    outer sep=0pt,
+%    inner xsep=0pt,
+%    inner ysep=3mm,
+%    text width=\TitleWidth,
+%    align=left,
+%    left color=green!80!black!60,
+%    right color=green!80!black!60,
+%    font=\Large\bfseries,
+%    anchor=west
+%  ] 
+% at (0,0) 
+% {%
+%   \parbox{\TitleIndentLeft}{\mbox{}}%
+%   \parbox{\dimexpr\textwidth-\TitleIndentLeft-\TitleIndentRight\relax}{\raggedright\strut#1\strut}%
+%   \parbox{\TitleIndentRight}{\mbox{}}%
+% };
+%\end{tikzpicture}%
+%}
+%%\titleformat{command}[shape]{format}{label}{sep}{before-code}{after-code}
+%\titleformat{\section}
+%{\Large\color{white}\bfseries\normalfont}
+%  {}
+%  {-0.2in}% -0.5in here since it's the value for the left margin
+%  {\SecTitle}
+%
+
 \begin{document}
 \scalefont{0.8}
 
@@ -64,7 +107,7 @@
 \thispagestyle{empty} 
 \newpage
 
-\tableofcontents
+%\tableofcontents
 \thispagestyle{empty}
 \newpage
 
