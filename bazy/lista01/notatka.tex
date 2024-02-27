@@ -1,0 +1,426 @@
+\documentclass{article}
+
+\usepackage{../../template}
+
+\geometry{
+%  showframe,
+  a4paper, 
+  total={170mm, 257mm}, 
+  top=20mm, 
+  marginparwidth={0mm},
+  left={20mm},
+  %right={26mm},
+  headsep=5mm
+}
+
+\usepackage{array}
+\usepackage{multirow}
+
+\renewcommand{\arraystretch}{1.2}
+
+\usepackage{listings}
+\lstset{%
+    %backgroundcolor=\color{yellow!20},%
+    basicstyle=\ttfamily,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{red!60!black!90}
+    }
+
+% Add your keywords here, and have this in a separate file
+% and include it in your preamble
+\lstset{emph={%  
+    pi, sigma, x
+    },
+    emphstyle={\color{blue}\bfseries}%
+}%
+
+\title{Lista 1}
+\author{Weronika Jakimowicz}
+\date{29.02.2024}
+
+\begin{document}
+\maketitle 
+
+\begin{problem}
+  Relacja $P(A, B)$ zawiera $p$ krotek, a relacja $S(B, C)$ zawiera $s$ krotek. Nic nie wiadomo na temat kluczy relacji. Dla każdego z poniższych wyrażeń wylicz (w zależności od $p$ i $s$) jaka może być minimalna i maksymalna liczba zwracanych krotek.
+  \begin{enumerate}[label=\alph*)]
+    \item $P\cup \rho_{S(A, B)}S$
+    \item $\pi_{A, C}(P\bowtie S)$
+    \item $\pi_B(P)\setminus(\pi_B(P)\setminus \pi_B(S))$
+    \item $(S\bowtie S)\bowtie S$
+    \item $\sigma_{A<B}(P)\cup \sigma_{A>B}(P)$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \textbf{\color{green}a) $P\cup \rho_{S(A, B)}S$}
+
+  Operacja $\rho_{S(A, B)}S$ bierze całą relację $S(B, C)$ i podmienia nazwy jej kolumn na $A, B$, resztę pozostawiając bez zmian.
+
+  W takim razie, najmniej krotek w sumie mnogościowej $P$ i $S(A, B)$ będzie jeśli cała jedna baza ma te same informacje co druga, np. gdy mamy takie, troszkę bezsensowne, bazy:
+  \begin{center}
+    \begin{tabular}{| m{0.05\textwidth} | m{0.1\textwidth} | m{0.1\textwidth} | m{0.08\textwidth} | m{0.15\textwidth} |}
+      \cline{1-2}\cline{4-5}
+      \multicolumn{2}{| c |}{P} & & \multicolumn{2}{ c |}{S} \\ 
+      \cline{1-2}\cline{4-5}
+      \slshape A=nr & \slshape B=imię & & \slshape B=imię & \slshape C=właściciel\\ 
+      \cline{1-2}\cline{4-5}
+      1 & Weles & & 2 & Kycia \\ 
+      \cline{1-2}\cline{4-5} 
+      2 & Kycia \\
+      \cline{1-2}
+    \end{tabular}
+  \end{center}
+  W takim razie najmniejsza ilość krotek to $\max(s, k)$.
+
+  Najwięcej krotek będzie, gdy bazy po przemianowaniu będą całkowicie rozłączne, np.:
+  \begin{center}
+    \begin{tabular}{| m{0.1\textwidth} | m{0.1\textwidth} | m{0.1\textwidth} | m{0.08\textwidth} | m{0.1\textwidth} |}
+      \cline{1-2}\cline{4-5}
+      \multicolumn{2}{| c |}{P} & & \multicolumn{2}{ c |}{S} \\ 
+      \cline{1-2}\cline{4-5}
+      \slshape A=owoc &\slshape B=ilość & & \slshape B=ilość & \slshape C=zakup\\ 
+      \cline{1-2}\cline{4-5}
+      banan & 1 & & 5 & kartofli \\ 
+      \cline{1-2}\cline{4-5} 
+      winogran & 7 \\ 
+      \cline{1-2}
+      jabłka & 3\\
+      \cline{1-2}
+    \end{tabular}
+  \end{center}
+  \bigskip
+
+  \textbf{\color{green}b) $\pi_{A, C}(P\bowtie S)$}
+
+  Jeśli w $B$ nie ma wspólnych wpisów, to $P\bowtie S$ będzie pusty, czyli najmniejsza ilość krotek w wyniku to 0:
+  \begin{center}
+    \begin{tabular}{| m{0.05\textwidth} | m{0.1\textwidth} | m{0.1\textwidth} | m{0.08\textwidth} | m{0.15\textwidth} |}
+      \cline{1-2}\cline{4-5}
+      \multicolumn{2}{| c |}{P} & & \multicolumn{2}{ c |}{S} \\ 
+      \cline{1-2}\cline{4-5}
+      \slshape A=nr & \slshape B=imię & & \slshape B=imię & \slshape C=właściciel\\ 
+      \cline{1-2}\cline{4-5}
+      1 & Weles & & Stefan & Ania \\ 
+      \cline{1-2}\cline{4-5} 
+      2 & Kycia \\
+      \cline{1-2}
+    \end{tabular}
+
+    \begin{tabular}{|m{0.15\textwidth} | m{0.15\textwidth} | m{0.15\textwidth} |}
+      \hline 
+      \multicolumn{3}{|c|}{$P\bowtie S$}\\ 
+      \hline 
+      \slshape A=nr & \slshape B=imię & \slshape C=właściciel \\ 
+      \hline 
+      - & - & -\\ 
+      \hline
+    \end{tabular}
+  \end{center}
+
+  Jeśli jedna kolumna $B$ zawiera tylko wpisy z drugiej kolumny $B$, być może powielone, to mamy:
+  \begin{center}
+    \begin{tabular}{| m{0.05\textwidth} | m{0.1\textwidth} | m{0.1\textwidth} | m{0.08\textwidth} | m{0.15\textwidth} |}
+      \cline{1-2}\cline{4-5}
+      \multicolumn{2}{| c |}{P} & & \multicolumn{2}{ c |}{S} \\ 
+      \cline{1-2}\cline{4-5}
+      \slshape A=nr & \slshape B=imię & & \slshape B=imię & \slshape C=właściciel\\ 
+      \cline{1-2}\cline{4-5}
+      1 & Weles & & Weles & Kycia \\ 
+      \cline{1-2}\cline{4-5} 
+      2 & Kycia & & Kycia & Mirek \\ 
+      \cline{1-2} \cline{4-5} 
+      \multicolumn{3}{c|}{} & Weles & Ronia\\ 
+        \cline{4-5}
+    \end{tabular}
+    
+    \begin{tabular}{|m{0.15\textwidth} | m{0.15\textwidth} | m{0.15\textwidth} |}
+      \hline 
+      \multicolumn{3}{|c|}{$P\bowtie S$}\\ 
+      \hline 
+      \slshape A=nr & \slshape B=imię & \slshape C=właściciel \\ 
+      \hline 
+      1 & Weles & Kycia\\
+      \hline 
+      1 & Weles & Ronia \\ 
+      \hline 
+      2 & Kycia & Mirek \\ 
+      \hline
+    \end{tabular}
+  \end{center}
+  i wtedy krotek jest tyle, ile elementów w większej relacji, czyli $\max(s, p)$.
+  \bigskip
+
+  \textbf{\color{green}c) $\pi_B(P)\setminus(\pi_B(P)\setminus\pi_B(S))$}
+
+  Tutaj minimum to $0$, jeśli zapisy w kolumnie $B$ relacji $S$ są całkiem rozłączne z zapisami w kolumnie $B$ relacji $P$:
+  
+  \begin{center}
+    \begin{tabular}{| m{0.05\textwidth} | m{0.1\textwidth} | m{0.1\textwidth} | m{0.08\textwidth} | m{0.15\textwidth} |}
+      \cline{1-2}\cline{4-5}
+      \multicolumn{2}{| c |}{P} & & \multicolumn{2}{ c |}{S} \\ 
+      \cline{1-2}\cline{4-5}
+      \slshape A=nr & \slshape B=imię & & \slshape B=imię & \slshape C=właściciel\\ 
+      \cline{1-2}\cline{4-5}
+      1 & Weles & & Doruś & Halina \\ 
+      \cline{1-2}\cline{4-5} 
+      2 & Kycia & & Dziunia & Grażyna \\ 
+      \cline{1-2} \cline{4-5} 
+      \multicolumn{3}{c|}{} & Stefan & Agata\\ 
+        \cline{4-5}
+    \end{tabular}
+  \end{center}
+  wtedy $\pi_B(P)\setminus \pi_B(S)=\pi_B(P)$.
+
+  Natomiast najwięcej krotek jakie możemy dostać to $p$, jeśli wyrazy w kolumnie $B$ tablicy $S$ są takie same jak wyrazy z kolumny $B$ tablicy $P$ i w dodatku każda krotka z $P$ jest unikalna:
+  \begin{center}
+    \begin{tabular}{| m{0.05\textwidth} | m{0.1\textwidth} | m{0.1\textwidth} | m{0.08\textwidth} | m{0.15\textwidth} |}
+      \cline{1-2}\cline{4-5}
+      \multicolumn{2}{| c |}{P} & & \multicolumn{2}{ c |}{S} \\ 
+      \cline{1-2}\cline{4-5}
+      \slshape A=nr & \slshape B=imię & & \slshape B=imię & \slshape C=właściciel\\ 
+      \cline{1-2}\cline{4-5}
+      1 & Weles & & Weles & Halina \\ 
+      \cline{1-2}\cline{4-5} 
+      2 & Kycia & & Kycia & Grażyna \\ 
+      \cline{1-2} \cline{4-5} 
+    \end{tabular}
+  \end{center}
+  \bigskip
+
+  \textbf{\color{green} d) $(S\bowtie S)\bowtie S$}
+
+  Tutaj zawsze będzie $s$ krotek, bo $S\bowtie S=S$.
+  \bigskip 
+
+  \textbf{\color{green} e) $\sigma_{A<B}(P)\cup \sigma{A>B}(P)$}
+
+  Tutaj najmniejsza ilość krotek w wyniku jest wtedy, gdy $A=B$ zawsze w tabeli $P$, np.
+  
+  \begin{center}
+    \begin{tabular}{| m{0.19\textwidth} | m{0.13\textwidth} |}
+      \hline
+      \multicolumn{2}{| c |}{P} \\
+      \hline 
+      \slshape A=nr w dzienniku & \slshape B=ocena \\ 
+      \hline 
+      1 & 1 \\
+      \hline 
+      2 & 2 \\
+      \hline
+      3 & 3\\ 
+      \hline
+    \end{tabular}
+  \end{center}
+  ponieważ $\sigma_{A>B}(P)$ oraz $\sigma_{A<B}(P)$ są zbiorami pustymi, to ich suma też jest pusta.
+
+  Natomiast, jeśli nie ma krotek, gdzie elementy są takie same, to dostaniemy $p$ sztuk krotek:
+  \begin{center}
+    \begin{tabular}{| m{0.19\textwidth} | m{0.13\textwidth} |}
+      \hline
+      \multicolumn{2}{| c |}{P} \\
+      \hline 
+      \slshape A=nr w dzienniku & \slshape B=ocena \\ 
+      \hline 
+      1 & 2 \\
+      \hline 
+      2 & 3 \\
+      \hline
+      3 & 6\\ 
+      \hline
+    \end{tabular}
+  \end{center}
+\end{solution}
+
+\begin{problem}
+  Czy operator różnicy $\setminus$ da się wyrazić za pomocę algebry relacji z operatorami $\pi$, $\sigma$, $\rho$, $\times$, $\cup$? Przyjmijmy, że warunki $F$ są formułami zbudowanymi przy użyciu koniunkcji, alternatywy oraz zawierają wyłącznie atomy postaci $Atr_1=const$ lub $Atr_1=Atr_2$, gdzie $Atr_1$, $Atr_2$ są atrybutami, a $const$ stałą odpowiedniego typu. Czy odpowiedź na pytanie zmieni się, jeśli w warunkach dopuścimy negację? \emph{Wskazówka: poszukaj pewnej charakterystycznej cechy, którą mają wszystkie zapytania wyrażane za pomocą $\pi$, $\sigma$, $\rho$, $\times$, $\cup$, a której nie musi mieć zapytanie wyrażone z użyciem $\setminus$}.
+\end{problem}
+
+\begin{solution}
+  Ponieważ różnica ma sens tylko gdy atrybuty obu tablic są takie same, to niech $P(A, B)$ i $S(A, B)$ będą dowolnymi tablicami (piszę $A, B$ zamiast $Atr_i$).
+
+  Jeśli negacja jest dozwolona, to możemy zacząć od zmiany nazwy $S(A, B)$ na $S(A', B')$ i przemnożenia wyniku przez $P(A, B)$. Potem wystarczy wybrać te wyrażenia, w których obie kolumny są różne i rzutować to na kolumny odpowiadające $P(A, B)$:
+  $$P(A, B)\setminus S(A, B)=\pi_{A, B}{\color{orange}(} \sigma_{A\neq A'\land B\neq B'}{\color{green}[}P(A, B)\times \pi_{S(A',B')}{\color{red}(}S(A, B){\color{red})}{\color{green}]} {\color{orange})}$$
+  Dla przykładu
+  \begin{center}
+    \begin{tabular}{ | >{\centering\arraybackslash}p{0.07\textwidth} | >{\centering\arraybackslash}m{0.07\textwidth} | m{0.05\textwidth} | >{\centering\arraybackslash}p{0.07\textwidth} | >{\centering\arraybackslash}p{0.07\textwidth} | }
+      \cline{1-2} \cline{4-5}
+      \multicolumn{2}{|c|}{P} & & \multicolumn{2}{c|}{S}\\
+      \cline{1-2} \cline{4-5}
+      A & B & & A & B\\ 
+      \cline{1-2} \cline{4-5} 
+      1 & 2 & & 3 & 4\\ 
+      \cline{1-2} \cline{4-5}
+      3 & 4 & & 8 & 9\\ 
+      \cline{1-2} \cline{4-5} 
+    \end{tabular}
+
+    \begin{tabular}{ | >{\centering\arraybackslash}p{0.07\textwidth} | >{\centering\arraybackslash}m{0.07\textwidth} | m{0.05\textwidth} | >{\centering\arraybackslash}p{0.07\textwidth} | >{\centering\arraybackslash}p{0.07\textwidth} | }
+      \cline{1-2} \cline{4-5}
+      \multicolumn{2}{|c|}{P} & & \multicolumn{2}{c|}{$\pi_{S(A', B')}S$}\\
+      \cline{1-2} \cline{4-5}
+      A & B & & A' & B'\\ 
+      \cline{1-2} \cline{4-5} 
+      1 & 2 & & 3 & 4\\ 
+      \cline{1-2} \cline{4-5}
+      3 & 4 & & 8 & 9\\ 
+      \cline{1-2} \cline{4-5} 
+    \end{tabular}
+
+    \begin{tabular}{ | >{\centering\arraybackslash}p{0.07\textwidth} | >{\centering\arraybackslash}m{0.07\textwidth} | >{\centering\arraybackslash}p{0.07\textwidth} | >{\centering\arraybackslash}p{0.07\textwidth} | }
+      \hline 
+      \multicolumn{4}{|c|}{$P\times S(A', B')$}\\ 
+      \hline 
+      A & B & A' & B'\\ 
+      \hline 
+      1 & 2 & 3 & 4 \\ 
+      \hline 
+      1 & 2 & 8 & 9 \\ 
+      \hline 
+      3 & 4 & 3 & 4 \\
+      \hline 
+      3 & 4 & 8 & 9 \\ 
+      \hline
+    \end{tabular}
+
+    \begin{tabular}{ | >{\centering\arraybackslash}p{0.07\textwidth} | >{\centering\arraybackslash}m{0.07\textwidth} | >{\centering\arraybackslash}p{0.07\textwidth} | >{\centering\arraybackslash}p{0.07\textwidth} | }
+      \hline 
+      \multicolumn{4}{|c|}{$\sigma_{A= A'\land B = B'}P\times S(A', B')$}\\ 
+      \hline 
+      A & B & A' & B'\\ 
+      \hline 
+      3 & 4 & 3 & 4 \\ 
+      \hline
+    \end{tabular}
+  \end{center}
+\end{solution}
+
+\begin{problem}
+  $X$, $Y$ i $Z$ są relacjami zawierającymi pojedynczą kolumnę o nazwie $A$. STudent ma napisać wyrażenie algebry relacji wyliczające wartość $X\cap (Y\cup Z)$ nie używając operatorów sumy i przekroju relacji. W bazie danych rozwiązań zadań z poprzednich edycji kursu znalazł następujące wyrażenie:
+  $$\pi_A(\sigma_{A=A_Y\lor A=A_Z}(X\times \rho_{Y(A_Y)}Y\times\rho_{Z(A_Z)}Z))$$
+  Czy powinien użyć tego rozwiązania? Jeśli zapytanie jest poprawne, to uzasadnij to, jeśli nie, to zastanów się czy i jak można je poprawić.
+\end{problem}
+
+\begin{solution}
+  Zacznijmy od napisania, kiedy $x\in X\cap(Y\cup Z)$:
+  $$x\in X\cap (Y\cup Z)\iff x\in X\land (x\in Y\lor x\in Z).$$
+  W rozwiązaniu w bazie zaczynamy od krotek $(x, y, z)$, gdzie $x\in X$, $y\in Y$ i $z\in Z$. Potem wybieramy z nich te elementy, dla których $y\in X$ lub $z\in X$. Po rzutowaniu na pierwszą współrzędną dostajemy więc elementy $x\in X$, dla których $x\in Y$ lub $x\in Z$, czyli jest to rozwiązanie poprawne. 
+\end{solution}
+
+\begin{problem}
+\end{problem}
+
+\begin{solution}$ $
+
+\begin{lstlisting}[mathescape=true]
+pi movies.name, directors.last_name, movies_genres.genre (
+  sigma (movies.id = movies_genres.movie_id and movies.year < 1960) (
+	movies x 
+	sigma (movies_genres.movie_id = movies_directors.movie_id) (
+		movies_genres x
+		(
+			sigma (
+				movies_directors.director_id = directors.id) (
+					movies_directors x directors)
+			)
+		)
+	)
+)
+  \end{lstlisting}
+
+\begin{lstlisting}
+pi actors.first_name, actors.last_name (
+  sigma (directors.last_name != 'Tarantino' and directors.first_name != 'Quentin') (
+    (sigma movies_directors.movie_id = roles.movie_id (
+	    (sigma directors.id = movies_directors.director_id (
+          directors x movies_directors
+          )
+        ) x 
+	      (sigma roles.actor_id = actors.id (
+          roles x actors
+          )
+        )
+      )   
+    )
+  )
+)
+\end{lstlisting}
+
+\begin{lstlisting}
+pi actors.first_name, actors.last_name (sigma actors.id = actors.ii (
+		actors x (
+			(pi ii (rho ii <- id actors)) - 
+			pi roles.actor_id (
+				sigma roles.role != roles.r
+				(
+				sigma roles.actor_id = roles.act_id (
+					roles x
+					(rho act_id <- actor_id, mv_id <- movie_id, r <- role roles)
+				)
+				)
+			)
+		)
+	)
+)
+\end{lstlisting}
+
+\begin{lstlisting}
+pi movies.name
+  (
+    sigma movies.id = movies_genres.mv_id ( movies x 
+    ( sigma movies_genres.genre = 'Drama' and movies_genres.g = 'Sci-Fi' ( sigma 
+      movies_genres.mv_id = movies_genres.movie_id ( movies_genres x 
+        (rho mv_id <- movie_id, g <- genre movies_genres)
+      )
+      )
+    )
+  )
+  )
+\end{lstlisting}
+
+\begin{lstlisting}
+pi actors.last_name ( sigma roles.ac_id = actors.id (actors x 
+(
+sigma roles.ac_id = roles.actor_id and roles.role = roles.r and roles.mv_id != roles.movie_id (
+	roles x
+	(rho r <- role, ac_id <- actor_id, mv_id <- movie_id roles)
+)
+)
+)
+)
+\end{lstlisting}
+
+\begin{lstlisting}
+pi directors.last_name (
+sigma directors.id = movies_directors.director_id (
+directors x 
+(
+pi movies_directors.director_id movies_directors - 
+pi movies_directors.director_id (
+	sigma movies_genres.genre = 'Horror' 
+	(
+		sigma movies_directors.movie_id = movies_genres.movie_id (movies_directors x movies_genres)
+	)
+)
+)
+) 
+)
+\end{lstlisting}
+
+Tutaj krzyczy błąd, ale nie ma reżyserów, którzy nakręcili film bez kobiet i to chyba krzyczy na iloczyn kartezjański z pustą listą?
+
+\begin{lstlisting}
+pi directors.last_name (sigma directors.id = movies_directors.director_id ((pi movies_directors.director_id movies_directors) - 
+(pi movies_directors.director_id 
+(sigma actors.gender = 'F' and actors.id = roles.actor_id (
+actors x 
+(sigma movies_directors.movie_id = roles.movie_id (movies_directors x roles))
+))
+) x directors)
+)
+\end{lstlisting}
+
+\end{solution}
+
+\end{document}
