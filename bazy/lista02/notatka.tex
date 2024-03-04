@@ -49,10 +49,10 @@
 \begin{solution}
   \textbf{\color{green}ALGEBRA RELACJI}
 
-  Pytamy, kiedy to co jest w kolumnach $A$ i $B$ nie jest unikalne dla danej krotki (nie jest kluczem). Ilość krotek mających daną parę w kolumnach $A$ i $B$ liczymy zapytaniem \lstinline{gamma A, B; count C -> nr (R)}. Chcemy zwracać pusty wynik, kiedy w kolumnie $nr$ widzimy $1$, czyli wystarczy zrobić \lstinline{sigma nr>1 (...)} i mamy gotowy wynik. W całości zapytanie algebry relacji prezentuje się następująco:
+  Pytamy, kiedy to co jest w kolumnach $A$ i $B$ nie jest unikalne dla danej krotki (nie jest kluczem). Ilość krotek mających daną parę w kolumnach $A$ i $B$ liczymy zapytaniem \lstinline{gamma A, B, C; count C -> nr (R)}. Chcemy zwracać pusty wynik, kiedy w kolumnie $nr$ widzimy $1$, czyli wystarczy zrobić \lstinline{sigma nr>1 (...)} i mamy gotowy wynik. W całości zapytanie algebry relacji prezentuje się następująco:
   \begin{lstlisting}
 sigma nr > 1 (
-  gamma A, B; count C -> nr (R)
+  gamma A, B, C; count C -> nr (R)
 )
   \end{lstlisting}
 
@@ -96,6 +96,53 @@ sigma nr > 1 (
     \{x, z\;&:\;S(x, z)\;\land\;\neg [(\exists a, b, c)\;R(a,b,c)\;\land \; a=z]\}=\\ 
     &=\{x,z\;:\;S(x,z)\;\land\;(\forall\;a, b, c)\;\neg R(a,b,c)\lor a\neq z\} 
   \end{align*}
+\end{solution}
+
+\begin{problem}
+  Dane są relacje $R$, $S$ i $T$ o schematach $R=AB$, $S=B_1B_2$ i $T=BC$. Przeanalizuj znaczenie poniższych zapytań i postaraj się znaleźć naturalną interpretację dla relacji i zapytań w języku polskim. Zastanów się, czy są to formuły niezależne od dziedziny. Zapisz równoważne im formuły w algebrze relacji zawsze jeśli to możliwe.
+  \begin{enumerate}
+    \item $\{a\;:\;(\exists\;b)\;(R(a, b)\;\land \neg ((\exists a')\;a'>a\;\land (\exists b')\;R(a', b')))\}$
+    \item $\{a, b\;:\;(\forall\;c)\;(T(c, a)\;\lor\;T(c, b)\;\lor\;(\forall d)\;\neg T(c, d))\}$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \textbf{\color{green}1. $\boldsymbol{\{a\;:\;(\exists\;b)\;(R(a, b)\;\land \neg ((\exists a')\;a'>a\;\land (\exists b')\;R(a', b')))\}}$}
+
+  Wszystkie te elementy $a\in A$, dla których nie istnieje inny element $(a', b')$ dla którego $a'>a$. Czyli zwraca to największy element kolumny $A$.
+
+  To chyba nie jest niezależne od dziedziny? Bo jeśli
+  \begin{center}
+    \begin{tabular}{ | m{0.13\textwidth} | m{0.2\textwidth} | }
+      \hline 
+      \multicolumn{2}{|c|}{R=A, B}\\ 
+      \hline 
+      A=Stopień & B=Przedmiot\\ 
+      \hline 
+      3 & B.D.\\ 
+      \hline
+      2 & AnalMat\\ 
+      \hline
+    \end{tabular}
+  \end{center}
+  To dziedzina aktywna ma $B=\{(3, \text{"B.D."}), (2, \text{"AnalMat"}))\}$ i możemy wziąć $D_1$ która ma dziedzinę aktywną z dodatkiem $B\cup \{(5, \text{"Euler"}\}$ a jako $D_2$ wziąć $B\cup \{(4, \text{"RP1R"}\}$ i wtedy wynik jest różny?
+
+  Napisanie tego wyżej w języku algebry relacji to
+  \begin{lstlisting}
+pi R.A - (
+  pi R.A 
+  (R join R.A < R.a 
+    (rho R.a <- R.A, R.b <-R.B (R)
+  )
+)
+  \end{lstlisting}
+
+
+  \textbf{\color{green}2. $\boldsymbol{\{a, b\;:\;(\forall\;c)\;(T(c, a)\;\lor\;T(c, b)\;\lor\;(\forall d)\;\neg T(c, d))\}}$}
+
+  To są pary elementów $(a, b)$, gdzie $a,b\in C$ które albo zawsze pojawiają się w drugiej kolumnie, albo jeśli nie pojawiają się dla pewnej krotki w drugiej kolumnie, to ten element nigdy nie jest na pierwszym miejscu?
+
+  Zwraca te elementy kolumny $C$, które pojawiają się w drugiej kolumnie $T$ dla wszystkich elementów z $B$ stojących na pierwszym miejscu kolumny $T$. I tutaj jeśli weźmiemy sobie $T=\emptyset$, to dla każdego $c\in B$ i dla każdego $d\in C$ mamy $\neq T(c, d)$, czyli jest to prawdą nawet jak wtłoczymy coś nieskończonego.
 \end{solution}
 
 \end{document}
