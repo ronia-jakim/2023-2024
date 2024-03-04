@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\usepackage{../../template}
+
+\geometry{
+%  showframe,
+  a4paper, 
+  total={170mm, 257mm}, 
+  top=20mm, 
+  marginparwidth={0mm},
+  left={20mm},
+  %right={26mm},
+  headsep=5mm
+}
+
+\usepackage{array}
+\usepackage{multirow}
+
+\renewcommand{\arraystretch}{1.2}
+
+\usepackage{listings}
+\lstset{%
+    %backgroundcolor=\color{yellow!20},%
+    basicstyle=\ttfamily,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{red!60!black!90}
+    }
+
+% Add your keywords here, and have this in a separate file
+% and include it in your preamble
+\lstset{emph={%  
+    pi, sigma, x, tau, gamma, count, join
+    },
+    emphstyle={\color{blue}\bfseries}%
+}%
+
+\title{Lista 2}
+\author{Weronika Jakimowicz}
+\date{07.03.2024}
+
+\begin{document}
+\maketitle
+
+\begin{problem}
+  Rozważmy relację $R(A, B, C)$. Napisz zapytanie algebry relacji oraz zapytanie rrd/rrk, które zwróci pusty wynik wtedy i tylko wtedy gdy para atrybutów $A$, $B$ jest kluczem relacji $R$.
+\end{problem}
+
+\begin{solution}
+  \textbf{\color{green}ALGEBRA RELACJI}
+
+  Pytamy, kiedy to co jest w kolumnach $A$ i $B$ nie jest unikalne dla danej krotki (nie jest kluczem). Ilość krotek mających daną parę w kolumnach $A$ i $B$ liczymy zapytaniem \lstinline{gamma A, B; count C -> nr (R)}. Chcemy zwracać pusty wynik, kiedy w kolumnie $nr$ widzimy $1$, czyli wystarczy zrobić \lstinline{sigma nr>1 (...)} i mamy gotowy wynik. W całości zapytanie algebry relacji prezentuje się następująco:
+  \begin{lstlisting}
+sigma nr > 1 (
+  gamma A, B; count C -> nr (R)
+)
+  \end{lstlisting}
+
+  \textbf{\color{green}RRK}
+  
+  W tym przypadku mamy troszkę szybsze rozwiązanie, bo od razu możemy spytać, czy istnieje inny element który spełnia pewne warunki:
+  $$\{x\in R\;:\;(\exists\;y\in R\setminus\{x\})\;y.A=x.A\;\land\; y.B=x.B\;\land\;y.C\neq x.C\}$$
+  
+  \textbf{\color{green}RRD}
+  
+  Tutaj jest jeszcze szybciej, ale wolałam RRK
+  $$\{a,b,c\;:\;R(a,b,c)\;\land\;(\exists c')\;c\neq c'\;\land\;R(a, b, c')\}$$
+\end{solution}
+
+\begin{problem}
+  Rozważmy relację $R(A, B, C)$ oraz $S(X, Z)$, przy czym atrybut $A$ jest kluczem w $R$. Napisz zapytanie algebry relacji oraz zapytanie rrk/rrd, które zwróci pusty wynik wtedy i tylko wtedy, gdy atrybut $Z$ relacji $S$ jest kluczem obcym wskazującym na atrybut $A$ relacji $R$.
+\end{problem}
+
+\begin{solution}
+  \textbf{\color{green}ALGEBRA RELACJI}
+
+  Klucz obcy, to np. indeks studenta w tabeli ocen - wskazuje on wtedy na osobę w tabeli aktywnych studentów uniwersytetu, ale może się powtarzać w tabeli ocen.
+
+  Możemy zacząć od znalezienia krotek, które mają ten sam element w kolumnie $A$ i kolumnie $S$ przy pomocy joina: \lstinline{R join A=Z S}. Nas interesują wszystkie te wpisy z relacji $S$, w których ta równość nie zachodzi. Rzutujemy więc wynik \lstinline{join} na kolumny $X$ i $Z$ i odejmujemy wynik od $S$: \lstinline{S - (pi X, Z (...))}. W całości dostajemy
+  \begin{lstlisting}
+  S - (pi X, Z (
+    R join A=Z S
+    )
+  )
+  \end{lstlisting}
+
+  \textbf{\color{green}RRK}
+
+  Wystarczy sprawdzić, czy nie istnieje element w $R$, który zgadza się z aktualnym elementem na kolumnie $Z$. Można skorzystać z praw de Morgana
+  $$\{x\in S\;:\; \neg (\exists y\in R)\;x.Z=y.A\}=\{x\in S\;:\; (\forall\;y\in R)\;x.Z\neq y.A\}$$
+
+  \textbf{\color{green}RRD}
+  
+  Tutaj nieco mniej elegancko jest zapisać przy pomocy $\forall$ moim zdaniem:
+  \begin{align*}
+    \{x, z\;&:\;S(x, z)\;\land\;\neg [(\exists a, b, c)\;R(a,b,c)\;\land \; a=z]\}=\\ 
+    &=\{x,z\;:\;S(x,z)\;\land\;(\forall\;a, b, c)\;\neg R(a,b,c)\lor a\neq z\} 
+  \end{align*}
+\end{solution}
+
+\end{document}
