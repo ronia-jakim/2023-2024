@@ -1,0 +1,142 @@
+\section{05.03.24 : }
+
+W logarytmie głównym decydujemy się na kąty $(-\pi, \pi)$
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0, -3)--(0, 3);
+    \draw (-3, 0)--(3, 0);
+    \draw (0,0)--(30:2.5);
+    \draw[->] (0:1) arc (0:30:1);
+
+    \draw (0,0)--(-40:2.5);
+    \draw[->](0:1) arc(0:-40:1);
+  \end{tikzpicture}
+\end{center}
+
+$$\Log(z)=\log\sqrt{|z|}+i\arg(z)$$
+
+Sprawdzamy różniczkowalność logarytmu funkcji $\Log z$ przy pomocy warunków Cauchy'ego-Riemmana:
+$$\begin{matrix}
+  \frac{\partial u}{\partial x}=\frac{x}{x^2+y^2} & \frac{\partial v}{\partial x}=-\frac{y}{x^2+y^2}\\ 
+  \frac{\partial u}{\partial y}=\frac{y}{x^2+y^2} & \frac{\partial v}{\partial y}=\frac{x}{x^2+y^2}
+\end{matrix}$$
+z czego widać, że poza $0$ funkcja spełnia warunki C-R. Powinniśmy jeszcze sprawdzić ciągłość pochodnych cząstkowych, ale tutaj nie ma problemu.
+
+Chcemy teraz sprawdzić, czy $(\Log z)'=\frac{1}{z}$, analogicznie jak było w $\R$:
+\begin{align*}
+  (\Log z)'&=\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}=\frac{x}{x^2+y^2}-i\frac{y}{x^2+y^2}=\\ 
+           &=\frac{x-iy}{(x+iy)(x-iy)}=\frac{1}{x+iy}=\frac{1}{z}
+\end{align*}
+
+Wypadałoby jeszcze sprawdzić, czy $e^{\Log z}=z$
+
+\begin{definition}[funkcja potęgowa]
+  Dla dowolnego $c\in\C$, $c\neq 0$, definiujemy 
+  $$z^c=e^{c\Log z}$$
+  i nazywamy częścią główną.
+\end{definition}
+
+\begin{example}
+  \item Obliczyć część główną $(-i)^i$
+    \begin{align*}
+      (-i)^i&=e^{i\Log(-i)}=e^{i(-i\frac{\pi}{2})}=e^{\frac{\pi}{2}}
+    \end{align*}
+\end{example}
+
+\subsection{Geometria funkcji elementarnych}
+
+Będziemy teraz badać odwzorowania $w=f(z)$.
+
+\begin{example}
+\item $w=z+c$, czyli translacja o wektor $c$
+\item $w=bz$, dla $b\neq 0$, jeśli zapiszemy $b=r_0(\cos \theta_0+i\sin \theta_0)$ to zobaczymy, że
+  $$w=bz=rr_0(\cos(\theta+\theta_0)+i\sin(\theta+\theta_0))$$
+  jest złożeniem obrotu o $\theta_0$ i jednokładności względem zera w skali $r_0$.
+\item Dla funkcji $w=(1+i)z+(2-i)$ znaleźć obraz prostokąta 
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0, -1.5)--(0, 3.5);
+      \draw (-0.5, 0)--(3, 0);
+
+    \fill (1, 0) circle (2pt);
+  \fill(0, 0) circle (2pt);
+\fill (1, 2) circle (2pt);
+\fill(0, 2) circle (2pt);
+
+\draw (0,0)--(1,0)--(1,2)--(0,2)--(0,0);
+
+\fill [green] (0,1) circle (2pt);
+\fill [green] (1, 2) circle (2pt);
+\fill[green] (3, 0) circle (2pt);
+\fill[green] (2, -1) circle (2pt);
+\draw[dashed, green] (0,1)--(1, 2)--(3, 0)--(2, -1)--(0,1);
+    \end{tikzpicture}
+  \end{center}
+\item Dla funkcji $w=z^n$ obrazem pierwszej ćwiartki jest cała górna półpłaszczyzna
+\item Funkcja $w=\frac{1}{z}$ to inwersja względem okręgu jednostkowego złożona z odbiciem względem osi $OX$:
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (-2, 0)--(2, 0);
+      \draw (0, -2)--(0, 2);
+      \draw (0,0) circle (1);
+
+      \draw (0,0)--(50:1.8);
+      \draw (0,0)--(-50:{10/18});
+      
+    \fill (50:1.8) circle (1pt);
+    \fill (-50:{10/18}) circle (1pt);
+
+    \node at (55:1.8) {$z$};
+    \node at (-45:{14/18}) {$\frac{1}{z}$};
+    \end{tikzpicture}
+  \end{center}
+
+  Możemy zapisać inaczej:
+  $$w=\frac{1}{z}=\frac{1}{x+iy}=\frac{x}{x^2+y^2}+i\frac{-y}{x^2+y^2}$$
+  czyli
+  $$u=\frac{x}{x^2+y^2}\quad\quad v=\frac{-y}{x^2+y^2}$$
+  $$x=\frac{u}{u^2+v^2}\quad\quad y=\frac{-v}{u^2+y^2}$$
+
+  Pokażemy, że obrazem dowolnego okręgu przez tę funkcję jest nadal okrąg. Załóżmy, że $x$ i $y$ spełniają równanie
+  $$a(x^2+y^2)+bx+cy+d=0.$$
+  Podstawiając $w=\frac{1}{z}$ dostajemy
+  $$a\left[\frac{u^2}{(u^2+y^2)^2}+\frac{v^2}{(u^2+v^2)^2}\right]+b\frac{u}{u^2+v^2}-c\frac{v}{v^2+y^2}+d=0$$
+  $$d(u^2+v^2)+bu-cv+a=0$$
+  czyli nadal jest to równanie okręgu. Jednak środek tego okręgu nie musi przechodzić na środek okręgu będącego obrazem.
+
+  Dodatkowo, okrąg przechodzący przez $0$ stanie się prostą, natomiast okrąg który nie przechodzi przez $0$ będzie nadal okręgiem niedotykającym $0$.
+\end{example}
+
+\begin{definition}[homografia]
+  Odwzorowania postaci
+  $$w=\frac{\alpha z+\beta}{\gamma z+\delta}$$
+  dla $\alpha,\beta,\gamma,\delta\in\C$ i $\alpha \delta-\beta\gamma \neq 0$ (liniowo niezależne) nazywamy \buff{homografiami}.
+\end{definition}
+
+Z warunku wyżej możemy wyliczyć $z$ w  zależności od $w$ i pozostałych stałych:
+$$z=\frac{-\delta w+\beta}{\gamma w-\alpha}$$
+i jest to nadal homotopia.
+
+Dla $\gamma=0$ przekształcenia nazywamy afinicznymi. Jeśli jednak $\gamma\neq 0$, to mianownik zeruje się w punkcie $z=-\delta/\gamma$.
+
+Dla $\gamma=0$ proste i okręgi przechodzą na proste i okręgi.
+
+Jeśli $\gamma\neq 0$, to
+$$w=\frac{\alpha z+\beta}{\gamma z+\delta}=\frac{\alpha}{\gamma}+\frac{\beta-\frac{\alpha\delta}{\gamma}}{\gamma z+\delta}$$
+patrząc co się dzieje po kolei ze zmienną $z$:
+\begin{align*}
+  z\overset{aff.}{\mapsto} \gamma z+\delta \overset{1/z}{\mapsto} \frac{1}{\gamma z+\delta}\overset{aff.}{\mapsto} \frac{\alpha}{\delta}+\frac{\beta-\frac{\alpha\delta}{\gamma}}{\gamma z+\delta}
+\end{align*}
+
+Wniosek: homografia jest złożeniem przekształceń afinicznych i przekształcenia $z\mapsto \frac{1}{z}$, czyli zawsze przekształca proste i okręgi na proste i okręgi.
+
+Innym sposobem określenia homografii jest przez równanie
+$$Azw+Bz+Cw+D=0.$$
+Wystarczy przemnożyć oryginalną definicję i przerzucić wszystko na jedną stronę.
+
+W równaniu homografii występują tak naprawdę tylko $3$ istotne stałe: ilorazy $A$, $B$, $C$, $D$ przez jedną z nich (tę jedną niezerową).
+
+\begin{example}
+\item Wiemy, że równanie jest spełnione przez $3$ punkty $(z_1,w_1)$, $(z_2, w_2)$ i $(z_3, w_3)$ i chcemy znaleźć odpowiadającą temu homografię. Możemy podstawić do formy $Azw+Bz+Cw+D=0$ i pieczołowicie je wyszukać .
+\end{example}

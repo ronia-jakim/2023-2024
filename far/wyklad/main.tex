@@ -44,6 +44,9 @@
 \renewcommand\small{\@setfontsize\small{6pt}{6}}
 \makeatother
 
+\DeclareMathOperator{\Log}{Log}
+%\DeclareMathOperator{\arg}{arg}
+
 \pgfmathsetseed{\number\pdfrandomseed}
 
 \usetikzlibrary{calc}
@@ -66,12 +69,6 @@
 
 \scalefont{0.8}
 
-\begin{alignat*}{4}
-  Test  & =Testtesttest & =Tttttest             &=weles\\ 
-  Kycia &= jest         & =bardzo &= gruba
-\end{alignat*}
-
-
 \maketitle
 \thispagestyle{empty} 
 \newpage
@@ -83,5 +80,9 @@
 \pagestyle{fancy}
 
 \include{01:20-02-24.tex}
+
+\section{27.02.24 : Brakujące dzieje}
+
+\include{03:05-03-24.tex}
 
 \end{document}
