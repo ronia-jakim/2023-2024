@@ -145,4 +145,104 @@ pi R.A - (
   Zwraca te elementy kolumny $C$, które pojawiają się w drugiej kolumnie $T$ dla wszystkich elementów z $B$ stojących na pierwszym miejscu kolumny $T$. I tutaj jeśli weźmiemy sobie $T=\emptyset$, to dla każdego $c\in B$ i dla każdego $d\in C$ mamy $\neq T(c, d)$, czyli jest to prawdą nawet jak wtłoczymy coś nieskończonego.
 \end{solution}
 
+\begin{problem}
+  Zdecyduj, czy poniższe równości zachodzą. Zaprezentuj dowód lub kontrprzykład.
+  \begin{itemize}
+    \item $R\bowtie S=S\bowtie R$
+    \item $R\bowtie (S\bowtie T)=(R\bowtie S)\bowtie T$
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+  $\boldsymbol{\color{green}R\bowtie S=S\bowtie R}$
+
+  %Załóżmy, że $R$ ma atrybuty $A_1,...,A_k, B_1,..., B_n$, natomiast $S$ - atrybuty $A_1,..., A_k, C_1,..., C_m$.
+
+  Jeśli kolejność kolumn w joinie nie ma znaczenia, to stwierdzenie jest prawdziwe. Wystarczy zapisać np. w RRK:
+  $$R\bowtie S\equiv \{ t\;:\;(\exists r\in R)\;(\exists s\in S)\; r.(S\cap R)=s.(S\cap R)\;\land t.R=r\;\land t.S=s\}$$
+  $$S\bowtie R\equiv \{ t\;:\;(\exists s\in S)\;(\exists r\in R)\; s.(S\cap R)=r.(S\cap R)\;\land t.S=s\;\land t.R=r\}$$
+  i zauważyć, że $\land$ i $\exists$ są przemienne.
+
+  $\boldsymbol{\color{green}R\bowtie(S\bowtie T)=(R\bowtie S)\bowtie T}$
+
+  Tutaj chyba też mamy prawdę. Zauważmy, że definicja natural join tłumaczy się jako
+  $$x\in R\cap (S\bowtie T)\iff [x\in R\cap (S\cup T)\;\land x.S=x.T]$$
+  przy czym $R\cap (S\cup T)=(R\cap S)\cup (R\cap T)$. Co więcej, jeśli dla $b\in S\bowtie T$ mamy $x.(S\bowtie T)=b$, to istnieją $s, t$ takie, że $b.S=s$, $b.T=t$, $s.(S\cap T)=t.(S\cap T)$ oraz $x.S=s\land x.T=t$.
+
+  Zapiszmy
+  \begin{align*}
+    R\bowtie(S\bowtie T)\equiv & \{a\;:\; (\exists\;r\in R)(\exists b\in S\bowtie T)\\ 
+                               &\quad \quad \quad r.(R\cap (S\bowtie T))=b.(R\cap (S\bowtie T))\;\land a.R=r\;\land a.(S\bowtie T)=b\}\equiv\\
+      \equiv&\{a\;:\;(\exists r\in R)(\exists s\in S)(\exists t\in T)\\ 
+            &\quad \quad \quad r.((R\cap S)\cup (R\cap T))=s.((R\cap S)\cup (R\cap T))\;\land\\ 
+            &\quad\quad\quad r.((R\cap S)\cup (R\cap T))=t.((R\cap S)\cup (R\cap T))\;\land \\ 
+            &\quad\quad\quad r.S=r.T\;\land\;s.(S\cap T)=t.(S\cap T)\;\land a.R=r\;\land\; a.S=s\;\land a.T=t\}\equiv\\ 
+        \equiv &\{a\;:\;(\exists r\in R)(\exists s\in S)(\exists t\in T)\\ 
+               &\quad\quad\quad r.(R\cap S)=s.(R\cap S)\;\land\; r.(R\cap T)=t.(R\cap T)\;\land\\ 
+               &\quad\quad\quad r.S=r.T\;\land s.(S\cap T)=t.(S\cap T)\;\land a.R=r\;\land\;a.S=s\;\land\; a.T=t
+             \}
+  \end{align*}
+  i podobnie będzie jak napiszemy $(R\bowtie S)\bowtie T$
+
+%
+%  \begin{align*}
+%    R\bowtie (S\bowtie T)\equiv&\{a\;:\;(\exists r\in R)\;(\exists b\in (S\bowtie T))\\ 
+%                               &\quad\quad\quad r.(R\cap (S\bowtie T))=b.(R\cap (S\bowtie T))\;\land a.R=r\;\land\;a.(S\bowtie T)=b\}\equiv \\ 
+%    \equiv&\{a\;:\;(\exists r\in R)\;(\exists b)\\ 
+%          &\quad\quad\quad( (\exists s\in S)\;(\exists\;t\in T)\;s.(S\cap T)=t.(S\cap T)\;\land\; b.S=s\;\land b.T=t )\\ 
+%          &\quad \quad\quad r.(R\cap (S\bowtie T))=b.(R\cap (S\bowtie T))\;\land a.R=r\;\land a.(S\bowtie T)=b
+%        \}\quiv\\ 
+%      \equiv& \{a\;:\;(\exists r\in R)(\exists\;s\in S)(\exists t\in T)\;s.(S\cap T)=t.(S\cap T)\;\land s \}
+%  \end{align*}
+\end{solution}
+
+\begin{problem}
+  Baza danych składa się z relacji, jara jara jara
+
+  RRD lub RRK
+\end{problem}
+
+\begin{solution}
+  \textbf{\color{green}1. Podaj dane aktorów (pseudonim, imię, nazwisko, rok urodzenia, narodowość), którzy pojawili się w filmach produkowanych tylko w jednym roku.}
+
+  Troszkę oszukane podejście do RRK:
+  \begin{align*}
+    A-\{a\in A\;:\; &(\exists\;x\in R)\;(\exists\;y\in R-\{x\})\;x.psuedonim = a.pseudonim = y.pseudonim\;\land\; \\ 
+                    &(\exists\;f1\in F)\;(\exists f2\in F-\{f_1\})\;f1.rokProd \neq f2.rokProd \;\land\; \\ 
+                    &\{f1.idf, f2.idf\}=\{x.idf, y.idf\}\;
+                                     \}
+  \end{align*}
+
+  Lub po (potencjalnie błędnym) przemieleniu przez prawa de Morgana:
+  \begin{align*}
+    \{a\in A\;:\; \neg [&(\exists\;x\in R)\;(\exists\;y\in R-\{x\})\;x.psuedonim = a.pseudonim = y.pseudonim\;\land\; \\ 
+                    &(\exists\;f1\in F)\;(\exists f2\in F-\{f1\})\;f1.rokProd \neq f2.rokProd \;\land\; \\ 
+                    &\{f1.idf, f2.idf\}=\{x.idf, y.idf\}]\;
+                                     \}\equiv\\ 
+      \equiv\{a\in A\;:\;& (\forall\;x\in R)\;(\forall\;y\in R-\{x\})\; x.pseudonim\neq a.psuedonim\neq y.pseudonim\;\lor\;\\ 
+                         &(\forall\;f1\in F)(\forall\;f2\in F-\{f1\}) f1.rokProd=f2.rokProd\;\lor\; \{f1.idf, f2.idf\}\neq \{x.idf, y.idf\}  \}
+  \end{align*}
+
+  \textbf{\color{green}2. Podaj pełne krotki filmów, które są najnowszymi filmami reżyserów.}
+
+  \begin{align*}
+    \{f\in F\;:\; \neg&(\exists x\in F)\; f.rezyser = x.rezyser \;\land f.rokProd < x.rokProd\}\equiv \\ 
+    \equiv \{f\in F\;:\;&(\forall\;x\in F)\;f.rezyser\neq x.rezyser\;\lor\;f.rokProd >= x.rokProd\}
+  \end{align*}
+
+  \textbf{\color{green}3. Dla każdego filmu znajdź aktora, który dostał najwyższą gażę w tym filmie (został najlepiej opłacony z obsady filmu). W relacji wynikowej podaj pseudonim aktora, idf oraz gażę.}
+
+  \begin{align*}
+    \{ps, i, g\;:\;&(\exists\;rl)\;R(ps,i,rl, g)\;\land\;(\forall \;ps2, rl2, g2)\; \neg R(ps2, i, rl2, g2)\;\lor \; g2<=g \}
+  \end{align*}
+
+  \textbf{\color{green}4. Podaj pełne krotki aktorów, którzy nigdy nie obniżyli swojej minimalnej gaży (w późniejszych latach mogła ona najwyżej rosnąć). Na wynik nie wpływają lata, w których aktor nie podał minimalnej gaży.}
+
+  \begin{align*} 
+    \{a\in A\;:\; \neg&(\exists\;x, y\in R)\;x.pseudonim=a.pseudonim=y.pseudonim\;\land\; x.gaza > y.gaza \;\land \; \\ 
+                      &(\exists f, g\in F)\; f.idf=x.idf\;\land\;g.idf=y.idf\;\land\;f.rokProd < g.rokProd\}\equiv \\ 
+      %\equiv \{a\in A\;:\; &(\forall\;x,y\in R)\; x.pseudonim\neq a.pseudonim\neq y.pseudonim\;\lor\;x.gaza <= y.gaza \lor (\forall\;f,g\in F)\;\}
+  \end{align*}
+\end{solution}
+
 \end{document}
