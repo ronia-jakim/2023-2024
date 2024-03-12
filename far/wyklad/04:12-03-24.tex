@@ -1,0 +1,109 @@
+\section{12.03.24 : }
+
+Homografia, dla której określone $3$ punkty
+$$(z_1,z_2, z_3)\mapsto (w_1, w_2, w_3)$$
+jest określona wzorem 
+$$\frac{w-w_1}{w-w_3}\frac{w_2-w_3}{w_2-w_1}=\frac{z-z_1}{z-z_3}\frac{z_2-z_3}{z_2-z_1}$$
+
+Wyrażenie 
+$$\frac{z-z_1}{z-z_3}\frac{z_2-z_3}{z_2-z_1}$$ 
+nazywamy dwustosunkiem czterech liczb: $z$, $z_1$, $z_2$ i $z_3$. Homografia zawsze zachowuje dwustosunek.
+
+\begin{example}
+  \item Znaleźć homografię przekształcającą $z_1=0$, $z_2=i$ i $z_3=1$ na punkty $w_1=1$, $w_2=0$ i $w_3=-1$.
+    \begin{align*}
+  \frac{w-1}{w+1}\cdot \frac{1}{-1}=\frac{z}{z-1}\frac{i-1}{i}
+    \end{align*}
+    która w formie $w=(\alpha z+\beta)/(\gamma z+\delta)$ ma postać
+    $$w=\frac{-iz-1}{(2+i)z-1}$$
+  \item \acc{Jeden z punktów $z_i$, $w_i$ może przyjmować wartość $\infty$}. Sztuczka jest taka, żeby wartość $\infty$ upakować do mianownika. Na przykład dla $(z_1, z_2, z_3)=(1, 0, -1)$ i $(w_1, w_2, w_3)=(i, 1, \infty)$ przekształcamy oryginalny wzór na
+    $$\frac{w-w_1}{\frac{w}{w_3}-1}\frac{\frac{w_2}{w_3}-1}{w_2-w_1}=\frac{z-z_1}{z-z_3}\frac{z_2-z_3}{z_2-z_1}$$
+    i po podstawieniu dostajemy
+    $$\frac{w-i}{-1}\frac{-1}{1-i}=\frac{z-1}{z+1}\frac{1}{-1}$$
+    co po uporządkowaniu zapisuje się jako
+    $$w=\frac{(-1+2i)z+1}{z+1}.$$
+
+    W inny sposób do tego wzoru możemy dojść zaczynając od
+    $$w=\frac{\star}{z+1},$$
+    bo wiemy że $z=-1$ ma przejść na $\infty$, czyli musimy w tym punkcie mieć $0$ w mianowniku. Dalej, wiemy że gdy $z=0$, to wynik ma wyjść $1$. Mianownik już wynosi $1$, czyli licznik musi być postaci $\alpha z+1$:
+    $$w=\frac{\alpha z+ 1}{z+1}.$$
+    Podstawiając ostatnią wartość, dostajemy
+    $$i=\frac{\alpha+1}{2}\implies 2i=\alpha+1$$
+    co daje wzór zgadzający się z tym otrzymanym wyżej.
+\end{example}
+
+\begin{definition}
+  Mówimy, że dwa punkty są odwrotne względem okręgu, gdy leżą na jednej półprostej ze środka okręgu (przedłużeniu promienia) oraz iloczyn ich odległości od środka okręgu wynosi $r^2$, gdzie $r$ to promień okręgu.
+\end{definition}
+
+Graficznie, wygląda to:
+  \begin{center}\begin{tikzpicture}
+    \draw (0,0) circle (2);
+    \draw(0,0)--(20:6);
+    \fill (20:1) circle (2pt);
+    \fill (20:4) circle (2pt);
+    \fill (0,0) circle (2pt);
+    \node at (8:1) {$z''$};
+    \node at (15:4) {$z'$};
+    \draw[dashed] (0,0)--(5, 0);
+    \draw (0,0)--(0, 2);
+    \node at (-0.3, 1) {$R$};
+  \end{tikzpicture}\end{center}
+gdzie $|z'-z_0||z''-z_0|=R^2$.
+
+\begin{theorem}
+  Rozważamy homografię $\frac{\alpha z+\beta}{\gamma z+\delta}$. Jeśli punkty $z'$ i $z''$ są odwrotne względem okręgu, to ich obrazy $w'$ i $w''$ są odwrotne względem obrazu tego okręgu.
+\end{theorem}
+
+\begin{proof}
+  Homografia jest złożeniem przekształceń afinicznych $w=Az+B$ oraz przekształcenia $w=\frac{1}{z}$. Własność z tezy zachowuje się przy $w=Az+B$ (to jest przesunięcie lub obrót, widać).
+
+  Dla $w=\frac{1}{z}$ sprawdzimy własność z tezy tylko dla okręgów o środku w $0$. Niech $z'=\rho e^{i\theta}$ i $z''=\frac{R^2}{\rho}e^{i\theta}$ będą punktami odwrotnymi względem badanego okręgu. Ich obrazy to
+  $$w'=\frac{1}{\rho}e^{-\theta}$$
+  $$w''=\frac{\rho}{R^2}e^{-i\theta}.$$
+  Ich odległości od środka okręgu (który jest środkiem układu współrzędnych) to odpowiednio $\frac{1}{\rho}$ i $\frac{rho}{R^2}$, czyli wydzielenie pierwszej przez drugą daje nadal $R^2$.
+
+  Pozostaje pytanie, co zrobić dla okręgu o środku $z_0\neq 0$?
+\end{proof}
+
+Pojawia się teraz problem znalezienia wszystkich homografii przekształcających górną półpłaszczyznę (tzn. punkty $z$ o $\Im(z)\geq 0$) na koło jednostkowe o środku w $0$ (punkty $|w|leq 1$).
+
+Prosta $\Im(z)=0$ musi przejść na okrąg $|w|=1$, bo wpp. gdyby $\Im(z)=0$ przeszło na inny okrąg, to górna półpłaszczyzna musiałaby wypełniać ten okrąg (nie może wychodzić poza). Można to pokazać bez argumentów topologicznych, patrząc na odwzorowanie odwrotne.
+
+Zatem każdy punkt prostej $\Im(z)=0$ przechodzi na $|w|=1$.
+
+Zbadamy trzy punktu: $z=1$, $z=0$ i $z=\infty$ i ich obrazy przez standardową homografię. Podstawiając $0$ dostajemy $|\beta|=|\gamma|$, podstawiając $\infty$ mamy dodatkowo $|\alpha|=|\gamma|$ i po podstawieniu $1$ ostatnia równość to  $|\alpha+\beta|=|\gamma+\delta|$.
+
+Jeśli $\alpha=0$, to również $\gamma=0$ i wtedy mamy funkcję stałą - sprzeczność. W takim razie możemy dzielić przez te liczby. Mamy funkcję
+$$w=\frac{\alpha}{\gamma}\frac{z+\frac{\beta}{\alpha}}{z+\frac{\delta}{\gamma}}$$
+Przyjmując $\frac{\alpha}{\gamma}=e^{i\theta_0}$, $z_0=-\frac{\beta}{\alpha}$ i $z_1=-\frac{\delta}{\gamma}$ dostajemy
+$$w=e^{i\theta_0}\frac{z-z_0}{z-z_1}$$
+podstawiając $z=0$ otrzymujemy
+$$|z_0|=|z_1|$$
+Podstawiając $1$ dostaniemy 
+$$|1-z_0|=|1-z_1|$$
+
+{\large\color{red}COŚTAM PISANE BYŁO}
+
+Można sprawdzić, że każda homografia przekształcająca koło jednostkowe w siebie ma postać $z=e^{i\theta_0}\frac{z-a}{1-a\overline{z}},$ gdzie $|a|<1$.
+
+\subsection{Całkowanie}
+
+Całkujemy funkcje zespolone względem krzywych na płaszczyźnie.
+
+Jeśli $\gamma:[\alpha, \beta]\to\C$ jest funkcją ciągłą oraz $\gamma(t)=X(t)+iY(t)$, to całkę 
+$$\int_\alpha^\beta \gamma(t)dt:=\int_\alpha^\beta X(t)dt+i\int_\alpha^\beta Y(t)dt$$
+
+Kierunek przeciwny do ruchu wskazówek zegara przyjeło się nazywać dodatnią orientacją na krzywej (zamkniętej).
+
+Rozważamy podział $P$ krzywej $C$ o początku $a$ i końcu $b$ (potencjalnie $a=b$), $P=\{z_0=a, z_1,..., z_n=b\}$. Na każdym fragmencie wybieramy punkty pośrednie $z_k^*$ leżące odpowiednio na każdym fragmencie od $z_{k-1}$ do $z_k$. Definiujemy sumy całkowe
+$$S_P=\sum_{k=1}^nf(z_k^*)\Delta z_k$$
+gdzie $S_P$ zależy nie tylko od wyboru podziału $P$, ale też wyboru punktów pośrednich.
+
+Jeśli liczby $S_P$ leżą "blisko" jakiejś liczby $L$, to przyjmujemy, że $\int_C f(z)dz=L$. "Bliskość" oznacza, że dla dowolnej liczby $\varepsilon>0$ istnieje podział $P_\varepsilon$ taki, że dla podziałów drobniejszych $P\supseteq P_\varepsilon$ mamy $|S_P-L|<\varepsilon$
+
+\begin{fact}[własności całki]
+  liniowość: $\int_Ccf(z)dz=c\int_Cf(z)dz$ i $\int_C(f(z)+g(z))dz=\int_Cf(z)dz+\int_Cg(z)dz$
+
+  jest też liniowość ze względu na krzywą (o ile kierunek się zgadza)
+\end{fact}
