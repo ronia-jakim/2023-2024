@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage{../../template}
+
+\geometry{
+%  showframe,
+  a4paper, 
+  total={170mm, 257mm}, 
+  top=20mm, 
+  marginparwidth={0mm},
+  left={20mm},
+  %right={26mm},
+  headsep=5mm
+}
+
+\usepackage{array}
+\usepackage{multirow}
+
+\renewcommand{\arraystretch}{1.2}
+
+\usepackage{listings}
+\lstset{%
+    %backgroundcolor=\color{yellow!20},%
+    basicstyle=\ttfamily,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{red!60!black!90}
+    }
+
+% Add your keywords here, and have this in a separate file
+% and include it in your preamble
+\lstset{emph={%  
+    pi, sigma, x, tau, gamma, count, join
+    },
+    emphstyle={\color{blue}\bfseries}%
+}%
+
+\title{Lista 3}
+\author{Weronika Jakimowicz}
+\date{13.03.2024}
+
+\begin{document}
+\maketitle
+
+\begin{problem}
+  Pokaż, że nie istnieje takie zapytanie koniunkcyjne używające jako formuł atomowych wyłącznie perspektyw $P_3(x, y)$ i $P_4(x, y)$, które jest równoważne zapytanie $P_5(x, y)$.
+\end{problem}
+
+\begin{solution}
+  Po pierwsze zauważmy, że dowolne zapytanie koniunkcyjne korzystające wyłącznie z $P_3$ i $P_4$ potrafi wytworzyć tylko i wyłącznie ścieżkę złożoną z patyków długości $3$ i $4$. Jest tak dlatego, że potrafimy tylko wyrazić istnienie ścieżki długości $3$ i ścieżki długości $4$ między pewnymi punktami, ale nie potrafimy powiedzieć czegokolwiek o punktach pomiędzy tymi końcami.
+
+  W takim razie, dowolne zapytanie z $P_3$ i $P_4$ tworzyłoby ścieżkę długości $\alpha 3+\beta 4$ dla $\alpha, \beta\in \Z_{\{\geq0\}}$, a jeśli umielibyśmy zapytać przy jego pomocy $P_5$, to wówczas $5=\alpha 3+\beta 4$. Licząc na paluszkach, mamy $3$, $4$ i kolejne to dopiero $7$.
+\end{solution}
+
+\begin{problem}
+  Napisz zapytanie rrd (dozwolone $\exists$, $\forall$ i wszystkie spójniki boolowskie), które korzysta wyłącznie z perspektyw $P_3(x, y)$ i $P_4(x, y)$ i jest równoważne zapytaniu $P_5(x, y)$
+\end{problem}
+
+\begin{solution}
+  Tutaj zauważamy, że ścieżkę $x-a-b-c-d-y$ można wyrazić jako istnienie ścieżki długości $4$ od $x$ do pewnego $d$, a potem dla każdej ścieżki długości $3$ kończącej się w $d$ wymagamy, by przedłużała się ona do ścieżki długości $y$ (czyli ścieżki do $y$).
+
+  $$(\exists x,y)\;P_5(x,y)\iff [ (\exists\;x,y, d)\;P_4(x, d)\;\land ((\forall\;b)P_3(b, d)\;\implies P_4(b, y) ]$$
+\end{solution}
+
+\begin{problem}
+\end{problem}
+
+\begin{solution}
+  Zakładam, że zapytania koniunkcyjne są w sobie zawarte $Q_1\subseteq Q_2$ i chcę z tego wnioskować, że istnieje homomorfizm $C_{Q_2}\to C_{Q_1}$.
+
+  Najpierw czym jest baza kanoniczna zapytania $Q$? Jest to baza zawierająca wszystkie atomy w tymże zapytaniu. To znaczy, że stają się one prawdą.
+
+  Co znaczy, że zapytanie $Q_1$ zawiera się w zapytaniu $Q_2$? To znaczy, że dla dowolnej bazy danych $I$ mamy $Q_1(I)\subseteq Q_2(I)$, czyli zbiór krotek z $I$ spełniających $Q_1$ jest zawsze zawarty w zbiorze krotek z $I$ spełniających $Q_2$.
+
+  Po pierwsze zauważmy, że skoro dla każdej bazy danych $Q_1(I)\subseteq Q_2(I)$, to gdy weźmiemy $I=C_{Q_1}$, to dostaniemy $C_{Q_1}=Q_1(C_{Q_1})\subseteq Q_2(C_{Q_1})$. Skoro $C_{Q_1}\subseteq Q_2(C_{Q_1})$, to chyba znaczy, że $Q_2$ zwraca całą bazę $C_{Q_1}$, czyli $Q_2$ jest dowodzalne w $C_{Q_1}$. To daje $C_{Q_1}\models Q_2$, co daje funkcją $C_{Q_2}\to C_{Q_1}$
+\end{solution}
+
+\end{document}
