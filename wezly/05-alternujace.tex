@@ -10,6 +10,8 @@
 
 \usepackage{pgfplots}
 
+\usepackage[strict]{changepage}
+
 \usepackage{subfig}
 % \usepackage{caption}
 % \usepackage{subcaption}
@@ -482,5 +484,23 @@ Może nas to interesować, gdyż $3$-rozmaitości $M$, w których wszystkie niek
     \item każde $S^2\subseteq S^3\setminus \Sigma$ przecinające $L$ w dwóch punktach odcina niezawiązany segment $L$. 
   \end{enumerate}
 \end{deff}
+
+Tutaj moglibyśmy temat drążyć dalej, ale niestety pojawia się następujący fragment tekstu w Lickorishu
+
+\begin{adjustwidth}{5cm}{5cm}
+\begin{center}
+  \slshape 
+  They \emph{[Bonahon and Siebenmann]} show that for any knot that is not a
+satellite, there is a well-defined maximal collection of Conway spheres that divides
+the knot into an arborescent part and a part in which any Conway sphere is pairwise
+parallel to a boundary component.
+\end{center}
+\end{adjustwidth}
+
+po przeczytaniu którego autor tej notatki postanowił ograniczyć się do wklejenia przykładu sfery Conwaya w \cref{conway sphere}, zaczerpniętego z \href{https://en.wikipedia.org/wiki/Conway_sphere#/media/File:Algebraic_Borromean_link_diagram.svg}{wikipedii}
+\begin{figure}[h]\centering
+  \includegraphics[width=0.7\textwidth]{conway-sphere.png}
+  \caption{\label{conway sphere}Przerywana linia to sfera Conwaya dla $L=$pierścienie boromejskie.}
+\end{figure}
 
 \end{document}
