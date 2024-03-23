@@ -5,6 +5,11 @@
 \usepackage{cleveref}
 \usetikzlibrary{knots}
 
+%\usepackage{asymptote}
+\usepackage{asypictureB}
+
+\usepackage{pgfplots}
+
 \usepackage{subfig}
 % \usepackage{caption}
 % \usepackage{subcaption}
@@ -37,6 +42,7 @@
 
 \setcounter{secnumdepth}{0}
 
+
 \begin{document}
 \maketitle
 \thispagestyle{empty}
@@ -66,7 +72,7 @@
 \newpage 
 \pagestyle{plain}
 
-\subsection{Definicja węzła alternującego}
+\subsection{Definicja węzła i linku alternującego}
 
 Mówimy, że diagram regularny $D$ węzła $K$ jest alternujący, jeśli poruszając dowolny punkt $P\in D$ wzdłuż $D$, ciągle w jedną stronę, będziemy na zmianę pokonywać skrzyżowania górą i dołem.
 
@@ -214,6 +220,8 @@ Najprostszy (o najmniejszej liczbie skrzyżowań) węzeł niealternujący to np.
 Drugi sposób to użycie indukcji po ilości skrzyżowań $K$, rozcinanie go tak, by dostać co najmniej dwa rozłączne węzły, do których możemy przyłożyć założenie indukcyjne. Następnie wystarczy połączyć te węzły korzystając z faktu wyżej.
 }
 
+Definicja bycia alternującym linkiem jest analogiczna jak bycia alternującym węzłem, więc ją pominiemy. Powiemy natomiast o kilku ciekawych przypuszczeniach i o Szkotach. %Zaczniemy od przymiotnika, który dotyczy tylko linków i nie ma łatwo osiągalnego tłumaczenia na język polski. To znaczy zastanowimy się, co to znaczy móc rozdzielić (rozszczepić) link $L$.
+
 \begin{thm}[hipotezy Tait'a]
   Chociaż poniższe trzy stwierdzenia nazywają się hipotezami, to zostały udowodnione w 1987 (dwa pierwsze) i 1991 (ostatnie), ale nie przez Tait'a.
   \begin{enumerate}
@@ -250,15 +258,73 @@ Słowo \emph{flype} pochodzi ze szkockiego i oznacza wywracanie skarpetki na lew
 
 \subsection{Linki rozszczepione (ang. \emph{split}) i pierwsze}
 
-Definicja bycia alternującym linkiem jest analogiczna jak bycia alternującym węzłem, więc ją pominiemy. Zaczniemy od przymiotnika, który dotyczy tylko linków i nie ma łatwo osiągalnego tłumaczenia na język polski. To znaczy zastanowimy się, co to znaczy móc rozdzielić (rozszczepić) link $L$.
-
 \begin{deff}[link i diagram rozszczepiony]
   Powiemy, że \buff{link $L$} (o co najmniej dwóch komponentach) zanurzony w $S^3$ jest \buff{rozszczepiony}, jeśli możemy $S^3$ podzielić na dwie kule $S^2$ tak, że każda ma po przynajmniej jednym komponencie $L$. 
 
   Definicja ta przenosi się na diagram $D\in S^2$ poprzez spłaszczenie tych sfer $S^2$ do zamkniętych krzywych. To znaczy, \buff{diagram $D$ jest rozszczepiony}, jeśli istnieje prosta krzywa zamknięta w $S^2\setminus D$, która dzieli je na dwa rozłączne dyski, każdy zawierający przynajmniej jeden komponent $D$.
 \end{deff}
 
-Link trywialny, czyli $O\;O$, jest w oczywisty sposób rozszczepialny.
+Link trywialny, czyli $O\;O$, jest w oczywisty sposób rozszczepialny. 
+
+Link Whitehead'a (patrz \cref{whitehead link}) nie jest rozszczepialny. Aby to pokazać, wystraczy zauważyć, że link Whitehead'a składa się z dwóch trywialnych węzłó $O$. Gdyby więc był rozszczepialny, to moglibyśmy przekształcić \cref{whitehead link} w diagram $O\;O$, którego wielomian Jonesa wynosi $V(O\;O)=(-t^{\frac{1}{2}}-t^{-\frac{1}{2}})$. Wielomian Jonesa linku Whitehead'a wynosi natomiast $V(\text{Whitehead})=t^{-\frac{3}{2}}(-1+t-2t^2+t^3-2t^4+t^5)$. Ewidentnie coś się nie zgadza.
+
+\begin{figure}[h]\centering 
+  %\subfloat[][alternujący diagram]{
+  \begin{tikzpicture}
+    \begin{knot}[
+      clip width=20,
+      %consider self intersections, 
+      %draft mode=crossings,
+      flip crossing=2,
+      flip crossing=5,
+      flip crossing=1,
+      line join=round
+      ]
+      \strand[thick,
+      background color=white,
+        only when rendering/.style={
+        draw=green,
+        ultra thick,
+        double=yellow!15,
+        double distance=6pt,
+        %line cap=round,
+      }
+      ] (90:2) to[out=0, in=90]
+      (0:2) to[out=-90, in=0] 
+      (-90:2) to[out=180, in=-90] 
+      (180:2) to[out=90, in=180] 
+      (90:2);
+      \strand[thick,
+      background color=white,
+        only when rendering/.style={
+        draw=orange,
+        ultra thick,
+        double=yellow!15,
+        double distance=6pt,
+        %line cap=round,
+      }
+      ] (90:2+2.5) to[out=0, in=90] 
+      (2,2.5) to[out=-90, in=45]
+      (0,0) to[out=180+45, in=90]
+      (-2, -2.5) to[out=-90, in=180]  
+      (0, -4.5) to[out=0, in=-90]
+      (2, -2.5);
+      \strand[thick,
+      background color=white,
+        only when rendering/.style={
+        draw=orange,
+        ultra thick,
+        double=yellow!15,
+        double distance=6pt,
+        %line cap=round,
+      }
+      ] (2, -2.5) to[out=90, in=-45]
+      (0,0) to[out=180-45, in=-90] 
+      (-2, 2.5) to[out=90, in=180] (0, 4.5);
+    \end{knot}
+\end{tikzpicture}
+  \caption{\label{whitehead link}Link Whiteead'a nie jest rozszczepialny, ale jest alternujący.}
+\end{figure}
 
 \begin{thm}
   Link $L$ o alternującym diagramie $D$ jest rozszczepialny $\iff$ $D$ jest rozszczepialnym diagramem.
@@ -399,5 +465,22 @@ Powiemy teraz, co to znaczy, że powierzchnia $F\subseteq M$, gdzie $M$ jest $3$
 \begin{fuck}
   Niech $L$ będzie nierozszczepialnym, pierwszym i alternującym linkiem. Każdy niekompresowalny torus $T$ zawarty w $S^3\setminus L$ jest równoległy do granicy najeżenia pewnego komponentu $L$.
 \end{fuck}
+
+Na przykład dla $L$ będącego linkiem o jednym elemencie, zawierającym tylko węzeł $3_1$, torusem równoległym do granicy jego najeżenia jest powierzchnia widoczna na \cref{najezenie trefoil}. Tak się składa, że link wyżej jest linkiem trywialnym, nierozszczepialnym i alternującym, więc tylko torus zawierające $L$ w swoim środku są niekompresowalne.
+
+\begin{figure}[h]\centering
+  \includegraphics[width=0.5\textwidth]{trefoil-3d.jpg}
+  \caption{\label{najezenie trefoil}Najeżenie węzła $3_1$.}
+\end{figure}
+
+Może nas to interesować, gdyż $3$-rozmaitości $M$, w których wszystkie niekompresowalne torusy są granicami najeżenia pewnego linku, zwykle posiadają strukturę hiperboliczną (pisał o tym pan W. P. Thurston i po przepisaniu do \LaTeX wyszło 379 stron pdf, który można znaleźć \href{https://www.math.unl.edu/~jkettinger2/thurston.pdf}{tutaj}). Hiperboliczność $3$-rozmaitości definiujemy przy pomocy metryki riemannowskiej i krzywizn, ale można to uprościć do stwierdzenia, że hiperboliczność oznacza brak materiału (sformułowanie ukradzione A. Karolakowi), czyli m.in. trójkąciki wtedy mają kąty sumujące się do mniej niż $\pi$.
+
+\begin{deff}[sfera Conwaya]
+  Dla linku $L\subseteq S^3$ $2$-sferę $\Sigma$ (tzn. $\Sigma=S^2$), która przecina $L$ w $4$ punktach nazywamy \buff{sferą Conwaya}, jeśli 
+  \begin{enumerate}
+    \item $\Sigma\setminus L$ jest niekompresowalne w $S^3\setminus L$
+    \item każde $S^2\subseteq S^3\setminus \Sigma$ przecinające $L$ w dwóch punktach odcina niezawiązany segment $L$. 
+  \end{enumerate}
+\end{deff}
 
 \end{document}
