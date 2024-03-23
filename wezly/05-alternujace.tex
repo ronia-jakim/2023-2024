@@ -332,9 +332,12 @@ Link Whitehead'a (patrz \cref{whitehead link}) nie jest rozszczepialny. Aby to p
   Link $L$ o alternującym diagramie $D$ jest rozszczepialny $\iff$ $D$ jest rozszczepialnym diagramem.
 \end{thm}
 
-{\color{red}
-Dowód tego twierdzenia zostanie podany na koniec sekcji.
-}
+\begin{proof}
+  W książce Pana Lickorisha p.t. \emph{An Introduction To Knot Theory}, str. 36. Są ciekawsze rzeczy do powiedzenia.
+\end{proof}
+% {\color{red}
+% Dowód tego twierdzenia zostanie podany na koniec sekcji.
+% }
 
 Na pierwszych zajęciach dowiedzieliśmy się, że nietrywialny węzeł $K$ jest pierwszy (ang. \emph{prime}), jeśli nie jest sumą spójną dwóch nietrywialnych węzłów. Moglibyśmy powiedzieć, że każda kula $S^2\subseteq S^3\setminus K$ przecinająca węzeł $K$ w dwóch punktach dzieli $S^3$ na dwa fragmenty, z czego jeden posiada "trywialny łuczek", tj. łuczek który bez problemu możemy rozsupłać przy pomocy ruchów Reidenmeistera. W podobny sposób możemy przenieść definicję pierwszości na linki i ich diagramy.
 
@@ -351,7 +354,10 @@ Kolejne twierdzenie, na którego dowód musimy troszkę poczekać, które pozwa
   Załóżmy, że $L$ jest linkiem o alternującym diagramie $D$. Wtedy $L$ jest linkiem pierwszym $\iff$ $D$ jest diagramem pierwszym.
 \end{thm}
 
-{\large\color{red}WRÓCIĆ TUTAJ, BO MI SIĘ CHWILOWO NIE CHCE}
+%{\large\color{red}WRÓCIĆ TUTAJ, BO MI SIĘ CHWILOWO NIE CHCE}
+\begin{proof}
+  Tak jak i wcześniej, odsyłam do książki pana Lickorisha.
+\end{proof}
 
 \subsection{Po co nam to wszystko? Czyli o jeżach (między innymi)}
 
@@ -502,5 +508,217 @@ po przeczytaniu którego autor tej notatki postanowił ograniczyć się do wklej
   \includegraphics[width=0.7\textwidth]{conway-sphere.png}
   \caption{\label{conway sphere}Przerywana linia to sfera Conwaya dla $L=$pierścienie boromejskie.}
 \end{figure}
+
+\subsection{Wielomian Jonesa}
+
+Tydzień temu przypisywaliśmy skrzyżowaniom wartość $\pm1$. Dzisiaj nazwiemy taką właśnie funkcję $s:[n]\to \{1, -1\}$, gdzie $n$ to ilość skrzyżowań badanego diagramu linku $D$.
+
+\begin{deff}
+  Niech $D$ będzie diagramem linku $L$ o $n$ skrzyżowaniach. Funkcję $s:\{1,..., n\}\to \{1, -1\}$ nazywamy \buff{stanem} diagramu $D$.
+\end{deff}
+
+Stanów jest $2^n$, ale spośród nich wyróżniają się dwa konkretne: $\color{blue}s_+$ i $\color{blue}s_-$, przypisujące odpowiednio $1$ i $-1$ wszystkim skrzyżowaniom.
+
+Mając dany stan $s$ i diagram $D$ możemy określić nowy diagram $sD$, który przypisuje $i$-temu skrzyżowaniu odpowiednie jego odkrzyżowanie, w zależności od wartości $s(i)$ w sposób zdefiniowany na \cref{stan od diagramu}. 
+
+\begin{figure}[h]\centering 
+  \begin{tikzpicture}
+    \begin{scope}[shift={(-1, 0)}]
+      \draw[thick] (0,0)..controls (0.25, -0.5) and (1.25, -0.5)..(1.5, 0);
+      \draw[thick] (0,-2)..controls (0.25, -1.5) and (1.25, -1.5)..(1.5, -2);
+    \end{scope}
+
+    \draw[thick] (3, -2)--(4.5, 0);
+    \fill[white] (3.75, -1) circle (6pt);
+    
+    \draw[thick] (3, 0)--(4.5, -2);
+    \begin{scope}[shift={(7, 0)}, rotate around={90:(0.75, -1)}]
+      \draw[thick] (0,0)..controls (0.25, -0.5) and (1.25, -0.5)..(1.5, 0);
+      \draw[thick] (0,-2)..controls (0.25, -1.5) and (1.25, -1.5)..(1.5, -2);
+    \end{scope}
+
+    \draw[->] (3, -1)-- node[midway, above] {$s(i)=1$} (1.5, -1);
+    \draw[->] (4.5, -1)-- node[midway, above] {$s(i)=-1$} (6, -1);
+  \end{tikzpicture}
+  \caption{\label{stan od diagramu}Zasada zamiany skrzyżowań w $sD$.}
+\end{figure}
+Wynikowy diagram $sD$ nie posiada skrzyżowań (wszystkie wycięliśmy), ale posiada $|sD|$ zamkniętych krzywych. 
+
+Teraz możemy zdefiniować, w dość bolesny sposób, \buff{nawias Kauffmanna} przy pomocy stanów diagramu $D$:
+$$\langle D\rangle = \sum_s\left[A^{\sum_{i\geq 1} s(i)}(-A^{-2}-A^2)^{|sD|-1}\right].\quad \quad (\star)$$
+Zauważmy, że jest to dokładnie to samo, co pisaliśmy tydzień temu, z tym że tym razem nie wykorzystujemy rekurencji.
+
+\begin{fuck}
+  Wzór $(\star)$ jest naprawdę nawiasem Kauffmanna sprzed tygodnia.
+\end{fuck}
+
+
+\def\iksik{\tikz[baseline=.1ex]{
+  \draw[thick] (0,0)--(1.5ex, 1.5ex);
+  \fill[white] (0.75ex, 0.75ex) circle (2pt);
+  \draw[thick] (0,1.5ex)--(1.5ex, 0);
+  }
+}
+
+\def\lewoprawo{\tikz[baseline=.1ex]{
+    \draw[thick] (0,0)..controls(.5ex, .25ex)and(.5ex, 1.25ex)..(0,1.5ex);
+    \draw[thick] (1.5ex,0)..controls(1ex, .25ex)and(1ex, 1.25ex)..(1.5ex,1.5ex);
+  }
+}
+
+\def\goradol{\tikz[baseline=.1ex]{
+    \draw[thick] (0,0)..controls(.25ex, .5ex)and(1.25ex, .5ex)..(1.5ex,0);
+    \draw[thick] (0,1.5ex)..controls(.25ex, 1ex)and(1.25ex, 1ex)..(1.5ex,1.5ex);
+  }
+}
+
+\begin{proof}
+  Oznaczając wartość $(\star)$ przez $[D]$ mamy do pokazania $3$ kroki
+  \begin{enumerate}
+    \item $[O]=1$
+    \item $[D\sqcup O]=(-A^{-2}-A^2)[D]$
+    \item $[\iksik]=A[\lewoprawo]+A^{-1}[\goradol]$
+  \end{enumerate}
+
+  (1) wychodzi od razu z faktu, że $O$ ma dokładnie jeden stan pusty, czyli $\sum_{i\geq 1}s(i)=0$ i $|sO|=1$. Równość numer (2) wynika z faktu, że $D\sqcup O$ na $D$ zachowuje się dokładnie tak samo jak $D$, ale z racji $O$ dochodzi jedna krzywa zamknięta. Stąd 
+  $$[D\sqcup O]=\sum_s\left[A^{\sum_{i\geq 1}s(i)}(-A^{-2}-A^2)^{|sD|+1-1}\right=\sum_s\eft[A^{\sum_{i\geq 1}s(i)}(-A^{-2}-A^2)^{|sD|-1}\right](-A^{-2}-A^2).$$
+
+  Ostatnia równość wynika z faktu, że diagramy $\goradol$ i $\lewoprawo$ nie mają stanów różnych od $s_+$ i $s_-$ diagramu $\iksik$
+  \begin{align*}
+    A[\lewoprawo]&=A(-A^{-2}-A^2)^{2-1}A\\ 
+                 &=A(-A^{-2}-A^2)^{|\iksik|-1}A^{s_-(x)-1}=\\ 
+                 &=(-A^{-2}-A^2)^{|\iskik|-1}A^{s_-(x)}\\
+    A^{-1}[\goradol]&=A^{-1}(-A^{-2}-A^2)^{2-1}A^{-1}=\\ 
+                    &=A^{-1}(-A^{-2}-A^2)^{|\iksik|-1}A^{s_+(x)+1}\\
+                 &=(-A^{-2}-A^2)^{|\iskik|-1}A^{s_+(x)}
+  \end{align*}
+  gdzie $x$ to jedyne skrzyżowanie w $\iksik$. Po dodaniu wszystko się zgadza.
+\end{proof}
+
+Wprowadźmy teraz kolejne pojęcie dotyczące diagramów, tj. ich fajności (po angielsku nazywamy to \emph{adequate}, ale wydaje mi się to dojść niemiłym określeniem diagramów, które naprawdę się starają).
+
+\begin{deff}[diagram fajny]
+  Powiemy, że diagram $D$ jest \buff{fajny}, jeśli dla wszystkich stanów $s$ takich, że $\sum_{i\geq 1}s(i)=n-2$ zachodzi $|s_-D|>|sD|$ i $|s_+D|>|sD|$. Jeśli tylko jedna nierówność to jest on odpowiednio $-$ lub $+$ fajny.
+\end{deff}
+
+Po co nam to wszystko? Okazuje się, że najmniejsze diagramy alternujące są zawsze fajne c:
+
+\begin{fuck}
+  Zredukowany diagram alternujący $D$ jest zawsze fajny.
+\end{fuck}
+
+\begin{proof}
+  Pomalujmy wnętrze diagramu na niebiesko i pomarańczowo naprzemiennie, jak np. widać na \cref{szachownica diagramowa} (a). Ponieważ węzeł jest alternujący, to wiemy, że $s_+D$ zachowa tylko fragmenty pomalowane na jeden kolor, np. czerwony jak na rysunku niżej. Z kolei $s_-D$ otrzyma tylko połacie niebieskie. Dzięki brakowi zbędnych krawędzi nie będziemy mieli dwóch fragmentów, które zleją się w jedność, jak np. na \cref{szachownica diagramowa} (b) po rozcięciu zaznaczonym na czerwono. 
+
+  Zamieniając dwa skrzyżowania na przeciwną wartość $s$ połączymy dwa lub więcej fragmenty różnego koloru w jeden, więc dostaniemy ich zawsze mniej niż w przypadku gdy wszystkie skrzyżowania miały tę samą wartość $s$.
+
+  \begin{figure}[h]\centering
+    \subfloat[][diagram bez zbytku]{
+    \begin{tikzpicture}
+      \filldraw[fill=blue!30] (0, -4)--(0,0)--(4, 0)--(4, -1)--(2, -1)--(2, -2)--(1, -2)--(1, -4)--(0, -4);
+      \filldraw[fill=orange!40] (4, -1)--(2, -1)--(2, -2)--(3, -2)--(3, -3)--(4, -3)--(4, -1);
+      \filldraw[fill=orange!40] (1, -4)--(3, -4)--(3, -3)--(2, -3)--(2, -2)--(1, -2)--(1, -4);
+      \filldraw[fill=blue!30] (2, -3)--(3, -3)--(3, -2)--(2, -2)--(2, -3);
+      \filldraw[fill=blue!30] (1, -4)--(1, -5)--(5, -5)--(5, -1)--(4, -1)--(4, -3)--(3, -3)--(3, -3)--(3, -4)--(1, -4);
+      \begin{knot}[ 
+        consider self intersections,
+        ignore endpoint intersections=false,
+        clip width=2,
+        %draft mode=crossings,
+        background color=white,
+        only when rendering/.style={
+          draw=black,
+          double=white,
+          double distance=6pt, 
+          %line cap=round
+        },
+        flip crossing=2,
+        flip crossing=5,
+        flip crossing=6
+        ]
+        \strand[very thick] 
+          (0, -4) to 
+          (0, 0) to 
+          (4, 0) to 
+          (4, -3) to 
+          (2, -3) to 
+          (2, -1) to 
+          (4, -1) to 
+          (5, -1) to 
+          (5, -5) to 
+          (1, -5) to 
+          (1, -2) to 
+          (3, -2) to 
+          (3, -4) to 
+          (0, -4);
+      \end{knot}
+      \fill[white] (-0.1, -4.09) rectangle (0.18, -3.9);
+      \draw[very thick](-0.13, -4)--(-0.13, -4.13)--(0.1, -4.13);
+
+
+    \end{tikzpicture}
+  }
+  \subfloat[][diagram ze zbytkiem]{
+    \begin{tikzpicture}
+      \filldraw[fill=orange!40] (2, 0)--(3, 1)--(2,2)--(1,1)--(2,0);
+      \filldraw[fill=blue!30] (0, -4)--(0,0)--(4, 0)--(4, -1)--(2, -1)--(2, -2)--(1, -2)--(1, -4)--(0, -4);
+      \filldraw[fill=orange!40] (4, -1)--(2, -1)--(2, -2)--(3, -2)--(3, -3)--(4, -3)--(4, -1);
+      \filldraw[fill=orange!40] (1, -4)--(3, -4)--(3, -3)--(2, -3)--(2, -2)--(1, -2)--(1, -4);
+      \filldraw[fill=blue!30] (2, -3)--(3, -3)--(3, -2)--(2, -2)--(2, -3);
+      \filldraw[fill=blue!30] (1, -4)--(1, -5)--(5, -5)--(5, -1)--(4, -1)--(4, -3)--(3, -3)--(3, -3)--(3, -4)--(1, -4);
+      \begin{knot}[ 
+        consider self intersections,
+        ignore endpoint intersections=false,
+        clip width=2,
+        %draft mode=crossings,
+        background color=white,
+        only when rendering/.style={
+          draw=black,
+          double=white,
+          double distance=6pt, 
+          %line cap=round
+        },
+        flip crossing=2,
+        flip crossing=8,
+        flip crossing=9,
+        flip crossing=3
+        ]
+        \strand[very thick] 
+          (0, -4) to 
+          (0, 0) to
+          (2, 0) to (3, 1) to (2, 2) to (1, 1) to (2, 0) to
+          (4, 0) to 
+          (4, -3) to 
+          (2, -3) to 
+          (2, -1) to 
+          (4, -1) to 
+          (5, -1) to 
+          (5, -5) to 
+          (1, -5) to 
+          (1, -2) to 
+          (3, -2) to 
+          (3, -4) to 
+          (0, -4);
+      \end{knot}
+      \draw[ultra thick, red] (1, 0.8)--(1, 0.1);
+      \draw[ultra thick, red] (3, 0.8)--(3, 0.1);
+      \draw[ultra thick, red] (1.2, 0.6)--(1.2, 0.1);
+      \draw[ultra thick, red] (2.8, 0.6)--(2.8, 0.1);
+
+      \fill[white] (-0.1, -4.09) rectangle (0.18, -3.9);
+      \draw[very thick](-0.13, -4)--(-0.13, -4.13)--(0.1, -4.13);
+
+    \end{tikzpicture}
+  }
+    \caption{\label{szachownica diagramowa}Pomalowany diagram (węzła $4_1$).}
+  \end{figure}
+\end{proof}
+
+\begin{fuck}
+  Niech $D$ będzie nierozszczepionym diagramem o $n$ skrzyżowaniach. Wówczas
+  $$|s_+D|+|s_-D|\leq n+2,$$
+  z równością jeśli $D$ jest zredukowanym diagramem alternującym.
+\end{fuck}
+
 
 \end{document}
