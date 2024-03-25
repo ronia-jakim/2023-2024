@@ -258,6 +258,8 @@ Definicja bycia alternującym linkiem jest analogiczna jak bycia alternującym w
 
 Słowo \emph{flype} pochodzi ze szkockiego i oznacza wywracanie skarpetki na lewą stronę. Chodzi o obracanie kołtuna (ang. \emph{tangle}) o 180 stopni (patrz. \cref{flype} lub \href{https://en.wikipedia.org/wiki/Flype}{wikipedia <3}). Kołtun to włożenie $n$ łuczków w $S^3$ tak, że ich $2n$ końców jest przyklejonych do $2n$ punktów zaznaczonych na granicy $S^3$.
 
+Do pierwszego punktu twierdzenia wyżej powrócimy później. %Resztę zignorujemy.
+
 \subsection{Linki rozszczepione (ang. \emph{split}) i pierwsze}
 
 \begin{deff}[link i diagram rozszczepiony]
@@ -461,7 +463,7 @@ Powiemy teraz, co to znaczy, że powierzchnia $F\subseteq M$, gdzie $M$ jest $3$
 
   \end{tikzpicture}
 }
-\caption{\label{pierwszy} Powierzchnię (b) możemy rozciąć wzdłuż $\partial\Delta$ i zakleić dwoma kopiami $\Delta$, by dostać dwie "zakrętki". Jest tak, ponieważ otoczenie tubularne $\Delta$ ma ciekawy przekrój z $F$. W przypadku powierzchni (a) otoczenie tubularne $\Delta$ daje po prostu annulus na $F$. }%
+\caption{\label{pierwszy} Powierzchnię (b) możemy rozciąć wzdłuż $\partial\Delta$ i zakleić dwoma kopiami $\Delta$, by dostać dwie "zakrętki" - powierzchnie o prostszej strukturze niż powierzchnia oryginalna. Jest tak, ponieważ otoczenie tubularne $\Delta$ ma ciekawy przekrój z $F$. W przypadku powierzchni (a) otoczenie tubularne $\Delta$ daje po prostu annulus na $F$. }%
 \end{figure}
 
 \begin{fuck}
@@ -509,7 +511,7 @@ po przeczytaniu którego autor tej notatki postanowił ograniczyć się do wklej
   \caption{\label{conway sphere}Przerywana linia to sfera Conwaya dla $L=$pierścienie boromejskie.}
 \end{figure}
 
-\subsection{Wielomian Jonesa}
+\subsection{Stany diagramu}
 
 Tydzień temu przypisywaliśmy skrzyżowaniom wartość $\pm1$. Dzisiaj nazwiemy taką właśnie funkcję $s:[n]\to \{1, -1\}$, gdzie $n$ to ilość skrzyżowań badanego diagramu linku $D$.
 
@@ -720,5 +722,45 @@ Po co nam to wszystko? Okazuje się, że najmniejsze diagramy alternujące są z
   z równością jeśli $D$ jest zredukowanym diagramem alternującym.
 \end{fuck}
 
+\begin{proof}
+  Indukcja po ilości skrzyżowań $n$. Oczywiście dla $n=0$ mamy $LHS=0\leq 2=RHS$.
+
+  Bierzemy teraz diagram $D$ o $(n+1)$ skrzyżowaniach i wybieramy jedno skrzyżowanie. Możemy je usunąć na dwa sposoby - sposób $+1$ lub $-1$, by powstał nowy diagram $D'$ o $n$ skrzyżowaniach. W którymś z tych przypadków dorysujemy nowy łuczek lub jakieś dwa łuczki nam się złączą w jedno. Drugi sposób zachowuje ilość łuczków. W takim razie z założenia indukcyjnego mamy
+  $$|s_+D|+|s_-D|=|s_+D'|+|s_-D'|\pm 1\leq (n+2)\pm 1\leq n+3.$$
+  W zredukowanym diagramie alternującym wystarczy zauważyć, że wycięcie skrzyżowania łączy dwa fragmenty jednego koloru.
+\end{proof}
+
+\subsection{W końcu wielomiany!}
+
+Zaczniemy od zdefiniowania dwóch wartości zależnych od linku diagramu $D$ $L$: $M\langle D\rangle$ oraz $m\langle D\rangle$. Pierwsza z nich to maksymalna potęga wielomianu Jonesa, a druga - potęga minimalna. Oczywiście, jeśli węzeł jest swoim odbiciem lustrzanym, to $M\langle D\rangle = -m\langle D\rangle$.
+
+Okazuje się, że wartości wyżej mają swoje odniesienie na stany węzła:
+\begin{fuck}
+  Niech $D$ będzie diagramem o $n$ skrzyżowaniach. Wówczas
+  \begin{enumerate}
+    \item $M\langle D\rangle \leq n+2|s_+D|-2$
+    \item $m\langle D\rangle \geq -n-2|s_-D|+2$
+  \end{enumerate}
+  z równością gdy $D$ jest alternującym, zredukowanym diagramem.
+\end{fuck}
+
+\begin{proof}
+  Dla dowolnego stanu $s$ oznaczmy $\langle D|s\rangle=(-A^{-2}-A^2)^{|sD|-1}A^{\sum s(i)}$. Wtedy mamy 
+  $$\langle D\rangle = \sum_s \langle D|s\rangle$$
+  Mamy $M\langle D|s\rangle=2|sD|-2+\sum s(i)$, w szczególności dla $s=s_+$ mamy interesującą nas wartość. Wystarczy pokazać, że dla każdego innego stanu $s$ mamy $\langle D|s\rangle \leq \langle D|s_+\rangle$.
+
+  Weźmy więc dowolny stan $s\neq s_+$. Ma on $k$ znaków $-1$, możemy więc znaleźć ciąg $s_0=s,...,s_k=s_+$, gdzie w każdym kroku zmieniamy jeden $+1$ na $-1$. Oczywiście, dla każdego $j$ mamy 
+  $$\sum s_{j+1}(i)=\sum s_j(i)+2,$$
+  gdyż po zmianie $+1$ na $-1$ tracimy zerują nam się dwa $+1$.
+
+  Z kolei $|s_{j+1}D|\pm 1=|s_jD|$ na podobnej zasadzie jak już wcześniej obserwowaliśmy. Z tego powodu 
+  $$M\langle D|s_{j+1}\rangle =2|s_{j+1}D|-2+\sum s_{j+1}(i)=2|s_jD|\pm 2-2+\sum s_j(i)+2\geq 2|s_jD|-2+\sum s_j(i)=\langle D|s_j\rangle.$$
+
+  Równość oczywiście zajdzie, jeśli nie będziemy w stanie nigdy mieć dwóch wyrazów z $M\langle D|s_+\rangle$ z przeciwnym znakiem w sumie, tzn. kiedy dla wszystkich stanów $s\neq s_+$ mamy $\langle D|s\rangle < \langle D|s_+\rangle$. Wystarczy tutaj zauważyć, że jeśli zmienimy wartość jednego skrzyżowania, to zlejemy w całość dwa fragmenty niebieskie na \cref{szachownica diagramowa}.
+
+  Argument dla drugiej nierówności jest symetryczny.
+\end{proof}
+
+TO DO: span, pierwsze zdanie hipotez Taita.
 
 \end{document}
