@@ -600,7 +600,7 @@ Zauważmy, że jest to dokładnie to samo, co pisaliśmy tydzień temu, z tym ż
 Wprowadźmy teraz kolejne pojęcie dotyczące diagramów, tj. ich fajności (po angielsku nazywamy to \emph{adequate}, ale wydaje mi się to dojść niemiłym określeniem diagramów, które naprawdę się starają).
 
 \begin{deff}[diagram fajny]
-  Powiemy, że diagram $D$ jest \buff{fajny}, jeśli dla wszystkich stanów $s$ takich, że $\sum_{i\geq 1}s(i)=n-2$ zachodzi $|s_-D|>|sD|$ i $|s_+D|>|sD|$. Jeśli tylko jedna nierówność to jest on odpowiednio $-$ lub $+$ fajny.
+  Powiemy, że diagram $D$ jest \buff{fajny}, jeśli dla wszystkich stanów $s$ takich, że $\sum_{i\geq 1}s(i)=\pm(n-2)$ zachodzi $|s_-D|>|sD|$ i $|s_+D|>|sD|$. Jeśli tylko jedna nierówność to jest on odpowiednio $-$ lub $+$ fajny.
 \end{deff}
 
 Po co nam to wszystko? Okazuje się, że najmniejsze diagramy alternujące są zawsze fajne c:
@@ -761,6 +761,45 @@ Okazuje się, że wartości wyżej mają swoje odniesienie na stany węzła:
   Argument dla drugiej nierówności jest symetryczny.
 \end{proof}
 
-TO DO: span, pierwsze zdanie hipotez Taita.
+%TO DO: span, pierwsze zdanie hipotez Taita.
+
+Dla wielomianu $w$ oznaczmy $span(w)=Mw-mw$, tzn. różnica najwyższej i najniższej potęgi w nim występującej. Okazuje się, że jest połączenie między $span(V(L))$ a diagramami tego linku.
+
+\begin{thm}
+  Niech $D$ będzie diagramem linku $L$ o $n$ skrzyżowaniach. Wówczas
+  $$span(V(L))\leq n.$$
+  Ponadto, jeśli $D$ jest zredukowanym diagramem alternującym to mamy równość.
+\end{thm}
+
+\begin{proof}
+  Skorzystamy z definicji wielomianu Jonesa, która pojawiła się dawno, dawno temu bo przed tygodniem:
+  $$V(L)=(-A)^{-3w(D)}\langle D\rangle.$$
+  Wtedy jeśli podstawimy $t=A^{-4}$, to dostaniemy
+  $$4span(V(L))=span(\langle D\rangle)=M\langle D\rangle-m\langle D\rangle$$
+  Korzystając z poprzedniego faktu dostajemy nierówność
+  $$M\langle D\rangle -m\langle D\rangle\leq n+2|s_+D|-2-(-n-2|s_-D|+2)=2(n+|s_+D|+|s_-D|-2)$$
+  Wiemy też, że $|s_+D|+|s_-D|\leq n+2$, czyli kolejna nierówność daje nam 
+  $$M\langle D\rangle -m\langle D\rangle \leq 2(n+|s_+D|+|s_-D|-2)\leq 2(n+n+2-2)=4n$$
+  czyli mamy co chcieliśmy: $span(V(L))\leq n$.
+
+  Równość dla diagramu alternującego wynika z równości dla takich diagramów w nierównościach użytych po drodze.
+\end{proof}
+
+Po dokonaniu dowodu wyżej od razu dostajemy dowód pierwszego z założeń Taita - wielomian Jonesa jest niezmiennikiem, a dla zredukowanego alternującego diagramu musi w takim razie zajść równość między $span(V(L))$ a ilością skrzyżowań w tym diagramie.
+
+\begin{problem}
+  Podaj przykład diagramu o $n$ skrzyżowań, dla którego $M\langle D\rangle - m\langle D\rangle=0$.
+\end{problem}
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0, 3) to [out=0, in=90] (1, 2) to [out=-90, in=90] (-1, 0) to[out=-90, in=180-45] (0, -1);
+    \fill[white] (0, 1) circle (6pt);
+    \fill[white] (0, -1) circle (6pt);
+    \draw (0,3) to [out=180, in=90] (-1, 2) to [out=-90, in=90] (1, 0) to[out=-90, in=45] (0, -1);
+    \node at (0, -1.5) {$\vdots$};
+    \draw (-0.3, -2) to[out=180+45, in=90] (-1, -3) to[out=-90, in=180] (0, -4) to[out=0, in=-90] (1, -3) to [out=90, in=-45] (0.3, -2);
+  \end{tikzpicture}
+\end{center}
 
 \end{document}
