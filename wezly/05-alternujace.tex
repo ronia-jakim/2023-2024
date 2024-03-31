@@ -143,45 +143,39 @@ Najprostszy (o najmniejszej liczbie skrzyżowań) węzeł niealternujący to np.
   \begin{figure}[h]\centering
     \begin{tikzpicture}
       \begin{scope}[shift={(0, -7)}]
-      \draw (-.2, 1.1)--(-.2, 1.7);
-      \fill[white] (-.2, 1.4) circle (4pt);
-      \draw[very thick] (2.5, -1.5)--(2.5, 1);
-      \fill[white](2.5, -1) circle (4pt);
-      \draw[very thick, blue] (2, -1)--(3, -1);
-      \draw[very thick, red] (2, -2)--(3, -2);
-      \fill[white] (2.5, -2) circle (4pt);
-      \draw[very thick] (2.5, -4)--(2.5, -1.5);
-      \draw[very thick] (2.5, -4)--(-0.8, -4.3);
-      \fill[white] (-0.2, -4.3) circle (4pt);
-      \draw[very thick] (2.5, 1)--(-0.8, 1.5);
-      \draw (-.2, -4)--(-0.2, -4.6);
-      
-      \draw (-0.7, 0.5)--(-0.2, 0.5)--(-0.2, -0.5)--(-0.7, -0.5);
-      \draw (0, -1)--(1, -1.3)--(1, -3.5)--(0, -3.8);
-      \fill[white] (1, -2.75) circle (5pt);
-      \draw[very thick] (0,0)--(2, -0.5)--(2, -2.5)--(0, -3);
-      \draw (-0.7, -2.5)--(-0.2, -2.5)--(-0.2, -3.5)--(-0.7, -3.5);
+        \begin{scope}[shift={(10, 1)}, xscale=-1.3, yscale=1.3]
+          \draw (-0.7, 0.5)--(-0.2, 0.5)--(-0.2, -0.5)--(-0.7, -0.5);
+          \draw (0, -1)--(1, -1.3)--(1, -3.5)--(0, -3.8);
+          \fill[white] (1, -2.75) circle (5pt);
+          \draw[very thick] (0,0)--(2, -0.5)--(2, -2.5)--(0, -3);
+          \draw (-0.7, -2.5)--(-0.2, -2.5)--(-0.2, -3.5)--(-0.7, -3.5);
 
-      \draw (5, -1)--(4, -1.3)--(4, -3.5)--(5, -3.8);
-      \fill[white] (4, -2.75) circle (5pt);
-      \draw[very thick] (5, 0)--(3, -0.5)--(3, -2.5)--(5, -3);
-      \draw (5.7, 0.5)--(5.2, 0.5)--(5.2, -0.5)--(5.7, -0.5);
-      \draw (5.7, -2.5)--(5.2, -2.5)--(5.2, -3.5)--(5.7, -3.5);
+          \draw[ultra thick, white] (2, -1)--(2, -2);
+          \draw[very thick, dashed] (2, -1)--(2, -2);
 
-      \draw[ultra thick, white] (2, -1)--(2, -2);
-      \draw[ultra thick, white] (3, -1)--(3, -2);
+          \draw[very thick, red] (2, -1)--(3.1, -1);
+          \draw[very thick, blue] (2, -2)--(2.85, -2);
+        \end{scope}
 
-      \draw[very thick, dashed] (2, -1)--(2, -2);
-      \draw[very thick, dashed] (3, -1)--(3, -2);
-      
+        \begin{scope}[rotate around = {-90:(7,.5)}, scale=2]
+          \draw (5, -1)--(4, -1.3)--(4, -3.5)--(5, -3.8);
+          \fill[white] (4, -2.75) circle (5pt);
+          \draw[very thick] (5, 0)--(3, -0.5)--(3, -2.5)--(5, -3);
+          \draw (5.7, 0.5)--(5.2, 0.5)--(5.2, -0.5)--(5.7, -0.5);
+          \draw (5.7, -2.5)--(5.2, -2.5)--(5.2, -3.5)--(5.7, -3.5);
+
+          \draw[white, ultra thick] (3.9, -0.25-0.1/4)--(3.9+1.1/2+0.1, -0.25/2-0.05/4+0.025);
+          \draw[dashed, very thick] (3.9, -0.25-0.1/4)--(3.9+1.1/2+0.1, -0.25/2-0.05/4+0.025);
+        \end{scope}
+
     \end{scope}
 
       \draw[dashed] (-3, -4.5)--(9, -4.5);
       
       \begin{scope}
-        \draw[very thick, blue] (2, -2)--(3, -1);
+        \draw[very thick, blue] (2, -1)--(3, -1);
         \fill[white] (2.5, -1.5) circle (4pt);
-        \draw[very thick, red] (2, -1)--(3, -2);
+        \draw[very thick, red] (2, -2)--(3, -2);
         
         \draw (-0.7, 0.5)--(-0.2, 0.5)--(-0.2, -0.5)--(-0.7, -0.5);
         \draw (0, -1)--(1, -1.3)--(1, -3.5)--(0, -3.8);
@@ -202,7 +196,7 @@ Najprostszy (o najmniejszej liczbie skrzyżowań) węzeł niealternujący to np.
         \draw[very thick, dashed] (3, -1)--(3, -2);
       \end{scope}
     \end{tikzpicture}
-    \caption{\label{fakt 1 dowodzik}Dwa możliwe ułożenie łuczków na zewnątrz alternujących diagramów $K_1$ i $K_2$.}
+    \caption{\label{fakt 1 dowodzik}Dwa możliwe ułożenie łuczków na zewnątrz alternujących diagramów $K_1$ i $K_2$. Podziękowania dla Pana Kandybo za drugi przypadek.}
   \end{figure}
   
   Pierwsza z nich jest raczej oczywista. Druga wymaga zauważenia, że konsekwentnie przyglądając się łuczkom na zewnątrz diagramu po lewej, w końcu przejście "nad" będzie musiało występować na górze. Wtedy wystarczy taki łuczek przeciągnąć nad całym węzłem w przestrzeń pomiędzy węzłami i skorzystać z niego do połączenia $K_1$ i $K_2$ tak jak na obrazku na dole \cref{fakt 1 dowodzik}. 
@@ -216,11 +210,11 @@ Najprostszy (o najmniejszej liczbie skrzyżowań) węzeł niealternujący to np.
 %  Pokaż, że dla każdego węzła wielokątnego $K$ (ang. \emph{polynomial knot}) położonego w sposób regularny (tzn. najwyżej dwa punkty mogą leżeć na jednej prostej równoległej do osi rzutu) istnieje węzeł alternujący o takiej pozycji, że rzuty obu węzłów są identyczne.
   %diagramie regularnym istnieje węzeł alternujący o pozycji, ma taki sam rzut jak $K$.
 \end{problem}
-{\color{red}
-  Szukany w zadaniu wyżej węzeł alternujący niekoniecznie musi być nietrywialny. Aby więc skonstruować węzeł $K'$ wystarczy wybrać punkt startowy na $K$ i przemieszczać się wzdłuż niego konsekwentnie w jedną stronę, na zmianę wymagając, by segment w danych skrzyżowaniu szedł górą lub dołem. Nietrywialną częścią tego podejścia jest pokazanie, że na końcu uda nam się zamknąć tak zatoczoną drogę.
-
-Drugi sposób to użycie indukcji po ilości skrzyżowań $K$, rozcinanie go tak, by dostać co najmniej dwa rozłączne węzły, do których możemy przyłożyć założenie indukcyjne. Następnie wystarczy połączyć te węzły korzystając z faktu wyżej.
-}
+% {\color{red}
+%   Szukany w zadaniu wyżej węzeł alternujący niekoniecznie musi być nietrywialny. Aby więc skonstruować węzeł $K'$ wystarczy wybrać punkt startowy na $K$ i przemieszczać się wzdłuż niego konsekwentnie w jedną stronę, na zmianę wymagając, by segment w danych skrzyżowaniu szedł górą lub dołem. Nietrywialną częścią tego podejścia jest pokazanie, że na końcu uda nam się zamknąć tak zatoczoną drogę.
+%
+% Drugi sposób to użycie indukcji po ilości skrzyżowań $K$, rozcinanie go tak, by dostać co najmniej dwa rozłączne węzły, do których możemy przyłożyć założenie indukcyjne. Następnie wystarczy połączyć te węzły korzystając z faktu wyżej.
+% }
 
 Definicja bycia alternującym linkiem jest analogiczna jak bycia alternującym węzłem, więc ją pominiemy. Powiemy natomiast o kilku ciekawych przypuszczeniach i o Szkotach. %Zaczniemy od przymiotnika, który dotyczy tylko linków i nie ma łatwo osiągalnego tłumaczenia na język polski. To znaczy zastanowimy się, co to znaczy móc rozdzielić (rozszczepić) link $L$.
 
@@ -250,13 +244,13 @@ Definicja bycia alternującym linkiem jest analogiczna jak bycia alternującym w
       \filldraw[fill=green!30] ({2+sqrt(1-0.25)}, 0.5) circle (1);
       \draw ({2+2*sqrt(1-0.25)}, 1)--({4+2*sqrt(0.75)}, 1);
       \draw ({2+2*sqrt(1-0.25)}, 0)--({4+2*sqrt(0.75)}, 0);
-      \node[rotate=180] at ({2+sqrt(0.75)}, 0.5) {Tangle};
+      \node[xscale=-1] at ({2+sqrt(0.75)}, 0.5) {Tangle};
     \end{scope}
   \end{tikzpicture}
   \caption{\label{flype}Wywracanie skarpety na lewą stronę, czyli \emph{flype}.}
 \end{figure}
 
-Słowo \emph{flype} pochodzi ze szkockiego i oznacza wywracanie skarpetki na lewą stronę. Chodzi o obracanie kołtuna (ang. \emph{tangle}) o 180 stopni (patrz. \cref{flype} lub \href{https://en.wikipedia.org/wiki/Flype}{wikipedia <3}). Kołtun to włożenie $n$ łuczków w $S^3$ tak, że ich $2n$ końców jest przyklejonych do $2n$ punktów zaznaczonych na granicy $S^3$.
+Słowo \emph{flype} pochodzi ze szkockiego i oznacza wywracanie skarpetki na lewą stronę. Chodzi o przeciągnięcie przez kołtun (ang. \emph{tangle}) nitek tak, jak przy wywracaniu skarpet (patrz. \cref{flype} lub \href{https://en.wikipedia.org/wiki/Flype}{wikipedia <3}). Kołtun to włożenie $n$ łuczków w $S^3$ tak, że ich $2n$ końców jest przyklejonych do $2n$ punktów zaznaczonych na granicy $S^3$.
 
 Do pierwszego punktu twierdzenia wyżej powrócimy później. %Resztę zignorujemy.
 
@@ -579,22 +573,36 @@ Zauważmy, że jest to dokładnie to samo, co pisaliśmy tydzień temu, z tym ż
   \begin{enumerate}
     \item $[O]=1$
     \item $[D\sqcup O]=(-A^{-2}-A^2)[D]$
-    \item $[\iksik]=A[\lewoprawo]+A^{-1}[\goradol]$
+    \item $[\iksik]=A^{-1}[\lewoprawo]+A[\goradol]$
   \end{enumerate}
 
   (1) wychodzi od razu z faktu, że $O$ ma dokładnie jeden stan pusty, czyli $\sum_{i\geq 1}s(i)=0$ i $|sO|=1$. Równość numer (2) wynika z faktu, że $D\sqcup O$ na $D$ zachowuje się dokładnie tak samo jak $D$, ale z racji $O$ dochodzi jedna krzywa zamknięta. Stąd 
-  $$[D\sqcup O]=\sum_s\left[A^{\sum_{i\geq 1}s(i)}(-A^{-2}-A^2)^{|sD|+1-1}\right=\sum_s\eft[A^{\sum_{i\geq 1}s(i)}(-A^{-2}-A^2)^{|sD|-1}\right](-A^{-2}-A^2).$$
+  $$[D\sqcup O]=\sum_s\left[A^{\sum_{i\geq 1}s(i)}(-A^{-2}-A^2)^{|sD|+1-1}\right]=\sum_s\left[A^{\sum_{i\geq 1}s(i)}(-A^{-2}-A^2)^{|sD|-1}\right](-A^{-2}-A^2).$$
 
-  Ostatnia równość wynika z faktu, że diagramy $\goradol$ i $\lewoprawo$ nie mają stanów różnych od $s_+$ i $s_-$ diagramu $\iksik$
+  Punkt (3) oznacza, że usunięcie skrzyżowania na dwa sposoby pozwala nam obliczyć $[D]$ oryginalnego diagramu. Niech więc $x$ będzie wybranym skrzyżowaniem diagramu. Dla uproszczenia, oryginalny diagram będziemy oznaczać $\iksik$, a dwa sposoby usunięcia tego skrzyżowania przez przypisanie mu $-1$ i $+1$ oznaczymy odpowiednio $\lewoprawo$ i $\goradol$.
+%
+%  Ostatnia równość wynika z faktu, że diagramy $\goradol$ i $\lewoprawo$ nie mają stanów różnych od $s_+$ i $s_-$ diagramu $\iksik$
+
+  Zaczynamy od obserwacji, że $\goradol$ odpowiada stanom $s$ diagramu $D$, w których skrzyżowanie $x$ ma przypisaną wartość $+1$ z tym, że suma wartości tych stanów diagramu $\goradol$ jest o jeden mniejsza (równa zero na $x$). Stąd
   \begin{align*}
-    A[\lewoprawo]&=A(-A^{-2}-A^2)^{2-1}A\\ 
-                 &=A(-A^{-2}-A^2)^{|\iksik|-1}A^{s_-(x)-1}=\\ 
-                 &=(-A^{-2}-A^2)^{|\iskik|-1}A^{s_-(x)}\\
-    A^{-1}[\goradol]&=A^{-1}(-A^{-2}-A^2)^{2-1}A^{-1}=\\ 
-                    &=A^{-1}(-A^{-2}-A^2)^{|\iksik|-1}A^{s_+(x)+1}\\
-                 &=(-A^{-2}-A^2)^{|\iskik|-1}A^{s_+(x)}
+    A[\goradol] &= A\sum_{s(x)=1}(-A^2-A^{-2})^{|s\iksik|-1}A^{|s|-1}=\\ 
+                &=(-A^2-A^{-2})A
   \end{align*}
-  gdzie $x$ to jedyne skrzyżowanie w $\iksik$. Po dodaniu wszystko się zgadza.
+  Natomiast $\lewoprawo$ to diagram odpowiadający stanom $s$ diagramu $D$, w których skrzyżowanie $x$ ma przypisaną wartość $-1$, ale suma wartości stanu jest o jeden większa (równa zero na $x$). Czyli
+  \begin{align*}
+    A^{-1}[\lewoprawo]&=A^{-1}\sum_{s(x)=-1}(-A^2-A^{-2})^{|s\iksik|-1}A^{|s|+1}=\\ 
+                      &=(-A^2-A^{-2})A.
+  \end{align*}
+  Dodajemy wszystko by otrzymać $[\iksik]$.
+  % \begin{align*}
+  %   A[\lewoprawo]&=A(-A^{-2}-A^2)^{2-1}A\\ 
+  %                &=A(-A^{-2}-A^2)^{|\iksik|-1}A^{s_-(x)-1}=\\ 
+  %                &=(-A^{-2}-A^2)^{|\iksik|-1}A^{s_-(x)}\\
+  %   A^{-1}[\goradol]&=A^{-1}(-A^{-2}-A^2)^{2-1}A^{-1}=\\ 
+  %                   &=A^{-1}(-A^{-2}-A^2)^{|\iksik|-1}A^{s_+(x)+1}\\
+  %                &=(-A^{-2}-A^2)^{|\iksik|-1}A^{s_+(x)}
+  % \end{align*}
+  % gdzie $x$ to jedyne skrzyżowanie w $\iksik$. Po dodaniu wszystko się zgadza.
 \end{proof}
 
 Wprowadźmy teraz kolejne pojęcie dotyczące diagramów, tj. ich fajności (po angielsku nazywamy to \emph{adequate}, ale wydaje mi się to dojść niemiłym określeniem diagramów, które naprawdę się starają).
