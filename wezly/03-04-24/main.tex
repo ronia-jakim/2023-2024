@@ -1,0 +1,301 @@
+\documentclass{beamer} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\title{Powierzchnia Seiferta, genus i suma spójna węzłów}
+\date{03.04.2024}
+\author{Weronika Jakimowicz}
+
+\usetheme{texsx}
+
+\uselanguage{polish}
+\languagepath{polish}
+\deftranslation[to=polish]{Definition}{Definicja}
+\deftranslation[to=polish]{Theorem}{Twierdzenie}
+
+\usepackage{tikz}
+\usetikzlibrary{calc, intersections, knots}
+
+\usepackage{pgfplots}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill 
+
+  \begin{tikzpicture}[overlay, remember picture]
+    \node[opacity=0.8] at (0,4) {\includegraphics[width=1cm]{../kaczusia.png}};
+    \node[opacity=0.6] at (-1,3.8) {\includegraphics[width=7mm]{../kaczusia.png}};
+    \node[opacity=0.6] at (1,3.8) {\includegraphics[width=7mm]{../kaczusia.png}};
+  \end{tikzpicture}
+  \end{frame}
+}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\section{Preliminaria geometryczne}
+
+\input{preliminaria_geometryczne.tex}
+
+\begin{frame}{Powierzchnia Seiferta}{(nie do końca)}
+  \begin{theorem}
+    Każdy węzeł (link) w $S^3$ jest brzegiem pewnej powierzchni.
+  \end{theorem}
+
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      Zielone fragmenty na rysunku łączymy skręconymi o $180^o$ wstążeczkami na skrzyżowaniach i gotowe.
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \scalebox{0.6}{
+        \begin{tikzpicture}
+          \filldraw[fill=green] (0, -4)--(0,0)--(4, 0)--(4, -1)--(2, -1)--(2, -2)--(1, -2)--(1, -4)--(0, -4);
+          % \filldraw[fill=orange!40] (4, -1)--(2, -1)--(2, -2)--(3, -2)--(3, -3)--(4, -3)--(4, -1);
+          % \filldraw[fill=orange!40] (1, -4)--(3, -4)--(3, -3)--(2, -3)--(2, -2)--(1, -2)--(1, -4);
+          \filldraw[fill=green] (2, -3)--(3, -3)--(3, -2)--(2, -2)--(2, -3);
+          \filldraw[fill=green] (1, -4)--(1, -5)--(5, -5)--(5, -1)--(4, -1)--(4, -3)--(3, -3)--(3, -3)--(3, -4)--(1, -4);
+          \begin{knot}[ 
+            consider self intersections,
+            ignore endpoint intersections=false,
+            clip width=2,
+            %draft mode=crossings,
+            background color=bg0,
+            only when rendering/.style={
+              draw=orange!70!bg-dim,
+              double=bg0,
+              double distance=6pt, 
+              %line cap=round
+            },
+            flip crossing=2,
+            flip crossing=5,
+            flip crossing=6
+            ]
+            \strand[very thick] 
+              (0, -4) to 
+              (0, 0) to 
+              (4, 0) to 
+              (4, -3) to 
+              (2, -3) to 
+              (2, -1) to 
+              (4, -1) to 
+              (5, -1) to 
+              (5, -5) to 
+              (1, -5) to 
+              (1, -2) to 
+              (3, -2) to 
+              (3, -4) to 
+              (0, -4);
+          \end{knot}
+          \fill[bg0] (-0.1, -4.09) rectangle (0.18, -3.9);
+          \draw[very thick, orange!70!bg-dim](-0.13, -4)--(-0.13, -4.13)--(0.1, -4.13);
+
+
+        \end{tikzpicture}
+      }
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \begin{tikzpicture}
+      \fill[blue!20!bg-dim] (-1.5, .5)--(2,.5)--(2, -.5)--(1.75, -.75)--(1.5, -.5)--(-0.5, -.5)--(-.5,-3.5)--(1.5, -3.5)--(1.5, -3)--(1.75, -2.75)--(2, -3)--(2, -4.5)--(-1.5, -4.5);
+      \fill[blue!20!bg-dim] (1.75, -.75)--(2, -1)--(2, -1.5)--(1.75, -1.75)--(1.5, -1.5)--(1.5, -1);
+      \fill[blue!20!bg-dim] (1.75, -1.75)--(2, -2)--(2, -2.5)--(1.75, -2.75)--(1.5, -2.5)--(1.5, -2);
+
+      \fill[green!20!bg-dim] (3, .5)--(5, .5)--(5, -.25)--(5.25, -.5)--(5, -.75)--(5, -1.75)--
+        (5.25, -2)--(5, -2.25)--(5, -3.25)--(5.25, -3.5)--(5, -3.75)--(5, -4.5)--(3, -4.5);
+      \fill[green!20!bg-dim] (5.5, .5)--(7.5, .5)--(7.5, -4.5)--(5.5, -4.5)--
+        (5.5, -3.75)--(5.25, -3.5)--(5.5, -3.25)--(5.5, -2.25)--(5.25, -2)--(5.5, -1.75)--
+        (5.5, -.75)--(5.25, -.5)--(5.5, -.25);
+      % \fill[green!20!bg-dim] (5.25, -.5)--(5, -.75)--(5, -1.75)--(5.25, -2)--(5.5, -1.75)--(5.5, -.75);
+      % \fill[green!20!bg-dim] (5.25, -2)--(5, -2.25)--(5, -3.25)--(5.25, -3.5)--(5.5, -3.25)--(5.5, -2.25);
+      
+      \begin{knot}[
+        clip width=2,
+        consider self intersections,
+        %draft mode=crossings,
+        background color=bg0,
+        line join=round,
+        only when rendering/.style={
+          draw=orange,
+          double=bg1,
+          double distance=6pt,
+          line cap=round,
+        },
+        flip crossing=1,
+        flip crossing=3
+        ]
+        \strand (-1.5,0.5)--(2, 0.5)--(2, -0.5)--(1.5, -1)--
+          (1.5, -1.5)--(2, -2)--(2, -2.5)--(1.5, -3)-- 
+          (1.5, -3.5)--(-0.5, -3.5)--(-0.5, -.5)-- 
+          (1.5, -.5)--(2, -1)--(2, -1.5)--(1.5, -2)--(1.5, -2.5)--
+          (2, -3)--(2, -3.5)--(2, -4.5)--(-1.5, -4.5)--(-1.5, .5);
+
+        \strand (3, .5)--(5, .5)--(5, -.25)--(5.5, -.75)--(5.5, -1.75)--(5, -2.25)--
+          (5, -3.25)--(5.5, -3.75)--(5.5, -4.5)--(7.5, -4.5)--
+          (7.5, .5)--(5.5, .5)--(5.5, -.25)--(5, -.75)--(5, -1.75)--(5.5, -2.25)--
+          (5.5, -3.25)--(5, -3.75)--(5, -4.5)--(3, -4.5)--(3, .5);
+      \end{knot}
+
+      \node at (.25, -5.3) {Powierzchnia z brzegiem $3_1$};
+      \node at (.25, -5.8) {która nie jest orientowalna};
+      
+      \node at (5.25, -5.3) {Powierzchnia z brzegiem $3_1$};
+      \node at (5.25, -5.8) {która jest orientowalna};
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\def\kreska{\tikz{
+    \fill[red] (0,0) circle (0.2ex);
+    \fill[red] (1ex, 1ex) circle (0.2ex);
+    \draw[red] (0,0)--(1ex, 1ex);
+}}
+
+\def\kwadracik{\tikz{
+    \fill[red](0,0) circle (0.2ex);
+    \fill[red] (.8ex, 1ex) circle (.2ex);
+    \fill[red] (2ex, 1.3ex) circle (.2ex);
+    \fill[red] (2.1ex, -.2ex) circle (.2ex);
+    \filldraw[color=red, fill=orange!40!bg-dim] (0,0)--(.8ex, 1ex)--(2ex, 1.3ex)--(2.1ex, -.2ex)--(0,0);
+}}
+
+\section{Powierzchnia Seiferta po raz pierwszy}
+
+\begin{frame}{Powierzchnia Seiferta}{już na poważnie}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{definition}[powierzchnia Seiferta]
+        Dla węzła $K$ zanurzonego w $S^3$ orientowalna i spójna powierzchnia, której jest on brzegiem nazywa się \textbf{\color{orange}powierzchnią Seiferta}.
+      \end{definition} 
+      Po lewej powierzchnia Seiferta $K11n34$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \includegraphics[width=\textwidth]{rysuneczek.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Powierzchnia Seiferta - konstrukcja}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}\centering
+      \includegraphics[width=\textwidth]{6_1-bez-przeciec.png}
+    \end{column}
+    \begin{column}{0.5\textwidth}\centering
+      \includegraphics[width=\textwidth]{6_1-seifert.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Genus węzła}
+
+\begin{frame}{Genus węzła}
+  \begin{definition}
+    Niech $S$ będzie powierzchnią Seiferta $S$ węzła $K$ o najmniejszym genusie. Definiujemy wówczas \textbf{\color{orange}genus węzła $K$} jako 
+    $$\color{blue}g(K)=g(S).$$
+  \end{definition}
+
+  Węzeł $K$ ma genus $0$ $\iff$ jest węzłem trywialnym.
+  \medskip
+
+  Jeśli po rozcięciu wszystkich skrzyżowań $K$ mamy $n$ dysków i $s$ skrzyżowań do budowy powierzchni Seiferta $F$, to 
+  $$\chi(F)=n+s\chi(\kwadracik)-2s\chi(\kreska)=n-s.$$
+\end{frame}
+
+\begin{frame}{Genus sumy spójnej}
+  \begin{theorem}
+    Dla węzłów $K_1$ i $K_2$ zachodzi
+    $$g(K_1\# K_2)=g(K_1)+g(K_2).$$
+  \end{theorem}
+
+  Rozbijamy dowód na dwie nierówności.
+  \medskip
+
+  $\color{blue}\leq$ wynika z faktu, że \emph{suma spójna} powierzchni Seiferta $F_1$ i $F_2$ węzłów $K_1$ i $K_2$, jest powierzchnią Seiferta sumy spójnej $K_1\# K_2$:% Już to liczyliśmy:
+  % $$\chi(F_1\# F_2)=\chi(F_1)+\chi(F_2)+\chi(\kwadracik)-2\cdot \chi(\kreska)$$
+  $$g(K_1\# K_2)\leq g(F_1\# F_2)=g(F_1)+g(F_2).$$
+  %gdzie $F_1$, $F_2$ to powierzchnie Seiferta odpowiednio $K_1$ i $K_2$.
+\end{frame}
+
+\input{genus_sumy_spojnej.tex}
+
+\end{document}
+
+
+  % \begin{center}
+  %   \begin{tikzpicture}
+  %     %\node[rotate=-90, opacity=0.3] at (0,0) {\includegraphics[width=4cm]{6_1.png}};
+  %
+  %     \begin{scope}
+  %       \coordinate (a1) at (2, 0);
+  %       \coordinate (a2) at (1.2, 0);
+  %       \coordinate (a3) at (1.4, 1.5);
+  %       \coordinate (a4) at (1.4, -1.5);
+  %       \coordinate (a5) at (-1,0.5);
+  %       \coordinate (a6) at (-1,-0.5);
+  %       \coordinate (a7) at (-1, -1.5);
+  %       \coordinate (a8) at (-1, 1.5);
+  %       \coordinate (a9) at (0.7, -.7);
+  %       \coordinate (a10) at (0.7, .7);
+  %
+  %
+  %       \begin{knot}[
+  %         background color=bg0,
+  %         clip width=5pt,
+  %         ignore endpoint intersections=false,
+  %         %draft mode=crossings,
+  %         flip crossing=4,
+  %         flip crossing=2,
+  %         flip crossing=6
+  %         ]
+  %         \strand[->] (a1) to[out=-90, in=30] (a9);
+  %         \strand[->] (a9) to[out=210, in=0, looseness=1.3] (a7);
+  %         \strand[->] (a7) to[out=180, in=210] (a5);
+  %         \strand[->] (a5) to[out=30, in=180] (a4);
+  %         \strand[->] (a4) to[out=0, in=-90] (a2);
+  %         \strand[->] (a2) to[out=90, in=0] (a3);
+  %         \strand[->] (a3) to[out=180, in=-30] (a6);
+  %         \strand[->] (a6) to[out=150, in=180, looseness=1.3] (a8);
+  %         \strand[->] (a8) to[out=0, in=150] (a10);
+  %         \strand[->] (a10) to[out=-30, in=90] (a1);
+  %       \end{knot}
+  %     \end{scope}
+  %
+  %     \begin{scope}[shift={(5, 0)}]
+  %       \coordinate (a1) at (2, 0);
+  %       \coordinate (a2) at (1.2, 0);
+  %       \coordinate (a3) at (1.4, 1.5);
+  %       \coordinate (a4) at (1.4, -1.5);
+  %       \coordinate (a5) at (-1,0.5);
+  %       \coordinate (a6) at (-1,-0.5);
+  %       \coordinate (a7) at (-1, -1.5);
+  %       \coordinate (a8) at (-1, 1.5);
+  %       \coordinate (a9) at (0.7, -.7);
+  %       \coordinate (a10) at (0.7, .7);
+  %
+  %       %\foreach \i in {1,..., 10} \fill (a\i) circle (2pt) node[above] {\i};
+  %       \draw[name path=l1, ->] (a1) to[out=-90, in=30] (a9);
+  %       \draw[name path=l2, ->] (a9) to[out=210, in=0, looseness=1.3] (a7);
+  %       \draw[name path=l3, ->] (a7) to[out=180, in=210] (a5);
+  %       \draw[name path=l4, ->] (a5) to[out=30, in=180] (a4);
+  %       \draw[name path=l5, ->] (a4) to[out=0, in=-90] (a2);
+  %       \draw[name path=l1, ->] (a1) to[out=-90, in=30] (a9);
+  %       \draw[name path=l6, ->] (a2) to[out=90, in=0] (a3);
+  %       \draw[name path=l7, ->] (a3) to[out=180, in=-30] (a6);
+  %       \draw[name path=l8, ->] (a6) to[out=150, in=180, looseness=1.3] (a8);
+  %       \draw[name path=l9, ->] (a8) to[out=0, in=150] (a10);
+  %       \draw[name path=l10, ->] (a10) to[out=-30, in=90] (a1);
+  %     \end{scope}
+  %   \end{tikzpicture}
+  % \end{center}
