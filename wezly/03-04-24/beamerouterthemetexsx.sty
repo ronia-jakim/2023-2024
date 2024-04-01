@@ -1,0 +1,21 @@
+\mode<presentation>
+
+
+% Frame title
+\defbeamertemplate*{frametitle}{texsx}[1][]
+{
+\vskip7mm%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+  \begin{tikzpicture}
+    \useasboundingbox[fill=bg-dim!40!bg0](0,0) rectangle(\the\paperwidth,1.3);
+    \ifx\insertframesubtitle\@empty {
+      \node[anchor=west, white,font=\large] at (0.8,0.61){\color{yellow}\bfseries\insertframetitle};}
+    \else {
+        \node[anchor= west, white,font=\large] at (0.8,0.81){\color{yellow}\bfseries\insertframetitle};
+        \node[anchor= west, white,font=\small] at (1,0.41){\color{gray1}\insertframesubtitle};
+     }
+      \fi
+  \end{tikzpicture}
+  \end{beamercolorbox}
+}
+\mode<all>

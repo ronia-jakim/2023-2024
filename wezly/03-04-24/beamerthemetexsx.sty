@@ -1,0 +1,43 @@
+\mode<presentation>
+
+\RequirePackage{tikz}
+
+\useinnertheme{texsx}
+\useoutertheme{texsx}
+\usecolortheme{texsx}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\def\rozeta{\tikz{
+    \foreach \i in {0,...,7} \coordinate (mid\i) at (\i*360/8+360/16+360/8:0.5ex);
+
+    \foreach \i in {0,...,3} {
+      \def\right{\the\numexpr2*\i+1\relax}
+      \def\left{\the\numexpr2*\i\relax}
+      \def\j{\the\numexpr\i+1\relax}
+
+      \fill[green] (\j*90:0.1ex)--(mid\left)--(\j*90:0.9ex)--(mid\right);
+
+      \fill[yellow] (\j*90+45:0.6ex) circle (0.1ex);
+    }
+  }
+}
+
+\setbeamertemplate{itemize item}{\rozeta}
+
+\setbeamertemplate{blocks}[default]
+
+\setbeamertemplate{theorem begin}{
+  \begin{block}
+  {%
+    \inserttheoremname
+    \inserttheoremnumber
+    \ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
+    \inserttheorempunctuation
+  }%
+}
+
+\setbeamertemplate{theorem end}{\end{block}}
+
+\mode<all>

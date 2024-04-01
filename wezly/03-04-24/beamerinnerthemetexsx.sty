@@ -1,0 +1,42 @@
+\mode<presentation>
+
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+    \fill[bg0](0,0) rectangle (\the\paperwidth, \the\paperheight);
+  \end{tikzpicture}
+}
+
+
+% Title page
+\defbeamertemplate*{title page}{texsx}[1][]
+{ 
+   \vskip2.5cm%
+ \begin{beamercolorbox}[wd=0.75\paperwidth, leftskip=0.0625\paperwidth, #1]{title page header}
+      \usebeamerfont{title}\inserttitle\par
+    \end{beamercolorbox}%
+    \vskip4cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=8cm,#1]{author}
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}
+     \vskip0.2cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=8cm,#1]{date}
+      \usebeamerfont{author}\insertdate%
+    \end{beamercolorbox}
+  \vfill
+
+  \begin{tikzpicture}[overlay, remember picture]
+    \fill[bg0] (0, \paperheight/8 * 7) circle (3pt);
+    \foreach \i in {-1,...,14} {
+      \pgfmathparse{Mod(\i,2)==0?1:0)}
+      \ifnum\pgfmathresult>0 
+        \node[opacity=0.3] at (\the\paperwidth/15*\i, \paperheight/8 * 7  ) {\includegraphics[width=1cm]{../kaczusia.png}};
+      \else 
+        \node[opacity=0.2] at (\the\paperwidth/15*\i, \paperheight/8 * 7 - 4) {\includegraphics[width=1cm]{../kaczusia.png}};
+      \fi
+    }
+    % \draw[green!30!bg-dim, very thick, dashed] (-1, \paperheight/8*5-18)--(\paperwidth+1, \paperheight/8*5-18);
+    % \draw[green!30!bg-dim, very thick, dashed] (-1, \paperheight/8*5-15)--(\paperwidth+1, \paperheight/8*5-15);
+  \end{tikzpicture}
+}
+
+\mode<all>
