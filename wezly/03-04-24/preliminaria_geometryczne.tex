@@ -105,6 +105,20 @@
   gdzie $b$ to ilość komponentów brzegu $X$. Bez ułamków możemy zapisać $\chi=2-2g-b$.
 \end{frame}
 
+\def\kreska{\tikz{
+    \fill[red] (0,0) circle (0.2ex);
+    \fill[red] (1ex, 1ex) circle (0.2ex);
+    \draw[red] (0,0)--(1ex, 1ex);
+}}
+
+\def\kwadracik{\tikz{
+    \fill[red](0,0) circle (0.2ex);
+    \fill[red] (.8ex, 1ex) circle (.2ex);
+    \fill[red] (2ex, 1.3ex) circle (.2ex);
+    \fill[red] (2.1ex, -.2ex) circle (.2ex);
+    \filldraw[color=red, fill=orange!40!bg-dim] (0,0)--(.8ex, 1ex)--(2ex, 1.3ex)--(2.1ex, -.2ex)--(0,0);
+}}
+
 \begin{frame}{Genus a \emph{suma spójna} powierzchni z brzegiem}
   %Na tym slajdzie przez sumę spójną powierzchni $F_1$ i $F_2$ rozumiemy wycięcie z nich fragmenciku brzegu i sklejenie krwawiących końców tasiemką.
   \begin{center}
