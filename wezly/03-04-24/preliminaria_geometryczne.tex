@@ -86,7 +86,7 @@
 \end{frame}
 
 \begin{frame}{Homeomorfizm}{na trójkącikach}
-  Normalnie dwie przestrzenie topologiczne są homeomorficzne, jeśli istnieje ciągła bijekcja między nimi.
+  Normalnie dwie przestrzenie topologiczne są homeomorficzne, jeśli istnieje ciągła bijekcja między nimi (i ciągła bijekcja doń odwrotna).
   
   \begin{definition}[homeomorfizm trójkącików]
     Teraz powiemy, że dwie przestrzenie zbudowane z trójkącików są \textbf{\color{green}homeomorficzne}, jeśli 
@@ -184,4 +184,24 @@
     \end{tikzpicture}
   }
   \end{center}
+\end{frame}
+
+\begin{frame}{Po co nam te trójkąciki?}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}\setlength{\itemsep}{1em}
+        \item Węzły wielokątne
+        \item Powierzchnia w środku węzła - brzeg wielokątny
+        \item Stąd interesują nas rzeczy częściowo liniowe (PL)
+        \item Kinoshita w 1962 upewnił się, że PL można zamieść pod dywan
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{tikzpicture}
+        \node at (2,0) {\includegraphics[width=0.6\textwidth]{10_128_wielokatny.png}};
+        \node at (0, -3) {\includegraphics[width=0.6\textwidth]{10_128_gladki.png}};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
 \end{frame}
