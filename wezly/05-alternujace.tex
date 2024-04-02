@@ -140,10 +140,12 @@ Najprostszy (o najmniejszej liczbie skrzyżowań) węzeł niealternujący to np.
 
 \begin{proof}
   Wiemy, że "na zewnątrz" węzła $K_1$ istnieje segment, pod którym przechodzi dokładnie jeden inny segment. Tak samo w przypadku diagramu $K_2$. Mamy dwie opcje, jak widać na \cref{fakt 1 dowodzik}.
+
+  Pierwszy przypadek jest prosty. W drugim pakujemy cały rysunek $K_2$ w zielony obszar i przyklejamy go w środek diagramu $K_1$.
   \begin{figure}[h]\centering
     \begin{tikzpicture}
       \begin{scope}[shift={(0, -7)}]
-        \begin{scope}[shift={(10, 1)}, xscale=-1.3, yscale=1.3]
+        \begin{scope}[shift={(3.5, 0)}, scale=0.7]
           \draw (-0.7, 0.5)--(-0.2, 0.5)--(-0.2, -0.5)--(-0.7, -0.5);
           \draw (0, -1)--(1, -1.3)--(1, -3.5)--(0, -3.8);
           \fill[white] (1, -2.75) circle (5pt);
@@ -153,19 +155,22 @@ Najprostszy (o najmniejszej liczbie skrzyżowań) węzeł niealternujący to np.
           \draw[ultra thick, white] (2, -1)--(2, -2);
           \draw[very thick, dashed] (2, -1)--(2, -2);
 
-          \draw[very thick, red] (2, -1)--(3.1, -1);
-          \draw[very thick, blue] (2, -2)--(2.85, -2);
+          \draw[very thick, red] (2, -1)--(3.3, -1);
+          \draw[very thick, blue] (2, -2)--(3.6, -2);
+
+          \draw[dashed, green] (-1, -4.3)--(-1, 1)--(1.5, 1)--(2.5, -.5)--(2.5, -2.5)
+            --(1.5, -4.3)--(-1, -4.3);
         \end{scope}
 
-        \begin{scope}[rotate around = {-90:(7,.5)}, scale=2]
-          \draw (5, -1)--(4, -1.3)--(4, -3.5)--(5, -3.8);
+        \begin{scope}[rotate around = {-90:(7,.5)}, yscale=3, xscale=2]
+          \draw (5, -2)--(4, -2.3)--(4, -3.5)--(5, -3.8);
           \fill[white] (4, -2.75) circle (5pt);
           \draw[very thick] (5, 0)--(3, -0.5)--(3, -2.5)--(5, -3);
           \draw (5.7, 0.5)--(5.2, 0.5)--(5.2, -0.5)--(5.7, -0.5);
           \draw (5.7, -2.5)--(5.2, -2.5)--(5.2, -3.5)--(5.7, -3.5);
 
-          \draw[white, ultra thick] (3.9, -0.25-0.1/4)--(3.9+1.1/2+0.1, -0.25/2-0.05/4+0.025);
-          \draw[dashed, very thick] (3.9, -0.25-0.1/4)--(3.9+1.1/2+0.1, -0.25/2-0.05/4+0.025);
+          \draw[white, ultra thick] (4, -0.25)--(3.9+1.1/2+0.1, -0.25/2-0.05/4+0.025);
+          \draw[dashed, very thick] (4, -0.25)--(3.9+1.1/2+0.1, -0.25/2-0.05/4+0.025);
         \end{scope}
 
     \end{scope}
@@ -363,7 +368,11 @@ Zacznijmy od szybkiej informacji co to znaczy być powierzchnią. Oczywiście m�
   \item suma spójna $n$ torusów $\mathbb{T}^2$
   \item suma spójna $n$ płaszczyzn rzutowych $\R P^2$
 \end{enumerate}
-Poza tym jest m.in. butelka Kleina (nieorientowalna, bez brzegu) czy wstęga M\"obiusa (nieorientowalna, z brzegiem).
+Poza tym jest m.in. wstęga M\"obiusa (nieorientowalna, z brzegiem).
+
+\begin{problem}
+  Sprawdź, że butelka Kleina to suma spójna dwóch kopii $\R P^2$.
+\end{problem}
 
 Powiemy teraz, co to znaczy, że powierzchnia $F\subseteq M$, gdzie $M$ jest $3$-rozmaitością, jest niekompresowalna. Przy okazji dowiemy się, co to znaczy być dyskiem rozpinającym powierzchnię.
 
@@ -634,7 +643,7 @@ Po co nam to wszystko? Okazuje się, że najmniejsze diagramy alternujące są z
         consider self intersections,
         ignore endpoint intersections=false,
         clip width=2,
-        %draft mode=crossings,
+        % draft mode=crossings,
         background color=white,
         only when rendering/.style={
           draw=black,
@@ -643,8 +652,8 @@ Po co nam to wszystko? Okazuje się, że najmniejsze diagramy alternujące są z
           %line cap=round
         },
         flip crossing=2,
-        flip crossing=5,
-        flip crossing=6
+        %flip crossing=5,
+        flip crossing=4
         ]
         \strand[very thick] 
           (0, -4) to 
@@ -678,9 +687,9 @@ Po co nam to wszystko? Okazuje się, że najmniejsze diagramy alternujące są z
       \filldraw[fill=blue!30] (1, -4)--(1, -5)--(5, -5)--(5, -1)--(4, -1)--(4, -3)--(3, -3)--(3, -3)--(3, -4)--(1, -4);
       \begin{knot}[ 
         consider self intersections,
-        ignore endpoint intersections=false,
+        %ignore endpoint intersections=false,
         clip width=2,
-        %draft mode=crossings,
+        % draft mode=crossings,
         background color=white,
         only when rendering/.style={
           draw=black,
@@ -688,10 +697,7 @@ Po co nam to wszystko? Okazuje się, że najmniejsze diagramy alternujące są z
           double distance=6pt, 
           %line cap=round
         },
-        flip crossing=2,
-        flip crossing=8,
-        flip crossing=9,
-        flip crossing=3
+        flip crossing=1
         ]
         \strand[very thick] 
           (0, -4) to 
@@ -709,6 +715,8 @@ Po co nam to wszystko? Okazuje się, że najmniejsze diagramy alternujące są z
           (3, -2) to 
           (3, -4) to 
           (0, -4);
+        \strand[very thick] (4, -.5)--(4, -2);
+        \strand[very thick] (1, 0)--(2, 0)--(2.5, 0.5);
       \end{knot}
       \draw[ultra thick, red] (1, 0.8)--(1, 0.1);
       \draw[ultra thick, red] (3, 0.8)--(3, 0.1);
@@ -731,9 +739,11 @@ Po co nam to wszystko? Okazuje się, że najmniejsze diagramy alternujące są z
 \end{fuck}
 
 \begin{proof}
-  Indukcja po ilości skrzyżowań $n$. Oczywiście dla $n=0$ mamy $LHS=0\leq 2=RHS$.
+  Indukcja po ilości skrzyżowań $n$. Oczywiście dla $n=0$ mamy $LHS=2\leq 2=RHS$.
 
-  Bierzemy teraz diagram $D$ o $(n+1)$ skrzyżowaniach i wybieramy jedno skrzyżowanie. Możemy je usunąć na dwa sposoby - sposób $+1$ lub $-1$, by powstał nowy diagram $D'$ o $n$ skrzyżowaniach. W którymś z tych przypadków dorysujemy nowy łuczek lub jakieś dwa łuczki nam się złączą w jedno. Drugi sposób zachowuje ilość łuczków. W takim razie z założenia indukcyjnego mamy
+  Bierzemy teraz diagram $D$ o $(n+1)$ skrzyżowaniach i wybieramy jedno skrzyżowanie, którego usunięcie nie spowoduje rozszczepienia diagramu. Możemy to zrobić na $+1$ lub $-1$ sposób i jeśli jeden z nich rozszczepia diagram, to drugi już tego nie zrobi. 
+
+  Powstaje w ten sposób nowy diagram $D'$ o $n$ skrzyżowaniach. Załóżmy, że usunęliśmy skrzyżowanie na sposób $+1$, czyli $s_+D'$ wygląda tak samo jak $s_+D$. Stąd $|s_+D'|=|s_+D|$. W takim razie stan $s_-D'$ traci lub zyskuje jeden łuczek. Stąd $|s_-D'|=|s_-D|\pm 1$. W takim razie z założenia indukcyjnego mamy
   $$|s_+D|+|s_-D|=|s_+D'|+|s_-D'|\pm 1\leq (n+2)\pm 1\leq n+3.$$
   W zredukowanym diagramie alternującym wystarczy zauważyć, że wycięcie skrzyżowania łączy dwa fragmenty jednego koloru.
 \end{proof}
@@ -755,16 +765,16 @@ Okazuje się, że wartości wyżej mają swoje odniesienie na stany węzła:
 \begin{proof}
   Dla dowolnego stanu $s$ oznaczmy $\langle D|s\rangle=(-A^{-2}-A^2)^{|sD|-1}A^{\sum s(i)}$. Wtedy mamy 
   $$\langle D\rangle = \sum_s \langle D|s\rangle$$
-  Mamy $M\langle D|s\rangle=2|sD|-2+\sum s(i)$, w szczególności dla $s=s_+$ mamy interesującą nas wartość. Wystarczy pokazać, że dla każdego innego stanu $s$ mamy $\langle D|s\rangle \leq \langle D|s_+\rangle$.
+  Mamy $M\langle D|s\rangle=2|sD|-2+\sum s(i)$, w szczególności dla $s=s_+$ mamy interesującą nas wartość. Wystarczy pokazać, że dla każdego innego stanu $s$ mamy $M\langle D|s\rangle \leq M\langle D|s_+\rangle$.
 
   Weźmy więc dowolny stan $s\neq s_+$. Ma on $k$ znaków $-1$, możemy więc znaleźć ciąg $s_0=s,...,s_k=s_+$, gdzie w każdym kroku zmieniamy jeden $+1$ na $-1$. Oczywiście, dla każdego $j$ mamy 
   $$\sum s_{j+1}(i)=\sum s_j(i)+2,$$
   gdyż po zmianie $+1$ na $-1$ tracimy zerują nam się dwa $+1$.
 
   Z kolei $|s_{j+1}D|\pm 1=|s_jD|$ na podobnej zasadzie jak już wcześniej obserwowaliśmy. Z tego powodu 
-  $$M\langle D|s_{j+1}\rangle =2|s_{j+1}D|-2+\sum s_{j+1}(i)=2|s_jD|\pm 2-2+\sum s_j(i)+2\geq 2|s_jD|-2+\sum s_j(i)=\langle D|s_j\rangle.$$
+  $$M\langle D|s_{j+1}\rangle =2|s_{j+1}D|-2+\sum s_{j+1}(i)=2|s_jD|\pm 2-2+\sum s_j(i)+2\geq 2|s_jD|-2+\sum s_j(i)=M\langle D|s_j\rangle.$$
 
-  Równość oczywiście zajdzie, jeśli nie będziemy w stanie nigdy mieć dwóch wyrazów z $M\langle D|s_+\rangle$ z przeciwnym znakiem w sumie, tzn. kiedy dla wszystkich stanów $s\neq s_+$ mamy $\langle D|s\rangle < \langle D|s_+\rangle$. Wystarczy tutaj zauważyć, że jeśli zmienimy wartość jednego skrzyżowania, to zlejemy w całość dwa fragmenty niebieskie na \cref{szachownica diagramowa}.
+  Równość oczywiście zajdzie, jeśli nie będziemy w stanie nigdy mieć dwóch wyrazów z $M\langle D|s_+\rangle$ z przeciwnym znakiem w sumie, tzn. kiedy dla wszystkich stanów $s\neq s_+$ mamy $M\langle D|s\rangle < M\langle D|s_+\rangle$. Wystarczy tutaj zauważyć, że jeśli zmienimy wartość jednego skrzyżowania, to zlejemy w całość dwa fragmenty niebieskie na \cref{szachownica diagramowa}.
 
   Argument dla drugiej nierówności jest symetryczny.
 \end{proof}
