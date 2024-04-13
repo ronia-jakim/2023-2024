@@ -7,3 +7,8 @@
 *.out
 *.synctex.gz
 *.toc
+
+*.nav
+*.snm
+
+wezly/03-04-24/main.pdf
